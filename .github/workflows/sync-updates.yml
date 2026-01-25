@@ -1,0 +1,244 @@
+name: Sync Updates from Upstream
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type "update" to confirm you want to sync latest docs from upstream'
+        required: true
+        type: string
+      upstream_repo:
+        description: 'Upstream template repository (e.g., "org/docs-template")'
+        required: true
+        type: string
+        default: "Autocalls/documentation"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    if: ${{ inputs.confirm == 'update' }}
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Verify brand.config.json exists
+      - name: Check for branding config
+        id: check_config
+        run: |
+          if [ ! -f "brand.config.json" ]; then
+            echo "ERROR: brand.config.json not found. Please run the 'Rebrand Documentation' workflow first."
+            exit 1
+          fi
+          echo "config_exists=true" >> $GITHUB_OUTPUT
+
+      # Save partner's branding config and assets before updating
+      - name: Backup branding config and assets
+        run: |
+          mkdir -p /tmp/backup
+          cp brand.config.json /tmp/backup/
+          
+          # Backup logo files if they exist
+          if [ -d "resources/logo" ]; then
+            cp -r resources/logo /tmp/backup/
+          fi
+          
+          # Backup favicon if it exists
+          if [ -f "favicon.png" ]; then
+            cp favicon.png /tmp/backup/
+          fi
+
+      # Fetch latest from upstream template repo
+      - name: Fetch upstream changes
+        run: |
+          git remote add upstream https://github.com/${{ inputs.upstream_repo }}.git || true
+          git fetch upstream main
+          
+          # Get list of files from upstream, excluding workflow files and config
+          git checkout upstream/main -- . 2>/dev/null || git checkout upstream/main -- $(git ls-tree -r --name-only upstream/main | grep -v -E '^\.github/|^brand\.config\.json$')
+
+      # Restore partner's branding config and assets
+      - name: Restore branding config and assets
+        run: |
+          cp /tmp/backup/brand.config.json brand.config.json
+          
+          # Restore logo files
+          if [ -d "/tmp/backup/logo" ]; then
+            mkdir -p resources/logo
+            cp -r /tmp/backup/logo/* resources/logo/
+          fi
+          
+          # Restore favicon
+          if [ -f "/tmp/backup/favicon.png" ]; then
+            cp /tmp/backup/favicon.png favicon.png
+          fi
+
+      # Read branding config
+      - name: Read branding config
+        id: brand
+        run: |
+          echo "name=$(jq -r '.name' brand.config.json)" >> $GITHUB_OUTPUT
+          echo "primary_color=$(jq -r '.primaryColor' brand.config.json)" >> $GITHUB_OUTPUT
+          echo "website_url=$(jq -r '.websiteUrl' brand.config.json)" >> $GITHUB_OUTPUT
+          echo "dashboard_url=$(jq -r '.dashboardUrl' brand.config.json)" >> $GITHUB_OUTPUT
+          echo "support_url=$(jq -r '.supportUrl' brand.config.json)" >> $GITHUB_OUTPUT
+          echo "linkedin_url=$(jq -r '.linkedinUrl // empty' brand.config.json)" >> $GITHUB_OUTPUT
+          echo "og_image_url=$(jq -r '.ogImageUrl // empty' brand.config.json)" >> $GITHUB_OUTPUT
+
+      # Re-apply branding - URL replacements (most specific first)
+      - name: Replace app.autocalls.ai URLs
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "https://app.autocalls.ai"
+          replace: "${{ steps.brand.outputs.dashboard_url }}"
+          include: "**/*.{json,mdx,md}"
+
+      - name: Replace support URL
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "https://autocalls.ai/contact"
+          replace: "${{ steps.brand.outputs.support_url }}"
+          include: "**/*.{json,mdx,md}"
+
+      - name: Replace OG image URL
+        if: ${{ steps.brand.outputs.og_image_url != '' }}
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "https://autocalls.ai/ogimage-en.jpg"
+          replace: "${{ steps.brand.outputs.og_image_url }}"
+          include: "**/*.{json,mdx,md}"
+
+      - name: Replace website URL
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "https://autocalls.ai"
+          replace: "${{ steps.brand.outputs.website_url }}"
+          include: "**/*.{json,mdx,md}"
+
+      - name: Replace LinkedIn URL
+        if: ${{ steps.brand.outputs.linkedin_url != '' }}
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "https://www.linkedin.com/company/autocalls-ai"
+          replace: "${{ steps.brand.outputs.linkedin_url }}"
+          include: "**/*.json"
+
+      - name: Remove LinkedIn if not configured
+        if: ${{ steps.brand.outputs.linkedin_url == '' }}
+        run: |
+          sed -i '/"linkedin":/d' mint.json
+
+      # Re-apply branding - Brand name replacements
+      - name: Replace Autocalls.ai brand in content
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "Autocalls.ai"
+          replace: "${{ steps.brand.outputs.name }}"
+          include: "**/*.{mdx,md}"
+
+      - name: Replace Autocalls brand in mint.json name
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: '"name": "Autocalls"'
+          replace: '"name": "${{ steps.brand.outputs.name }}"'
+          include: "mint.json"
+
+      - name: Replace standalone Autocalls references
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "the Autocalls team"
+          replace: "the ${{ steps.brand.outputs.name }} team"
+          include: "**/*.{mdx,md}"
+
+      - name: Replace Autocalls system references
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "the Autocalls system"
+          replace: "the ${{ steps.brand.outputs.name }} system"
+          include: "**/*.{mdx,md}"
+
+      - name: Replace Autocalls platform references
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "the Autocalls platform"
+          replace: "the ${{ steps.brand.outputs.name }} platform"
+          include: "**/*.{mdx,md}"
+
+      - name: Replace Autocalls API references
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "Autocalls API"
+          replace: "${{ steps.brand.outputs.name }} API"
+          include: "**/*.{mdx,md}"
+
+      - name: Replace Autocalls account references
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "your Autocalls account"
+          replace: "your ${{ steps.brand.outputs.name }} account"
+          include: "**/*.{mdx,md}"
+
+      # Re-apply branding - Color replacements
+      - name: Replace primary color
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "#06df4b"
+          replace: "${{ steps.brand.outputs.primary_color }}"
+          include: "**/*.{json,mdx}"
+
+      - name: Replace dark/accent color
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "#65fe50"
+          replace: "${{ steps.brand.outputs.primary_color }}"
+          include: "**/*.{json,mdx}"
+
+      - name: Replace anchor gradient start
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "#01df4a"
+          replace: "${{ steps.brand.outputs.primary_color }}"
+          include: "**/*.json"
+
+      # Re-apply file renames
+      - name: Rename what-is-autocalls page
+        run: |
+          if [ -f "introduction/what-is-autocalls.mdx" ]; then
+            mv introduction/what-is-autocalls.mdx introduction/what-is-platform.mdx
+          fi
+
+      - name: Update navigation for renamed what-is-autocalls
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "introduction/what-is-autocalls"
+          replace: "introduction/what-is-platform"
+          include: "**/*.{json,mdx}"
+
+      - name: Rename autocalls-tool page
+        run: |
+          if [ -f "automation-platform/calls-related/autocalls-tool.mdx" ]; then
+            mv automation-platform/calls-related/autocalls-tool.mdx automation-platform/calls-related/platform-tool.mdx
+          fi
+
+      - name: Update navigation for renamed autocalls-tool
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "automation-platform/calls-related/autocalls-tool"
+          replace: "automation-platform/calls-related/platform-tool"
+          include: "**/*.{json,mdx}"
+
+      # Commit synced and rebranded docs
+      - name: Commit synced docs
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Sync docs from upstream - $(date +%Y-%m-%d)"
+            git push
+          fi

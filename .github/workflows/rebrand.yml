@@ -1,0 +1,210 @@
+name: Rebrand Documentation
+
+on:
+  workflow_dispatch:
+    inputs:
+      brand_name:
+        description: 'Your brand name (e.g., "MyCompany")'
+        required: true
+        type: string
+      primary_color:
+        description: 'Primary color hex (e.g., "#3B82F6")'
+        required: true
+        type: string
+        default: "#3B82F6"
+      website_url:
+        description: 'Your website URL (e.g., "https://mycompany.com")'
+        required: true
+        type: string
+      dashboard_url:
+        description: 'Your dashboard URL (e.g., "https://app.mycompany.com") - API URL will be derived as dashboard_url/api/'
+        required: true
+        type: string
+      support_url:
+        description: 'Your support page URL (e.g., "https://mycompany.com/contact")'
+        required: true
+        type: string
+      linkedin_url:
+        description: 'Your LinkedIn company URL (optional, leave empty to remove)'
+        required: false
+        type: string
+      og_image_url:
+        description: 'Your OG image URL for social sharing (optional)'
+        required: false
+        type: string
+
+jobs:
+  rebrand:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 1: URL replacements (most specific first to avoid partial matches)
+      - name: Replace app.autocalls.ai URLs
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "https://app.autocalls.ai"
+          replace: "${{ inputs.dashboard_url }}"
+          include: "**/*.{json,mdx,md}"
+
+      - name: Replace support URL
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "https://autocalls.ai/contact"
+          replace: "${{ inputs.support_url }}"
+          include: "**/*.{json,mdx,md}"
+
+      - name: Replace OG image URL
+        if: ${{ inputs.og_image_url != '' }}
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "https://autocalls.ai/ogimage-en.jpg"
+          replace: "${{ inputs.og_image_url }}"
+          include: "**/*.{json,mdx,md}"
+
+      - name: Replace website URL
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "https://autocalls.ai"
+          replace: "${{ inputs.website_url }}"
+          include: "**/*.{json,mdx,md}"
+
+      - name: Replace LinkedIn URL
+        if: ${{ inputs.linkedin_url != '' }}
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "https://www.linkedin.com/company/autocalls-ai"
+          replace: "${{ inputs.linkedin_url }}"
+          include: "**/*.json"
+
+      - name: Remove LinkedIn if not provided
+        if: ${{ inputs.linkedin_url == '' }}
+        run: |
+          # Remove the linkedin line from mint.json if no URL provided
+          sed -i '/"linkedin":/d' mint.json
+
+      # Step 2: Brand name replacements in prose content
+      - name: Replace Autocalls.ai brand in content
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "Autocalls.ai"
+          replace: "${{ inputs.brand_name }}"
+          include: "**/*.{mdx,md}"
+
+      - name: Replace Autocalls brand in mint.json name
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: '"name": "Autocalls"'
+          replace: '"name": "${{ inputs.brand_name }}"'
+          include: "mint.json"
+
+      - name: Replace standalone Autocalls references
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "the Autocalls team"
+          replace: "the ${{ inputs.brand_name }} team"
+          include: "**/*.{mdx,md}"
+
+      - name: Replace Autocalls system references
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "the Autocalls system"
+          replace: "the ${{ inputs.brand_name }} system"
+          include: "**/*.{mdx,md}"
+
+      - name: Replace Autocalls platform references
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "the Autocalls platform"
+          replace: "the ${{ inputs.brand_name }} platform"
+          include: "**/*.{mdx,md}"
+
+      - name: Replace Autocalls API references
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "Autocalls API"
+          replace: "${{ inputs.brand_name }} API"
+          include: "**/*.{mdx,md}"
+
+      - name: Replace Autocalls account references
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "your Autocalls account"
+          replace: "your ${{ inputs.brand_name }} account"
+          include: "**/*.{mdx,md}"
+
+      # Step 3: Color replacements
+      - name: Replace primary color
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "#06df4b"
+          replace: "${{ inputs.primary_color }}"
+          include: "**/*.{json,mdx}"
+
+      - name: Replace dark/accent color
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "#65fe50"
+          replace: "${{ inputs.primary_color }}"
+          include: "**/*.{json,mdx}"
+
+      - name: Replace anchor gradient start
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "#01df4a"
+          replace: "${{ inputs.primary_color }}"
+          include: "**/*.json"
+
+      # Step 4: Rename files with 'autocalls' in the name
+      - name: Rename what-is-autocalls page
+        run: |
+          if [ -f "introduction/what-is-autocalls.mdx" ]; then
+            mv introduction/what-is-autocalls.mdx introduction/what-is-platform.mdx
+          fi
+
+      - name: Update navigation for renamed what-is-autocalls
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "introduction/what-is-autocalls"
+          replace: "introduction/what-is-platform"
+          include: "**/*.{json,mdx}"
+
+      - name: Rename autocalls-tool page
+        run: |
+          if [ -f "automation-platform/calls-related/autocalls-tool.mdx" ]; then
+            mv automation-platform/calls-related/autocalls-tool.mdx automation-platform/calls-related/platform-tool.mdx
+          fi
+
+      - name: Update navigation for renamed autocalls-tool
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "automation-platform/calls-related/autocalls-tool"
+          replace: "automation-platform/calls-related/platform-tool"
+          include: "**/*.{json,mdx}"
+
+      # Step 5: Save branding config for future updates
+      - name: Save branding config
+        run: |
+          cat > brand.config.json << 'EOF'
+          {
+            "name": "${{ inputs.brand_name }}",
+            "primaryColor": "${{ inputs.primary_color }}",
+            "websiteUrl": "${{ inputs.website_url }}",
+            "dashboardUrl": "${{ inputs.dashboard_url }}",
+            "supportUrl": "${{ inputs.support_url }}",
+            "linkedinUrl": "${{ inputs.linkedin_url }}",
+            "ogImageUrl": "${{ inputs.og_image_url }}"
+          }
+          EOF
+
+      # Step 6: Commit all changes
+      - name: Commit rebranded docs
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add -A
+          git commit -m "Rebrand documentation to ${{ inputs.brand_name }}"
+          git push

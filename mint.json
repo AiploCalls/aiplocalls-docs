@@ -345,16 +345,6 @@
       ]
     },
     {
-      "group": "White Label",
-      "pages": [
-        "api-reference/white-label/login",
-        "api-reference/white-label/register",
-        "api-reference/white-label/logout",
-        "api-reference/white-label/get-users",
-        "api-reference/white-label/transfer-balance"
-      ]
-    },
-    {
       "group": "No-Code Automation platform",
       "pages": [
         "automation-platform/introduction",

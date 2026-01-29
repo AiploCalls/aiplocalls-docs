@@ -136,6 +136,17 @@ jobs:
           sed -i 's|https://autocalls.ai|${{ steps.brand.outputs.website_url }}|g' mint.json
           sed -i 's|"name": "Autocalls"|"name": "${{ steps.brand.outputs.name }}"|g' mint.json
 
+      - name: Replace additional autocalls URLs in all files
+        run: |
+          # Replace recordings URL
+          find . -type f \( -name "*.mdx" -o -name "*.md" -o -name "*.json" \) -exec sed -i 's|https://recordings.autocalls.ai|${{ steps.brand.outputs.dashboard_url }}/recordings|g' {} \;
+          # Replace automation URL
+          find . -type f \( -name "*.mdx" -o -name "*.md" -o -name "*.json" \) -exec sed -i 's|https://automation.autocalls.ai|${{ steps.brand.outputs.dashboard_url }}/automation|g' {} \;
+          # Replace automate URL  
+          find . -type f \( -name "*.mdx" -o -name "*.md" -o -name "*.json" \) -exec sed -i 's|https://automate.autocalls.ai|${{ steps.brand.outputs.dashboard_url }}/automate|g' {} \;
+          # Replace api.autocalls.ai
+          find . -type f \( -name "*.mdx" -o -name "*.md" -o -name "*.json" \) -exec sed -i 's|https://api.autocalls.ai|${{ steps.brand.outputs.dashboard_url }}|g' {} \;
+
       - name: Replace LinkedIn URL
         if: ${{ steps.brand.outputs.linkedin_url != '' }}
         uses: jacobtomlinson/gha-find-replace@v3
@@ -296,6 +307,17 @@ jobs:
           find: "automation-platform/calls-related/autocalls-tool"
           replace: "automation-platform/calls-related/platform-tool"
           include: "**/*.{json,mdx}"
+
+      # Final comprehensive text replacements using sed
+      - name: Final cleanup - replace remaining Autocalls text
+        run: |
+          # Replace Autocalls.ai in all content files
+          find . -type f \( -name "*.mdx" -o -name "*.md" \) ! -path "./.git/*" -exec sed -i 's/Autocalls\.ai/${{ steps.brand.outputs.name }}/g' {} \;
+          # Replace standalone Autocalls
+          find . -type f \( -name "*.mdx" -o -name "*.md" \) ! -path "./.git/*" -exec sed -i 's/\bAutocalls\b/${{ steps.brand.outputs.name }}/g' {} \;
+          # Replace in titles and descriptions
+          find . -type f \( -name "*.mdx" -o -name "*.md" \) ! -path "./.git/*" -exec sed -i 's/"Autocalls"/"${{ steps.brand.outputs.name }}"/g' {} \;
+          find . -type f \( -name "*.mdx" -o -name "*.md" \) ! -path "./.git/*" -exec sed -i "s/'Autocalls'/'${{ steps.brand.outputs.name }}'/g" {} \;
 
       # Commit synced and rebranded docs
       - name: Commit synced docs

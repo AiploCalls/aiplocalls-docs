@@ -87,6 +87,17 @@ jobs:
           sed -i 's|https://autocalls.ai|${{ inputs.website_url }}|g' mint.json
           sed -i 's|"name": "Autocalls"|"name": "${{ inputs.brand_name }}"|g' mint.json
 
+      - name: Replace additional autocalls URLs in all files
+        run: |
+          # Replace recordings URL
+          find . -type f \( -name "*.mdx" -o -name "*.md" -o -name "*.json" \) -exec sed -i 's|https://recordings.autocalls.ai|${{ inputs.dashboard_url }}/recordings|g' {} \;
+          # Replace automation URL
+          find . -type f \( -name "*.mdx" -o -name "*.md" -o -name "*.json" \) -exec sed -i 's|https://automation.autocalls.ai|${{ inputs.dashboard_url }}/automation|g' {} \;
+          # Replace automate URL  
+          find . -type f \( -name "*.mdx" -o -name "*.md" -o -name "*.json" \) -exec sed -i 's|https://automate.autocalls.ai|${{ inputs.dashboard_url }}/automate|g' {} \;
+          # Replace api.autocalls.ai
+          find . -type f \( -name "*.mdx" -o -name "*.md" -o -name "*.json" \) -exec sed -i 's|https://api.autocalls.ai|${{ inputs.dashboard_url }}|g' {} \;
+
       - name: Replace LinkedIn URL
         if: ${{ inputs.linkedin_url != '' }}
         uses: jacobtomlinson/gha-find-replace@v3
@@ -249,7 +260,19 @@ jobs:
           replace: "automation-platform/calls-related/platform-tool"
           include: "**/*.{json,mdx}"
 
-      # Step 5: Save branding config for future updates
+      # Step 5: Final comprehensive text replacements using sed
+      - name: Final cleanup - replace remaining Autocalls text
+        run: |
+          # Replace Autocalls.ai in all content files
+          find . -type f \( -name "*.mdx" -o -name "*.md" \) ! -path "./.git/*" -exec sed -i 's/Autocalls\.ai/${{ inputs.brand_name }}/g' {} \;
+          # Replace standalone Autocalls (but not in file paths or image references)
+          find . -type f \( -name "*.mdx" -o -name "*.md" \) ! -path "./.git/*" -exec sed -i 's/Autocalls\.ai/${{ inputs.brand_name }}/g' {} \;
+          find . -type f \( -name "*.mdx" -o -name "*.md" \) ! -path "./.git/*" -exec sed -i 's/\bAutocalls\b/${{ inputs.brand_name }}/g' {} \;
+          # Replace in titles and descriptions
+          find . -type f \( -name "*.mdx" -o -name "*.md" \) ! -path "./.git/*" -exec sed -i 's/"Autocalls"/"${{ inputs.brand_name }}"/g' {} \;
+          find . -type f \( -name "*.mdx" -o -name "*.md" \) ! -path "./.git/*" -exec sed -i "s/'Autocalls'/'${{ inputs.brand_name }}'/g" {} \;
+
+      # Step 6: Save branding config for future updates
       - name: Save branding config
         run: |
           cat > brand.config.json << 'EOF'

@@ -365,18 +365,6 @@
       ]
     },
     {
-      "group": "Tutorials",
-      "pages": [
-        "automation-platform/tutorials/outbound-form-call",
-        "automation-platform/tutorials/inbound-context-injection",
-        "automation-platform/tutorials/gohighlevel-leads-automation",
-        "automation-platform/tutorials/google-sheets-sync",
-        "automation-platform/tutorials/post-call-sms-automation",
-        "automation-platform/tutorials/google-sheets-qualified-leads",
-        "automation-platform/tutorials/post-call-email-automation"
-      ]
-    },
-    {
       "group": "Platform updates",
       "pages": [
         "releases/index"

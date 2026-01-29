@@ -40,12 +40,12 @@ jobs:
         run: |
           mkdir -p /tmp/backup
           cp brand.config.json /tmp/backup/
-          
+
           # Backup logo files if they exist
           if [ -d "resources/logo" ]; then
             cp -r resources/logo /tmp/backup/
           fi
-          
+
           # Backup favicon if it exists
           if [ -f "favicon.png" ]; then
             cp favicon.png /tmp/backup/
@@ -56,7 +56,7 @@ jobs:
         run: |
           git remote add upstream https://github.com/${{ inputs.upstream_repo }}.git || true
           git fetch upstream main
-          
+
           # Get list of files from upstream, excluding workflow files and config
           git checkout upstream/main -- . 2>/dev/null || git checkout upstream/main -- $(git ls-tree -r --name-only upstream/main | grep -v -E '^\.github/|^brand\.config\.json$')
 
@@ -64,13 +64,13 @@ jobs:
       - name: Restore branding config and assets
         run: |
           cp /tmp/backup/brand.config.json brand.config.json
-          
+
           # Restore logo files
           if [ -d "/tmp/backup/logo" ]; then
             mkdir -p resources/logo
             cp -r /tmp/backup/logo/* resources/logo/
           fi
-          
+
           # Restore favicon
           if [ -f "/tmp/backup/favicon.png" ]; then
             cp /tmp/backup/favicon.png favicon.png
@@ -117,6 +117,10 @@ jobs:
           find: "https://autocalls.ai"
           replace: "${{ steps.brand.outputs.website_url }}"
           include: "**/*.{json,mdx,md}"
+
+      - name: Replace API baseUrl in mint.json
+        run: |
+          sed -i 's|"baseUrl": "https://app.autocalls.ai/api/"|"baseUrl": "${{ steps.brand.outputs.dashboard_url }}/api/"|g' mint.json
 
       - name: Replace LinkedIn URL
         if: ${{ steps.brand.outputs.linkedin_url != '' }}
@@ -179,6 +183,55 @@ jobs:
         with:
           find: "your Autocalls account"
           replace: "your ${{ steps.brand.outputs.name }} account"
+          include: "**/*.{mdx,md}"
+
+      - name: Replace from Autocalls references
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "from Autocalls"
+          replace: "from ${{ steps.brand.outputs.name }}"
+          include: "**/*.{mdx,md}"
+
+      - name: Replace to Autocalls references
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "to Autocalls"
+          replace: "to ${{ steps.brand.outputs.name }}"
+          include: "**/*.{mdx,md}"
+
+      - name: Replace Autocalls SIP references
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "Autocalls SIP"
+          replace: "${{ steps.brand.outputs.name }} SIP"
+          include: "**/*.{mdx,md}"
+
+      - name: Replace Import to Autocalls references
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "Import numbers to Autocalls"
+          replace: "Import numbers to ${{ steps.brand.outputs.name }}"
+          include: "**/*.{mdx,md}"
+
+      - name: Replace generic standalone Autocalls in content
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: " Autocalls "
+          replace: " ${{ steps.brand.outputs.name }} "
+          include: "**/*.{mdx,md}"
+
+      - name: Replace Autocalls at end of sentence
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: " Autocalls."
+          replace: " ${{ steps.brand.outputs.name }}."
+          include: "**/*.{mdx,md}"
+
+      - name: Replace Autocalls with comma
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: " Autocalls,"
+          replace: " ${{ steps.brand.outputs.name }},"
           include: "**/*.{mdx,md}"
 
       # Re-apply branding - Color replacements

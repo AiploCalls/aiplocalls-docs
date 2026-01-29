@@ -25,11 +25,11 @@ on:
         required: true
         type: string
       linkedin_url:
-        description: 'Your LinkedIn company URL (optional, leave empty to remove)'
+        description: "Your LinkedIn company URL (optional, leave empty to remove)"
         required: false
         type: string
       og_image_url:
-        description: 'Your OG image URL for social sharing (optional)'
+        description: "Your OG image URL for social sharing (optional)"
         required: false
         type: string
 
@@ -71,6 +71,11 @@ jobs:
           find: "https://autocalls.ai"
           replace: "${{ inputs.website_url }}"
           include: "**/*.{json,mdx,md}"
+
+      - name: Replace API baseUrl in mint.json
+        run: |
+          # Replace the API baseUrl with dashboard_url + /api/
+          sed -i 's|"baseUrl": "https://app.autocalls.ai/api/"|"baseUrl": "${{ inputs.dashboard_url }}/api/"|g' mint.json
 
       - name: Replace LinkedIn URL
         if: ${{ inputs.linkedin_url != '' }}
@@ -134,6 +139,55 @@ jobs:
         with:
           find: "your Autocalls account"
           replace: "your ${{ inputs.brand_name }} account"
+          include: "**/*.{mdx,md}"
+
+      - name: Replace from Autocalls references
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "from Autocalls"
+          replace: "from ${{ inputs.brand_name }}"
+          include: "**/*.{mdx,md}"
+
+      - name: Replace to Autocalls references
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "to Autocalls"
+          replace: "to ${{ inputs.brand_name }}"
+          include: "**/*.{mdx,md}"
+
+      - name: Replace Autocalls SIP references
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "Autocalls SIP"
+          replace: "${{ inputs.brand_name }} SIP"
+          include: "**/*.{mdx,md}"
+
+      - name: Replace Import to Autocalls references
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "Import numbers to Autocalls"
+          replace: "Import numbers to ${{ inputs.brand_name }}"
+          include: "**/*.{mdx,md}"
+
+      - name: Replace generic standalone Autocalls in content
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: " Autocalls "
+          replace: " ${{ inputs.brand_name }} "
+          include: "**/*.{mdx,md}"
+
+      - name: Replace Autocalls at end of sentence
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: " Autocalls."
+          replace: " ${{ inputs.brand_name }}."
+          include: "**/*.{mdx,md}"
+
+      - name: Replace Autocalls with comma
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: " Autocalls,"
+          replace: " ${{ inputs.brand_name }},"
           include: "**/*.{mdx,md}"
 
       # Step 3: Color replacements

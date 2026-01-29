@@ -101,60 +101,24 @@ To preview documentation changes locally:
 
 ### Sync Workflow Permission Error
 
-If you see an error like `refusing to allow a GitHub App to create or update workflow without 'workflows' permission`, follow these steps:
+If you see an error like `refusing to allow a GitHub App to create or update workflow`, you need to manually update your workflow files:
 
-1. Go to your repository on GitHub
-2. Navigate to **Actions** tab
-3. Click on **"Fix Workflow Files (Run Once)"** in the left sidebar
-4. Click **"Run workflow"**
-5. Type `fix` and click **"Run workflow"**
-6. After it completes, you can run "Sync Updates" normally
+**Step 1:** Go to the template repository workflow files:
+- [sync-updates.yml](https://github.com/Autocalls/documentation/blob/main/.github/workflows/sync-updates.yml)
+- [rebrand.yml](https://github.com/Autocalls/documentation/blob/main/.github/workflows/rebrand.yml)
 
-**If you don't see "Fix Workflow Files" option:**
+**Step 2:** For each file:
+1. Click the **"Raw"** button
+2. Select all and copy (Ctrl+A, Ctrl+C)
 
-1. In your repository, go to `.github/workflows/` folder
-2. Click **"Add file"** → **"Create new file"**
-3. Name it `fix-workflows.yml`
-4. Paste this content:
+**Step 3:** In your repository:
+1. Go to `.github/workflows/sync-updates.yml`
+2. Click the **pencil icon** (Edit)
+3. Delete all content and paste the new content
+4. Click **"Commit changes"**
+5. Repeat for `rebrand.yml`
 
-```yaml
-name: Fix Workflow Files (Run Once)
-
-on:
-  workflow_dispatch:
-    inputs:
-      confirm:
-        description: 'Type "fix" to confirm'
-        required: true
-        type: string
-
-jobs:
-  fix:
-    runs-on: ubuntu-latest
-    if: ${{ inputs.confirm == 'fix' }}
-    permissions:
-      contents: write
-      workflows: write
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Download latest workflows
-        run: |
-          curl -sL https://raw.githubusercontent.com/Autocalls/documentation/main/.github/workflows/rebrand.yml -o .github/workflows/rebrand.yml
-          curl -sL https://raw.githubusercontent.com/Autocalls/documentation/main/.github/workflows/sync-updates.yml -o .github/workflows/sync-updates.yml
-      - name: Commit
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git add .github/workflows/
-          git commit -m "Update workflow files" || echo "No changes"
-          git push
-```
-
-5. Click **"Commit new file"**
-6. Go to **Actions** tab and run the new workflow
-7. After it completes, you can run "Sync Updates" normally
+**Step 4:** Run the "Sync Updates" workflow again - it should work now
 
 ## Support
 

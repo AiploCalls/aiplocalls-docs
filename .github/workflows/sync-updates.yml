@@ -19,7 +19,6 @@ jobs:
     if: ${{ inputs.confirm == 'update' }}
     permissions:
       contents: write
-      workflows: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

@@ -104,8 +104,8 @@ To preview documentation changes locally:
 If you see an error like `refusing to allow a GitHub App to create or update workflow`, you need to manually update your workflow files:
 
 **Step 1:** Go to the template repository workflow files:
-- [sync-updates.yml](https://github.com/Autocalls/documentation/blob/main/.github/workflows/sync-updates.yml)
-- [rebrand.yml](https://github.com/Autocalls/documentation/blob/main/.github/workflows/rebrand.yml)
+- [sync-updates.yml](https://github.com/Aiplocalls/documentation/blob/main/.github/workflows/sync-updates.yml)
+- [rebrand.yml](https://github.com/Aiplocalls/documentation/blob/main/.github/workflows/rebrand.yml)
 
 **Step 2:** For each file:
 1. Click the **"Raw"** button

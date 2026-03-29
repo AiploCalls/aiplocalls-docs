@@ -99,7 +99,7 @@ This endpoint sends a WhatsApp message using a pre-approved template. Template m
 <RequestExample>
 
 ```bash cURL
-curl -X POST "https://app.autocalls.ai/api/user/whatsapp/send" \
+curl -X POST "https://call.aiployees.com/api/user/whatsapp/send" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -116,7 +116,7 @@ curl -X POST "https://app.autocalls.ai/api/user/whatsapp/send" \
 ```
 
 ```bash Template without variables
-curl -X POST "https://app.autocalls.ai/api/user/whatsapp/send" \
+curl -X POST "https://call.aiployees.com/api/user/whatsapp/send" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -128,7 +128,7 @@ curl -X POST "https://app.autocalls.ai/api/user/whatsapp/send" \
 
 ```javascript JavaScript
 const response = await fetch(
-  'https://app.autocalls.ai/api/user/whatsapp/send',
+  'https://call.aiployees.com/api/user/whatsapp/send',
   {
     method: 'POST',
     headers: {
@@ -157,7 +157,7 @@ console.log(data);
 import requests
 
 response = requests.post(
-    'https://app.autocalls.ai/api/user/whatsapp/send',
+    'https://call.aiployees.com/api/user/whatsapp/send',
     headers={
         'Authorization': 'Bearer YOUR_API_KEY',
         'Content-Type': 'application/json'

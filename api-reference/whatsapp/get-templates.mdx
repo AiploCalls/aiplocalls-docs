@@ -75,12 +75,12 @@ This endpoint returns all message templates associated with a specific WhatsApp 
 <RequestExample>
 
 ```bash cURL
-curl -X GET "https://app.autocalls.ai/api/user/whatsapp/senders/12/templates" \
+curl -X GET "https://call.aiployees.com/api/user/whatsapp/senders/12/templates" \
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
 ```bash All templates (including pending/rejected)
-curl -X GET "https://app.autocalls.ai/api/user/whatsapp/senders/12/templates?status=all" \
+curl -X GET "https://call.aiployees.com/api/user/whatsapp/senders/12/templates?status=all" \
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
@@ -88,7 +88,7 @@ curl -X GET "https://app.autocalls.ai/api/user/whatsapp/senders/12/templates?sta
 const senderId = 12;
 
 const response = await fetch(
-  `https://app.autocalls.ai/api/user/whatsapp/senders/${senderId}/templates`,
+  `https://call.aiployees.com/api/user/whatsapp/senders/${senderId}/templates`,
   {
     headers: {
       'Authorization': 'Bearer YOUR_API_KEY'
@@ -106,7 +106,7 @@ import requests
 sender_id = 12
 
 response = requests.get(
-    f'https://app.autocalls.ai/api/user/whatsapp/senders/{sender_id}/templates',
+    f'https://call.aiployees.com/api/user/whatsapp/senders/{sender_id}/templates',
     headers={'Authorization': 'Bearer YOUR_API_KEY'}
 )
 

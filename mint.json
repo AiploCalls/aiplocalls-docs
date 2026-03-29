@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Autocalls",
+  "name": "Aiplocalls",
   "logo": {
     "dark": "/resources/logo/dark.png",
     "light": "/resources/logo/light.png"
@@ -24,14 +24,14 @@
   },
   "topbarLinks": [{
     "name": "Home",
-    "url": "https://autocalls.ai"
+    "url": "https://aiplocalls.com"
   }, {
     "name": "Support",
-    "url": "https://autocalls.ai/contact"
+    "url": "support@aiployees.com"
   }],
   "topbarCtaButton": {
     "name": "Dashboard",
-    "url": "https://app.autocalls.ai"
+    "url": "https://call.aiployees.com"
   },
   "anchors": [{
     "name": "No-Code Automation",
@@ -400,7 +400,7 @@
     "linkedin": "https://www.linkedin.com/company/autocalls-ai"
   },
   "api": {
-    "baseUrl": "https://app.autocalls.ai/api/",
+    "baseUrl": "https://call.aiployees.com/api/",
     "auth": {
       "method": "bearer"
     }

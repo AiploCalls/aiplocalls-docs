@@ -32,7 +32,7 @@ description: "A step by step guide to connect your DIDLogic account via SIP trun
       />
     </Frame>
 
-    Note the **SIP account number** (e.g., `12345`) — this is your **username** that you will use in Autocalls. Set a password in both the **Password** and **Confirm Password** fields — you will use this same password when importing the number to Autocalls.
+    Note the **SIP account number** (e.g., `12345`) — this is your **username** that you will use in Aiplocalls. Set a password in both the **Password** and **Confirm Password** fields — you will use this same password when importing the number to Aiplocalls.
 
     <Frame>
       <img
@@ -50,7 +50,7 @@ description: "A step by step guide to connect your DIDLogic account via SIP trun
       />
     </Frame>
 
-    Scroll down to find your region and copy the **SIP URI** from the regional gateway list. You will need this for the outbound settings in Autocalls.
+    Scroll down to find your region and copy the **SIP URI** from the regional gateway list. You will need this for the outbound settings in Aiplocalls.
 
     <Frame>
       <img
@@ -94,8 +94,8 @@ description: "A step by step guide to connect your DIDLogic account via SIP trun
     Click **Add**.
   </Step>
 
-  <Step title="Import Number to Autocalls">
-    Go to your Autocalls dashboard → **Your Phone Numbers** → **"Integrate SIP trunk"** and fill in your details:
+  <Step title="Import Number to Aiplocalls">
+    Go to your Aiplocalls dashboard → **Your Phone Numbers** → **"Integrate SIP trunk"** and fill in your details:
 
     ```
     Phone number: Your DIDLogic number in E.164 format (e.g., +15551234567)
@@ -173,13 +173,13 @@ description: "A step by step guide to connect your DIDLogic account via SIP trun
   <Accordion title="Outbound calls not working?">
     - **Verify the SIP URI** — Make sure you copied the correct regional SIP URI from Step 2. Remove any trailing spaces.
     - **Check your username** — The username is the numeric SIP account number (e.g., `12345`), not your email address or account name.
-    - **Check your password** — Ensure the password in Autocalls matches exactly what you set in the DIDLogic SIP account settings.
+    - **Check your password** — Ensure the password in Aiplocalls matches exactly what you set in the DIDLogic SIP account settings.
     - **Verify IP whitelist** — Make sure `34.195.177.252` is added to the authorized IPs in your DIDLogic SIP account.
   </Accordion>
 
   <Accordion title="Inbound calls not working?">
     - **Verify the SIP URI destination** — In DIDLogic, make sure the destination is set to SIP URI (not SIP device) and the format is correct: `<number_without_plus>@5wed79aeavr.sip.livekit.cloud`
-    - **Check the IP whitelist in Autocalls** — Make sure the IP address you added in the Autocalls inbound settings matches the regional gateway you are using. Refer to the gateway IP table in Step 4.
+    - **Check the IP whitelist in Aiplocalls.* — Make sure the IP address you added in the Aiplocalls inbound settings matches the regional gateway you are using. Refer to the gateway IP table in Step 4.
   </Accordion>
 </AccordionGroup>
 

@@ -1,6 +1,6 @@
 ---
 title: "Overview"
-description: "Connect your existing phone system and numbers to Autocalls.ai"
+description: "Connect your existing phone system and numbers to Aiplocalls"
 ---
 
 <Note>
@@ -10,7 +10,7 @@ description: "Connect your existing phone system and numbers to Autocalls.ai"
 
 ## What is SIP Integration?
 
-SIP (Session Initiation Protocol) integration allows you to connect your existing phone system to Autocalls.ai. Think of it as building a bridge between your current phone setup and our AI platform. This means you can:
+SIP (Session Initiation Protocol) integration allows you to connect your existing phone system to Aiplocalls. Think of it as building a bridge between your current phone setup and our AI platform. This means you can:
 
 - Use your existing phone numbers with our AI assistants
 - Keep your current phone system and provider
@@ -20,7 +20,7 @@ SIP (Session Initiation Protocol) integration allows you to connect your existin
 
 ## How It Works
 
-When you integrate your phone system with Autocalls.ai:
+When you integrate your phone system with Aiplocalls:
 
 1. **Inbound Calls**: Calls to your numbers are routed through your phone system to our AI assistants
 2. **Outbound Calls**: Our AI assistants can make calls appearing from your numbers
@@ -29,7 +29,7 @@ When you integrate your phone system with Autocalls.ai:
 
 ## Integration Options
 
-You can connect your phone system to Autocalls.ai in two ways:
+You can connect your phone system to Aiplocalls in two ways:
 
 ### 1. PBX Extension Integration
 
@@ -83,7 +83,7 @@ The AI makes outbound calls showing +1 555 0123
 
 The SIP integration uses the same credentials for both inbound and outbound calls:
 
-- **Inbound Calls** (VoIP → Autocalls.ai):
+- **Inbound Calls** (VoIP → Aiplocalls):
 
   ```
   Your VoIP system authenticates using username/password
@@ -93,7 +93,7 @@ The SIP integration uses the same credentials for both inbound and outbound call
   AI assistant answers
   ```
 
-- **Outbound Calls** (Autocalls.ai → VoIP):
+- **Outbound Calls** (Aiplocalls → VoIP):
   ```
   AI initiates call
   ↓
@@ -106,13 +106,13 @@ The SIP integration uses the same credentials for both inbound and outbound call
 
 For the integration to work properly:
 
-1. The credentials you set in Autocalls.ai dashboard must match exactly with your VoIP configuration
+1. The credentials you set in Aiplocalls dashboard must match exactly with your VoIP configuration
 2. The same username/password combination is used for both directions
 3. Any changes to credentials must be updated in both systems
 
 <Warning>
   If you change credentials in your VoIP system, remember to update them in
-  Autocalls.ai dashboard (and vice versa) to maintain the connection.
+  Aiplocalls dashboard (and vice versa) to maintain the connection.
 </Warning>
 
 ## Setting Up Your Integration
@@ -139,7 +139,7 @@ Password: Provided by your phone company
 
 ### Step 2: Configure in Dashboard
 
-1. Go to your Autocalls.ai dashboard
+1. Go to your Aiplocalls dashboard
 2. Navigate to **Your Phone Numbers**
 3. Click "Integrate SIP trunk"
 
@@ -169,13 +169,13 @@ Password: Provided by your phone company
 
 ### Step 4: Outbound Settings
 
-These settings control how Autocalls.ai sends outbound calls through your SIP provider.
+These settings control how Aiplocalls sends outbound calls through your SIP provider.
 
 - **SIP Address** - Enter the address/server of the SIP trunk without the port.
 - **Outbound Proxy (Fixed IP)** - Some SIP providers require calls to originate from a single, whitelisted IP address. Configure this as follows:
-  - **Toggle ON** - If your SIP provider requires a fixed source IP, enable Outbound proxy will come from a fixed IP address. Autocalls.ai will then send all outbound requests through a known static IP.
+  - **Toggle ON** - If your SIP provider requires a fixed source IP, enable Outbound proxy will come from a fixed IP address. Aiplocalls will then send all outbound requests through a known static IP.
   Use this option only if your provider explicitly requires a single source IP.
-  - **Toggle OFF:** - If your provider accepts calls from any IP, leave this option off. In that case, Autocalls.ai will send calls from dynamic IPs.
+  - **Toggle OFF:** - If your provider accepts calls from any IP, leave this option off. In that case, Aiplocalls will send calls from dynamic IPs.
 
 ```
 SIP address: (e.g., pbx.company.com/sip.provider.com)
@@ -211,9 +211,9 @@ This tells our system how to format phone numbers when making calls. Choose base
 
 ### Step 6: Inbound Settings
 
-These settings determine how Autocalls.ai receives and authenticates inbound calls from your SIP provider.
+These settings determine how Aiplocalls receives and authenticates inbound calls from your SIP provider.
 
-1. **Our SIP Address** - Autocalls.ai assigns a unique inbound SIP URI ```5wed79aeavr.sip.livekit.cloud```. Your SIP provider must be configured to send inbound calls to this address by pointing their outbound trunk or routing rule to this URI.
+1. **Our SIP Address** - Aiplocalls assigns a unique inbound SIP URI ```5wed79aeavr.sip.livekit.cloud```. Your SIP provider must be configured to send inbound calls to this address by pointing their outbound trunk or routing rule to this URI.
 2. **IP Address (Whitelist IPs)** - If your SIP provider can send calls from a known set of public IP addresses, choose IP Address. Then add each provider IP to the whitelist under Inbound Authentication.
 3. **Username and Password** - If your provider supports SIP auth, choose Username and password. The same credentials you entered under Outbound Settings (username/password) will be used to authenticate inbound calls. Make sure your provider’s PBX is configured to include those credentials.
 

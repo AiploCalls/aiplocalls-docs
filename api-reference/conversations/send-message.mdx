@@ -60,7 +60,7 @@ This endpoint sends a user message to an existing conversation and returns the a
 <RequestExample>
 
 ```bash cURL
-curl -X POST "https://app.autocalls.ai/api/conversations/7c9e6679-7425-40de-944b-e07fc1f90ae7/messages" \
+curl -X POST "https://call.aiployees.com/api/conversations/7c9e6679-7425-40de-944b-e07fc1f90ae7/messages" \
   -H "Content-Type: application/json" \
   -d '{
     "message": "I would like to schedule a demo for next week"
@@ -71,7 +71,7 @@ curl -X POST "https://app.autocalls.ai/api/conversations/7c9e6679-7425-40de-944b
 const conversationId = '7c9e6679-7425-40de-944b-e07fc1f90ae7';
 
 const response = await fetch(
-  `https://app.autocalls.ai/api/conversations/${conversationId}/messages`,
+  `https://call.aiployees.com/api/conversations/${conversationId}/messages`,
   {
     method: 'POST',
     headers: {
@@ -93,7 +93,7 @@ import requests
 conversation_id = '7c9e6679-7425-40de-944b-e07fc1f90ae7'
 
 response = requests.post(
-    f'https://app.autocalls.ai/api/conversations/{conversation_id}/messages',
+    f'https://call.aiployees.com/api/conversations/{conversation_id}/messages',
     json={
         'message': 'I would like to schedule a demo for next week'
     }

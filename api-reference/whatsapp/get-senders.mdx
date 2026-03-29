@@ -49,18 +49,18 @@ This endpoint returns a list of WhatsApp Business senders (phone numbers) config
 <RequestExample>
 
 ```bash cURL
-curl -X GET "https://app.autocalls.ai/api/user/whatsapp/senders" \
+curl -X GET "https://call.aiployees.com/api/user/whatsapp/senders" \
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
 ```bash Filter all senders
-curl -X GET "https://app.autocalls.ai/api/user/whatsapp/senders?status=all" \
+curl -X GET "https://call.aiployees.com/api/user/whatsapp/senders?status=all" \
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
 ```javascript JavaScript
 const response = await fetch(
-  'https://app.autocalls.ai/api/user/whatsapp/senders',
+  'https://call.aiployees.com/api/user/whatsapp/senders',
   {
     headers: {
       'Authorization': 'Bearer YOUR_API_KEY'
@@ -76,7 +76,7 @@ console.log(data.data); // Array of senders
 import requests
 
 response = requests.get(
-    'https://app.autocalls.ai/api/user/whatsapp/senders',
+    'https://call.aiployees.com/api/user/whatsapp/senders',
     headers={'Authorization': 'Bearer YOUR_API_KEY'}
 )
 

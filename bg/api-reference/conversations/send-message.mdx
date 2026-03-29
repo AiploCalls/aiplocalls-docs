@@ -1,60 +1,60 @@
 ---
-title: "Send Message"
+title: "Изпращане на съобщение"
 api: "POST /conversations/{uuid}/messages"
-description: "Send a message in an existing conversation and receive the assistant's response"
+description: "Изпращане на съобщение в съществуваща беседа и получаване на отговор от асистента"
 ---
 
-This endpoint sends a user message to an existing conversation and returns the assistant's response. The assistant processes the message using the configured AI model and any available tools.
+Този endpoint изпраща потребителско съобщение към съществуваща беседа и връща отговора на асистента. Асистентът обработва съобщението използвайки конфигурирания AI модел и всички налични инструменти.
 
-### Path Parameters
+### Параметри на пътя
 
 <ParamField path="uuid" type="string" required>
-  The unique UUID identifier of the conversation
+  Уникалният UUID идентификатор на беседата
 </ParamField>
 
-### Request Body
+### Тяло на заявката
 
 <ParamField body="message" type="string" required>
-  The user's message to send to the assistant. Maximum length: 2000 characters.
+  Съобщението на потребителя за изпращане към асистента. Максимална дължина: 2000 символа.
 </ParamField>
 
-### Response Fields
+### Полета на отговора
 
 <ResponseField name="status" type="boolean">
-  Indicates whether the request was successful
+  Показва дали заявката е била успешна
 </ResponseField>
 
 <ResponseField name="message" type="string">
-  The assistant's response to the user's message
+  Отговорът на асистента към съобщението на потребителя
 </ResponseField>
 
 <ResponseField name="function_calls" type="array">
-  Array of function calls made by the assistant while processing the message. Empty array if no functions were called.
+  Масив от извиквания на функции, направени от асистента по време на обработката на съобщението. Празен масив, ако не са извиквани функции.
 
-  <Expandable title="Function call object properties">
+  <Expandable title="Свойства на обекта за извикване на функция">
     <ResponseField name="name" type="string">
-      The name of the function that was called
+      Името на функцията, която е била извикана
     </ResponseField>
     <ResponseField name="arguments" type="object">
-      The arguments passed to the function
+      Аргументите, предадени на функцията
     </ResponseField>
     <ResponseField name="result" type="object">
-      The result returned by the function
+      Резултатът, върнат от функцията
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-### Error Responses
+### Отговори при грешки
 
 <ResponseField name="status" type="boolean">
-  Will be `false` when an error occurs
+  Ще бъде `false` когато възникне грешка
 </ResponseField>
 
 <ResponseField name="error" type="string">
-  Error message. Possible values:
-  - `Conversation not found` - The provided UUID does not match any conversation
-  - `Insufficient balance. Please top up your account.` - The assistant owner's account balance is too low
-  - `Failed to process message: [details]` - An error occurred while processing the message
+  Съобщение за грешка. Възможни стойности:
+  - `Conversation not found` - Предоставеният UUID не съответства на никоя беседа
+  - `Insufficient balance. Please top up your account.` - Балансът на акаунта на собственика на асистента е твърде нисък
+  - `Failed to process message: [детайли]` - Възникна грешка при обработката на съобщението
 </ResponseField>
 
 <RequestExample>
@@ -170,23 +170,23 @@ print(data['message'])
 
 </ResponseExample>
 
-## Pricing
+## Ценообразуване
 
-Each user message in a **widget** conversation costs **$0.01**. Test conversations are free.
+Всяко потребителско съобщение в беседа чрез **widget** струва **$0.01**. Тестовите беседи са безплатни.
 
-## Function Calls
+## Извиквания на функции
 
-The assistant may execute functions during message processing, such as:
+Асистентът може да изпълнява функции по време на обработката на съобщенията, като:
 
-- **Calendar operations**: Checking availability, booking appointments
-- **Knowledge base queries**: Searching documentation or FAQs
-- **Custom integrations**: Calling your configured webhook endpoints
+- **Операции с календар**: Проверка на наличност, резервиране на срещи
+- **Заявки към база знания**: Търсене в документация или ЧЗВ
+- **Персонализирани интеграции**: Извикване на вашите конфигурирани webhook endpoints
 
-Function call results are included in the response so you can display relevant information to the user or track actions taken.
+Резултатите от извикването на функции са включени в отговора, така че можете да покажете релевантна информация на потребителя или да проследите предприетите действия.
 
-## Best Practices
+## Най-добри практики
 
-1. **Handle errors gracefully**: Display user-friendly messages when errors occur
-2. **Show loading states**: The assistant may take a few seconds to respond, especially when executing functions
-3. **Preserve conversation ID**: Store the conversation UUID to allow users to resume conversations
-4. **Respect rate limits**: Implement appropriate delays between messages if needed
+1. **Обработвайте грешките елегантно**: Показвайте удобни за потребителя съобщения при възникване на грешки
+2. **Показвайте състояния на зареждане**: Асистентът може да отнеме няколко секунди за отговор, особено при изпълняване на функции
+3. **Запазете ID на беседата**: Съхранете UUID на беседата, за да позволите на потребителите да възобновят беседи
+4. **Спазвайте ограниченията за честота**: Въведете подходящи забавяния между съобщенията при необходимост

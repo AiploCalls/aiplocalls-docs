@@ -1,39 +1,40 @@
 ---
-title: "Update Lead"
+---
+title: "Актуализиране на лид"
 api: "PUT /user/leads/{id}"
-description: "Update an existing lead in your campaigns"
+description: "Актуализирайте съществуващ лид във вашите кампании"
 ---
 
-Update a lead by providing the lead ID and the fields you want to modify. Only the fields provided in the request will be updated.
+Актуализирайте лид, като предоставите ID на лида и полетата, които искате да промените. Само полетата, предоставени в заявката, ще бъдат актуализирани.
 
 ## Path Parameters
 
 <ParamField path="id" type="integer" required>
-  The ID of the lead to update
+  ID на лида за актуализиране
 </ParamField>
 
 ## Body Parameters
 
 <ParamField body="campaign_id" type="integer" optional>
-  The ID of the campaign to assign the lead to
+  ID на кампанията, към която да бъде присвоен лидът
 </ParamField>
 
 <ParamField body="phone_number" type="string" optional>
-  The phone number of the lead (will be formatted to E164)
+  Телефонният номер на лида (ще бъде форматиран до E164)
 </ParamField>
 
 <ParamField body="status" type="string" optional>
-  The status of the lead. Must be one of: `created`, `completed`, `reached-max-retries`
+  Статусът на лида. Трябва да бъде един от: `created`, `completed`, `reached-max-retries`
 </ParamField>
 
 <ParamField body="variables" type="object" optional>
-  Custom variables to merge with existing lead variables
+  Персонализирани променливи за сливане със съществуващите променливи на лида
 </ParamField>
 
 ## Response
 
 <ResponseField name="message" type="string">
-  Success message indicating the lead was updated
+  Съобщение за успех, показващо че лидът е актуализиран
 </ResponseField>
 
 <RequestExample>
@@ -99,11 +100,12 @@ curl -X PUT "https://call.aiployees.com/api/user/leads/123" \
 
 </ResponseExample>
 
-## Notes
+## Забележки
 
-- The lead must belong to the authenticated user
-- If updating the campaign, the new campaign must also belong to the authenticated user
-- Phone numbers are automatically formatted and validated
-- Variables are merged with existing variables (not replaced)
-- Only allowed fields can be updated: `campaign_id`, `phone_number`, `status`, `variables`
-- The `status` field has restricted values for data integrity
+- Лидът трябва да принадлежи на удостоверения потребител
+- Ако актуализирате кампанията, новата кампания също трябва да принадлежи на удостоверения потребител
+- Телефонните номера се форматират и валидират автоматично
+- Променливите се сливат със съществуващите променливи (не се заменят)
+- Само разрешените полета могат да бъдат актуализирани: `campaign_id`, `phone_number`, `status`, `variables`
+- Полето `status` има ограничени стойности за целостта на данните
+---

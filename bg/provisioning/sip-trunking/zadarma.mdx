@@ -1,22 +1,22 @@
 ---
-title: "Zadarma Integration"
-description: "A step by step guide to connect your Zadarma phone numbers via SIP trunking"
+title: "Zadarma Интеграция"
+description: "Стъпка по стъпка ръководство за свързване на вашите Zadarma телефонни номера чрез SIP trunking"
 ---
 
-This guide walks you through connecting your Zadarma phone numbers using SIP trunking. Zadarma offers two connection types — **PBX** and **SIP Direct** — and the setup differs slightly for each.
+Това ръководство ви води през свързването на вашите Zadarma телефонни номера използвайки SIP trunking. Zadarma предлага два типа връзки — **PBX** и **SIP Direct** — и настройката се различава леко за всеки.
 
 <Tip>
-**Which type do you have?** If you use Zadarma's virtual PBX with extensions (e.g., 100, 101), you have **PBX**. If you use a standalone SIP account without a PBX, you have **SIP Direct**.
+**Кой тип имате?** Ако използвате виртуалната PBX на Zadarma с вътрешни номера (напр., 100, 101), имате **PBX**. Ако използвате самостоятелен SIP акаунт без PBX, имате **SIP Direct**.
 </Tip>
 
-Select your connection type below and follow the steps:
+Изберете вашия тип връзка по-долу и следвайте стъпките:
 
 <Tabs>
   <Tab title="PBX">
-    ## Step 1: Gather Your SIP Credentials
+    ## Стъпка 1: Съберете вашите SIP данни за вход
 
-    1. Log in to your [Zadarma Dashboard](https://my.zadarma.com)
-    2. Go to **My PBX** → **Extensions**
+    1. Влезте в вашия [Zadarma Dashboard](https://my.zadarma.com)
+    2. Отидете на **My PBX** → **Extensions**
 
     <Frame>
       <img
@@ -25,14 +25,14 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    3. Find your extension and note these details:
+    3. Намерете вашия вътрешен номер и отбележете тези детайли:
 
     ```
-    Extension: e.g., 510000-100
+    Extension: напр., 510000-100
     Server address: pbx.zadarma.com
-    Username: Your extension username (e.g., 510000-100)
-    Password: Your extension password
-    Phone number: Your phone number (e.g., +521151900966)
+    Username: Вашето потребителско име за вътрешен номер (напр., 510000-100)
+    Password: Вашата парола за вътрешен номер
+    Phone number: Вашият телефонен номер (напр., +521151900966)
     ```
 
     <Frame>
@@ -42,11 +42,11 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    ## Step 2: Set Up External Server (for inbound calls)
+    ## Стъпка 2: Настройте External Server (за входящи обаждания)
 
-    To receive inbound calls, you need to configure an **External Server** in Zadarma that forwards incoming calls to the platform's SIP server.
+    За да получавате входящи обаждания, трябва да конфигурирате **External Server** в Zadarma, който препраща входящи обаждания към SIP сървъра на платформата.
 
-    1. In your [Zadarma Dashboard](https://my.zadarma.com), go to **Settings** → [**Virtual phone numbers**](https://my.zadarma.com/dirnum/active/)
+    1. В вашия [Zadarma Dashboard](https://my.zadarma.com), отидете на **Settings** → [**Virtual phone numbers**](https://my.zadarma.com/dirnum/active/)
 
     <Frame>
       <img
@@ -55,7 +55,7 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    2. Find the number you want to connect and click the **gear icon** to open its settings
+    2. Намерете номера, който искате да свържете и кликнете върху **иконата със зъбчато колело**, за да отворите неговите настройки
 
     <Frame>
       <img
@@ -64,7 +64,7 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    3. Click **External Server** and enable the **SIP URI** checkbox
+    3. Кликнете **External Server** и активирайте опцията **SIP URI**
 
     <Frame>
       <img
@@ -73,13 +73,13 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    4. Enter the SIP server address using your **phone number with the `+` prefix**:
+    4. Въведете адреса на SIP сървъра използвайки вашия **телефонен номер с префикс `+`**:
 
     ```
     +YOUR_PHONE_NUMBER@5wed79aeavr.sip.livekit.cloud
     ```
 
-    For example, if your number is `+551151900966`:
+    Например, ако вашият номер е `+551151900966`:
 
     ```
     +521151900966@5wed79aeavr.sip.livekit.cloud
@@ -92,7 +92,7 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    5. Click **Show IP** below the server address to reveal Zadarma's IP addresses (e.g., `185.45.152.216`, `185.45.155.33`)
+    5. Кликнете **Show IP** под адреса на сървъра, за да разкриете IP адресите на Zadarma (напр., `185.45.152.216`, `185.45.155.33`)
 
     <Frame>
       <img
@@ -109,24 +109,24 @@ Select your connection type below and follow the steps:
     </Frame>
 
     <Note>
-    **Save these IPs** — you will need them in Step 3 when configuring inbound authorization in the platform.
+    **Запазете тези IP адреси** — ще ви трябват в Стъпка 3 при конфигурирането на входяща оторизация в платформата.
     </Note>
 
     <Warning>
-    **PBX users must use the phone number with `+`** in the External Server address. Using the PBX extension number (e.g., `533177-100`) will **not** work for inbound calls.
+    **PBX потребителите трябва да използват телефонния номер с `+`** в адреса на External Server. Използването на номера на PBX вътрешната линия (напр., `533177-100`) **няма** да работи за входящи обаждания.
     </Warning>
 
-    ## Step 3: Import Numbers to the Platform
+    ## Стъпка 3: Импортирайте номерата в платформата
 
-    Now import the number so the platform knows how to route calls.
+    Сега импортирайте номера, за да знае платформата как да насочва обажданията.
 
-    1. Go directly to the Phone Numbers page in your dashboard:
+    1. Отидете директно на страницата с телефонни номера в таблото си:
 
        **[https://call.aiployees.com/phone-numbers](https://call.aiployees.com/phone-numbers)**
 
-       If it takes you to the login page, log in first — it will automatically redirect you to the Phone Numbers page.
+       Ако ви отведе до страницата за вход, първо влезте — автоматично ще ви пренасочи към страницата с телефонни номера.
 
-    2. Click **"Integrate SIP trunk"** (top-right corner of the page)
+    2. Кликнете **"Integrate SIP trunk"** (горен десен ъгъл на страницата)
 
     <Frame>
       <img
@@ -135,17 +135,17 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    3. Fill in your phone number and SIP credentials:
+    3. Попълнете вашия телефонен номер и SIP данни за вход:
 
     ```
-    Phone number: e.g., +551151900966
-    Username: Your PBX extension (e.g., 533100-100)
-    Your SIP Extension: Your phone number (e.g., +551151900966)
-    Password: Your PBX extension password
+    Phone number: напр., +551151900966
+    Username: Вашият PBX вътрешен номер (напр., 533100-100)
+    Your SIP Extension: Вашият телефонен номер (напр., +551151900966)
+    Password: Вашата парола за PBX вътрешен номер
     ```
 
     <Warning>
-    **PBX users:** The **Username** is your PBX extension (e.g., `533100-100`). The **"Your SIP Extension"** field must be your **phone number** — this must match the number you used in the External Server address in Step 2.
+    **PBX потребители:** **Username** е вашият PBX вътрешен номер (напр., `533100-100`). Полето **"Your SIP Extension"** трябва да бъде вашият **телефонен номер** — това трябва да съвпада с номера, който използвахте в адреса на External Server в Стъпка 2.
     </Warning>
 
     <Frame>
@@ -155,7 +155,7 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    4. Enter the **Server address** for outbound calls:
+    4. Въведете **Server address** за изходящи обаждания:
 
     ```
     pbx.zadarma.com
@@ -168,7 +168,7 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    5. Select the **Authorization type**. Select **IP** and add the Zadarma IP addresses you noted earlier from **Show IP** in Step 2.
+    5. Изберете **типа оторизация**. Изберете **IP** и добавете IP адресите на Zadarma, които отбелязахте по-рано от **Show IP** в Стъпка 2.
 
     <Frame>
       <img
@@ -177,7 +177,7 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    6. Select the **country** where your SIP trunk is located.
+    6. Изберете **държавата**, в която се намира вашият SIP trunk.
 
     <Frame>
       <img
@@ -186,17 +186,17 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    ## Step 4: Verify Setup
+    ## Стъпка 4: Проверете настройката
 
-    1. Make a test call to your number
-    2. Check that the AI assistant answers
-    3. Use the test call feature to verify outbound calling
+    1. Направете тестово обаждане към вашия номер
+    2. Проверете дали AI асистентът отговаря
+    3. Използвайте функцията за тестово обаждане, за да проверите изходящите обаждания
   </Tab>
   <Tab title="SIP Direct">
-    ## Step 1: Gather Your SIP Credentials
+    ## Стъпка 1: Съберете вашите SIP данни за вход
 
-    1. Log in to your [Zadarma Dashboard](https://my.zadarma.com)
-    2. Go to **Settings** → **SIP Connection**
+    1. Влезте в вашия [Zadarma Dashboard](https://my.zadarma.com)
+    2. Отидете на **Settings** → **SIP Connection**
 
     <Frame>
       <img
@@ -205,13 +205,13 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    3. Note these details:
+    3. Отбележете тези детайли:
 
     ```
     Server address: sip.zadarma.com
-    Extension: Your SIP extension number (e.g., 247000)
-    Username: Your SIP username (the same as your extension e.g., 247000)
-    Password: Your SIP password
+    Extension: Вашият SIP номер на вътрешна линия (напр., 247000)
+    Username: Вашето SIP потребителско име (същото като вътрешната линия напр., 247000)
+    Password: Вашата SIP парола
     ```
 
     <Frame>
@@ -221,11 +221,11 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    ## Step 2: Set Up External Server (for inbound calls)
+    ## Стъпка 2: Настройте External Server (за входящи обаждания)
 
-    To receive inbound calls, you need to configure an **External Server** in Zadarma that forwards incoming calls to the platform's SIP server.
+    За да получавате входящи обаждания, трябва да конфигурирате **External Server** в Zadarma, който препраща входящи обаждания към SIP сървъра на платформата.
 
-    1. In your [Zadarma Dashboard](https://my.zadarma.com), go to **Settings** → [**Virtual phone numbers**](https://my.zadarma.com/dirnum/active/)
+    1. В вашия [Zadarma Dashboard](https://my.zadarma.com), отидете на **Settings** → [**Virtual phone numbers**](https://my.zadarma.com/dirnum/active/)
 
     <Frame>
       <img
@@ -234,7 +234,7 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    2. Find the number you want to connect and click the **gear icon** to open its settings
+    2. Намерете номера, който искате да свържете и кликнете върху **иконата със зъбчато колело**, за да отворите неговите настройки
 
     <Frame>
       <img
@@ -243,7 +243,7 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    3. Click **External Server** and enable the **SIP URI** checkbox
+    3. Кликнете **External Server** и активирайте опцията **SIP URI**
 
     <Frame>
       <img
@@ -252,13 +252,13 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    4. Enter the SIP server address using your **SIP extension number**:
+    4. Въведете адреса на SIP сървъра използвайки вашия **SIP номер на вътрешна линия**:
 
     ```
     YOUR_EXTENSION@5wed79aeavr.sip.livekit.cloud
     ```
 
-    For example, if your extension is `247000`:
+    Например, ако вашата вътрешна линия е `247000`:
 
     ```
     247000@5wed79aeavr.sip.livekit.cloud
@@ -271,7 +271,7 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    5. Click **Show IP** below the server address to reveal Zadarma's IP addresses (e.g., `185.45.152.216`, `185.45.155.33`)
+    5. Кликнете **Show IP** под адреса на сървъра, за да разкриете IP адресите на Zadarma (напр., `185.45.152.216`, `185.45.155.33`)
 
     <Frame>
       <img
@@ -288,20 +288,20 @@ Select your connection type below and follow the steps:
     </Frame>
 
     <Note>
-    **Save these IPs** — you will need them in Step 3 when configuring inbound authorization in the platform.
+    **Запазете тези IP адреси** — ще ви трябват в Стъпка 3 при конфигурирането на входяща оторизация в платформата.
     </Note>
 
-    ## Step 3: Import Numbers to the Platform
+    ## Стъпка 3: Импортирайте номерата в платформата
 
-    Now import the number so the platform knows how to route calls.
+    Сега импортирайте номера, за да знае платформата как да насочва обажданията.
 
-    1. Go directly to the Phone Numbers page in your dashboard:
+    1. Отидете директно на страницата с телефонни номера в таблото си:
 
        **[https://call.aiployees.com/phone-numbers](https://call.aiployees.com/phone-numbers)**
 
-       If it takes you to the login page, log in first — it will automatically redirect you to the Phone Numbers page.
+       Ако ви отведе до страницата за вход, първо влезте — автоматично ще ви пренасочи към страницата с телефонни номера.
 
-    2. Click **"Integrate SIP trunk"** (top-right corner of the page)
+    2. Кликнете **"Integrate SIP trunk"** (горен десен ъгъл на страницата)
 
     <Frame>
       <img
@@ -310,13 +310,13 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    3. Fill in your phone number and SIP credentials:
+    3. Попълнете вашия телефонен номер и SIP данни за вход:
 
     ```
-    Phone number: e.g., +1 555 0123
-    Your SIP Extension: Your SIP extension number (e.g., 247000)
-    Username: Your SIP username (the same as your extension e.g., 247000)
-    Password: Your SIP password
+    Phone number: напр., +1 555 0123
+    Your SIP Extension: Вашият SIP номер на вътрешна линия (напр., 247000)
+    Username: Вашето SIP потребителско име (същото като вътрешната линия напр., 247000)
+    Password: Вашата SIP парола
     ```
 
     <Frame>
@@ -326,7 +326,7 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    4. Enter the **Server address** for outbound calls:
+    4. Въведете **Server address** за изходящи обаждания:
 
     ```
     sip.zadarma.com
@@ -339,7 +339,7 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    5. Select the **Authorization type**. Select **IP** and add the Zadarma IP addresses you noted earlier from **Show IP** in Step 2.
+    5. Изберете **типа оторизация**. Изберете **IP** и добавете IP адресите на Zadarma, които отбелязахте по-рано от **Show IP** в Стъпка 2.
 
     <Frame>
       <img
@@ -348,7 +348,7 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    6. Select the **country** where your SIP trunk is located.
+    6. Изберете **държавата**, в която се намира вашият SIP trunk.
 
     <Frame>
       <img
@@ -357,79 +357,79 @@ Select your connection type below and follow the steps:
       />
     </Frame>
 
-    ## Step 4: Verify Setup
+    ## Стъпка 4: Проверете настройката
 
-    1. Make a test call to your number
-    2. Check that the AI assistant answers
-    3. Use the test call feature to verify outbound calling
+    1. Направете тестово обаждане към вашия номер
+    2. Проверете дали AI асистентът отговаря
+    3. Използвайте функцията за тестово обаждане, за да проверите изходящите обаждания
   </Tab>
 </Tabs>
 
-## Security Requirements
+## Изисквания за сигурност
 
-Your SIP credentials need to be secure:
+Вашите SIP данни за вход трябва да бъдат сигурни:
 
-- **Username**: Your extension number or provider-supplied username
-- **Password must have**:
-  - 12 or more characters
-  - Numbers
-  - Upper and lowercase letters
-  - Special characters recommended
+- **Потребителско име**: Номерът на вашата вътрешна линия или потребителско име, предоставено от доставчика
+- **Паролата трябва да има**:
+  - 12 или повече символа
+  - Цифри
+  - Главни и малки букви
+  - Препоръчват се специални символи
 
-## Call Transfer Limitations
+## Ограничения при трансфер на обаждания
 
 <Warning>
-**Zadarma does not support SIP REFER**, which means standard cold transfer will not work out of the box. Warm transfer works automatically — the platform handles it via SIP INVITE.
+**Zadarma не поддържа SIP REFER**, което означава, че стандартният студен трансфер няма да работи директно. Топлият трансфер работи автоматично — платформата го обработва чрез SIP INVITE.
 
-For **cold transfer**, you can use the **Custom SIP Transfer** option in your assistant's transfer settings. Set the custom SIP URI to:
+За **студен трансфер** можете да използвате опцията **Custom SIP Transfer** в настройките за трансфер на вашия асистент. Задайте персонализирания SIP URI на:
 
 ```
 sip:+DESTINATION_NUMBER@sip.zadarma.com
 ```
 
-For example: `sip:+15557654321@sip.zadarma.com`
+Например: `sip:+15557654321@sip.zadarma.com`
 
-Make sure the number is in international E.164 format with the `+` prefix. Do **not** use `tel:` URI format.
+Уверете се, че номерът е в международен E.164 формат с префикс `+`. **Не** използвайте `tel:` URI формат.
 </Warning>
 
-## Common Issues
+## Често срещани проблеми
 
 <AccordionGroup>
-  <Accordion title="Inbound calls are not working">
-    - **Check your External Server address** — make sure the format matches your connection type:
-      - **PBX**: `+YOUR_PHONE_NUMBER@5wed79aeavr.sip.livekit.cloud` (phone number with `+`)
-      - **SIP Direct**: `YOUR_EXTENSION@5wed79aeavr.sip.livekit.cloud` (extension number)
-    - **Verify the External Server is enabled** in Zadarma's settings
-    - **Check that the "Your SIP Extension" field** in the platform matches: phone number for PBX, extension for SIP Direct
+  <Accordion title="Входящите обаждания не работят">
+    - **Проверете адреса на вашия External Server** — уверете се, че форматът съответства на вашия тип връзка:
+      - **PBX**: `+YOUR_PHONE_NUMBER@5wed79aeavr.sip.livekit.cloud` (телефонен номер с `+`)
+      - **SIP Direct**: `YOUR_EXTENSION@5wed79aeavr.sip.livekit.cloud` (номер на вътрешна линия)
+    - **Проверете дали External Server е активиран** в настройките на Zadarma
+    - **Проверете дали полето "Your SIP Extension" в платформата съвпада**: телефонен номер за PBX, вътрешна линия за SIP Direct
   </Accordion>
 
-  <Accordion title="Outbound calls are not working">
-    - **Check the Server address** — it should be `pbx.zadarma.com` for PBX or `sip.zadarma.com` for SIP Direct
-    - **Verify your credentials** — make sure the username and password match what's shown in your Zadarma SIP settings
-    - **Check your Zadarma balance** — outbound calls require sufficient credit
+  <Accordion title="Изходящите обаждания не работят">
+    - **Проверете Server address** — трябва да бъде `pbx.zadarma.com` за PBX или `sip.zadarma.com` за SIP Direct
+    - **Проверете вашите данни за вход** — уверете се, че потребителското име и паролата съвпадат с това, което е показано в SIP настройките на Zadarma
+    - **Проверете баланса си в Zadarma** — изходящите обаждания изискват достатъчен кредит
   </Accordion>
 
-  <Accordion title="Cold transfer is not working">
-    Zadarma does not support SIP REFER. To enable cold transfer:
-    1. Go to your assistant's **Transfer Phone Call** tool settings
-    2. Enable **"Custom SIP transfer"** (under Advanced)
-    3. Set the SIP URI to `sip:+DESTINATION_NUMBER@sip.zadarma.com`
+  <Accordion title="Студеният трансфер не работи">
+    Zadarma не поддържа SIP REFER. За да активирате студен трансфер:
+    1. Отидете в настройките на инструмента **Transfer Phone Call** на вашия асистент
+    2. Активирайте **"Custom SIP transfer"** (под Advanced)
+    3. Задайте SIP URI на `sip:+DESTINATION_NUMBER@sip.zadarma.com`
 
-    If cold transfer still fails, verify the destination number is in international format with `+`.
+    Ако студеният трансфер все още не работи, проверете дали номерът на местоназначението е в международен формат с `+`.
   </Accordion>
 
-  <Accordion title="Which connection type should I use — PBX or SIP Direct?">
-    - **PBX** is recommended if you need multiple extensions, call routing rules, IVR menus, or other PBX features in Zadarma
-    - **SIP Direct** is simpler if you just need a single number connected without PBX features
+  <Accordion title="Кой тип връзка трябва да използвам — PBX или SIP Direct?">
+    - **PBX** се препоръчва, ако имате нужда от множество вътрешни линии, правила за насочване на обаждания, IVR менюта или други PBX функции в Zadarma
+    - **SIP Direct** е по-простo, ако просто имате нужда от един номер, свързан без PBX функции
 
-    Both work equally well for inbound and outbound AI calls.
+    И двата работят еднакво добре за входящи и изходящи AI обаждания.
   </Accordion>
 </AccordionGroup>
 
 ---
 
 <Note>
-  Need help setting up? Our support team specializes in helping customers
-  integrate their phone systems. We'll guide you through the entire process,
-  ensuring a smooth setup with your specific phone system configuration.
+  Имате нужда от помощ при настройването? Нашият екип за поддръжка се специализира в помагането на клиентите да интегрират своите телефонни системи. Ще ви ръководим през целия процес, осигурявайки гладко настройване с вашата конкретна конфигурация на телефонната система.
 </Note>
+
+---

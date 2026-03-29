@@ -1,317 +1,319 @@
 ---
-title: "WhatsApp Troubleshooting"
+title: "WhatsApp Отстраняване на неизправности"
 icon: "circle-question"
-description: "Common issues and solutions for WhatsApp Business integration"
+description: "Често срещани проблеми и решения за интеграция с WhatsApp Business"
 ---
 
-## Sender Issues
+## Проблеми със Sender
 
-### Sender Stuck in "Creating" or "Pending" Status
+### Sender е Затъгал в Статус "Creating" или "Pending"
 
-**Symptoms:**
-- Sender status shows "Creating" for more than a few minutes
-- Sender stuck on "Pending" after completing Meta signup
+**Симптоми:**
+- Статусът на sender показва "Creating" повече от няколко минути
+- Sender е затънал на "Pending" след завършване на Meta регистрацията
 
-**Solutions:**
+**Решения:**
 
-1. **Complete the Meta signup flow**
-   - Make sure you finished all steps in the Facebook popup
-   - You should have seen a confirmation before being redirected back
+1. **Завършете Meta регистрационния процес**
+   - Уверете се, че сте завършили всички стъпки в Facebook popup-а
+   - Трябва да сте видели потвърждение преди да бъдете пренасочени обратно
 
-2. **Check that you created a NEW account**
-   - You must create a new WhatsApp Business Account during signup
-   - Selecting an existing account will cause the integration to fail
+2. **Проверете дали сте създали НОВ акаунт**
+   - Трябва да създадете нов WhatsApp Business акаунт по време на регистрацията
+   - Избирането на съществуващ акаунт ще доведе до неуспех на интеграцията
 
-3. **Verify phone number selection**
-   - Did you click "Add new number" in the Meta popup?
-   - Did you select the correct pre-verified number?
+3. **Проверете избора на телефонен номер**
+   - Кликнахте ли "Add new number" в Meta popup-а?
+   - Избрахте ли правилния предварително верифициран номер?
 
-4. **Wait and refresh**
-   - Sometimes setup takes a few minutes to complete
-   - Refresh the page after 5 minutes
+4. **Изчакайте и обновете**
+   - Понякога настройката отнема няколко минути
+   - Обновете страницата след 5 минути
 
-5. **Contact support**
-   - If the issue persists for more than 30 minutes, contact support
+5. **Свържете се с поддръжката**
+   - Ако проблемът продължи повече от 30 минути, свържете се с поддръжката
 
-### Verification Failed
+### Верификацията Неуспешна
 
-**Symptoms:**
-- Verification process fails
-- Error message about verification timeout
+**Симптоми:**
+- Процесът на верификация е неуспешен
+- Съобщение за грешка относно изтекло време за верификация
 
-**Solutions:**
+**Решения:**
 
-1. **Wait before retrying**
-   - Meta may temporarily rate-limit verification requests
-   - Wait 5-10 minutes before trying again
+1. **Изчакайте преди повторен опит**
+   - Meta може временно да ограничи заявките за верификация
+   - Изчакайте 5-10 минути преди да опитате отново
 
-2. **Try a different number**
-   - Some numbers may have issues with Meta's verification
-   - Try using a different phone number
+2. **Опитайте с различен номер**
+   - Някои номера могат да имат проблеми с Meta верификацията
+   - Опитайте да използвате различен телефонен номер
 
-3. **Check number type**
-   - Only "normal" type numbers can be used for WhatsApp
-   - SIP or special numbers are not supported
+3. **Проверете типа номер**
+   - Само номера от "нормален" тип могат да се използват за WhatsApp
+   - SIP или специални номера не се поддържат
 
-### Sender Shows "Offline"
+### Sender Показва "Offline"
 
-**Symptoms:**
-- Sender was working but now shows "Offline"
-- Cannot send or receive messages
+**Симптоми:**
+- Sender е работел, но сега показва "Offline"
+- Не може да изпраща или получава съобщения
 
-**Solutions:**
+**Решения:**
 
-1. **Check for policy violations**
-   - Review any emails from Meta about policy issues
-   - High block rates or spam reports can cause offline status
+1. **Проверете за нарушения на политики**
+   - Прегледайте всички имейли от Meta относно проблеми с политиките
+   - Високи проценти на блокиране или докладвания за спам могат да причинят offline статус
 
-2. **Check quality rating**
-   - Low quality rating can trigger offline status
-   - Review your messaging practices
+2. **Проверете рейтинга за качество**
+   - Нисък рейтинг за качество може да предизвика offline статус
+   - Прегледайте практиките си за съобщения
 
-3. **Re-authenticate**
-   - Sometimes the connection needs to be refreshed
-   - Contact support for assistance
+3. **Преудостоверяване**
+   - Понякога връзката трябва да бъде обновена
+   - Свържете се с поддръжката за помощ
 
-### Sender Suspended
+### Sender Спрян
 
-**Symptoms:**
-- Sender status shows "Suspended"
-- Error mentions policy violation
+**Симптоми:**
+- Статусът на sender показва "Suspended"
+- Грешката споменава нарушение на политика
 
-**Solutions:**
+**Решения:**
 
-1. **Review suspension reason**
-   - Check the error message for specific details
-   - Common reasons: spam reports, prohibited content, high block rates
+1. **Прегледайте причината за спирането**
+   - Проверете съобщението за грешка за конкретни детайли
+   - Чести причини: докладвания за спам, забранено съдържание, високи проценти на блокиране
 
-2. **Address the issue**
-   - Stop any problematic messaging campaigns
-   - Review Meta's commerce policies
+2. **Отстранете проблема**
+   - Спрете всички проблематични кампании за съобщения
+   - Прегледайте Meta политиките за търговия
 
-3. **Appeal the suspension**
-   - Contact Meta support through Facebook Business Manager
-   - Provide evidence of compliance
+3. **Обжалвайте спирането**
+   - Свържете се с Meta поддръжката чрез Facebook Business Manager
+   - Предоставете доказателства за съответствие
 
-## Template Issues
+## Проблеми с Template-и
 
-### Template Rejected
+### Template Отхвърлен
 
-**Symptoms:**
-- Template status shows "Rejected"
-- Rejection reason displayed
+**Симптоми:**
+- Статусът на template показва "Rejected"
+- Показва се причина за отхвърлянето
 
-**Common Rejection Reasons & Solutions:**
+**Чести Причини за Отхвърляне и Решения:**
 
-| Reason | Solution |
+| Причина | Решение |
 |--------|----------|
-| Promotional content in Utility | Change category to Marketing |
-| Missing variable samples | Add clear, realistic sample values |
-| URL shorteners | Use full, branded URLs |
-| Aggressive language | Soften tone, remove threats |
-| Wrong category | Select correct category for content |
+| Промоционално съдържание в Utility | Сменете категорията на Marketing |
+| Липсват примерни стойности за променливи | Добавете ясни, реалистични примерни стойности |
+| URL съкратители | Използвайте пълни, брандирани URL-и |
+| Агресивен език | Омекотете тона, премахнете заплахи |
+| Грешна категория | Изберете правилна категория за съдържанието |
 
-### Template Stuck in "Pending"
+### Template Затънал в "Pending"
 
-**Symptoms:**
-- Template has been pending for more than 24 hours
+**Симптоми:**
+- Template е в pending повече от 24 часа
 
-**Solutions:**
+**Решения:**
 
-1. **Wait for review**
-   - Marketing templates can take up to 48 hours
-   - Complex templates may take longer
+1. **Изчакайте преглед**
+   - Marketing template-ите могат да отнемат до 48 часа
+   - Сложни template-и могат да отнемат повече време
 
-2. **Check for issues**
-   - Review template content for potential policy issues
-   - Ensure sample values are clear and appropriate
+2. **Проверете за проблеми**
+   - Прегледайте съдържанието на template-а за потенциални проблеми с политиките
+   - Уверете се, че примерните стойности са ясни и подходящи
 
-3. **Create an alternative**
-   - If urgent, create a new template with different name
-   - Use simpler content that's more likely to be approved
+3. **Създайте алтернатива**
+   - Ако е спешно, създайте нов template с различно име
+   - Използвайте по-просто съдържание, което е по-вероятно да бъде одобрено
 
-### Template Disabled
+### Template Деактивиран
 
-**Symptoms:**
-- Previously approved template now shows "Disabled"
+**Симптоми:**
+- Преди одобрен template сега показва "Disabled"
 
-**Causes:**
-- Low quality score from customer feedback
-- Template received too many blocks or reports
+**Причини:**
+- Нисък резултат за качество от обратна връзка от клиенти
+- Template-ът е получил твърде много блокирания или докладвания
 
-**Solutions:**
+**Решения:**
 
-1. **Review usage patterns**
-   - Were you sending to customers who didn't expect messages?
-   - Was the content relevant to recipients?
+1. **Прегледайте модели на използване**
+   - Изпращахте ли съобщения до клиенти, които не очакваха съобщения?
+   - Съдържанието релевантно ли беше за получателите?
 
-2. **Create a new version**
-   - Create a new template with improved content
-   - Consider more targeted audience selection
+2. **Създайте нова версия**
+   - Създайте нов template с подобрено съдържание
+   - Обмислете по-насочен подбор на аудитория
 
-## Messaging Issues
+## Проблеми със Съобщения
 
-### Messages Not Delivering
+### Съобщенията Не Се Доставят
 
-**Symptoms:**
-- Template messages not reaching recipients
-- No delivery confirmation
+**Симптоми:**
+- Template съобщенията не достигат до получателите
+- Няма потвърждение за доставка
 
-**Solutions:**
+**Решения:**
 
-1. **Check phone number format**
-   - Must be E.164 format: +[country code][number]
-   - Examples: +14155551234, +442071234567
+1. **Проверете формата на телефонния номер**
+   - Трябва да бъде в E.164 формат: +[код на държава][номер]
+   - Примери: +14155551234, +442071234567
 
-2. **Verify recipient has WhatsApp**
-   - The recipient must have WhatsApp installed
-   - Number must be registered with WhatsApp
+2. **Проверете дали получателят има WhatsApp**
+   - Получателят трябва да има инсталиран WhatsApp
+   - Номерът трябва да бъде регистриран с WhatsApp
 
-3. **Check sender status**
-   - Sender must be "Online" to send messages
-   - Verify in WhatsApp Senders page
+3. **Проверете статуса на sender-а**
+   - Sender-ът трябва да бъде "Online" за изпращане на съобщения
+   - Проверете в страницата WhatsApp Senders
 
-4. **Review messaging limits**
-   - New senders have limited daily capacity
-   - Check your current tier and limits
+4. **Прегледайте лимитите за съобщения**
+   - Новите sender-и имат ограничен дневен капацитет
+   - Проверете текущия си tier и лимити
 
-### Free-form Messages Failing
+### Свободни Съобщения Не Успяват
 
-**Symptoms:**
-- Can't send free-form message
-- Error about 24-hour window
+**Симптоми:**
+- Не може да изпрати свободно съобщение
+- Грешка за 24-часовия прозорец
 
-**Solutions:**
+**Решения:**
 
-1. **Check the 24-hour window**
-   - Free-form messages only work within 24 hours of customer's last message
-   - Use a template message instead
+1. **Проверете 24-часовия прозорец**
+   - Свободните съобщения работят само в рамките на 24 часа от последното съобщение на клиента
+   - Използвайте template съобщение вместо това
 
-2. **Verify conversation exists**
-   - The customer must have messaged you first
-   - Check conversation history
+2. **Проверете дали съществува разговор**
+   - Клиентът трябва първо да ви е писал
+   - Проверете историята на разговора
 
-### AI Not Responding to Messages
+### AI Не Отговаря на Съобщения
 
-**Symptoms:**
-- Customer messages arrive but no AI response
-- Messages appear in conversation but no reply sent
+**Симптоми:**
+- Съобщенията на клиентите пристигат, но няма AI отговор
+- Съобщенията се появяват в разговора, но не се изпраща отговор
 
-**Solutions:**
+**Решения:**
 
-1. **Check assistant connection**
-   - Verify an assistant is connected to the sender
-   - Ensure "AI Enabled" is turned on
+1. **Проверете връзката с асистента**
+   - Проверете дали асистент е свързан към sender-а
+   - Уверете се, че "AI Enabled" е включено
 
-2. **Review assistant status**
-   - Assistant must be active and properly configured
-   - Test the assistant in the test chat interface
+2. **Прегледайте статуса на асистента**
+   - Асистентът трябва да бъде активен и правилно конфигуриран
+   - Тествайте асистента в интерфейса за тестов чат
 
-3. **Check for errors**
-   - Review conversation for any error messages
-   - Check system logs for issues
+3. **Проверете за грешки**
+   - Прегледайте разговора за съобщения за грешки
+   - Проверете системните логове за проблеми
 
-## Quality & Limits
+## Качество и Лимити
 
-### Quality Rating Dropped
+### Рейтингът за Качество Спадна
 
-**Symptoms:**
-- Quality rating changed from High to Medium or Low
-- Messaging limits reduced
+**Симптоми:**
+- Рейтингът за качество се промени от High на Medium или Low
+- Лимитите за съобщения са намалени
 
-**Causes:**
-- High block rates
-- Spam reports from recipients
-- Low response rates
+**Причини:**
+- Високи проценти на блокиране
+- Докладвания за спам от получатели
+- Ниски проценти на отговор
 
-**Solutions:**
+**Решения:**
 
-1. **Review recent campaigns**
-   - Check which messages triggered blocks or reports
-   - Identify problematic content or audiences
+1. **Прегледайте последни кампании**
+   - Проверете кои съобщения са предизвикали блокирания или докладвания
+   - Идентифицирайте проблематично съдържание или аудитории
 
-2. **Improve targeting**
-   - Only message customers who expect to hear from you
-   - Remove unengaged contacts from lists
+2. **Подобрете насочването**
+   - Изпращайте съобщения само до клиенти, които очакват да чуят от вас
+   - Премахнете неангажирани контакти от списъците
 
-3. **Review message content**
-   - Ensure content is valuable and relevant
-   - Avoid aggressive or spammy language
+3. **Прегледайте съдържанието на съобщенията**
+   - Уверете се, че съдържанието е ценно и релевантно
+   - Избягвайте агресивен или спам-подобен език
 
-4. **Wait for recovery**
-   - Quality rating can improve over time with good practices
-   - Focus on quality over quantity
+4. **Изчакайте възстановяване**
+   - Рейтингът за качество може да се подобри с времето с добри практики
+   - Фокусирайте се на качеството вместо на количеството
 
-### Hitting Message Limits
+### Достигане на Лимити за Съобщения
 
-**Symptoms:**
-- Can't send more messages
-- Error about daily limit reached
+**Симптоми:**
+- Не може да изпращате повече съобщения
+- Грешка за достигнат дневен лимит
 
-**Solutions:**
+**Решения:**
 
-1. **Wait for reset**
-   - Limits reset daily (24-hour rolling window)
-   - Plan campaigns within your current limits
+1. **Изчакайте нулиране**
+   - Лимитите се нулират ежедневно (24-часов подвижен прозорец)
+   - Планирайте кампании в рамките на текущите си лимити
 
-2. **Improve quality**
-   - Higher quality ratings unlock higher limits
-   - Focus on engagement and avoid blocks
+2. **Подобрете качеството**
+   - По-високите рейтинги за качество отключват по-високи лимити
+   - Фокусирайте се на ангажираност и избягвайте блокирания
 
-3. **Spread out sends**
-   - Don't send all messages at once
-   - Implement delays in automation flows
+3. **Разпределете изпращанията**
+   - Не изпращайте всички съобщения наведнъж
+   - Внедрете забавяния в автоматизирани потоци
 
-## Connection Issues
+## Проблеми с Връзката
 
-### Meta Signup Popup Doesn't Appear
+### Meta Регистрационният Popup Не Се Появява
 
-**Symptoms:**
-- Clicking "Login with Facebook" does nothing
-- Popup blocked or not loading
+**Симптоми:**
+- Кликването на "Login with Facebook" не прави нищо
+- Popup е блокиран или не се зарежда
 
-**Solutions:**
+**Решения:**
 
-1. **Allow popups**
-   - Check browser popup blocker settings
-   - Allow popups from the domain
+1. **Разрешете popup-и**
+   - Проверете настройките за блокиране на popup-и в браузъра
+   - Разрешете popup-и от домейна
 
-2. **Clear cache**
-   - Clear browser cache and cookies
-   - Try in incognito/private mode
+2. **Изчистете кеша**
+   - Изчистете кеша и бисквитките на браузъра
+   - Опитайте в incognito/частен режим
 
-3. **Try different browser**
-   - Some browsers have stricter popup policies
-   - Chrome or Firefox typically work best
+3. **Опитайте с различен браузър**
+   - Някои браузъри имат по-строги политики за popup-и
+   - Chrome или Firefox обикновено работят най-добре
 
-### Redirected Back Without Completing Setup
+### Пренасочване Назад Без Завършване на Настройката
 
-**Symptoms:**
-- Popup closes but sender not created
-- Stuck on step 3
+**Симптоми:**
+- Popup-ът се затваря, но sender не се създава
+- Затъгал на стъпка 3
 
-**Solutions:**
+**Решения:**
 
-1. **Complete all steps**
-   - The Meta flow has multiple steps
-   - Ensure you completed all of them
+1. **Завършете всички стъпки**
+   - Meta процесът има множество стъпки
+   - Уверете се, че сте завършили всички
 
-2. **Check for errors**
-   - Look for error messages in the popup
-   - Meta may have rejected the request
+2. **Проверете за грешки**
+   - Потърсете съобщения за грешки в popup-а
+   - Meta може да е отхвърлил заявката
 
-3. **Retry the process**
-   - Go back to step 2 and select your number again
-   - Complete the Meta signup flow carefully
+3. **Повторете процеса**
+   - Върнете се на стъпка 2 и изберете номера си отново
+   - Завършете Meta регистрационния процес внимателно
 
-## Getting Help
+## Получаване на Помощ
 
-If you're still experiencing issues:
+Ако все още имате проблеми:
 
-1. **Check our status page** for any ongoing platform issues
-2. **Review Meta's documentation** for WhatsApp-specific policies
-3. **Contact support** with:
-   - Your sender ID
-   - Error messages (exact text)
-   - Steps you've already tried
-   - Screenshots if applicable
+1. **Проверете нашата status страница** за текущи проблеми с платформата
+2. **Прегледайте Meta документацията** за WhatsApp-специфични политики
+3. **Свържете се с поддръжката** с:
+   - Вашия sender ID
+   - Съобщения за грешки (точен текст)
+   - Стъпки, които вече сте опитали
+   - Скрийншоти, ако е приложимо
+
+---

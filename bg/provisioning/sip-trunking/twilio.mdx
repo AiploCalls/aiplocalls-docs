@@ -1,22 +1,22 @@
 ---
-title: "Twilio Integration"
-description: "A step by step guide to connect your Twilio phone numbers via Elastic SIP Trunking"
+title: "Twilio Интеграция"
+description: "Стъпка по стъпка ръководство за свързване на вашите Twilio телефонни номера чрез Elastic SIP Trunking"
 ---
 
-This guide walks you through connecting your Twilio phone numbers using Elastic SIP Trunking. You'll create a SIP trunk in Twilio, assign your numbers to it, and import them into the platform.
+Това ръководство ви води през свързването на вашите Twilio телефонни номера, използвайки Elastic SIP Trunking. Ще създадете SIP trunk в Twilio, ще присвоите номерата си към него и ще ги импортирате в платформата.
 
 <Tip>
-**One-time setup:** You only need to create the Elastic SIP Trunk once (Step 1). For each additional phone number after that, you simply add it to your existing trunk (Step 2) and import it (Step 3).
+**Еднократна настройка:** Трябва да създадете Elastic SIP Trunk само веднъж (Стъпка 1). За всеки допълнителен телефонен номер след това, просто го добавяте към съществуващия си trunk (Стъпка 2) и го импортирате (Стъпка 3).
 </Tip>
 
-## Step 1: Create Elastic SIP Trunking
+## Стъпка 1: Създаване на Elastic SIP Trunking
 
-1. Log in to your [Twilio Console](https://console.twilio.com)
-2. In the **search bar** at the top of the dashboard, type **"Elastic SIP Trunking"** and click the result
+1. Влезте в своята [Twilio Console](https://console.twilio.com)
+2. В **полето за търсене** в горната част на таблото, въведете **"Elastic SIP Trunking"** и кликнете на резултата
 
-   Alternatively, click the **"..."** menu on the left sidebar for **All Products & Services**, then scroll down and click **Elastic SIP Trunking**
+   Алтернативно, кликнете на менюто **"..."** в лявата странична лента за **All Products & Services**, след това превъртете надолу и кликнете **Elastic SIP Trunking**
 
-3. Click **Create new SIP Trunk** and give it a **Friendly name** (e.g., `aiplocalls`)
+3. Кликнете **Create new SIP Trunk** и му дайте **Friendly name** (напр. `aiplocalls`)
 
    <Frame>
      <img
@@ -25,12 +25,12 @@ This guide walks you through connecting your Twilio phone numbers using Elastic 
      />
    </Frame>
 
-### Configure Termination (for outbound calls)
+### Конфигуриране на Termination (за изходящи обаждания)
 
-4. In the left sidebar, click **Termination**
-5. In the **Termination SIP URI** field, enter only a unique name — for example, `yourcompany`
+4. В лявата странична лента кликнете **Termination**
+5. В полето **Termination SIP URI** въведете само уникално име — например `yourcompany`
 
-   Twilio automatically appends `.pstn.twilio.com`, so your full URI will be: `yourcompany.pstn.twilio.com`
+   Twilio автоматично добавя `.pstn.twilio.com`, така че пълният ви URI ще бъде: `yourcompany.pstn.twilio.com`
 
    <Frame>
      <img
@@ -40,16 +40,16 @@ This guide walks you through connecting your Twilio phone numbers using Elastic 
    </Frame>
 
 <Warning>
-**Only enter the name part** (e.g., `yourcompany`). The `.pstn.twilio.com` suffix is pre-filled by Twilio. Do not paste a full URI or a localized URI (like `london-ix`) into the input field — this will create a malformed address that won't work. The general URI automatically routes traffic to the nearest region.
+**Въведете само частта с името** (напр. `yourcompany`). Суфиксът `.pstn.twilio.com` се попълва предварително от Twilio. Не поставяйте пълен URI или локализиран URI (като `london-ix`) в полето за въвеждане — това ще създаде неправилен адрес, който няма да работи. Общият URI автоматично насочва трафика към най-близкия регион.
 </Warning>
 
 <Note>
-**Save this URI** — you will need the full Termination SIP URI (`yourcompany.pstn.twilio.com`) later when importing the number in Step 3.
+**Запазете този URI** — ще ви трябва пълният Termination SIP URI (`yourcompany.pstn.twilio.com`) по-късно при импортирането на номера в Стъпка 3.
 </Note>
 
-6. For your SIP trunk to accept outbound requests, you need to set up authentication. Scroll down to **Authentication** and configure IP Access Control Lists:
+6. За да може вашият SIP trunk да приема изходящи заявки, трябва да настроите удостоверяване. Превъртете надолу до **Authentication** и конфигурирайте IP Access Control Lists:
 
-   Currently the SIP server does not have a static IP, so you need to whitelist all the IP addresses in the range:
+   В момента SIP сървърът няма статичен IP, затова трябва да разрешите всички IP адреси в обхвата:
 
    <Frame>
      <img
@@ -65,10 +65,10 @@ This guide walks you through connecting your Twilio phone numbers using Elastic 
      />
    </Frame>
 
-### Configure Origination (for inbound calls)
+### Конфигуриране на Origination (за входящи обаждания)
 
-7. In the left sidebar, click **Origination**
-8. Click **Add new Origination URI** and enter the SIP server address:
+7. В лявата странична лента кликнете **Origination**
+8. Кликнете **Add new Origination URI** и въведете адреса на SIP сървъра:
 
    ```
    sip:5wed79aeavr.sip.livekit.cloud
@@ -81,12 +81,12 @@ This guide walks you through connecting your Twilio phone numbers using Elastic 
      />
    </Frame>
 
-## Step 2: Assign Numbers to Your SIP Trunk
+## Стъпка 2: Присвояване на номера към вашия SIP Trunk
 
-Now assign your Twilio phone numbers to the trunk you just created.
+Сега присвоете вашите Twilio телефонни номера към trunk-а, който току-що създадохте.
 
-1. In your SIP trunk, click **Numbers** in the left sidebar
-2. Click **Add a Number** and select the phone number(s) you want to use
+1. В своя SIP trunk кликнете **Numbers** в лявата странична лента
+2. Кликнете **Add a Number** и изберете телефонния номер(и), които искате да използвате
 
    <Frame>
      <img
@@ -96,20 +96,20 @@ Now assign your Twilio phone numbers to the trunk you just created.
    </Frame>
 
 <Tip>
-For future numbers, you only need to repeat this step and Step 3 below. The trunk configuration from Step 1 is already done.
+За бъдещи номера трябва да повторите само тази стъпка и Стъпка 3 по-долу. Конфигурацията на trunk от Стъпка 1 вече е готова.
 </Tip>
 
-## Step 3: Import Numbers to the Platform
+## Стъпка 3: Импортиране на номера в платформата
 
-Now import the number so the platform knows how to route calls.
+Сега импортирайте номера, за да знае платформата как да насочва обажданията.
 
-1. Go directly to the Phone Numbers page in your dashboard:
+1. Отидете директно на страницата с телефонните номера в таблото си:
 
    **[https://call.aiployees.com/phone-numbers](https://call.aiployees.com/phone-numbers)**
 
-   If it takes you to the login page, log in first — it will automatically redirect you to the Phone Numbers page.
+   Ако ви отведе към страницата за вход, първо влезте — автоматично ще ви пренасочи към страницата с телефонните номера.
 
-2. Click **"Integrate SIP trunk"** (top-right corner of the page)
+2. Кликнете **"Integrate SIP trunk"** (горният десен ъгъл на страницата)
 
    <Frame>
      <img
@@ -118,12 +118,12 @@ Now import the number so the platform knows how to route calls.
      />
    </Frame>
 
-3. Fill in your phone number and SIP credentials:
+3. Попълнете вашия телефонен номер и SIP идентификационни данни:
 
    ```
-   Phone number: e.g., +1 555 0123
-   Username: Your extension username
-   Password: Your extension password
+   Phone number: напр., +1 555 0123
+   Username: Вашето потребителско име за разширение
+   Password: Вашата парола за разширение
    ```
 
    <Frame>
@@ -133,10 +133,10 @@ Now import the number so the platform knows how to route calls.
      />
    </Frame>
 
-4. Enter the **Termination SIP URI** you created in Step 1:
+4. Въведете **Termination SIP URI**, който създадохте в Стъпка 1:
 
    ```
-   Server address: e.g., yourcompany.pstn.twilio.com
+   Server address: напр., yourcompany.pstn.twilio.com
    ```
 
    <Frame>
@@ -146,7 +146,7 @@ Now import the number so the platform knows how to route calls.
      />
    </Frame>
 
-5. Select the **Authorization type**. If you configured IP-based authentication in Step 1, select IP and add these addresses:
+5. Изберете **Authorization type**. Ако сте конфигурирали IP-базирано удостоверяване в Стъпка 1, изберете IP и добавете тези адреси:
 
    ```
    54.244.51.0
@@ -166,7 +166,7 @@ Now import the number so the platform knows how to route calls.
      />
    </Frame>
 
-6. Select the **country** where your SIP trunk is located.
+6. Изберете **държавата**, в която се намира вашият SIP trunk.
 
    <Frame>
      <img
@@ -175,35 +175,35 @@ Now import the number so the platform knows how to route calls.
      />
    </Frame>
 
-## Step 4: Verify Setup
+## Стъпка 4: Проверка на настройката
 
-After configuration:
+След конфигурацията:
 
-1. Make a test call to your number
-2. Check that the AI assistant answers
-3. Use the test call feature to verify outbound calling
+1. Направете тестово обаждане към вашия номер
+2. Проверете дали AI асистентът отговаря
+3. Използвайте функцията за тестово обаждане, за да проверите изходящите обаждания
 
-## Security Requirements
+## Изисквания за сигурност
 
-Your SIP credentials need to be secure:
+Вашите SIP идентификационни данни трябва да са сигурни:
 
-- **Username**: Your extension number or provider-supplied username
-- **Password must have**:
-  - 12 or more characters
-  - Numbers
-  - Upper and lowercase letters
-  - Special characters recommended
+- **Username**: Вашият номер за разширение или потребителско име, предоставено от доставчика
+- **Паролата трябва да има**:
+  - 12 или повече символа
+  - Цифри
+  - Главни и малки букви
+  - Препоръчват се специални символи
 
-## Common Issues
+## Често срещани проблеми
 
 <AccordionGroup>
-  <Accordion title="Do I need to set up Elastic SIP Trunking for every new number?">
-    No. You only create the Elastic SIP Trunk once (Step 1). For each new number, simply assign it to your existing trunk (Step 2) and import it into the platform (Step 3).
+  <Accordion title="Трябва ли да настройвам Elastic SIP Trunking за всеки нов номер?">
+    Не. Създавате Elastic SIP Trunk само веднъж (Стъпка 1). За всеки нов номер просто го присвоявате към съществуващия си trunk (Стъпка 2) и го импортирате в платформата (Стъпка 3).
   </Accordion>
 
-  <Accordion title="After connecting, inbound works but outbound does not work?">
-    - **Check your Termination SIP URI** — make sure there are no spaces and it reads correctly (e.g., `yourcompany.pstn.twilio.com`). Verify you only entered the name part in Twilio and didn't accidentally include a localized URI or duplicate the `.pstn.twilio.com` suffix.
-    - **Check your username and credentials** — the username is **not** the same as the "Friendly name" in the credential list. Double-check you entered the actual username.
+  <Accordion title="След свързването входящите работят, но изходящите не работят?">
+    - **Проверете вашия Termination SIP URI** — уверете се, че няма интервали и се чете правилно (напр. `yourcompany.pstn.twilio.com`). Проверете дали сте въвели само частта с името в Twilio и не сте добавили случайно локализиран URI или дублирали суфикса `.pstn.twilio.com`.
+    - **Проверете вашето потребителско име и идентификационни данни** — потребителското име **не е** същото като "Friendly name" в списъка с идентификационни данни. Проверете отново дали сте въвели действителното потребителско име.
 
     <Frame>
      <img
@@ -213,8 +213,8 @@ Your SIP credentials need to be secure:
    </Frame>
   </Accordion>
 
-  <Accordion title="How do I set up dialing to international countries?">
-    1. In the Twilio Console search bar, search for **"geo"** to find **Voice Geographic Permissions**.
+  <Accordion title="Как да настроя набиране към международни държави?">
+    1. В полето за търсене на Twilio Console търсете **"geo"**, за да намерите **Voice Geographic Permissions**.
 
     <Frame>
      <img
@@ -223,7 +223,7 @@ Your SIP credentials need to be secure:
      />
    </Frame>
 
-    2. Choose **"Elastic SIP Trunking"** in the selector, then select the countries you want to dial.
+    2. Изберете **"Elastic SIP Trunking"** в селектора, след това изберете държавите, към които искате да набирате.
 
     <Frame>
      <img
@@ -237,7 +237,5 @@ Your SIP credentials need to be secure:
 ---
 
 <Note>
-  Need help setting up? Our support team specializes in helping customers
-  integrate their phone systems. We'll guide you through the entire process,
-  ensuring a smooth setup with your specific phone system configuration.
+  Нуждаете се от помощ при настройката? Нашият екип за поддръжка е специализиран в помагането на клиентите да интегрират своите телефонни системи. Ще ви напътствам през целия процес, осигурявайки гладка настройка с вашата специфична конфигурация на телефонната система.
 </Note>

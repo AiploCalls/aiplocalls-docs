@@ -1,88 +1,90 @@
 ---
-title: "Assistant Modes"
+---
+title: "Режими на Асистента"
 icon: "wave-pulse"
-description: "Understand the three voice generation modes available for your AI assistants and when to use each one."
+description: "Разберете трите режима на генериране на глас, налични за вашите AI асистенти, и кога да използвате всеки от тях."
 ---
 
-AI assistants on Aiplocalls can speak in **three distinct modes**. Each mode determines how a caller's speech is understood and how the assistant's reply is generated:
+AI асистентите в Aiplocalls могат да говорят в **три различни режима**. Всеки режим определя как се разбира речта на обаждащия се и как се генерира отговорът на асистента:
 
 <Callout>
-Choosing the right mode can improve response time, naturalness, and overall call experience.
+Избирането на правилния режим може да подобри времето за отговор, естествеността и цялостното изживяване на разговора.
 </Callout>
 
 ## 1. Pipeline
 
 | | |
 |---|---|
-| **Label in UI** | `Pipeline` |
-| **How it works** | Speech-to-Text → LLM → Text-to-Speech |
-| **Latency** | ~800 – 1500 ms (depends on language & model) |
-| **Best for** | Complex reasoning, dynamic prompts, multi-sentence replies |
+| **Етикет в UI** | `Pipeline` |
+| **Как работи** | Speech-to-Text → LLM → Text-to-Speech |
+| **Латентност** | ~800 – 1500 ms (зависи от езика и модела) |
+| **Най-добър за** | Сложно разсъждение, динамични промпти, отговори от множество изречения |
 
-Pipeline mode first transcribes the caller's words into text, runs that text through the language model, then converts the response back to audio. It's a tried-and-true approach that offers maximum flexibility:
+Режимът Pipeline първо транскрибира думите на обаждащия се в текст, прекарва този текст през езиковия модел, след което конвертира отговора обратно в аудио. Това е изпитан подход, който предлага максимална гъвкавост:
 
-- Supports **all voices** in the library (including custom-cloned voices).
-- Handles **long-form answers** or paragraph-style responses well.
-- Allows the LLM to **inject variables** and reference earlier context cleanly.
+- Поддържа **всички гласове** в библиотеката (включително персонализирани клонирани гласове).
+- Справя се добре с **дълги отговори** или отговори в стил параграф.
+- Позволява на LLM да **инжектира променливи** и да референцира по-ранен контекст чисто.
 
-### When to choose Pipeline
+### Кога да изберете Pipeline
 
-1. You need rich, multi-sentence answers (e.g.
-   support queries, detailed explanations).
-2. The assistant must reason over **structured data** or complex prompts.
-3. You prefer absolute control of the spoken voice (clone or brand voice).
+1. Нуждаете се от богати отговори от множество изречения (напр.
+   заявки за поддръжка, подробни обяснения).
+2. Асистентът трябва да разсъждава над **структурирани данни** или сложни промпти.
+3. Предпочитате абсолютен контрол над говорещия глас (клониран или фирмен глас).
 
 ## 2. Speech-to-Speech (Multimodal)
 
 | | |
 |---|---|
-| **Label in UI** | `Speech-to-speech` |
-| **How it works** | Direct **speech-to-speech** generation (no intermediate text) |
-| **Latency** | ~300 – 600 ms (ultra low) |
-| **Best for** | Natural back-and-forth, short & reactive replies |
+| **Етикет в UI** | `Speech-to-speech` |
+| **Как работи** | Директно **speech-to-speech** генериране (без междинен текст) |
+| **Латентност** | ~300 – 600 ms (ултра ниска) |
+| **Най-добър за** | Естествен диалог, кратки и реактивни отговори |
 
-Speech-to-speech mode skips separate transcription and TTS. Instead, it uses a **multimodal model** that listens and speaks directly, producing more conversational flow:
+Режимът Speech-to-speech прескача отделната транскрипция и TTS. Вместо това използва **мултимодален модел**, който слуша и говори директно, създавайки по-разговорен поток:
 
-- **Fast turn-taking** – callers experience near-instant responses.
-- Generates **more expressive prosody** natively (intonation, fillers).
-- Currently supports a **limited voice set**, but more are added regularly.
+- **Бързо редуване** – обаждащите се изпитват почти мгновени отговори.
+- Генерира **по-експресивна прозодия** естествено (интонация, запълвачи).
+- В момента поддържа **ограничен набор гласове**, но редовно се добавят нови.
 
-### When to choose Speech-to-Speech
+### Кога да изберете Speech-to-Speech
 
-1. The conversation needs to feel **snappy** (sales, booking confirmations).
-2. Your replies are generally **short sentences** or quick acknowledgements.
-3. You're okay with the system-provided voice options for faster interaction.
+1. Разговорът трябва да се чувства **отзивчив** (продажби, потвърждения на резервации).
+2. Отговорите ви са основно **кратки изречения** или бързи потвърждения.
+3. Доволни сте от предоставените от системата опции за глас за по-бърза интеракция.
 
 <Note>
-Speech-to-speech is evolving rapidly. If you need a custom cloned voice with low latency, try **Dualplex**.
+Speech-to-speech се развива бързо. Ако се нуждаете от персонализиран клониран глас с ниска латентност, опитайте **Dualplex**.
 </Note>
 
 ## 3. Dualplex (Beta)
 
 | | |
 |---|---|
-| **Label in UI** | `Dualplex` |
-| **How it works** | Multimodal STT + LLM (speech-to-speech) with ElevenLabs TTS output |
-| **Latency** | Low (varies by voice and model) |
-| **Best for** | Fast, natural replies with high-quality/brand voices (cloned) |
+| **Етикет в UI** | `Dualplex` |
+| **Как работи** | Мултимодален STT + LLM (speech-to-speech) с ElevenLabs TTS изход |
+| **Латентност** | Ниска (варира според гласа и модела) |
+| **Най-добър за** | Бързи, естествени отговори с висококачествени/фирмени гласове (клонирани) |
 
-Dualplex blends the responsiveness of speech-to-speech with the premium voices and cloning from ElevenLabs used in Pipeline. The assistant uses the multimodal model to understand the caller and plan the reply, then renders the final speech through ElevenLabs for consistent, high‑fidelity output.
+Dualplex комбинира отзивчивостта на speech-to-speech с премиум гласовете и клонирането от ElevenLabs, използвани в Pipeline. Асистентът използва мултимодалния модел за разбиране на обаждащия се и планиране на отговора, след което рендира финалната реч чрез ElevenLabs за последователен, висококачествен изход.
 
-- **Near-instant turn-taking** similar to speech-to-speech.
-- Access to **ElevenLabs** voice library, including **custom-cloned voices**.
-- Great for **short to medium** replies with expressive prosody.
-- **Recommended default** for most use-cases today; currently in **Beta**.
+- **Почти мгновено редуване** подобно на speech-to-speech.
+- Достъп до библиотеката с гласове на **ElevenLabs**, включително **персонализирани клонирани гласове**.
+- Отлично за **кратки до средни** отговори с експресивна прозодия.
+- **Препоръчвана по подразбиране** за повечето случаи на употреба днес; в момента в **Beta**.
 
-### When to choose Dualplex
+### Кога да изберете Dualplex
 
-1. You want fast back-and-forth but need a branded or cloned voice.
-2. You want more expressive delivery without giving up precise voice choice.
-3. You're comfortable using a new feature that is still in Beta.
+1. Искате бърз диалог, но се нуждаете от фирмен или клониран глас.
+2. Искате по-експресивно предаване без да се откажете от прецизния избор на глас.
+3. Чувствате се комфортно да използвате нова функция, която все още е в Beta.
 
-## Switching modes
+## Превключване на режими
 
-You can pick the mode for each assistant in **Assistant → Settings → Voice Engine**. Test all three modes to see which delivers the best balance of speed and quality for your use-case. `Dualplex` is currently labeled **Beta**.
+Можете да изберете режима за всеки асистент в **Assistant → Settings → Voice Engine**. Тествайте и трите режима, за да видите кой предлага най-добрия баланс между скорост и качество за вашия случай на употреба. `Dualplex` в момента е обозначен като **Beta**.
 
 ---
 
-**Pro Tip:** Record two calls – one in each mode – and compare the caller's perceived latency and engagement level to decide which fits your flow. 
+**Съвет за напреднали:** Запишете две обаждания – по едно във всеки режим – и сравнете възприеманата от обаждащия се латентност и ниво на ангажираност, за да решите кой подхожда на вашия поток.
+---

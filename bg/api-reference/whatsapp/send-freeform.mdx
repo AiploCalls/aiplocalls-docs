@@ -1,82 +1,82 @@
 ---
-title: "Send Freeform Message"
+title: "Изпращане на свободна форма съобщение"
 api: "POST /user/whatsapp/send-freeform"
-description: "Send a free-text WhatsApp message within an active 24-hour session"
+description: "Изпращане на WhatsApp съобщение със свободен текст в рамките на активна 24-часова сесия"
 ---
 
-This endpoint sends a freeform (free-text) WhatsApp message to a recipient. Unlike template messages, freeform messages can contain any text but **require an active 24-hour messaging window** — meaning the recipient must have sent a message to your WhatsApp sender within the last 24 hours.
+Този endpoint изпраща WhatsApp съобщение със свободна форма (свободен текст) до получател. За разлика от template съобщенията, съобщенията със свободна форма могат да съдържат всякакъв текст, но **изискват активен 24-часов прозорец за съобщения** — което означава, че получателят трябва да е изпратил съобщение на вашия WhatsApp изпращач в рамките на последните 24 часа.
 
 <Warning>
-  Freeform messages can only be sent during an active 24-hour messaging window. If the session has expired, you must send a [template message](/api-reference/whatsapp/send-template) first to re-initiate the conversation. Use the [Session Status](/api-reference/whatsapp/session-status) endpoint to check if a session is active.
+  Съобщения със свободна форма могат да се изпращат само по време на активен 24-часов прозорец за съобщения. Ако сесията е изтекла, първо трябва да изпратите [template съобщение](/api-reference/whatsapp/send-template), за да започнете отново разговора. Използвайте [Session Status](/api-reference/whatsapp/session-status) endpoint, за да проверите дали сесията е активна.
 </Warning>
 
 <Note>
-  This endpoint is rate-limited to **5 requests per second** per user.
+  Този endpoint е ограничен до **5 заявки в секунда** на потребител.
 </Note>
 
 ### Request Body
 
 <ParamField body="sender_id" type="integer" required>
-  The ID of the WhatsApp sender to send from (obtained from the [Get Senders](/api-reference/whatsapp/get-senders) endpoint)
+  ID на WhatsApp изпращача, от който да се изпрати (получен от [Get Senders](/api-reference/whatsapp/get-senders) endpoint)
 </ParamField>
 
 <ParamField body="recipient_phone" type="string" required>
-  The recipient's phone number in international format (e.g., `+1234567890`)
+  Телефонният номер на получателя в международен формат (например, `+1234567890`)
 </ParamField>
 
 <ParamField body="message" type="string" required>
-  The message content to send (max 4096 characters)
+  Съдържанието на съобщението за изпращане (максимум 4096 символа)
 </ParamField>
 
 ### Response Fields
 
 <ResponseField name="success" type="boolean">
-  Whether the message was sent successfully
+  Дали съобщението е изпратено успешно
 </ResponseField>
 
 <ResponseField name="conversation_id" type="integer">
-  The ID of the conversation associated with this message
+  ID на разговора, свързан с това съобщение
 </ResponseField>
 
 <ResponseField name="message_id" type="integer">
-  The ID of the conversation message record
+  ID на записа на съобщението в разговора
 </ResponseField>
 
 <ResponseField name="whatsapp_message_id" type="integer">
-  The ID of the WhatsApp message record
+  ID на записа на WhatsApp съобщението
 </ResponseField>
 
 <ResponseField name="message_sid" type="string">
-  The Twilio message SID for tracking delivery
+  Twilio message SID за проследяване на доставката
 </ResponseField>
 
 <ResponseField name="session_status" type="object">
-  Updated session status after sending the message
-  <Expandable title="Session status properties">
+  Обновен статус на сесията след изпращане на съобщението
+  <Expandable title="Свойства на статуса на сесията">
     <ResponseField name="is_open" type="boolean">
-      Whether the 24-hour messaging window is currently open
+      Дали 24-часовият прозорец за съобщения е в момента отворен
     </ResponseField>
     <ResponseField name="can_send_freeform" type="boolean">
-      Whether freeform messages can be sent right now
+      Дали съобщения със свободна форма могат да се изпращат точно сега
     </ResponseField>
     <ResponseField name="requires_template" type="boolean">
-      Whether a template message is required
+      Дали е необходимо template съобщение
     </ResponseField>
     <ResponseField name="message" type="string">
-      Human-readable description of the session state
+      Четимо описание на състоянието на сесията
     </ResponseField>
     <ResponseField name="minutes_remaining" type="integer">
-      Minutes remaining in the 24-hour window
+      Оставащи минути в 24-часовия прозорец
     </ResponseField>
     <ResponseField name="expires_at" type="string">
-      ISO 8601 timestamp when the session expires
+      ISO 8601 timestamp кога сесията изтича
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 ### Error Responses
 
-<ResponseField name="402 Insufficient Balance">
+<ResponseField name="402 Недостатъчен баланс">
   <Expandable title="Error Response">
     <ResponseField name="success" type="boolean">`false`</ResponseField>
     <ResponseField name="error" type="string">`Insufficient balance. Please top up your account.`</ResponseField>
@@ -84,18 +84,18 @@ This endpoint sends a freeform (free-text) WhatsApp message to a recipient. Unli
   </Expandable>
 </ResponseField>
 
-<ResponseField name="403 Session Expired">
+<ResponseField name="403 Сесията е изтекла">
   <Expandable title="Error Response">
     <ResponseField name="success" type="boolean">`false`</ResponseField>
-    <ResponseField name="error" type="string">Message indicating the 24-hour messaging window has expired</ResponseField>
+    <ResponseField name="error" type="string">Съобщение, указващо че 24-часовият прозорец за съобщения е изтекъл</ResponseField>
     <ResponseField name="error_code" type="string">`SESSION_EXPIRED`</ResponseField>
     <ResponseField name="session_status" type="object">
-      Current session status with `is_open`, `can_send_freeform`, `requires_template`, and `message` fields
+      Текущ статус на сесията с полета `is_open`, `can_send_freeform`, `requires_template` и `message`
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-<ResponseField name="404 Not Found">
+<ResponseField name="404 Не е намерен">
   <Expandable title="Error Response">
     <ResponseField name="success" type="boolean">`false`</ResponseField>
     <ResponseField name="error" type="string">`Sender not found or does not belong to you`</ResponseField>
@@ -103,10 +103,10 @@ This endpoint sends a freeform (free-text) WhatsApp message to a recipient. Unli
   </Expandable>
 </ResponseField>
 
-<ResponseField name="503 Sender Offline">
+<ResponseField name="503 Изпращачът е офлайн">
   <Expandable title="Error Response">
     <ResponseField name="success" type="boolean">`false`</ResponseField>
-    <ResponseField name="error" type="string">Message indicating the sender is currently offline</ResponseField>
+    <ResponseField name="error" type="string">Съобщение, указващо че изпращачът в момента е офлайн</ResponseField>
     <ResponseField name="error_code" type="string">`SENDER_OFFLINE`</ResponseField>
   </Expandable>
 </ResponseField>
@@ -235,20 +235,22 @@ print(response.json())
 
 </ResponseExample>
 
-### 24-Hour Messaging Window
+### 24-часов прозорец за съобщения
 
-WhatsApp enforces a **24-hour messaging window** policy:
+WhatsApp прилага политика за **24-часов прозорец за съобщения**:
 
-1. When a customer sends a message to your WhatsApp Business number, a 24-hour window opens.
-2. During this window, you can send freeform messages without restrictions.
-3. After the window expires, you must use a [template message](/api-reference/whatsapp/send-template) to re-initiate the conversation.
-4. Each new customer message resets the 24-hour timer.
+1. Когато клиент изпрати съобщение на вашия WhatsApp Business номер, се отваря 24-часов прозорец.
+2. По време на този прозорец можете да изпращате съобщения със свободна форма без ограничения.
+3. След като прозорецът изтече, трябва да използвате [template съобщение](/api-reference/whatsapp/send-template), за да започнете отново разговора.
+4. Всяко ново съобщение от клиента нулира 24-часовия таймер.
 
-Use the [Session Status](/api-reference/whatsapp/session-status) endpoint to check whether a session is active before attempting to send a freeform message.
+Използвайте [Session Status](/api-reference/whatsapp/session-status) endpoint, за да проверите дали сесията е активна преди да се опитате да изпратите съобщение със свободна форма.
 
-### Notes
+### Забележки
 
-- Maximum message length is **4,096 characters** (WhatsApp limit).
-- The sender must be `online`. Offline senders return a `503` error.
-- Message costs are automatically deducted from your account balance.
-- Rate limit: 5 requests per second per user.
+- Максималната дължина на съобщението е **4,096 символа** (ограничение на WhatsApp).
+- Изпращачът трябва да е `online`. Офлайн изпращачи връщат `503` грешка.
+- Разходите за съобщения се приспадат автоматично от баланса ви.
+- Ограничение за заявки: 5 заявки в секунда на потребител.
+
+---

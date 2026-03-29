@@ -1,37 +1,38 @@
 ---
-title: "Delete assistant"
+---
+title: "Изтриване на асистент"
 api: "DELETE /user/assistant/{id}"
-description: "Delete a specific AI assistant"
+description: "Изтриване на конкретен AI асистент"
 ---
 
-This endpoint allows you to permanently delete an AI assistant that belongs to the authenticated user.
+Този endpoint ви позволява да изтриете окончателно AI асистент, който принадлежи на автентикирания потребител.
 
-### Path Parameters
+### Path Параметри
 
 <ParamField path="id" type="integer" required>
-  The unique identifier of the assistant to delete
+  Уникалният идентификатор на асистента за изтриване
 </ParamField>
 
-### Response
+### Отговор
 
 <ResponseField name="message" type="string">
-  Confirmation message indicating the assistant was deleted successfully
+  Съобщение за потвърждение, указващо че асистентът е изтрит успешно
 </ResponseField>
 
-### Error Responses
+### Отговори при грешка
 
 <ResponseField name="404 Not Found">
-  <Expandable title="Error Response">
+  <Expandable title="Отговор при грешка">
     <ResponseField name="message" type="string">
-      Error message when the assistant is not found or doesn't belong to the authenticated user
+      Съобщение за грешка, когато асистентът не е намерен или не принадлежи на автентикирания потребител
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="500 Internal Server Error">
-  <Expandable title="Error Response">
+  <Expandable title="Отговор при грешка">
     <ResponseField name="message" type="string">
-      Error message indicating assistant deletion failure
+      Съобщение за грешка, указващо неуспешно изтриване на асистента
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -58,9 +59,10 @@ This endpoint allows you to permanently delete an AI assistant that belongs to t
 
 </ResponseExample>
 
-### Notes
+### Бележки
 
-- Only assistants that belong to the authenticated user can be deleted
-- Once an assistant is deleted, it cannot be recovered
-- This action will permanently remove the assistant and all its configuration
-- If the assistant is currently handling active calls, those calls may be affected
+- Само асистенти, които принадлежат на автентикирания потребител, могат да бъдат изтрити
+- След като асистент бъде изтрит, той не може да бъде възстановен
+- Това действие ще премахне окончателно асистента и цялата му конфигурация
+- Ако асистентът в момента обработва активни повиквания, тези повиквания могат да бъдат засегнати
+---

@@ -1,53 +1,53 @@
 ---
-title: "Search available phone numbers"
+title: "Търсене на налични телефонни номера"
 api: "GET /user/phone-numbers/search"
-description: "Search for available phone numbers that can be purchased"
+description: "Търсене на налични телефонни номера, които могат да бъдат закупени"
 ---
 
-This endpoint allows you to search for available phone numbers from our provider. Use the results to find a number you want to purchase.
+Този endpoint ви позволява да търсите налични телефонни номера от нашия доставчик. Използвайте резултатите, за да намерите номер, който искате да закупите.
 
 ### Query Parameters
 
 <ParamField query="country_code" type="string" default="US">
-  The ISO 3166-1 alpha-2 country code to search in (e.g., US, GB, AU, CA)
+  ISO 3166-1 alpha-2 кода на държавата за търсене (напр. US, GB, AU, CA)
 </ParamField>
 
 <ParamField query="contains" type="string">
-  Filter phone numbers that contain specific digits (numeric characters only, max 10 digits)
+  Филтриране на телефонни номера, които съдържат специфични цифри (само цифрови знаци, максимум 10 цифри)
 </ParamField>
 
 ### Response
 
 <ResponseField name="data" type="array">
-  Array of available phone numbers
+  Масив от налични телефонни номера
   
-  <Expandable title="available number properties">
+  <Expandable title="свойства на наличните номера">
     <ResponseField name="phone_number" type="string">
-      The phone number in E.164 format
+      Телефонният номер в E.164 формат
     </ResponseField>
     
     <ResponseField name="phone_number_formatted" type="string">
-      The phone number formatted for display
+      Телефонният номер форматиран за показване
     </ResponseField>
     
     <ResponseField name="country_code" type="string">
-      The ISO country code
+      ISO кода на държавата
     </ResponseField>
     
     <ResponseField name="price" type="number">
-      Monthly rental price in USD
+      Месечна цена за наем в долари
     </ResponseField>
     
     <ResponseField name="stripe_price_id" type="string">
-      The Stripe price ID for billing
+      Stripe price ID за фактуриране
     </ResponseField>
     
     <ResponseField name="address_requirements" type="string">
-      Address requirements for this number: `none`, `local`, `foreign`, or `inventory`
+      Изисквания за адрес за този номер: `none`, `local`, `foreign`, или `inventory`
     </ResponseField>
     
     <ResponseField name="sms_capable" type="boolean">
-      Whether the number supports SMS
+      Дали номерът поддържа SMS
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -87,17 +87,17 @@ This endpoint allows you to search for available phone numbers from our provider
 
 </ResponseExample>
 
-### Supported Countries
+### Поддържани държави
 
-| Country | Code |
+| Държава | Код |
 |---------|------|
-| United States | US |
-| Canada | CA |
-| United Kingdom | GB |
-| Australia | AU |
-| Israel | IL |
-| Poland | PL |
-| Finland | FI |
-| Netherlands | NL |
-| Denmark | DK |
-| Italy | IT |
+| Съединени щати | US |
+| Канада | CA |
+| Обединено кралство | GB |
+| Австралия | AU |
+| Израел | IL |
+| Полша | PL |
+| Финландия | FI |
+| Нидерландия | NL |
+| Дания | DK |
+| Италия | IT |

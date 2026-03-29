@@ -1,44 +1,44 @@
 ---
-title: "Disable assistant inbound webhook"
+title: "Деактивиране на входящ webhook за асистент"
 api: "POST /user/assistants/disable-inbound-webhook"
-description: "Disable inbound webhook notifications for a specific assistant"
+description: "Деактивиране на входящи webhook нотификации за конкретен асистент"
 ---
 
-This endpoint disables inbound webhook notifications for an assistant, stopping the delivery of real-time updates about inbound call completions and data.
+Този endpoint деактивира входящите webhook нотификации за асистент, спирайки доставката на real-time актуализации относно завършването и данните от входящи обаждания.
 
 ### Request Body
 
 <ParamField body="assistant_id" type="integer" required>
-  The ID of the assistant to disable webhook for
+  ID-то на асистента, за който да се деактивира webhook-а
 </ParamField>
 
 ### Response
 
 <ResponseField name="message" type="string">
-  Success message confirming webhook was disabled
+  Съобщение за успех, потвърждаващо че webhook-а е деактивиран
 </ResponseField>
 
 <ResponseField name="data" type="array">
-  Empty array (reserved for future use)
+  Празен масив (резервиран за бъдеща употреба)
 </ResponseField>
 
-### Error Responses
+### Грешни отговори
 
 <ResponseField name="404 Not Found">
-  <Expandable title="Error Response">
+  <Expandable title="Отговор при грешка">
     <ResponseField name="message" type="string">
-      Error message when the assistant is not found or doesn't belong to the authenticated user
+      Съобщение за грешка когато асистентът не е намерен или не принадлежи на аутентикирания потребител
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="422 Validation Error">
-  <Expandable title="Error Response">
+  <Expandable title="Отговор при грешка">
     <ResponseField name="message" type="string">
-      Error message indicating validation failure
+      Съобщение за грешка указващо неуспешна валидация
     </ResponseField>
     <ResponseField name="errors" type="object">
-      Detailed validation errors for each field
+      Подробни грешки от валидация за всяко поле
     </ResponseField>
   </Expandable>
 </ResponseField>

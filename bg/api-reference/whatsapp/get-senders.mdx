@@ -1,47 +1,47 @@
 ---
-title: "Get WhatsApp Senders"
+title: "Получаване на WhatsApp изпращачи"
 api: "GET /user/whatsapp/senders"
-description: "List all WhatsApp Business senders for the authenticated user"
+description: "Списък на всички WhatsApp Business изпращачи за удостоверения потребител"
 ---
 
-This endpoint returns a list of WhatsApp Business senders (phone numbers) configured for your account. Use this to retrieve sender IDs needed for sending messages.
+Този endpoint връща списък с WhatsApp Business изпращачи (телефонни номера), конфигурирани за вашия акаунт. Използвайте това за извличане на ID-та на изпращачи, необходими за изпращане на съобщения.
 
-### Query Parameters
+### Query Параметри
 
 <ParamField query="status" type="string" optional>
-  Filter senders by status. Default: `online`. Use `all` to return all senders regardless of status.
+  Филтриране на изпращачи по статус. По подразбиране: `online`. Използвайте `all` за да върнете всички изпращачи независимо от статуса.
 </ParamField>
 
-### Response Fields
+### Response Полета
 
 <ResponseField name="data" type="array">
-  <Expandable title="Sender object properties">
+  <Expandable title="Свойства на обекта изпращач">
     <ResponseField name="id" type="integer">
-      The unique identifier of the WhatsApp sender. Use this ID when sending messages.
+      Уникалният идентификатор на WhatsApp изпращача. Използвайте този ID при изпращане на съобщения.
     </ResponseField>
 
     <ResponseField name="phone_number" type="string">
-      The sender's phone number in E.164 format (e.g., `+14155551234`)
+      Телефонният номер на изпращача в E.164 формат (напр., `+14155551234`)
     </ResponseField>
 
     <ResponseField name="display_name" type="string">
-      The WhatsApp Business display name (business name shown to recipients)
+      Показваното име на WhatsApp Business (името на бизнеса, показвано на получателите)
     </ResponseField>
 
     <ResponseField name="status" type="string">
-      The sender's current status: `online` or `offline`
+      Текущият статус на изпращача: `online` или `offline`
     </ResponseField>
 
     <ResponseField name="quality_rating" type="string">
-      Meta's quality rating for this sender: `GREEN`, `YELLOW`, or `RED`
+      Рейтингът на качеството от Meta за този изпращач: `GREEN`, `YELLOW`, или `RED`
     </ResponseField>
 
     <ResponseField name="messaging_limit" type="integer">
-      The current messaging limit (number of unique recipients per 24 hours). `null` means unlimited.
+      Текущата граница за съобщения (брой уникални получатели за 24 часа). `null` означава неограничено.
     </ResponseField>
 
     <ResponseField name="messaging_limit_formatted" type="string">
-      Human-readable messaging limit (e.g., `1,000 / 24hr`, `10,000 / 24hr`, or `Unlimited`)
+      Четима за човека граница за съобщения (напр., `1,000 / 24hr`, `10,000 / 24hr`, или `Unlimited`)
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -53,7 +53,7 @@ curl -X GET "https://call.aiployees.com/api/user/whatsapp/senders" \
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
-```bash Filter all senders
+```bash Филтрирай всички изпращачи
 curl -X GET "https://call.aiployees.com/api/user/whatsapp/senders?status=all" \
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
@@ -114,7 +114,7 @@ for sender in senders:
 }
 ```
 
-```json 200 Empty Response
+```json 200 Празен отговор
 {
   "data": []
 }
@@ -122,9 +122,11 @@ for sender in senders:
 
 </ResponseExample>
 
-### Notes
+### Забележки
 
-- Only senders with status `online` are returned by default. Use `?status=all` to include offline senders.
-- Sender status is synced with Meta every 5 minutes automatically.
-- The `id` field is what you need to pass as `sender_id` when sending messages.
-- Quality rating affects your messaging limits. A `RED` rating may restrict your ability to send messages.
+- По подразбиране се връщат само изпращачи със статус `online`. Използвайте `?status=all` за да включите офлайн изпращачи.
+- Статусът на изпращача се синхронизира с Meta на всеки 5 минути автоматично.
+- Полето `id` е това, което трябва да подадете като `sender_id` при изпращане на съобщения.
+- Рейтингът на качеството влияе върху вашите лимити за съобщения. Рейтинг `RED` може да ограничи способността ви да изпращате съобщения.
+
+---

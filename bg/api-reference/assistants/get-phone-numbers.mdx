@@ -1,15 +1,15 @@
 ---
-title: "Get available phone numbers"
+title: "Получаване на налични телефонни номера"
 api: "GET /user/assistants/phone-numbers"
-description: "Retrieve all available phone numbers for assistant assignment"
+description: "Извличане на всички налични телефонни номера за възлагане на асистенти"
 ---
 
-This endpoint returns a list of phone numbers owned by the authenticated user that can be assigned to assistants, with optional filtering by assistant type.
+Тази крайна точка връща списък с телефонни номера, притежавани от удостоверения потребител, които могат да бъдат възложени на асистенти, с опционално филтриране по тип асистент.
 
 ### Query Parameters
 
 <ParamField query="type" type="string" optional>
-  Filter phone numbers by assistant type. Options: `inbound`, `outbound`
+  Филтриране на телефонни номера по тип асистент. Опции: `inbound`, `outbound`
 </ParamField>
 
 ### Response fields
@@ -17,23 +17,23 @@ This endpoint returns a list of phone numbers owned by the authenticated user th
 <ResponseField name="data" type="array">
   <Expandable title="properties">
     <ResponseField name="id" type="integer">
-      The unique identifier of the phone number
+      Уникалният идентификатор на телефонния номер
     </ResponseField>
 
     <ResponseField name="phone_number" type="string">
-      The phone number in E.164 format
+      Телефонният номер в E.164 формат
     </ResponseField>
 
     <ResponseField name="country_code" type="string">
-      The country code for the phone number
+      Кодът на страната за телефонния номер
     </ResponseField>
 
     <ResponseField name="type_label" type="string">
-      The human-readable type label for the phone number
+      Етикетът на типа за четене от човек за телефонния номер
     </ResponseField>
 
     <ResponseField name="is_available" type="boolean">
-      Whether the phone number is available for assignment (not currently assigned to an inbound assistant)
+      Дали телефонният номер е наличен за възлагане (в момента не е възложен на входящ асистент)
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -68,10 +68,10 @@ This endpoint returns a list of phone numbers owned by the authenticated user th
 
 </ResponseExample>
 
-### Notes
+### Бележки
 
-- Only phone numbers owned by the authenticated user are returned
-- When `type=inbound` is specified, caller ID numbers and already assigned numbers are filtered out
-- The `is_available` field indicates if the number can be assigned to a new inbound assistant
-- Phone numbers are returned in the values collection format (indexed array)
-- Use the `id` field when assigning phone numbers to assistants
+- Връщат се само телефонни номера, притежавани от удостоверения потребител
+- Когато е зададен `type=inbound`, номерата за caller ID и вече възложените номера се филтрират
+- Полето `is_available` показва дали номерът може да бъде възложен на нов входящ асистент
+- Телефонните номера се връщат във формат на колекция от стойности (индексиран масив)
+- Използвайте полето `id` при възлагане на телефонни номера на асистенти

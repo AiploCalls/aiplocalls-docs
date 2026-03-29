@@ -1,14 +1,14 @@
 ---
-title: "System Prompts"
+title: "Системни Prompt-ове"
 icon: "brain"
-description: "Learn how to create effective system prompts - the core intelligence of your AI assistant"
+description: "Научете как да създавате ефективни системни prompt-ове - ядрото на интелигентността на вашия AI асистент"
 ---
 
-The system prompt is the most crucial component of your AI assistant. It defines your assistant's personality, behavior, knowledge, and capabilities. Think of it as the "brain" and "training manual" combined.
+Системният prompt е най-важният компонент на вашия AI асистент. Той дефинира личността, поведението, знанията и възможностите на асистента. Помислете за него като за "мозъка" и "ръководството за обучение" заедно.
 
-## Editing Options
+## Опции за Редактиране
 
-You have three ways to create and edit your system prompt:
+Имате три начина за създаване и редактиране на системния си prompt:
 
 <Frame>
   <img src="/resources/ai-assistants/system-prompt-options.png" alt="System Prompt Editing Options" />
@@ -16,161 +16,161 @@ You have three ways to create and edit your system prompt:
 
 <CardGroup cols={3}>
   <Card title="AI Prompt Editor" icon="sparkles" href="/ai-assistants/ai-prompt-editor">
-    Chat with AI to edit your prompt. Best for quick iterations and improvements.
+    Чатете с AI за редактиране на prompt-а. Най-добър за бързи итерации и подобрения.
   </Card>
   <Card title="Flow Builder" icon="share-nodes" href="/ai-assistants/flow-builder">
-    Visual drag-and-drop editor. Best for structured, multi-path conversations.
+    Визуален drag-and-drop редактор. Най-добър за структурирани разговори с множество пътища.
   </Card>
   <Card title="Classic Editor" icon="pencil">
-    Direct text editing. Best for full control and manual fine-tuning.
+    Директно редактиране на текст. Най-добър за пълен контрол и ръчно фино настройване.
   </Card>
 </CardGroup>
 
-## Quick Start with Templates
+## Бърз Старт с Шаблони
 
-To get started quickly:
+За да започнете бързо:
 
-1. Go to your [assistant settings](/ai-assistants/settings/prompt-and-tools#system-prompt)
-2. Find the system prompt field
-3. Click the "Templates" button nearby
-4. Choose a template that matches your use case
-5. Customize it for your needs
+1. Отидете в [настройките на асистента](/ai-assistants/settings/prompt-and-tools#system-prompt)
+2. Намерете полето за системен prompt
+3. Кликнете бутона "Templates" наблизо
+4. Изберете шаблон, който отговаря на вашия случай на употреба
+5. Персонализирайте го според нуждите си
 
-## Language Support
+## Поддръжка на Езици
 
-Your system prompt can be written in any language, regardless of the spoken language setting:
+Вашият системен prompt може да бъде написан на всеки език, независимо от настройката за говоримия език:
 
-- Write the prompt in your preferred language
-- Set the spoken language separately in [assistant settings](/ai-assistants/settings/general#language-configuration)
-- The AI will follow the prompt's instructions while speaking in the selected language
+- Напишете prompt-а на предпочитания от вас език
+- Задайте говоримия език отделно в [настройките на асистента](/ai-assistants/settings/general#language-configuration)
+- AI-ят ще следва инструкциите на prompt-а, докато говори на избрания език
 
-For example:
+Например:
 
-- System prompt in English, spoken language set to Spanish
-- System prompt in German, spoken language set to French
-- System prompt in Chinese, spoken language set to English
+- Системен prompt на английски, говорим език зададен на испански
+- Системен prompt на немски, говорим език зададен на френски
+- Системен prompt на китайски, говорим език зададен на английски
 
-## Why They Matter
+## Защо са Важни
 
-Your system prompt:
+Вашият системен prompt:
 
-- Shapes how the AI thinks and responds
-- Defines conversation boundaries
-- Provides essential knowledge
-- Controls behavior and tone
-- Determines handling of edge cases
+- Оформя как AI-ят мисли и отговаря
+- Дефинира границите на разговора
+- Предоставя основни знания
+- Контролира поведението и тона
+- Определя как се справя с нестандартни случаи
 
-## Key Components
+## Ключови Компоненти
 
-A good system prompt should include:
+Добрият системен prompt трябва да включва:
 
-### 1. Role & Identity
-
-```
-You are a professional sales representative for [Company]. You specialize in [Product/Service] and have extensive knowledge of our offerings.
-```
-
-### 2. Conversation Style
+### 1. Роля и Идентичност
 
 ```
-Maintain a friendly, professional tone. Use clear, concise language. Avoid technical jargon unless specifically asked.
+Вие сте професионален търговски представител за [Компания]. Специализирате се в [Продукт/Услуга] и имате обширни знания за нашите предложения.
 ```
 
-### 3. Key Information
+### 2. Стил на Разговор
 
 ```
-Our main products are:
-- Product A ($X/month): [features]
-- Product B ($Y/month): [features]
-Current promotion: 20% off first 3 months
+Поддържайте приятелски, професионален тон. Използвайте ясен, сбит език. Избягвайте техническия жаргон, освен ако не бъде специално поискано.
 ```
 
-### 4. Behavioral Guidelines
+### 3. Ключова Информация
 
 ```
-- Always verify customer information before discussing account details
-- Transfer to a human agent if the customer seems frustrated
-- Don't make promises about delivery dates
+Нашите основни продукти са:
+- Продукт A ($X/месец): [характеристики]
+- Продукт B ($Y/месец): [характеристики]
+Текуща промоция: 20% отстъпка за първите 3 месеца
 ```
 
-### 5. Response Framework
+### 4. Поведенчески Насоки
 
 ```
-When asked about pricing:
-1. First understand their needs
-2. Present relevant package options
-3. Explain the value proposition
-4. Share any applicable discounts
+- Винаги проверявайте информацията за клиента преди да обсъждате детайли за акаунта
+- Прехвърлете към човешки агент, ако клиентът изглежда разстроен
+- Не давайте обещания относно датите на доставка
 ```
 
-## Best Practices
-
-1. **Be Specific**
-
-   - Clear instructions get better results
-   - Include examples of good responses
-   - Define what NOT to do
-
-2. **Structure Matters**
-
-   - Organize information logically
-   - Use bullet points and sections
-   - Keep related information together
-
-3. **Test and Iterate**
-   - Start with a basic prompt
-   - Test various scenarios
-   - Refine based on call recordings
-   - Add handling for edge cases
-
-## Common Mistakes
-
-- **Too Vague**: "Be helpful and professional" (Not specific enough)
-- **Too Rigid**: Scripting every possible response (Reduces natural flow)
-- **Information Overload**: Including unnecessary details
-- **Missing Guidelines**: Not specifying how to handle common situations
-
-## Example Structure
+### 5. Рамка за Отговори
 
 ```
-# Role and Purpose
-[Define who the AI is and its main goals]
-
-# Core Knowledge
-[Essential information about products/services]
-
-# Conversation Guidelines
-[How to interact with customers]
-
-# Response Patterns
-[How to handle specific situations]
-
-# Limitations and Boundaries
-[What the AI should NOT do]
+Когато ви питат за цени:
+1. Първо разберете техните нужди
+2. Представете подходящите опции за пакети
+3. Обяснете ценностното предложение
+4. Споделете всякакви приложими отстъпки
 ```
 
-## Testing Your Prompt
+## Най-добри Практики
 
-1. Make test calls covering:
+1. **Бъдете Конкретни**
 
-   - Common scenarios
-   - Edge cases
-   - Difficult situations
-   - Various customer personalities
+   - Ясните инструкции дават по-добри резултати
+   - Включете примери за добри отговори
+   - Дефинирайте какво ДА НЕ се прави
 
-2. Review and adjust:
-   - Listen to call recordings
-   - Check response accuracy
-   - Verify tone consistency
-   - Test knowledge retention
+2. **Структурата Има Значение**
 
-## Optimization Tips
+   - Организирайте информацията логично
+   - Използвайте точки и секции
+   - Групирайте свързаната информация заедно
 
-- Start with Fast Engine for quick iterations
-- Use call recordings to identify gaps
-- Add examples of good/bad responses
-- Include handling for unexpected questions
+3. **Тествайте и Итерирайте**
+   - Започнете с основен prompt
+   - Тествайте различни сценарии
+   - Усъвършенствайте въз основа на записите от обажданията
+   - Добавете обработка за нестандартни случаи
+
+## Чести Грешки
+
+- **Твърде Неопределено**: "Бъдете полезни и професионални" (Недостатъчно конкретно)
+- **Твърде Строго**: Скриптиране на всеки възможен отговор (Намалява естествения поток)
+- **Информационна Претовареност**: Включване на ненужни детайли
+- **Липсващи Насоки**: Неопределяне на това как да се справя с често срещани ситуации
+
+## Примерна Структура
+
+```
+# Роля и Цел
+[Дефинирайте кой е AI-ят и основните му цели]
+
+# Основни Знания
+[Съществена информация за продукти/услуги]
+
+# Насоки за Разговор
+[Как да взаимодейства с клиенти]
+
+# Модели за Отговори
+[Как да се справя с конкретни ситуации]
+
+# Ограничения и Граници
+[Какво AI-ят НЕ трябва да прави]
+```
+
+## Тестване на Prompt-а
+
+1. Направете тестови обаждания, покриващи:
+
+   - Често срещани сценарии
+   - Нестандартни случаи
+   - Трудни ситуации
+   - Различни типове клиенти
+
+2. Прегледайте и коригирайте:
+   - Слушайте записите от обажданията
+   - Проверете точността на отговорите
+   - Потвърдете последователността на тона
+   - Тествайте запазването на знанията
+
+## Съвети за Оптимизация
+
+- Започнете с Fast Engine за бързи итерации
+- Използвайте записите от обаждания за идентифициране на пропуски
+- Добавете примери за добри/лоши отговори
+- Включете обработка за неочаквани въпроси
 
 ---
 
-**Pro Tip:** Your system prompt is a living document - regularly update it based on actual call experiences and customer interactions.
+**Професионален Съвет:** Вашият системен prompt е жив документ - редовно го актуализирайте въз основа на реалния опит от обажданията и взаимодействията с клиенти.

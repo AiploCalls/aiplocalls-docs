@@ -1,110 +1,113 @@
 ---
-title: "Cal.com Appointment Scheduling"
+---
+title: "Cal.com Насрочване на Срещи"
 icon: "calendar-days"
-description: "Enable your AI assistant to schedule appointments using Cal.com"
+description: "Позволете на вашия AI асистент да насрочва срещи чрез Cal.com"
 ---
 
-Enable your AI assistant to schedule meetings using Cal.com integration. The system automatically configures booking fields for you.
+Позволете на вашия AI асистент да насрочва срещи чрез интеграция с Cal.com. Системата автоматично конфигурира полетата за резервация вместо вас.
 
-## Setup
+## Настройка
 
-### 1. Get API Key
+### 1. Получаване на API Key
 
-1. Log in to [Cal.com](https://cal.com/)
-2. Go to **Settings** → **Developer** → **API Keys**
-3. Create a new API key and copy it
+1. Влезте в [Cal.com](https://cal.com/)
+2. Отидете на **Settings** → **Developer** → **API Keys**
+3. Създайте нов API key и го копирайте
 
 <img height="200" src="/resources/calcom-api-key.png" />
 
-### 2. Select Your Region
+### 2. Изберете Вашия Регион
 
-Cal.com offers different API regions. Choose the one that matches your Cal.com account:
+Cal.com предлага различни API региони. Изберете този, който съответства на вашия Cal.com акаунт:
 
-| Region | API Endpoint |
+| Регион | API Endpoint |
 |--------|-------------|
-| **US** (default) | `api.cal.com` |
+| **US** (по подразбиране) | `api.cal.com` |
 | **EU** | `api.cal.eu` |
-| **Custom** | Your self-hosted Cal.com endpoint |
+| **Custom** | Вашия самостоятелно хостван Cal.com endpoint |
 
-Select your region in the Cal.com configuration panel before connecting. If you're unsure, the US endpoint is the default.
+Изберете вашия регион в конфигурационния панел на Cal.com преди свързване. Ако не сте сигурни, US endpoint е по подразбиране.
 
-### 3. Connect Cal.com
+### 3. Свързване на Cal.com
 
-1. In your assistant settings → **Tools** tab → **Appointment Scheduling**
-2. Select **Cal.com** from calendar type
-3. Choose your API region
-4. Paste your API key
-5. Select an event from the dropdown
+1. В настройките на вашия асистент → таб **Tools** → **Appointment Scheduling**
+2. Изберете **Cal.com** от типа календар
+3. Изберете вашия API регион
+4. Поставете вашия API key
+5. Изберете събитие от падащото меню
 
 <img height="200" src="/resources/calcom-connect.png" />
 
-### 4. Sync Event
+### 4. Синхронизиране на Събитие
 
-Click the **"Sync Event"** button to automatically configure booking fields.
+Кликнете върху бутона **"Sync Event"**, за да конфигурирате автоматично полетата за резервация.
 
 <img height="200" src="/resources/calcom-sync.png" />
 
 <Check>
-The sync automatically reads your event type's custom fields and configures them for the AI assistant. Name, email, and phone are set as required. All other custom booking fields are imported automatically.
+Синхронизацията автоматично чете персонализираните полета на вашия тип събитие и ги конфигурира за AI асистента. Име, имейл и телефон се задават като задължителни. Всички други персонализирани полета за резервация се импортират автоматично.
 </Check>
 
-## Event Types
+## Типове Събития
 
-### Personal Events
+### Лични События
 
-Select from your personal event types (e.g., 15-minute intro call, 30-minute consultation).
+Избирайте от вашите лични типове събития (напр. 15-минутно запознаване, 30-минутна консултация).
 
-### Team Events
+### Екипни События
 
-You can also book into **team event types**. When your API key has access to team calendars, team events appear in the event dropdown grouped separately from personal events.
+Можете също да резервирате в **екипни типове събития**. Когато вашия API key има достъп до екипни календари, екипните събития се появяват в падащото меню на събитията, групирани отделно от личните събития.
 
 <Tip>
-Team events are useful when you want the AI to book meetings that get distributed across your team members based on their availability.
+Екипните събития са полезни, когато искате AI-то да резервира срещи, които се разпределят между членовете на вашия екип въз основа на тяхната достъпност.
 </Tip>
 
-## Dynamic Booking Fields
+## Динамични Полета за Резервация
 
-When you sync an event, the system automatically reads all custom booking fields configured on that event type in Cal.com. This means:
+Когато синхронизирате събитие, системата автоматично чете всички персонализирани полета за резервация, конфигурирани на този тип събитие в Cal.com. Това означава:
 
-- **No manual field configuration** — fields are fetched directly from your Cal.com event type
-- **Custom fields supported** — any custom fields you add to your Cal.com event type are automatically available
-- **Auto-refresh on sync** — click "Sync Event" again if you change your Cal.com event's booking fields
+- **Без ръчна конфигурация на полета** — полетата се извличат директно от вашия тип събитие в Cal.com
+- **Поддържат се персонализирани полета** — всички персонализирани полета, които добавите към вашия тип събитие в Cal.com, са автоматично достъпни
+- **Автоматично обновяване при синхронизация** — кликнете "Sync Event" отново, ако промените полетата за резервация на вашето събитие в Cal.com
 
-## Multiple Calendars
+## Множество Календари
 
-Click **"+"** next to Appointment Scheduling to add more calendars (e.g., 15min, 30min meetings).
+Кликнете **"+"** до Appointment Scheduling, за да добавите още календари (напр. 15мин, 30мин срещи).
 
-## Email Setup
+## Настройка на Имейл
 
-For calendar invites to work:
+За да работят календарните покани:
 
-1. Define `email` in assistant [input variables](/ai-assistants/settings/prompt-and-tools#call-variables)
-2. Pass customer email when creating leads
+1. Дефинирайте `email` в [входните променливи](/ai-assistants/settings/prompt-and-tools#call-variables) на асистента
+2. Подавайте имейла на клиента при създаване на leads
 
-The phone number is automatically included after sync.
+Телефонният номер се включва автоматично след синхронизация.
 
-## Backward Compatibility
+## Обратна Съвместимост
 
-If you already have a Cal.com integration configured, your existing settings continue to work without changes. The region defaults to US, and existing field configurations are preserved. You can optionally re-sync to take advantage of dynamic booking fields.
+Ако вече имате конфигурирана Cal.com интеграция, вашите съществуващи настройки продължават да работят без промени. Регионът е по подразбиране US, и съществуващите конфигурации на полета се запазват. По желание можете да синхронизирате отново, за да се възползвате от динамичните полета за резервация.
 
-## Troubleshooting
+## Отстраняване на Проблеми
 
-**Invalid API Key:** Verify it's active in Cal.com settings and includes `cal_live_` prefix
+**Невалиден API Key:** Проверете дали е активен в настройките на Cal.com и включва префикса `cal_live_`
 
-**Sync Failed:** Click **"Troubleshoot"** button to reset fields
+**Неуспешна Синхронизация:** Кликнете бутона **"Troubleshoot"**, за да нулирате полетата
 
-**No Invites Sent:** Ensure `email` variable is defined and passed with leads
+**Не се Изпращат Покани:** Уверете се, че променливата `email` е дефинирана и подавана с leads
 
-**Field Errors:** Use "Troubleshoot" to reset. Only name, email, phone should be required.
+**Грешки в Полета:** Използвайте "Troubleshoot" за нулиране. Само име, имейл, телефон трябва да бъдат задължителни.
 
-**Wrong Region:** If you get authentication errors, check that you selected the correct region (EU accounts must use the EU endpoint).
+**Грешен Регион:** Ако получавате грешки за автентикация, проверете дали сте избрали правилния регион (EU акаунтите трябва да използват EU endpoint).
 
 <Note>
-For detailed troubleshooting, see [Cal.com Issues](/troubleshooting/cal-com).
+За подробно отстраняване на проблеми, вижте [Cal.com Issues](/troubleshooting/cal-com).
 </Note>
 
-## Testing
+## Тестване
 
-1. Make a test call and request a meeting
-2. Verify booking appears in Cal.com
-3. Check calendar invitation email was received
+1. Направете тестов разговор и поискайте среща
+2. Проверете дали резервацията се появява в Cal.com
+3. Проверете дали е получен имейлът с календарната покана
+
+---

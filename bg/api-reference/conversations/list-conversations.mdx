@@ -1,97 +1,97 @@
 ---
-title: "List Conversations"
+title: "Списък на разговорите"
 api: "GET /user/conversations"
-description: "List all conversations for the authenticated user with filtering and pagination"
+description: "Извеждане на всички разговори за автентифицирания потребител с филтриране и пагинация"
 ---
 
-This endpoint returns a paginated list of conversations belonging to the authenticated user's assistants. Use this to display conversation history, filter by type, or integrate with your CRM.
+Този endpoint връща пагиниран списък на разговорите, принадлежащи на асистентите на автентифицирания потребител. Използвайте го за показване на история на разговорите, филтриране по тип или интеграция с вашия CRM.
 
 <Note>
-  This endpoint requires authentication. Pass your API key in the `Authorization` header as a Bearer token.
+  Този endpoint изисква автентификация. Подайте вашия API ключ в `Authorization` заглавката като Bearer token.
 </Note>
 
-### Query Parameters
+### Query параметри
 
 <ParamField query="type" type="string" optional>
-  Filter conversations by type. Possible values: `test`, `widget`, `whatsapp`, `api`
+  Филтриране на разговори по тип. Възможни стойности: `test`, `widget`, `whatsapp`, `api`
 </ParamField>
 
 <ParamField query="assistant_id" type="integer" optional>
-  Filter conversations by assistant ID (must belong to the authenticated user)
+  Филтриране на разговори по ID на асистент (трябва да принадлежи на автентифицирания потребител)
 </ParamField>
 
 <ParamField query="date_from" type="string" optional>
-  Filter conversations from this date (YYYY-MM-DD format)
+  Филтриране на разговори от тази дата (YYYY-MM-DD формат)
 </ParamField>
 
 <ParamField query="date_to" type="string" optional>
-  Filter conversations until this date (YYYY-MM-DD format)
+  Филтриране на разговори до тази дата (YYYY-MM-DD формат)
 </ParamField>
 
 <ParamField query="per_page" type="integer" optional>
-  Number of conversations per page (1-100, default: 15)
+  Брой разговори на страница (1-100, по подразбиране: 15)
 </ParamField>
 
 <ParamField query="page" type="integer" optional>
-  Page number (default: 1)
+  Номер на страницата (по подразбиране: 1)
 </ParamField>
 
-### Response Fields
+### Полета в отговора
 
 <ResponseField name="data" type="array">
   <Expandable title="properties">
     <ResponseField name="id" type="string">
-      The unique UUID identifier of the conversation
+      Уникалният UUID идентификатор на разговора
     </ResponseField>
 
     <ResponseField name="assistant_id" type="string">
-      The UUID of the assistant handling this conversation
+      UUID на асистента, който обработва този разговор
     </ResponseField>
 
     <ResponseField name="assistant_name" type="string">
-      The name of the assistant handling this conversation
+      Името на асистента, който обработва този разговор
     </ResponseField>
 
     <ResponseField name="type" type="string">
-      The conversation type: `test`, `widget`, `whatsapp`, or `api`
+      Типът на разговора: `test`, `widget`, `whatsapp`, или `api`
     </ResponseField>
 
     <ResponseField name="message_count" type="integer">
-      Total number of messages in the conversation
+      Общ брой съобщения в разговора
     </ResponseField>
 
     <ResponseField name="total_cost" type="number">
-      The total cost of the conversation in USD
+      Общата цена на разговора в USD
     </ResponseField>
 
     <ResponseField name="ai_enabled" type="boolean">
-      Whether AI responses are enabled for this conversation
+      Дали AI отговорите са разрешени за този разговор
     </ResponseField>
 
     <ResponseField name="created_at" type="string">
-      The date and time when the conversation was created
+      Датата и часът, когато разговорът е създаден
     </ResponseField>
 
     <ResponseField name="updated_at" type="string">
-      The date and time when the conversation was last updated
+      Датата и часът, когато разговорът е последно обновен
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="current_page" type="integer">
-  The current page number
+  Номерът на текущата страница
 </ResponseField>
 
 <ResponseField name="per_page" type="integer">
-  Number of items per page
+  Брой елементи на страница
 </ResponseField>
 
 <ResponseField name="total" type="integer">
-  Total number of conversations matching the criteria
+  Общ брой разговори, отговарящи на критериите
 </ResponseField>
 
 <ResponseField name="last_page" type="integer">
-  The last page number
+  Номерът на последната страница
 </ResponseField>
 
 <RequestExample>
@@ -194,18 +194,20 @@ print(data['data'])
 
 </ResponseExample>
 
-## Conversation Types
+## Типове разговори
 
-| Type | Description |
+| Тип | Описание |
 |------|-------------|
-| `test` | Internal test conversations from the assistant testing interface |
-| `widget` | Conversations from the web chat widget |
-| `whatsapp` | WhatsApp Business conversations |
-| `api` | Conversations created via the API |
+| `test` | Вътрешни тестови разговори от интерфейса за тестване на асистента |
+| `widget` | Разговори от web chat widget-а |
+| `whatsapp` | WhatsApp Business разговори |
+| `api` | Разговори, създадени чрез API |
 
-## Use Cases
+## Случаи на употреба
 
-- **Analytics Dashboard**: Display conversation metrics and trends
-- **CRM Integration**: Sync conversation data with your customer database
-- **Quality Monitoring**: Review conversation volumes by type and assistant
-- **Billing Review**: Track conversation costs across your organization
+- **Analytics табло**: Показване на метрики и тенденции на разговорите
+- **CRM интеграция**: Синхронизация на данните за разговорите с вашата клиентска база данни
+- **Мониторинг на качеството**: Преглед на обемите разговори по тип и асистент
+- **Преглед на фактурирането**: Проследяване на разходите за разговори в цялата ви организация
+
+---

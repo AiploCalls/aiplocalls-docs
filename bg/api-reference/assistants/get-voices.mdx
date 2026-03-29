@@ -1,19 +1,19 @@
 ---
-title: "Get available voices"
+title: "Получаване на налични гласове"
 api: "GET /user/assistants/voices"
-description: "Retrieve all available voices for assistant configuration"
+description: "Извличане на всички налични гласове за конфигурация на асистент"
 ---
 
-This endpoint returns a list of all available voices that can be used when creating or updating assistants, with optional filtering by assistant mode and language.
+Този endpoint връща списък с всички налични гласове, които могат да бъдат използвани при създаване или обновяване на асистенти, с възможност за филтриране по режим на асистента и език.
 
 ### Query Parameters
 
 <ParamField query="mode" type="string">
-  Filter voices by assistant mode. Options: `pipeline`, `multimodal`, `dualplex`
+  Филтриране на гласове по режим на асистента. Опции: `pipeline`, `multimodal`, `dualplex`
 </ParamField>
 
 <ParamField query="language_id" type="integer">
-  Filter voices by language ID. Use the [Get Languages](/api-reference/assistants/get-languages) endpoint to get available language IDs.
+  Филтриране на гласове по ID на езика. Използвайте endpoint-а [Get Languages](/api-reference/assistants/get-languages) за да получите наличните ID на езици.
 </ParamField>
 
 ### Response fields
@@ -21,35 +21,35 @@ This endpoint returns a list of all available voices that can be used when creat
 <ResponseField name="data" type="array">
   <Expandable title="properties">
     <ResponseField name="id" type="integer">
-      The unique identifier of the voice
+      Уникалният идентификатор на гласа
     </ResponseField>
 
     <ResponseField name="name" type="string">
-      The display name of the voice
+      Показваното име на гласа
     </ResponseField>
 
     <ResponseField name="language_id" type="integer">
-      The language ID this voice is associated with
+      ID на езика, с който е свързан този глас
     </ResponseField>
 
     <ResponseField name="gender" type="string">
-      The gender of the voice (male/female)
+      Полът на гласа (male/female)
     </ResponseField>
 
     <ResponseField name="preview_url" type="string">
-      URL to an audio sample of the voice. Can be used to let users preview voices before selecting one.
+      URL към аудио образец на гласа. Може да бъде използван за предварителното прослушване на гласове преди избиране на един.
     </ResponseField>
 
     <ResponseField name="accent" type="string">
-      The accent of the voice (e.g., "American", "British"). May be `null`.
+      Акцентът на гласа (например "American", "British"). Може да бъде `null`.
     </ResponseField>
 
     <ResponseField name="age" type="string">
-      The age category of the voice (e.g., "Young", "Middle aged"). May be `null`.
+      Възрастовата категория на гласа (например "Young", "Middle aged"). Може да бъде `null`.
     </ResponseField>
 
     <ResponseField name="synthesizer_provider_id" type="integer">
-      The TTS provider ID this voice belongs to. Use the [Get Synthesizer Providers](/api-reference/assistants/get-synthesizer-providers) endpoint to resolve provider names. May be `null`.
+      ID на TTS провайдъра, към който принадлежи този глас. Използвайте endpoint-а [Get Synthesizer Providers](/api-reference/assistants/get-synthesizer-providers) за да разрешите имената на провайдърите. Може да бъде `null`.
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -93,10 +93,10 @@ This endpoint returns a list of all available voices that can be used when creat
 
 </ResponseExample>
 
-### Notes
+### Забележки
 
-- Use the `id` field as `voice_id` when creating or updating assistants
-- Filter by `mode` to get only voices compatible with your intended assistant type
-- Filter by `language_id` to get voices for a specific language
-- If no filters are provided, all available voices are returned
-- Only voices that are public or belong to the authenticated user are returned
+- Използвайте полето `id` като `voice_id` при създаване или обновяване на асистенти
+- Филтрирайте по `mode` за да получите само гласове, съвместими с планирания от вас тип асистент
+- Филтрирайте по `language_id` за да получите гласове за конкретен език
+- Ако не са предоставени филтри, се връщат всички налични гласове
+- Връщат се само гласове, които са публични или принадлежат на удостоверения потребител

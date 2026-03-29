@@ -1,89 +1,89 @@
 ---
-title: "Send SMS"
+title: "Изпращане на SMS"
 api: "POST /user/sms"
-description: "Send an SMS message using your phone number"
+description: "Изпратете SMS съобщение, използвайки вашия телефонен номер"
 ---
 
-This endpoint allows you to send SMS messages using your purchased phone numbers. The SMS will be sent via Twilio and costs will be automatically deducted from your account balance.
+Този endpoint ви позволява да изпращате SMS съобщения, използвайки закупените от вас телефонни номера. SMS-ът ще бъде изпратен чрез Twilio и разходите ще бъдат автоматично приспаднати от баланса на вашия акаунт.
 
 ### Request Body
 
 <ParamField body="from" type="integer" required>
-  The ID of your phone number to send the SMS from (must be SMS-capable)
+  ID-то на вашия телефонен номер, от който да изпратите SMS-а (трябва да поддържа SMS)
 </ParamField>
 
 <ParamField body="to" type="string" required>
-  The recipient's phone number in international format (e.g., "+1234567890")
+  Телефонният номер на получателя в международен формат (например "+1234567890")
 </ParamField>
 
 <ParamField body="body" type="string" required>
-  The SMS message content (max 300 characters)
+  Съдържанието на SMS съобщението (макс. 300 знака)
 </ParamField>
 
 ### Response
 
 <ResponseField name="message" type="string">
-  Success message confirming SMS was sent
+  Съобщение за успех, потвърждаващо че SMS-ът е изпратен
 </ResponseField>
 
 <ResponseField name="data" type="object">
   <Expandable title="properties">
     <ResponseField name="id" type="integer">
-      The unique identifier of the SMS record
+      Уникалният идентификатор на SMS записа
     </ResponseField>
 
     <ResponseField name="phone_number_id" type="integer">
-      The ID of the phone number used to send the SMS
+      ID-то на телефонния номер, използван за изпращане на SMS-а
     </ResponseField>
 
     <ResponseField name="to" type="string">
-      The recipient's phone number in E.164 format
+      Телефонният номер на получателя в E.164 формат
     </ResponseField>
 
     <ResponseField name="body" type="string">
-      The SMS message content
+      Съдържанието на SMS съобщението
     </ResponseField>
 
     <ResponseField name="user_id" type="integer">
-      The ID of the user who sent the SMS
+      ID-то на потребителя, който е изпратил SMS-а
     </ResponseField>
 
     <ResponseField name="segments" type="integer">
-      Number of SMS segments (for billing purposes)
+      Брой SMS сегменти (за целите на таксуването)
     </ResponseField>
 
     <ResponseField name="segment_price" type="number">
-      Cost per SMS segment
+      Цена за SMS сегмент
     </ResponseField>
 
     <ResponseField name="total_cost" type="number">
-      Total cost of the SMS (segment_price * segments)
+      Обща цена на SMS-а (segment_price * segments)
     </ResponseField>
 
     <ResponseField name="status" type="string">
-      The current status of the SMS
+      Текущото състояние на SMS-а
     </ResponseField>
 
     <ResponseField name="sms_sid" type="string">
-      Twilio SMS SID for tracking
+      Twilio SMS SID за проследяване
     </ResponseField>
 
     <ResponseField name="created_at" type="string">
-      The date and time when the SMS was created
+      Датата и часът, когато е създаден SMS-ът
     </ResponseField>
 
     <ResponseField name="updated_at" type="string">
-      The date and time when the SMS was last updated
+      Датата и часът, когато SMS-ът е актуализиран за последно
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-### Error Responses
+### Грешни Отговори
 
 <ResponseField name="400 Bad Request">
   <Expandable title="Error Response">
     <ResponseField name="message" type="string">
-      Error message describing the issue (invalid phone number, insufficient balance, etc.)
+      Съобщение за грешка, описващо проблема (невалиден телефонен номер, недостатъчен баланс и т.н.)
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -91,10 +91,10 @@ This endpoint allows you to send SMS messages using your purchased phone numbers
 <ResponseField name="500 Internal Server Error">
   <Expandable title="Error Response">
     <ResponseField name="message" type="string">
-      Error message indicating SMS sending failure
+      Съобщение за грешка, указващо неуспешно изпращане на SMS
     </ResponseField>
     <ResponseField name="error" type="string">
-      Detailed error information
+      Детайлна информация за грешката
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -154,13 +154,13 @@ This endpoint allows you to send SMS messages using your purchased phone numbers
 
 </ResponseExample>
 
-### Notes
+### Забележки
 
-- The sender phone number must belong to the authenticated user
-- The sender phone number must be SMS-capable
-- The phone number subscription must be active (not expired)
-- Sufficient account balance is required to cover SMS costs
-- Phone numbers are automatically formatted to E.164 format
-- SMS costs vary by destination country and are charged per segment
-- Long messages may be split into multiple segments, increasing the cost
-- The recipient phone number must be valid according to international standards
+- Телефонният номер на подателя трябва да принадлежи на удостоверения потребител
+- Телефонният номер на подателя трябва да поддържа SMS
+- Абонаментът за телефонния номер трябва да бъде активен (не изтекъл)
+- Необходим е достатъчен баланс по акаунта за покриване на разходите за SMS
+- Телефонните номера се форматират автоматично в E.164 формат
+- Разходите за SMS варират според държавата на получателя и се таксуват за сегмент
+- Дълги съобщения могат да бъдат разделени на няколко сегмента, увеличавайки цената
+- Телефонният номер на получателя трябва да бъде валиден според международните стандарти

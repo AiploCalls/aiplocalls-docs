@@ -1,25 +1,25 @@
 ---
-title: "Delete document"
+title: "Изтриване на документ"
 api: "DELETE /user/knowledgebases/{knowledgebaseId}/documents/{documentId}"
-description: "Delete a document from a knowledgebase"
+description: "Изтриване на документ от база от знания"
 ---
 
-This endpoint permanently deletes a document from a knowledgebase. The document's vector embeddings are also removed from the vector database.
+Този endpoint окончателно изтрива документ от база от знания. Векторните вграждания на документа също се премахват от векторната база данни.
 
 ### Path Parameters
 
 <ParamField path="knowledgebaseId" type="integer" required>
-  The unique identifier of the knowledgebase
+  Уникалният идентификатор на базата от знания
 </ParamField>
 
 <ParamField path="documentId" type="integer" required>
-  The unique identifier of the document to delete
+  Уникалният идентификатор на документа за изтриване
 </ParamField>
 
 ### Response
 
 <ResponseField name="message" type="string">
-  Success message
+  Съобщение за успех
 </ResponseField>
 
 <ResponseExample>
@@ -50,19 +50,19 @@ This endpoint permanently deletes a document from a knowledgebase. The document'
 
 </ResponseExample>
 
-### What Gets Deleted
+### Какво се изтрива
 
-When you delete a document:
+Когато изтривате документ:
 
-- **Document record** is removed from the database
-- **Vector embeddings** are deleted from the vector database
-- **Processed content** is removed from external document stores
-- **Parent knowledgebase status** is updated automatically
+- **Записът на документа** се премахва от базата данни
+- **Векторните вграждания** се изтриват от векторната база данни
+- **Обработеното съдържание** се премахва от външните хранилища за документи
+- **Статусът на родителската база от знания** се актуализира автоматично
 
 <Warning>
-This action is irreversible. The document and all its processed content will be permanently deleted.
+Това действие е необратимо. Документът и цялото му обработено съдържание ще бъдат окончателно изтрити.
 </Warning>
 
 <Note>
-If this was the last document in the knowledgebase, the knowledgebase status will change to `empty`.
+Ако това беше последният документ в базата от знания, статусът на базата от знания ще се промени на `empty`.
 </Note>

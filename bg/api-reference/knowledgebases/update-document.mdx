@@ -1,71 +1,72 @@
 ---
-title: "Update document"
+---
+title: "Актуализиране на документ"
 api: "PUT /user/knowledgebases/{knowledgebaseId}/documents/{documentId}"
-description: "Update a document's name or description"
+description: "Актуализиране на името или описанието на документ"
 ---
 
-This endpoint updates the metadata of an existing document. You can only update the name and description - the document type and content cannot be changed.
+Този endpoint актуализира метаданните на съществуващ документ. Можете да актуализирате само името и описанието - типът и съдържанието на документа не могат да бъдат променени.
 
-### Path Parameters
+### Path Параметри
 
 <ParamField path="knowledgebaseId" type="integer" required>
-  The unique identifier of the knowledgebase
+  Уникалният идентификатор на базата знания
 </ParamField>
 
 <ParamField path="documentId" type="integer" required>
-  The unique identifier of the document to update
+  Уникалният идентификатор на документа за актуализиране
 </ParamField>
 
 ### Request Body
 
 <ParamField body="name" type="string">
-  The new name for the document (max 255 characters)
+  Новото име на документа (максимум 255 символа)
 </ParamField>
 
 <ParamField body="description" type="string">
-  The new description for the document (max 255 characters)
+  Новото описание на документа (максимум 255 символа)
 </ParamField>
 
 ### Response
 
 <ResponseField name="message" type="string">
-  Success message
+  Съобщение за успех
 </ResponseField>
 
 <ResponseField name="data" type="object">
-  The updated document object
+  Актуализираният обект документ
   
-  <Expandable title="data properties">
+  <Expandable title="data свойства">
     <ResponseField name="id" type="integer">
-      The unique identifier of the document
+      Уникалният идентификатор на документа
     </ResponseField>
     
     <ResponseField name="name" type="string">
-      The name of the document
+      Името на документа
     </ResponseField>
     
     <ResponseField name="description" type="string">
-      Description of the document
+      Описание на документа
     </ResponseField>
     
     <ResponseField name="type" type="string">
-      Document type
+      Тип на документа
     </ResponseField>
     
     <ResponseField name="type_label" type="string">
-      Human-readable type label
+      Четимо за хора наименование на типа
     </ResponseField>
     
     <ResponseField name="status" type="string">
-      Processing status
+      Статус на обработката
     </ResponseField>
     
     <ResponseField name="status_label" type="string">
-      Human-readable status label
+      Четимо за хора наименование на статуса
     </ResponseField>
     
     <ResponseField name="updated_at" type="string">
-      ISO 8601 timestamp of last update
+      ISO 8601 timestamp на последната актуализация
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -114,5 +115,5 @@ This endpoint updates the metadata of an existing document. You can only update 
 </ResponseExample>
 
 <Note>
-To update the content of a document, you need to delete the existing document and create a new one with the updated content.
+За да актуализирате съдържанието на документ, трябва да изтриете съществуващия документ и да създадете нов с актуализираното съдържание.
 </Note>

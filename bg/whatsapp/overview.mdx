@@ -1,26 +1,26 @@
 ---
-title: "WhatsApp Business Integration"
+title: "WhatsApp Business Интеграция"
 icon: "whatsapp"
-description: "Connect your AI assistants to WhatsApp Business for automated text-based customer conversations"
+description: "Свържете своите AI асистенти с WhatsApp Business за автоматизирани текстови разговори с клиенти"
 ---
 
 <Note>
-**New: External Numbers** — You can now bring your own mobile number to WhatsApp! Use platform numbers or connect your existing mobile number with SMS/voice verification.
+**Ново: Външни номера** — Вече можете да използвате собствения си мобилен номер за WhatsApp! Използвайте номера от платформата или свържете съществуващия си мобилен номер с SMS/гласова верификация.
 </Note>
 
-## What is WhatsApp Business Integration?
+## Какво е WhatsApp Business интеграция?
 
-WhatsApp Business integration allows you to connect your AI assistants to WhatsApp, enabling automated text-based conversations with customers through the world's most popular messaging platform.
+WhatsApp Business интеграцията ви позволява да свържете своите AI асистенти с WhatsApp, което дава възможност за автоматизирани текстови разговори с клиенти чрез най-популярната messaging платформа в света.
 
-With this integration, you can:
+С тази интеграция можете да:
 
-- **Receive customer messages** and respond automatically with AI
-- **Send template messages** to start conversations or re-engage customers
-- **Use AI-powered replies** for 24/7 customer support
-- **Trigger automation flows** based on WhatsApp conversations
-- **Track all conversations** in your dashboard
+- **Получавате съобщения от клиенти** и да отговаряте автоматично с AI
+- **Изпращате template съобщения** за започване на разговори или възобновяване на контакта с клиенти
+- **Използвате AI-генерирани отговори** за 24/7 клиентска поддръжка
+- **Стартирате автоматизирани процеси** базирани на WhatsApp разговори
+- **Проследявате всички разговори** в dashboard-а си
 
-## How It Works
+## Как работи
 
 ```mermaid
 flowchart LR
@@ -30,110 +30,112 @@ flowchart LR
     B -->|Replies to| A
 ```
 
-1. **Create a WhatsApp Sender** using a platform number or your own external number
-2. **Connect an AI Assistant** to handle incoming messages automatically
-3. **Create Message Templates** for outbound conversations (required by Meta)
-4. **Customers message you** and receive AI-powered responses instantly
+1. **Създайте WhatsApp Sender** използвайки номер от платформата или собствен външен номер
+2. **Свържете AI асистент** за автоматично обработване на входящи съобщения
+3. **Създайте Message Templates** за изходящи разговори (изискване от Meta)
+4. **Клиентите ви изпращат съобщения** и получават AI-генерирани отговори незабавно
 
-## Key Components
+## Ключови компоненти
 
 <CardGroup cols={2}>
   <Card title="WhatsApp Senders" icon="phone" href="/whatsapp/senders">
-    Phone numbers registered for WhatsApp Business messaging
+    Телефонни номера регистрирани за WhatsApp Business съобщения
   </Card>
   <Card title="Message Templates" icon="file-lines" href="/whatsapp/templates">
-    Pre-approved message formats for business-initiated conversations
+    Предварително одобрени формати на съобщения за започнати от бизнеса разговори
   </Card>
   <Card title="AI Conversations" icon="robot" href="/whatsapp/conversations">
-    AI-powered automated responses to customer messages
+    AI-генерирани автоматизирани отговори на съобщения от клиенти
   </Card>
   <Card title="Automation" icon="bolt" href="/whatsapp/automation">
-    Trigger flows and send messages via the automation platform
+    Стартиране на процеси и изпращане на съобщения чрез автоматизираната платформа
   </Card>
 </CardGroup>
 
-## Understanding WhatsApp Business Rules
+## Разбиране на правилата за WhatsApp Business
 
-WhatsApp has specific rules for business messaging that you need to understand:
+WhatsApp има специфични правила за бизнес съобщения, които трябва да разбирате:
 
-### The 24-Hour Messaging Window
+### 24-часовия прозорец за съобщения
 
 <Info>
-When a customer messages you, a **24-hour window** opens where you can send free-form messages. After this window closes, you must use an **approved template** to re-engage the customer.
+Когато клиент ви изпрати съобщение, се отваря **24-часов прозорец**, в който можете да изпращате свободни съобщения. След като този прозорец се затвори, трябва да използвате **одобрен template** за възобновяване на контакта с клиента.
 </Info>
 
-- **Within 24 hours**: Send any message directly
-- **After 24 hours**: Must use a pre-approved template message
+- **В рамките на 24 часа**: Изпращайте всякакви съобщения директно
+- **След 24 часа**: Трябва да използвате предварително одобрено template съобщение
 
-### Template Messages
+### Template съобщения
 
-Template messages are pre-approved message formats required for:
+Template съобщенията са предварително одобрени формати на съобщения, необходими за:
 
-- Starting new conversations with customers
-- Re-engaging customers after the 24-hour window
-- Sending notifications, updates, or marketing messages
+- Започване на нови разговори с клиенти
+- Възобновяване на контакта с клиенти след 24-часовия прозорец
+- Изпращане на уведомления, актуализации или маркетингови съобщения
 
-Templates must be submitted to Meta for approval before use (typically takes minutes to 24 hours).
+Template-ите трябва да бъдат изпратени на Meta за одобрение преди употреба (обикновено отнема минути до 24 часа).
 
-### Quality Rating & Limits
+### Quality оценка и лимити
 
-Meta monitors your messaging quality. New senders start with limited messaging capacity that increases as you maintain good quality:
+Meta наблюдава качеството на съобщенията ви. Новите senders започват с ограничен капацитет за съобщения, който се увеличава когато поддържате добро качество:
 
-| Quality Level | Daily Message Limit |
-|--------------|---------------------|
-| New Sender   | ~250 messages       |
-| Low Quality  | 1,000 messages      |
-| Medium       | 10,000 messages     |
-| High Quality | 100,000+ messages   |
+| Quality ниво | Дневен лимит съобщения |
+|--------------|------------------------|
+| Нов Sender   | ~250 съобщения         |
+| Ниско Quality| 1,000 съобщения        |
+| Средно       | 10,000 съобщения       |
+| Високо Quality| 100,000+ съобщения     |
 
 <Warning>
-High block rates or spam reports will lower your quality rating and reduce your messaging limits. Always send relevant, requested content.
+Високи нива на блокиране или spam сигнали ще понижат вашата quality оценка и ще намалят лимитите ви за съобщения. Винаги изпращайте релевантно, поискано съдържание.
 </Warning>
 
-## Supported Features
+## Поддържани функции
 
-### What's Supported
+### Какво е поддържано
 
-- **Platform numbers** — Use numbers purchased through our platform with automated AI verification
-- **External numbers** — Bring your own mobile number and verify via SMS or voice call
-- AI-powered automated replies
-- Template messages (Utility, Marketing, Authentication)
-- Voice Call Request templates (request permission to call via WhatsApp)
-- Conversation history and tracking
-- Automation platform integration
+- **Platform номера** — Използвайте номера закупени чрез нашата платформа с автоматизирана AI верификация
+- **Външни номера** — Използвайте собствения си мобилен номер и верифицирайте чрез SMS или гласово повикване
+- AI-генерирани автоматизирани отговори
+- Template съобщения (Utility, Marketing, Authentication)
+- Voice Call Request templates (искане за разрешение за обаждане чрез WhatsApp)
+- История и проследяване на разговори
+- Интеграция с автоматизираната платформа
 
-### Media & Vision
+### Media и Vision
 
-- **Image analysis (Vision)** — When customers send images, your AI assistant can analyze them using vision-capable LLMs (OpenAI, Claude, Gemini). The AI describes and responds to image content within the conversation.
-- **Voice message transcription** — Incoming voice notes are automatically transcribed based on your assistant's language settings. The transcribed text is processed by the AI just like a regular message.
-- **Media attachments** — All inbound media (images, audio, video, documents) are stored as attachments on the conversation and accessible from your dashboard.
+- **Анализ на изображения (Vision)** — Когато клиентите изпращат изображения, вашият AI асистент може да ги анализира използвайки vision-способни LLM модели (OpenAI, Claude, Gemini). AI описва и отговаря на съдържанието на изображенията в рамките на разговора.
+- **Транскрипция на гласови съобщения** — Входящите гласови съобщения се транскрибират автоматично базирано на езиковите настройки на асистента ви. Транскрибираният текст се обработва от AI точно като обикновено съобщение.
+- **Media прикачени файлове** — Всички входящи media файлове (изображения, аудио, видео, документи) се съхраняват като прикачени файлове към разговора и са достъпни от dashboard-а ви.
 
-### Coming Soon
+### Очаквайте скоро
 
-- WhatsApp voice calls
+- WhatsApp гласови повиквания
 
-## Getting Started
+## Първи стъпки
 
 <Steps>
-  <Step title="Choose Your Number Type">
-    Decide whether to use a **platform number** (purchased from us) or your own **external mobile number**. External numbers must be able to receive SMS or voice calls for verification.
+  <Step title="Изберете типа номер">
+    Решете дали да използвате **platform номер** (закупен от нас) или собствен **външен мобилен номер**. Външните номера трябва да могат да получават SMS или гласови повиквания за верификация.
   </Step>
-  <Step title="Create a WhatsApp Sender">
-    Navigate to **WhatsApp Senders** and follow the setup wizard to connect your number to WhatsApp Business.
+  <Step title="Създайте WhatsApp Sender">
+    Отидете на **WhatsApp Senders** и следвайте setup wizard-а за свързване на номера ви с WhatsApp Business.
   </Step>
-  <Step title="Connect an AI Assistant">
-    Link an AI assistant to automatically respond to incoming messages.
+  <Step title="Свържете AI асистент">
+    Свържете AI асистент за автоматично отговаряне на входящи съобщения.
   </Step>
-  <Step title="Create Templates">
-    Set up message templates for outbound conversations and wait for Meta approval.
+  <Step title="Създайте Templates">
+    Настройте message templates за изходящи разговори и изчакайте одобрение от Meta.
   </Step>
-  <Step title="Start Messaging">
-    Your WhatsApp sender is ready! Customers can message you and receive AI-powered responses.
+  <Step title="Започнете да изпращате съобщения">
+    Вашият WhatsApp sender е готов! Клиентите могат да ви изпращат съобщения и да получават AI-генерирани отговори.
   </Step>
 </Steps>
 
-## Next Steps
+## Следващи стъпки
 
-- Learn how to [create WhatsApp senders](/whatsapp/senders)
-- Understand [message templates](/whatsapp/templates) and approval process
-- Set up [automation triggers](/whatsapp/automation) for WhatsApp
+- Научете как да [създавате WhatsApp senders](/whatsapp/senders)
+- Разберете [message templates](/whatsapp/templates) и процеса за одобрение
+- Настройте [automation triggers](/whatsapp/automation) за WhatsApp
+
+---

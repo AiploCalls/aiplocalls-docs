@@ -1,57 +1,57 @@
 ---
-title: "Create lead"
+title: "Създаване на lead"
 api: "POST /user/lead"
-description: "Create a new lead in the Aiplocalls system"
+description: "Създаване на нов lead в системата на Aiplocalls"
 ---
 
-This endpoint allows you to create a new lead in the Aiplocalls system.
+Този endpoint ви позволява да създадете нов lead в системата на Aiplocalls.
 
 ### Request body
 
 <ParamField body="phone_number" type="string" required>
-  The phone number of the lead in E.164 format (e.g. +1234567890)
+  Телефонният номер на lead-а в E.164 формат (например +1234567890)
 </ParamField>
 
 <ParamField body="campaign_id" type="integer" required>
-  The ID of the campaign to create the lead for
+  ID-то на кампанията, за която да се създаде lead-ът
 </ParamField>
 
 <ParamField body="variables" type="object">
-  Custom variables to pass to the lead. You can include **any variables that are defined on your assistant** (see [Call variables](/ai-assistants/settings/prompt-and-tools#call-variables)). The examples below are just for illustration — use your own variable names as configured in the assistant settings.
+  Персонализирани променливи за предаване към lead-а. Можете да включите **всички променливи, които са дефинирани във вашия асистент** (вижте [Променливи за повиквания](/ai-assistants/settings/prompt-and-tools#call-variables)). Примерите по-долу са само за илюстрация — използвайте вашите собствени имена на променливи, както са конфигурирани в настройките на асистента.
 
-  <Expandable title="Example variables (add your own)">
+  <Expandable title="Примерни променливи (добавете вашите собствени)">
     <ParamField body="customer_name" type="string">
-      e.g. the name of the customer
+      например името на клиента
     </ParamField>
 
     <ParamField body="email" type="string">
-      e.g. the email of the customer
+      например имейлът на клиента
     </ParamField>
   </Expandable>
 </ParamField>
 
 <ParamField body="allow_dupplicate" type="boolean">
-  Whether to allow duplicate leads in a campaign.
+  Дали да се позволяват дублиращи се leads в кампанията.
 </ParamField>
 
 <ParamField body="secondary_contacts" type="array">
-  Array of secondary contact leads to create along with the main lead
+  Масив от secondary contact leads, които да се създадат заедно с основния lead
   
-  <Expandable title="secondary_contacts properties">
+  <Expandable title="свойства на secondary_contacts">
     <ParamField body="phone_number" type="string" required>
-      The phone number of the secondary contact in E.164 format
+      Телефонният номер на secondary contact-а в E.164 формат
     </ParamField>
     
     <ParamField body="variables" type="object">
-      The variables to pass to the secondary contact
+      Променливите за предаване към secondary contact-а
       
-      <Expandable title="variables properties">
+      <Expandable title="свойства на variables">
         <ParamField body="customer_name" type="string" default="<string>">
-          The name of the secondary contact
+          Името на secondary contact-а
         </ParamField>
         
         <ParamField body="email" type="string" default="<string>">
-          The email of the secondary contact
+          Имейлът на secondary contact-а
         </ParamField>
       </Expandable>
     </ParamField>
@@ -61,83 +61,83 @@ This endpoint allows you to create a new lead in the Aiplocalls system.
 ### Response
 
 <ResponseField name="message" type="string" default="Lead created successfully">
-  The message of the response
+  Съобщението от отговора
 </ResponseField>
 
 <ResponseField name="data" type="object">
-  The lead data object
+  Обектът с данни за lead-а
   
-  <Expandable title="data properties">
+  <Expandable title="свойства на data">
     <ResponseField name="id" type="integer">
-      The unique ID of the created lead
+      Уникалното ID на създадения lead
     </ResponseField>
     
     <ResponseField name="campaign_id" type="integer">
-      The ID of the campaign this lead belongs to
+      ID-то на кампанията, към която принадлежи този lead
     </ResponseField>
 
     <ResponseField name="phone_number" type="string">
-      The phone number of the lead in E.164 format
+      Телефонният номер на lead-а в E.164 формат
     </ResponseField>
     
     <ResponseField name="variables" type="object">
-      The variables associated with the lead
+      Променливите, свързани с lead-а
       
-      <Expandable title="variables properties">
+      <Expandable title="свойства на variables">
         <ResponseField name="customer_name" type="string" default="<string>">
-          The name of the customer
+          Името на клиента
         </ResponseField>
         
         <ResponseField name="email" type="string" default="<string>">
-          The email of the customer
+          Имейлът на клиента
         </ResponseField>
       </Expandable>
     </ResponseField>
     
     <ResponseField name="status" type="string" default="created">
-      The status of the lead
+      Статусът на lead-а
     </ResponseField>
     
     <ResponseField name="created_at" type="string">
-      The timestamp when the lead was created
+      Времевият отпечатък, когато е създаден lead-ът
     </ResponseField>
     
     <ResponseField name="updated_at" type="string">
-      The timestamp when the lead was last updated
+      Времевият отпечатък, когато lead-ът е актуализиран за последно
     </ResponseField>
 
     <ResponseField name="campaign" type="object">
-      The campaign information
-      <Expandable title="campaign properties">
+      Информацията за кампанията
+      <Expandable title="свойства на campaign">
         <ResponseField name="id" type="integer">
-          The id of the campaign
+          ID-то на кампанията
         </ResponseField>
         <ResponseField name="name" type="string">
-          The name of the campaign
+          Името на кампанията
         </ResponseField>
       </Expandable>
     </ResponseField>
 
     <ResponseField name="secondary_contacts" type="array">
-      Array of secondary contact leads associated with this lead
-      <Expandable title="secondary_contacts properties">
+      Масив от secondary contact leads, свързани с този lead
+      <Expandable title="свойства на secondary_contacts">
         <ResponseField name="id" type="integer">
-          The id of the secondary contact lead
+          ID-то на secondary contact lead-а
         </ResponseField>
         <ResponseField name="phone_number" type="string">
-          The phone number of the secondary contact in E.164 format
+          Телефонният номер на secondary contact-а в E.164 формат
         </ResponseField>
         <ResponseField name="variables" type="object">
-          The variables associated with the secondary contact
+          Променливите, свързани с secondary contact-а
         </ResponseField>
         <ResponseField name="status" type="string">
-          The status of the secondary contact
+          Статусът на secondary contact-а
         </ResponseField>
         <ResponseField name="created_at" type="string">
-          The created at date of the secondary contact
+          Датата на създаване на secondary contact-а
         </ResponseField>
         <ResponseField name="updated_at" type="string">
-          The updated at date of the secondary contact
+          Датата на актуализация на secondary contact-а
         </ResponseField>
       </Expandable>
     </ResponseField>

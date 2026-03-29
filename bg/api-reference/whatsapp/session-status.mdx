@@ -1,79 +1,80 @@
 ---
-title: "Get Session Status"
+---
+title: "Получаване на статус на сесията"
 api: "GET /user/whatsapp/session-status"
-description: "Check the 24-hour messaging window status for a WhatsApp conversation"
+description: "Проверка на статуса на 24-часовия прозорец за съобщения за WhatsApp разговор"
 ---
 
-This endpoint checks whether an active 24-hour messaging window exists between your WhatsApp sender and a specific recipient. Use this to determine whether you can send [freeform messages](/api-reference/whatsapp/send-freeform) or need to use a [template message](/api-reference/whatsapp/send-template).
+Този endpoint проверява дали съществува активен 24-часов прозорец за съобщения между вашия WhatsApp изпращач и конкретен получател. Използвайте го, за да определите дали можете да изпращате [свободни съобщения](/api-reference/whatsapp/send-freeform) или трябва да използвате [шаблонно съобщение](/api-reference/whatsapp/send-template).
 
-### Query Parameters
+### Query параметри
 
 <ParamField query="sender_id" type="integer" required>
-  The ID of the WhatsApp sender (obtained from the [Get Senders](/api-reference/whatsapp/get-senders) endpoint)
+  ID на WhatsApp изпращача (получено от endpoint-а [Получаване на изпращачи](/api-reference/whatsapp/get-senders))
 </ParamField>
 
 <ParamField query="recipient_phone" type="string" required>
-  The recipient's phone number in international format (e.g., `+1234567890`)
+  Телефонният номер на получателя в международен формат (например `+1234567890`)
 </ParamField>
 
-### Response Fields
+### Полета в отговора
 
 <ResponseField name="success" type="boolean">
-  Whether the request was successful
+  Дали заявката е била успешна
 </ResponseField>
 
 <ResponseField name="has_conversation" type="boolean">
-  Whether a conversation exists with this recipient
+  Дали съществува разговор с този получател
 </ResponseField>
 
 <ResponseField name="conversation_id" type="integer">
-  The conversation ID (only present when `has_conversation` is `true`)
+  ID на разговора (присъства само когато `has_conversation` е `true`)
 </ResponseField>
 
 <ResponseField name="customer_name" type="string">
-  The customer's name if available (only present when `has_conversation` is `true`)
+  Името на клиента, ако е налично (присъства само когато `has_conversation` е `true`)
 </ResponseField>
 
 <ResponseField name="last_customer_message_at" type="string">
-  ISO 8601 timestamp of the customer's last message (only present when `has_conversation` is `true`)
+  ISO 8601 timestamp на последното съобщение на клиента (присъства само когато `has_conversation` е `true`)
 </ResponseField>
 
 <ResponseField name="session_status" type="object">
-  <Expandable title="Session status properties">
+  <Expandable title="Свойства на статуса на сесията">
     <ResponseField name="is_open" type="boolean">
-      Whether the 24-hour messaging window is currently open
+      Дали 24-часовият прозорец за съобщения в момента е отворен
     </ResponseField>
 
     <ResponseField name="can_send_freeform" type="boolean">
-      Whether freeform (non-template) messages can be sent right now
+      Дали свободни (не-шаблонни) съобщения могат да бъдат изпращани в момента
     </ResponseField>
 
     <ResponseField name="requires_template" type="boolean">
-      Whether a template message is required to message this recipient
+      Дали е необходимо шаблонно съобщение за да се изпрати съобщение до този получател
     </ResponseField>
 
     <ResponseField name="message" type="string">
-      Human-readable description of the current session state
+      Описание на текущото състояние на сесията, четимо от човек
     </ResponseField>
 
     <ResponseField name="minutes_remaining" type="integer">
-      Minutes remaining in the 24-hour window (only present when session is open)
+      Оставащи минути в 24-часовия прозорец (присъства само когато сесията е отворена)
     </ResponseField>
 
     <ResponseField name="expires_at" type="string">
-      ISO 8601 timestamp when the session expires (present when session is open or no customer message exists)
+      ISO 8601 timestamp кога сесията изтича (присъства когато сесията е отворена или не съществува съобщение от клиента)
     </ResponseField>
 
     <ResponseField name="expired_at" type="string">
-      ISO 8601 timestamp when the session expired (only present when session has expired)
+      ISO 8601 timestamp кога сесията е изтекла (присъства само когато сесията е изтекла)
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-### Error Responses
+### Грешки в отговора
 
 <ResponseField name="404 Not Found">
-  <Expandable title="Error Response">
+  <Expandable title="Отговор при грешка">
     <ResponseField name="success" type="boolean">`false`</ResponseField>
     <ResponseField name="error" type="string">`Sender not found`</ResponseField>
     <ResponseField name="error_code" type="string">`SENDER_NOT_FOUND`</ResponseField>
@@ -194,16 +195,18 @@ else:
 
 </ResponseExample>
 
-### Typical Workflow
+### Типичен работен процес
 
-Use this endpoint as part of a message-sending flow:
+Използвайте този endpoint като част от процеса за изпращане на съобщения:
 
-1. **Check session status** before sending a message
-2. If `can_send_freeform` is `true` → use [Send Freeform Message](/api-reference/whatsapp/send-freeform)
-3. If `requires_template` is `true` → use [Send Template Message](/api-reference/whatsapp/send-template)
+1. **Проверете статуса на сесията** преди да изпратите съобщение
+2. Ако `can_send_freeform` е `true` → използвайте [Изпращане на свободно съобщение](/api-reference/whatsapp/send-freeform)
+3. Ако `requires_template` е `true` → използвайте [Изпращане на шаблонно съобщение](/api-reference/whatsapp/send-template)
 
-### Notes
+### Забележки
 
-- The 24-hour window is based on the customer's last inbound message timestamp.
-- Each new customer message resets the 24-hour timer.
-- This endpoint does not consume any balance — it's a read-only status check.
+- 24-часовият прозорец се базира на timestamp-а на последното входящо съобщение от клиента.
+- Всяко ново съобщение от клиента нулира 24-часовия таймер.
+- Този endpoint не консумира никакъв баланс — това е само проверка на статуса за четене.
+
+---

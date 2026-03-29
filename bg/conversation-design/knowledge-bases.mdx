@@ -1,124 +1,124 @@
 ---
-title: "Knowledge Bases"
+title: "Бази от знания"
 icon: "database"
-description: "Learn how to provide your AI assistant with access to FAQs, documents, and other knowledge sources"
+description: "Научете как да предоставите на вашия AI асистент достъп до ЧЗВ, документи и други източници на знания"
 ---
 
-Knowledge bases enable your AI assistant to access and reference custom information from various sources like websites, documents, and files. This powerful feature allows your assistant to provide accurate, context-specific responses based on your own content.
+Базите от знания позволяват на вашия AI асистент да получава достъп и да се позовава на персонализирана информация от различни источници като уебсайтове, документи и файлове. Тази мощна функция позволява на вашия асистент да предоставя точни, контекстно-специфични отговори въз основа на вашето собствено съдържание.
 
-## Approaches for Knowledge Integration
+## Подходи за интеграция на знания
 
-### 1. Copy-Paste into Prompt
+### 1. Копиране и поставяне в prompt
 
-- **Pros**: Quick to set up, immediate availability.
-- **Cons**: Large texts can slow down responses or risk partial "hallucination."
-- **Usage**: Useful for short references, like top 10 FAQs.
+- **Плюсове**: Бързо настройване, незабавна достъпност.
+- **Минуси**: Големи текстове могат да забавят отговорите или да рискуват частични "халюцинации."
+- **Употреба**: Полезно за кратки справки, като топ 10 ЧЗВ.
 
-### 2. Knowledge Base Feature
+### 2. Функция за база от знания
 
-Our dedicated Knowledge Base feature allows you to store and manage documents that the AI can query on demand:
+Нашата специализирана функция за база от знания ви позволява да съхранявате и управлявате документи, които AI може да търси при необходимост:
 
 <CardGroup cols={2}>
-  <Card title="Website Content" icon="globe">
-    **Scrape entire websites** to capture all available information
-    - Company websites
-    - Product documentation
-    - FAQ pages
-    - Blog content
+  <Card title="Съдържание от уебсайт" icon="globe">
+    **Сканирайте цели уебсайтове** за да заснемете цялата налична информация
+    - Корпоративни уебсайтове
+    - Продуктова документация
+    - ЧЗВ страници
+    - Блог съдържание
   </Card>
   
-  <Card title="Document Files" icon="file">
-    **Upload various file formats** with your information
-    - **PDF files:** Manuals, guides, reports
-    - **Word documents (.docx):** Policies, procedures
-    - **Text files (.txt):** Simple content, notes
+  <Card title="Файлове с документи" icon="file">
+    **Качете различни файлови формати** с вашата информация
+    - **PDF файлове:** Ръководства, наръчници, отчети
+    - **Word документи (.docx):** Политики, процедури
+    - **Текстови файлове (.txt):** Просто съдържание, бележки
   </Card>
 </CardGroup>
 
-#### Processing Status
+#### Статус на обработка
 
-Every knowledge base goes through different processing stages:
+Всяка база от знания преминава през различни етапи на обработка:
 
 <AccordionGroup>
-  <Accordion title="Empty" icon="folder-open">
-    No documents added yet. Add content to activate the knowledge base.
+  <Accordion title="Празна" icon="folder-open">
+    Все още няма добавени документи. Добавете съдържание за да активирате базата от знания.
   </Accordion>
   
-  <Accordion title="Processing" icon="clock">
-    Documents are being analyzed and indexed. Processing time varies by content size.
+  <Accordion title="Обработка" icon="clock">
+    Документите се анализират и индексират. Времето за обработка варира в зависимост от размера на съдържанието.
   </Accordion>
   
-  <Accordion title="Active" icon="check">
-    Knowledge base is ready. Your AI assistant can now search and reference this information.
+  <Accordion title="Активна" icon="check">
+    Базата от знания е готова. Вашият AI асистент вече може да търси и се позовава на тази информация.
   </Accordion>
   
-  <Accordion title="Failed" icon="x">
-    Processing failed. Common causes: protected websites, inaccessible content, corrupted files.
+  <Accordion title="Неуспешна" icon="x">
+    Обработката е неуспешна. Общи причини: защитени уебсайтове, недостъпно съдържание, повредени файлове.
   </Accordion>
 </AccordionGroup>
 
-#### Integration Modes
+#### Режими на интеграция
 
-Choose how your AI assistant accesses knowledge base information:
+Изберете как вашият AI асистент получава достъп до информацията от базата от знания:
 
 <CardGroup cols={2}>
   <Card title="Function Call" icon="function">
-    **Recommended:** Searches only when needed. More efficient and faster.
+    **Препоръчително:** Търси само когато е необходимо. По-ефективно и бързо.
     
-    **Best for:** General conversations
+    **Най-подходящо за:** Общи разговори
   </Card>
   
   <Card title="Prompt Injection" icon="syringe">
-    **Comprehensive:** Searches after every customer message. More accurate but slower.
+    **Изчерпателно:** Търси след всяко съобщение от клиента. По-точно, но по-бавно.
     
-    **Best for:** Support-focused assistants. Use with [filler audio](/ai-assistants/filler-audio)
+    **Най-подходящо за:** Асистенти фокусирани върху поддръжка. Използвайте с [filler audio](/ai-assistants/filler-audio)
   </Card>
 </CardGroup>
 
-## Best Practices
+## Най-добри практики
 
-- Keep info concise, use bullet points.
-- Separate topics with clear headings so the AI can parse more effectively.
-- Monitor call transcripts to confirm the AI references your data correctly.
-- Use publicly accessible URLs for website scraping
-- Consider file size and processing time for large documents
+- Поддържайте информацията кратка, използвайте куршуми.
+- Разделяйте темите с ясни заглавия, за да може AI да анализира по-ефективно.
+- Наблюдавайте записите от повиквания за да потвърдите, че AI се позовава на вашите данни правилно.
+- Използвайте публично достъпни URL адреси за сканиране на уебсайтове
+- Обмислете размера на файловете и времето за обработка на големи документи
 
-## Website Scraping Considerations
+## Съображения за сканиране на уебсайтове
 
 <Warning>
-**Website Protection:** Some websites have anti-scraping protection that can cause processing to fail. If you own the website, temporarily disable protection during scraping.
+**Защита на уебсайт:** Някои уебсайтове имат анти-скрейпинг защита, която може да причини неуспех на обработката. Ако притежавате уебсайта, временно деактивирайте защитата по време на сканирането.
 </Warning>
 
-**Common issues:**
-- Cloudflare protection, rate limiting, login requirements
-- JavaScript-heavy sites, protected content
+**Общи проблеми:**
+- Cloudflare защита, ограничаване на заявки, изисквания за вход
+- Сайтове с много JavaScript, защитено съдържание
 
-**Solutions:**
-- Use publicly accessible URLs
-- Export content manually and upload as documents
-- Contact support for protected content assistance
+**Решения:**
+- Използвайте публично достъпни URL адреси
+- Експортирайте съдържанието ръчно и го качете като документи
+- Свържете се с поддръжката за помощ с защитено съдържание
 
-## Setup Process
+## Процес на настройка
 
-1. Navigate to Knowledge Bases in your dashboard
-2. Click "Create Knowledge Base"
-3. Add name and description
-4. Upload documents (PDF, DOCX, TXT) or add website URLs
-5. Wait for processing to complete
-6. Assign to your assistant in [Assistant Settings](/ai-assistants/settings/prompt-and-tools#knowledge-base)
+1. Навигирайте до Бази от знания в таблото си
+2. Кликнете "Създай база от знания"
+3. Добавете име и описание
+4. Качете документи (PDF, DOCX, TXT) или добавете URL адреси на уебсайтове
+5. Изчакайте обработката да завърши
+6. Присвоете на вашия асистент в [Настройки на асистент](/ai-assistants/settings/prompt-and-tools#knowledge-base)
 
-## Usage
+## Употреба
 
-Once connected, your assistant automatically searches the knowledge base during conversations to provide accurate, informed responses based on your content.
+След като е свързан, вашият асистент автоматично търси в базата от знания по време на разговори за да предоставя точни, информирани отговори въз основа на вашето съдържание.
 
-**Search functionality:** The AI searches through all documents in your knowledge base to find relevant information based on the customer's question and provides context-aware responses.
+**Функционалност за търсене:** AI търси през всички документи в вашата база от знания за да намери релевантна информация въз основа на въпроса на клиента и предоставя контекстно-осведомени отговори.
 
-## Troubleshooting
+## Отстраняване на проблеми
 
-**Processing fails:** Check if URLs are publicly accessible, disable website protection if you own it
-**No search results:** Verify content relevance, ensure processing is complete (Active status)
-**Slow responses:** Switch from Prompt Injection to Function Call mode
+**Обработката е неуспешна:** Проверете дали URL адресите са публично достъпни, деактивирайте защитата на уебсайта ако го притежавате
+**Няма резултати от търсенето:** Проверете релевантността на съдържанието, уверете се че обработката е завършена (статус Активна)
+**Бавни отговори:** Превключете от режим Prompt Injection на Function Call
 
 ---
 
-**Note:** For detailed configuration and advanced settings, see the [Assistant Settings Guide](/ai-assistants/settings/prompt-and-tools#knowledge-base).
+**Забележка:** За подробна конфигурация и разширени настройки, вижте [Ръководство за настройки на асистент](/ai-assistants/settings/prompt-and-tools#knowledge-base).

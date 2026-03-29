@@ -1,69 +1,72 @@
 ---
-title: "Number Rentals & International Rates"
+---
+title: "Наемане на номера и международни тарифи"
 icon: "globe"
-description: "Understand phone number rental costs, plus how SIP and Caller ID usage is billed by the minute."
+description: "Разберете разходите за наемане на телефонни номера, плюс как SIP и Caller ID използването се таксува по минути."
 ---
 
-Aiplocalls offers multiple ways to handle phone numbers for inbound or outbound calls. You can **rent** a dedicated number from us, use a **SIP** trunk (no monthly fee but carrier costs are on your own PBX), or verify an **existing Caller ID** (also no monthly fee, but region-based per-minute charges).
-
----
-
-## 1. Renting a Dedicated Number
-
-If you want a fully managed inbound/outbound line, you can rent it directly in the platform:
-
-- **Monthly Fee**: Typically \$3.99/month for standard local numbers (US/CA/UK). Regions vary:
-  - **EU Countries**: €3–€5/month
-  - **Latin America, Asia, Africa**: \$10+ in some cases, depending on availability or local taxes
-- **Custom Provisioning**: If you don't see your desired country or region listed, our team can custom-provision a number after verifying local documents.
-
-**Per-Minute Rates**
-
-- Outbound calls on a rented number: depends on the country you're calling—could range from \$0.05/min to \$0.50/min if it's an expensive destination.
-- Inbound calls: usually no extra charge unless it's a special/toll scenario in that region.
+Aiplocalls предлага няколко начина за управление на телефонни номера за входящи или изходящи обаждания. Можете да **наемете** специализиран номер от нас, да използвате **SIP** trunk (няма месечна такса, но разходите за оператор са за ваша собствена PBX), или да верифицирате **съществуващ Caller ID** (също няма месечна такса, но има базирани на регион такси на минута).
 
 ---
 
-## 2. SIP Integration (No Monthly Fee)
+## 1. Наемане на специализиран номер
 
-If you already have a VOIP/PBX solution, you can integrate via a **SIP trunk** with **no monthly rental** from Aiplocalls. Instead, you pay:
+Ако искате напълно управлявана входяща/изходяща линия, можете да я наемете директно в платформата:
 
-- **SIP Per-Minute**: \$0.00045/min on our side for carrier bridging. Your VOIP provider may also have separate usage fees.
-- **Your Existing Number**: You'll continue to use your own phone lines for inbound and outbound, but the carrier layer costs \$0.00045/min with us whenever the AI is on the call.
+- **Месечна такса**: Обикновено \$3.99/месец за стандартни локални номера (US/CA/UK). Регионите варират:
+  - **ЕС страни**: €3–€5/месец
+  - **Латинска Америка, Азия, Африка**: \$10+ в някои случаи, в зависимост от наличността или местните данъци
+- **Персонализирано предоставяне**: Ако не виждате желаната от вас страна или регион в списъка, нашият екип може да предостави персонализиран номер след верификация на местните документи.
 
-This is ideal if you're comfortable managing your own phone system or want to keep your existing numbers without renting from us. See our [SIP Integration Guide](/provisioning/sip-trunking/sip-integration) for setup instructions.
+**Тарифи на минута**
 
----
-
-## 3. Caller ID (No Monthly Fee)
-
-You can verify an existing number for **outbound calls** only—no inbound routing.
-
-- **Verification**: We confirm ownership via a short OTP or call.
-- **Per-Minute**: For the telephony used behind the scenes, we charge region-based rates.
-  - **Example**: In the US, Caller ID usage might be \$0.01/min.
-  - Other countries vary; contact support for specifics.
-
-> **Note**: Caller ID alone does **not** enable inbound AI; it only masks your outbound calls with your verified number.
+- Изходящи обаждания на нает номер: зависи от страната, на която се обаждате—може да варира от \$0.05/мин до \$0.50/мин ако е скъпа дестинация.
+- Входящи обаждания: обикновено няма допълнителна такса, освен ако не е специален/платен сценарий в този регион.
 
 ---
 
-## 4. International Rates & Regions
+## 2. SIP интеграция (няма месечна такса)
 
-When making outbound calls:
+Ако вече имате VOIP/PBX решение, можете да се интегрирате чрез **SIP trunk** с **никаква месечна такса за наемане** от Aiplocalls. Вместо това плащате:
 
-- **Carrier Rates**: Some countries cost \$0.01/min, others \$0.50/min due to local carriers.
-- **Inbound**: If you rent a number in a high-cost region or special type, inbound calls could have surcharges.
+- **SIP на минута**: \$0.00045/мин от наша страна за оператор bridging. Вашият VOIP доставчик може също да има отделни такси за използване.
+- **Вашият съществуващ номер**: Ще продължите да използвате собствените си телефонни линии за входящи и изходящи, но слоят оператор струва \$0.00045/мин при нас всеки път когато AI е в обаждането.
 
-Regardless of whether you rent a number or use Caller ID/SIP, the **carrier portion** of the call cost depends on the destination/origin country and is typically added to your overall usage.
+Това е идеално ако се чувствате комфортно да управлявате собствената си телефонна система или искате да запазите съществуващите си номера без да наемате от нас. Вижте нашия [Ръководство за SIP интеграция](/provisioning/sip-trunking/sip-integration) за инструкции за настройка.
 
 ---
 
-## 5. Putting It All Together
+## 3. Caller ID (няма месечна такса)
 
-1. **Rent a Number**
-   - Pay a monthly fee (from \$3.99), plus standard inbound/outbound carrier costs for calls on that line.
-2. **Use SIP**
-   - No monthly from us, but a \$0.00045/min AI bridging cost, plus your own PBX fees.
+Можете да верифицирате съществуващ номер за **изходящи обаждания** само—без входящо рутиране.
+
+- **Верификация**: Потвърждаваме собствеността чрез кратък OTP или обаждане.
+- **На минута**: За телефонията, използвана зад кулисите, таксуваме базирани на регион тарифи.
+  - **Пример**: В САЩ, използването на Caller ID може да е \$0.01/мин.
+  - Други страни варират; свържете се с поддръжката за подробности.
+
+> **Забележка**: Caller ID само **не** активира входящ AI; той само маскира вашите изходящи обаждания с вашия верифициран номер.
+
+---
+
+## 4. Международни тарифи и региони
+
+При правене на изходящи обаждания:
+
+- **Тарифи на оператор**: Някои страни струват \$0.01/мин, други \$0.50/мин поради местните оператори.
+- **Входящи**: Ако наемете номер във високо-скъп регион или специален тип, входящите обаждания може да имат доплащания.
+
+Независимо дали наемате номер или използвате Caller ID/SIP, **частта оператор** от разхода за обаждането зависи от дестинацията/произхода страна и обикновено се добавя към общото ви използване.
+
+---
+
+## 5. Събиране на всичко заедно
+
+1. **Наемане на номер**
+   - Плащате месечна такса (от \$3.99), плюс стандартни разходи за оператор входящи/изходящи за обаждания на тази линия.
+2. **Използване на SIP**
+   - Никаква месечна от нас, но \$0.00045/мин AI bridging разход, плюс собствените ви PBX такси.
 3. **Caller ID**
-   - No monthly from us, but region-based per-minute telephony charges (e.g., \$0.01/min in the US). Outbound only.
+   - Никаква месечна от нас, но базирани на регион такси за телефония на минута (напр. \$0.01/мин в САЩ). Само изходящи.
+
+---

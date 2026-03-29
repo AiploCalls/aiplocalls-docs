@@ -1,48 +1,48 @@
 ---
-title: "Get Conversation"
+title: "Получаване на разговор"
 api: "GET /conversations/{uuid}"
-description: "Retrieve the message history of a conversation"
+description: "Извличане на историята на съобщенията от разговор"
 ---
 
-This endpoint retrieves the complete message history of an existing conversation. Use this to display previous messages when resuming a conversation or to review conversation content.
+Този endpoint извлича пълната история на съобщенията от съществуващ разговор. Използвайте го за показване на предишни съобщения при възобновяване на разговор или за преглед на съдържанието на разговора.
 
-### Path Parameters
+### Path параметри
 
 <ParamField path="uuid" type="string" required>
-  The unique UUID identifier of the conversation to retrieve
+  Уникалният UUID идентификатор на разговора за извличане
 </ParamField>
 
-### Response Fields
+### Полета в отговора
 
 <ResponseField name="status" type="boolean">
-  Indicates whether the request was successful
+  Указва дали заявката е била успешна
 </ResponseField>
 
 <ResponseField name="history" type="array">
-  Array of messages in the conversation, ordered chronologically (oldest first).
+  Масив от съобщения в разговора, подредени хронологично (най-старите първи).
 
-  <Expandable title="Message object properties">
+  <Expandable title="Свойства на обекта съобщение">
     <ResponseField name="role" type="string">
-      The message role: `assistant` or `user`
+      Ролята на съобщението: `assistant` или `user`
     </ResponseField>
     <ResponseField name="content" type="string">
-      The message content
+      Съдържанието на съобщението
     </ResponseField>
     <ResponseField name="function_calls" type="array">
-      Optional. Array of function calls made by the assistant during this message (e.g., calendar bookings, API calls).
+      Незадължително. Масив от function calls направени от асистента по време на това съобщение (напр. резервации в календар, API повиквания).
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-### Error Responses
+### Отговори при грешка
 
 <ResponseField name="status" type="boolean">
-  Will be `false` when an error occurs
+  Ще бъде `false` когато възникне грешка
 </ResponseField>
 
 <ResponseField name="error" type="string">
-  Error message. Possible values:
-  - `Conversation not found` - The provided UUID does not match any conversation
+  Съобщение за грешка. Възможни стойности:
+  - `Conversation not found` - Предоставеният UUID не съответства на никой разговор
 </ResponseField>
 
 <RequestExample>
@@ -140,8 +140,10 @@ print(data['history'])
 
 </ResponseExample>
 
-## Use Cases
+## Случаи на употреба
 
-- **Resume conversations**: Retrieve history when a user returns to continue a conversation
-- **Analytics**: Review conversation content for quality assurance
-- **Integration**: Sync conversation data with your CRM or support system
+- **Възобновяване на разговори**: Извличане на история когато потребител се връща за да продължи разговор
+- **Аналитика**: Преглед на съдържанието на разговора за осигуряване на качество
+- **Интеграция**: Синхронизиране на данни от разговор с вашата CRM или support система
+
+---

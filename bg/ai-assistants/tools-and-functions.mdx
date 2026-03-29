@@ -1,56 +1,59 @@
 ---
-title: "Tools & Functions"
+---
+title: "Инструменти и функции"
 icon: "screwdriver-wrench"
-description: "Explore the built-in tools and functions that enhance your AI assistant's capabilities during calls"
+description: "Разгледайте вградените инструменти и функции, които подобряват възможностите на вашия AI асистент по време на обаждания"
 ---
 
-Aiplocalls offers built-in "tools" that your AI assistant can use during a call. These help you shape the conversation flow and automate actions like transferring calls or scheduling appointments.
+Aiplocalls предлага вградени "инструменти", които вашият AI асистент може да използва по време на обаждане. Те ви помагат да оформите потока на разговора и да автоматизирате действия като прехвърляне на обаждания или планиране на срещи.
 
-## 1. End Call Tool
+## 1. Инструмент за приключване на обаждане
 
-- **Purpose**: Tells the AI to politely wrap up the conversation.
-- **How It Works**: You can specify in the system prompt or logic, for instance: "If the user says `goodbye`, end the call."
-- **Configuration**: Enable in [Prompt & Tools settings](/ai-assistants/settings/prompt-and-tools#default-tools) and define conditions in your system prompt that should trigger the end call.
+- **Цел**: Казва на AI да завърши учтиво разговора.
+- **Как работи**: Можете да посочите в системната подкана или логиката, например: "Ако потребителят каже `довиждане`, приключи обаждането."
+- **Конфигурация**: Активирайте в [настройки за Подкани и инструменти](/ai-assistants/settings/prompt-and-tools#default-tools) и дефинирайте условията в системната си подкана, които трябва да задействат приключването на обаждането.
 
-## 2. Transfer Tool
+## 2. Инструмент за прехвърляне
 
-- **Purpose**: Moves the caller from the AI assistant to a human agent or external phone number.
-- **Use Cases**: Warm leads on a sales call, escalations on a support call, etc.
-- **Configuration**: Set up in [Prompt & Tools settings](/ai-assistants/settings/prompt-and-tools#default-tools) by adding the phone number or department the call should go to, and optionally a short hold message.
+- **Цел**: Прехвърля обаждащия се от AI асистента към човешки агент или външен телефонен номер.
+- **Случаи на употреба**: Топли лидове при продажбено обаждане, ескалации при поддръжка и др.
+- **Конфигурация**: Настройте в [настройки за Подкани и инструменти](/ai-assistants/settings/prompt-and-tools#default-tools) чрез добавяне на телефонния номер или отдела, към който трябва да отиде обаждането, и по желание кратко съобщение за изчакване.
 
-## 3. Appointment Scheduler
+## 3. Планировчик на срещи
 
-- **Purpose**: Lets the AI check your calendar availability and book appointments automatically.
-- **Available Integrations**: Cal.com, GoHighLevel, and Calendly calendar systems
-- **Typical Flow**:
-  1. AI offers scheduling.
-  2. Caller selects date/time.
-  3. AI confirms and sends a confirmation (using email or SMS if configured).
-- **Configuration**: Set up in [Prompt & Tools settings](/ai-assistants/settings/prompt-and-tools#default-tools) with your calendar integration.
+- **Цел**: Позволява на AI да проверява наличността в календара ви и да резервира срещи автоматично.
+- **Налични интеграции**: Cal.com, GoHighLevel и Calendly календарни системи
+- **Типичен поток**:
+  1. AI предлага планиране.
+  2. Обаждащият се избира дата/час.
+  3. AI потвърждава и изпраща потвърждение (използвайки имейл или SMS, ако е конфигурирано).
+- **Конфигурация**: Настройте в [настройки за Подкани и инструменти](/ai-assistants/settings/prompt-and-tools#default-tools) с вашата календарна интеграция.
 
-## 4. DTMF Input
+## 4. DTMF вход
 
-- **Purpose**: Allows the AI to send keypad inputs during calls to navigate phone menus, IVR systems, and automated workflows.
-- **How It Works**: The AI can press phone keypad buttons (0-9, *, #) when encountering automated systems or menu prompts.
-- **Use Cases**: 
-  - Navigate through company phone menus
-  - Enter extension numbers to reach specific departments
-  - Input security codes or account numbers
-  - Bypass IVR systems to reach human agents
-- **Configuration**: Enable in [Prompt & Tools settings](/ai-assistants/settings/prompt-and-tools#default-tools) and include instructions in your system prompt about when to use DTMF.
+- **Цел**: Позволява на AI да изпраща входове от клавиатурата по време на обаждания за навигиране в телефонни менюта, IVR системи и автоматизирани работни потоци.
+- **Как работи**: AI може да натиска бутони от телефонната клавиатура (0-9, *, #) при срещане с автоматизирани системи или подкани за меню.
+- **Случаи на употреба**: 
+  - Навигиране през фирмени телефонни менюта
+  - Въвеждане на номера на вътрешни линии за достигане до конкретни отдели
+  - Въвеждане на кодове за сигурност или номера на сметки
+  - Заобикаляне на IVR системи за достигане до човешки агенти
+- **Конфигурация**: Активирайте в [настройки за Подкани и инструменти](/ai-assistants/settings/prompt-and-tools#default-tools) и включете инструкции в системната си подкана за кога да се използва DTMF.
 
-## 5. No-Code Automation Platform
+## 5. No-Code платформа за автоматизация
 
-- **Purpose**: After calls, the AI can trigger actions in the automation platform (like updating a CRM, sending an email, or logging results in Google Sheets).
-- **Configuration**: Set up triggers and actions in the [Automation Platform](/automation-platform/introduction), then link to your assistant via webhook configuration in [Post-call Actions](/ai-assistants/settings/post-call-actions#webhook-configuration).
+- **Цел**: След обажданията AI може да задейства действия в платформата за автоматизация (като актуализиране на CRM, изпращане на имейл или записване на резултати в Google Sheets).
+- **Конфигурация**: Настройте тригери и действия в [Платформата за автоматизация](/automation-platform/introduction), след това свържете към вашия асистент чрез webhook конфигурация в [Действия след обаждане](/ai-assistants/settings/post-call-actions#webhook-configuration).
 
-## 6. Custom Mid-Call Tools
+## 6. Персонализирани инструменти по време на обаждане
 
-- **Purpose**: Create your own custom API integrations that the AI can use during calls.
-- **Use Cases**: Check inventory, verify customer data, fetch real-time information, or integrate with your own systems.
-- **Configuration**: Set up in [Prompt & Tools settings](/ai-assistants/settings/prompt-and-tools#custom-mid-call-tools) by defining API endpoints, parameters, and when the AI should use them.
-- For detailed setup instructions and examples, see our [Custom Mid-Call Tools Guide](/ai-assistants/custom-tools).
+- **Цел**: Създайте ваши собствени персонализирани API интеграции, които AI може да използва по време на обаждания.
+- **Случаи на употреба**: Проверка на наличности, верификация на клиентски данни, извличане на информация в реално време или интеграция с ваши собствени системи.
+- **Конфигурация**: Настройте в [настройки за Подкани и инструменти](/ai-assistants/settings/prompt-and-tools#custom-mid-call-tools) чрез дефиниране на API endpoints, параметри и кога AI трябва да ги използва.
+- За детайлни инструкции за настройка и примери, вижте нашия [Ръководство за персонализирани инструменти по време на обаждане](/ai-assistants/custom-tools).
 
 ---
 
-**Note:** Tools can be combined. For instance, the AI can use a custom tool to check availability, then schedule an appointment, and finally transfer to a human agent if needed.
+**Забележка:** Инструментите могат да се комбинират. Например, AI може да използва персонализиран инструмент за проверка на наличност, след това да планира среща и накрая да прехвърли към човешки агент, ако е необходимо.
+
+---

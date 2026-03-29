@@ -1,65 +1,66 @@
 ---
-title: "Get Templates"
+---
+title: "Получаване на шаблони"
 api: "GET /user/whatsapp/senders/{senderId}/templates"
-description: "List WhatsApp message templates for a specific sender"
+description: "Списък с шаблони за WhatsApp съобщения за определен подател"
 ---
 
-This endpoint returns all message templates associated with a specific WhatsApp sender. Templates are required for initiating conversations or messaging users outside the 24-hour messaging window.
+Този endpoint връща всички шаблони за съобщения, свързани с определен WhatsApp подател. Шаблоните са необходими за започване на разговори или изпращане на съобщения до потребители извън 24-часовия прозорец за съобщения.
 
-### Path Parameters
+### Параметри в пътя
 
 <ParamField path="senderId" type="integer" required>
-  The ID of the WhatsApp sender (obtained from the [Get Senders](/api-reference/whatsapp/get-senders) endpoint)
+  ID-то на WhatsApp подателя (получено от [Get Senders](/api-reference/whatsapp/get-senders) endpoint)
 </ParamField>
 
-### Query Parameters
+### Query параметри
 
 <ParamField query="status" type="string" optional>
-  Filter templates by approval status. Default: `approved`. Use `all` to return all templates regardless of status.
+  Филтриране на шаблони по статус на одобрение. По подразбиране: `approved`. Използвайте `all` за да върнете всички шаблони независимо от статуса.
 </ParamField>
 
-### Response Fields
+### Полета в отговора
 
 <ResponseField name="data" type="array">
-  <Expandable title="Template object properties">
+  <Expandable title="Свойства на обекта шаблон">
     <ResponseField name="id" type="integer">
-      The unique identifier of the template. Use this when sending template messages.
+      Уникалният идентификатор на шаблона. Използвайте го при изпращане на шаблонни съобщения.
     </ResponseField>
 
     <ResponseField name="name" type="string">
-      The template name as registered with Meta (e.g., `order_confirmation`, `appointment_reminder`)
+      Името на шаблона както е регистрирано в Meta (напр. `order_confirmation`, `appointment_reminder`)
     </ResponseField>
 
     <ResponseField name="language" type="string">
-      The template language code (e.g., `en`, `es`, `pt_BR`)
+      Кодът на езика на шаблона (напр. `en`, `es`, `pt_BR`)
     </ResponseField>
 
     <ResponseField name="category" type="string">
-      The template category: `marketing`, `utility`, or `authentication`
+      Категорията на шаблона: `marketing`, `utility` или `authentication`
     </ResponseField>
 
     <ResponseField name="status" type="string">
-      The approval status: `approved`, `pending`, or `rejected`
+      Статусът на одобрение: `approved`, `pending` или `rejected`
     </ResponseField>
 
     <ResponseField name="body_text" type="string">
-      The template body text, with variable placeholders shown as `{{1}}`, `{{2}}`, etc.
+      Текстът на тялото на шаблона, с местозапълвачи за променливи показани като `{{1}}`, `{{2}}` и т.н.
     </ResponseField>
 
     <ResponseField name="variables" type="array">
-      List of variable names defined for the template. Empty array if the template has no variables.
+      Списък с имената на променливите дефинирани за шаблона. Празен масив ако шаблонът няма променливи.
     </ResponseField>
 
     <ResponseField name="has_variables" type="boolean">
-      Whether this template requires variables to be provided when sending
+      Дали този шаблон изисква предоставяне на променливи при изпращане
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-### Error Responses
+### Грешни отговори
 
 <ResponseField name="404 Not Found">
-  <Expandable title="Error Response">
+  <Expandable title="Отговор при грешка">
     <ResponseField name="success" type="boolean">
       `false`
     </ResponseField>
@@ -79,7 +80,7 @@ curl -X GET "https://call.aiployees.com/api/user/whatsapp/senders/12/templates" 
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
-```bash All templates (including pending/rejected)
+```bash Всички шаблони (включително pending/rejected)
 curl -X GET "https://call.aiployees.com/api/user/whatsapp/senders/12/templates?status=all" \
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
@@ -146,7 +147,7 @@ for template in templates:
 }
 ```
 
-```json 404 Sender Not Found
+```json 404 Подател не е намерен
 {
   "success": false,
   "error": "Sender not found",
@@ -156,9 +157,11 @@ for template in templates:
 
 </ResponseExample>
 
-### Notes
+### Забележки
 
-- Only `approved` templates are returned by default. Templates with `pending` or `rejected` status cannot be used to send messages.
-- Template approval status is synced with Meta every 4 hours automatically.
-- Variables in `body_text` are shown as `{{1}}`, `{{2}}`, etc. The `variables` array provides human-readable names for each placeholder.
-- Templates are required when messaging a user for the first time or outside the 24-hour messaging window.
+- По подразбиране се връщат само `approved` шаблони. Шаблони със статус `pending` или `rejected` не могат да се използват за изпращане на съобщения.
+- Статусът на одобрение на шаблона се синхронизира с Meta автоматично на всеки 4 часа.
+- Променливите в `body_text` са показани като `{{1}}`, `{{2}}` и т.н. Масивът `variables` предоставя четими имена за всеки местозапълвач.
+- Шаблоните са необходими при първо съобщение до потребител или извън 24-часовия прозорец за съобщения.
+
+---

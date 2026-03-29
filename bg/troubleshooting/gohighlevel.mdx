@@ -1,65 +1,67 @@
 ---
-title: "GoHighLevel Issues"
+---
+title: "Проблеми с GoHighLevel"
 icon: "calendar-days"
-description: "Common GoHighLevel integration problems and solutions"
+description: "Често срещани проблеми с GoHighLevel интеграции и решения"
 ---
 
-This page covers common issues when using GoHighLevel integrations with Aiplocalls.
+Тази страница покрива често срещани проблеми при използване на GoHighLevel интеграции с Aiplocalls.
 
-## Appointment Scheduling Issues
+## Проблеми със записване на срещи
 
-### Missing API Key Error
+### Грешка за липсващ API ключ
 
-**Problem:** Getting error "missing api_key location_id or calendar_id for GoHighLevel"
+**Проблем:** Получавате грешка "missing api_key location_id или calendar_id за GoHighLevel"
 
-**Solution:**
-1. Go to [assistant settings](/ai-assistants/settings/prompt-and-tools#default-tools)
-2. Navigate to **Appointment Scheduling** section
-3. Click **Disconnect** to remove current GoHighLevel connection
-4. Click **Connect** again to re-authorize
-5. **Select an calendar** from the dropdown
-6. **Click Save** to apply the configuration
-7. **Verify** the connection shows as active after reconnecting
+**Решение:**
+1. Отидете в [настройки на асистента](/ai-assistants/settings/prompt-and-tools#default-tools)
+2. Навигирайте до секция **Appointment Scheduling**
+3. Кликнете **Disconnect** за да премахнете текущата GoHighLevel връзка
+4. Кликнете **Connect** отново за да се упълномощите повторно
+5. **Изберете календар** от падащото меню
+6. **Кликнете Save** за да приложите конфигурацията
+7. **Проверете** че връзката се показва като активна след повторното свързване
 
-### Connection Problems
+### Проблеми с връзката
 
-**OAuth Authorization Fails:**
-- **Try incognito mode** to resolve authentication conflicts
-- **Verify account selection** - ensure you selected the correct GoHighLevel account
-- **Check permissions** - confirm you have admin access to the GoHighLevel account
+**OAuth упълномощаването не успява:**
+- **Опитайте с режим инкогнито** за да разрешите конфликти при автентикация
+- **Проверете избора на акаунт** - уверете се, че сте избрали правилния GoHighLevel акаунт
+- **Проверете разрешенията** - потвърдете, че имате админ достъп до GoHighLevel акаунта
 
-### Calendar Not Appearing
+### Календарът не се появява
 
-**Calendars don't show in assistant settings:**
-- **Refresh connection** by disconnecting and reconnecting
-- **Verify calendar setup** in your GoHighLevel account
-- **Check account permissions** for calendar access
+**Календарите не се показват в настройките на асистента:**
+- **Обновете връзката** като се разкачите и се свържете отново
+- **Проверете настройката на календара** в своя GoHighLevel акаунт
+- **Проверете разрешенията на акаунта** за достъп до календар
 
-### Booking Failures
+### Неуспешни резервации
 
-**Appointments not being scheduled:**
-- **Email Required:** Ensure the assistant has an email defined in [assistant settings](/ai-assistants/settings/prompt-and-tools#default-tools) and the lead has an email in inbound variables or from conversation. See [Email Requirement for Appointments](/ai-assistants/gohighlevel-scheduling#email-requirement-for-appointments) for detailed setup.
-- **Test calendar availability** - verify the calendar has open slots
-- **Check time zones** - ensure correct time zone configuration in both systems
-- **Review assistant logs** - check call transcripts for booking attempts
-- **Verify calendar settings** in GoHighLevel for booking restrictions
+**Срещите не се записват:**
+- **Изисква се email:** Уверете се, че асистентът има дефиниран email в [настройките на асистента](/ai-assistants/settings/prompt-and-tools#default-tools) и клиентът има email в входящите променливи или от разговора. Вижте [Изискване за email за срещи](/ai-assistants/gohighlevel-scheduling#email-requirement-for-appointments) за подробна настройка.
+- **Тествайте наличността на календара** - проверете дали календарът има свободни часове
+- **Проверете часовите зони** - уверете се за правилна конфигурация на часовата зона и в двете системи
+- **Прегледайте логовете на асистента** - проверете транскриптите на обажданията за опити за резервация
+- **Проверете настройките на календара** в GoHighLevel за ограничения при резервации
 
-### Data Mapping Problems
+### Проблеми с картографирането на данни
 
-**Lead data not syncing correctly:**
-- **Verify field mapping** in automation platform
-- **Check required fields** in GoHighLevel
-- **Test with sample data** before live campaigns
+**Данните за клиенти не се синхронизират правилно:**
+- **Проверете картографирането на полетата** в платформата за автоматизация
+- **Проверете задължителните полета** в GoHighLevel
+- **Тествайте с примерни данни** преди да стартирате кампании
 
-## Getting Help
+## Получаване на помощ
 
-If these solutions don't resolve your issue:
+Ако тези решения не разрешат вашия проблем:
 
-1. **Check call transcripts** to see exactly what the AI attempted
-2. **Test the integration** with a simple appointment booking
-3. **Contact support** with specific error messages and screenshots
+1. **Проверете транскриптите на обажданията** за да видите точно какво е опитал AI
+2. **Тествайте интеграцията** с просто записване на среща
+3. **Свържете се с поддръжката** с конкретни съобщения за грешки и екранни снимки
 
-**Common Support Information Needed:**
-- Screenshot of the error message
-- Calendar configuration details
-- Assistant settings configuration
+**Обща информация необходима за поддръжка:**
+- Екранна снимка на съобщението за грешка
+- Подробности за конфигурацията на календара
+- Конфигурация на настройките на асистента
+---

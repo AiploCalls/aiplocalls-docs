@@ -1,198 +1,198 @@
 ---
-title: "Campaign Issues"
+title: "Проблеми с кампании"
 icon: "wrench"
-description: "Solve common campaign issues and optimize performance"
+description: "Решете често срещани проблеми с кампании и оптимизирайте производителността"
 ---
 
-Quick solutions for common campaign problems and performance optimization tips.
+Бързи решения за често срещани проблеми с кампании и съвети за оптимизация на производителността.
 
-## Campaign Won't Start
+## Кампанията няма да стартира
 
-### Phone Number Not Configured
-**Error:** "Your agent does not have a phone number setup"
+### Телефонен номер не е конфигуриран
+**Грешка:** "Your agent does not have a phone number setup"
 
-**Solution:**
-1. Go to your [Assistant Settings](/ai-assistants/settings/general#phone-number-configuration)
-2. Configure a phone number (Platform number, SIP, or Caller ID)
-3. Save assistant settings
-4. Try starting campaign again
+**Решение:**
+1. Отидете в [Настройки на асистента](/ai-assistants/settings/general#phone-number-configuration)
+2. Конфигурирайте телефонен номер (Platform номер, SIP или Caller ID)
+3. Запазете настройките на асистента
+4. Опитайте отново да стартирате кампанията
 
-### Insufficient Balance
-**Error:** "Insufficient balance to start the campaign"
+### Недостатъчен баланс
+**Грешка:** "Insufficient balance to start the campaign"
 
-**Solution:**
-1. Check your account balance in billing section
-2. Add funds to your account
-3. Return to campaign and click start
+**Решение:**
+1. Проверете баланса на акаунта ви в секцията за фактуриране
+2. Добавете средства в акаунта си
+3. Върнете се към кампанията и щракнете старт
 
-### No Leads to Call
-**Error:** "No leads to call"
+### Няма leads за обаждане
+**Грешка:** "No leads to call"
 
-**Solution:**
-1. Add leads manually or import from CSV
-2. Verify leads have valid phone numbers
-3. Check that leads aren't all marked as completed
-4. Ensure "Mark complete when no leads" setting matches your needs
+**Решение:**
+1. Добавете leads ръчно или импортирайте от CSV
+2. Проверете дали leads имат валидни телефонни номера
+3. Проверете дали всички leads не са маркирани като завършени
+4. Уверете се, че настройката "Mark complete when no leads" отговаря на вашите нужди
 
-## No Calls Being Made
+## Не се правят обаждания
 
-### Outside Allowed Hours
-**Issue:** Campaign shows as running but no calls happening
+### Извън разрешените часове
+**Проблем:** Кампанията се показва като работеща, но не се случват обаждания
 
-**Check:**
-- Current time is within allowed calling hours
-- Today is an allowed calling day
-- Assistant timezone matches expected schedule
+**Проверете:**
+- Текущото време е в рамките на разрешените часове за обаждане
+- Днес е разрешен ден за обаждане
+- Часовата зона на асистента съвпада с очаквания график
 
-**Solution:** Adjust allowed hours or wait until next allowed time window
+**Решение:** Коригирайте разрешените часове или изчакайте до следващия разрешен времеви прозорец
 
-### All Leads Called
-**Issue:** Campaign appears idle
+### Всички leads са обадени
+**Проблем:** Кампанията изглежда неактивна
 
-**Check:**
-- All primary leads have been attempted maximum times
-- Secondary contacts have been tried
-- Goal completion status if using goal-based retry
+**Проверете:**
+- Всички основни leads са опитани максималния брой пъти
+- Вторичните контакти са опитани
+- Статуса на завършване на целта, ако използвате retry базиран на цел
 
-**Solution:** Add more leads or review retry settings
+**Решение:** Добавете повече leads или прегледайте настройките за retry
 
-## Call Quality Issues
+## Проблеми с качеството на обажданията
 
-### High Failure Rate
-**Symptoms:** Many calls marked as "Failed"
+### Висок процент неуспех
+**Симптоми:** Много обаждания маркирани като "Failed"
 
-**Common causes:**
-- Invalid phone numbers in lead list
-- Network connectivity issues
-- Carrier restrictions
+**Чести причини:**
+- Невалидни телефонни номера в списъка с leads
+- Проблеми с мрежовата свързаност
+- Ограничения на оператора
 
-**Solutions:**
-1. **Clean lead data:** Remove invalid numbers
-2. **Test single calls:** Try calling individual leads manually
-3. **Check number format:** Ensure proper formatting (+1234567890)
-4. **Contact support:** For persistent technical issues
+**Решения:**
+1. **Почистете данните за leads:** Премахнете невалидните номера
+2. **Тествайте единични обаждания:** Опитайте да се обадите на отделни leads ръчно
+3. **Проверете формата на номера:** Уверете се за правилното форматиране (+1234567890)
+4. **Свържете се с поддръжката:** При постоянни технически проблеми
 
-### Low Answer Rate
-**Symptoms:** Most calls go to voicemail or unanswered
+### Нисък процент отговор
+**Симптоми:** Повечето обаждания отиват на гласова поща или остават без отговор
 
-**Optimization:**
-1. **Adjust calling hours:** Try different time windows
-2. **Review retry interval:** Space out attempts more
-3. **Check lead quality:** Verify numbers are current
-4. **Caller ID setup:** Ensure professional caller ID display
+**Оптимизация:**
+1. **Коригирайте часовете за обаждане:** Опитайте различни времеви прозорци
+2. **Прегледайте retry интервала:** Разпределете опитите с повече разстояние
+3. **Проверете качеството на leads:** Проверете дали номерата са актуални
+4. **Настройка на Caller ID:** Уверете се за професионално показване на caller ID
 
-## Retry Logic Problems
+## Проблеми с retry логиката
 
-### Too Many Retries
-**Issue:** Leads complaining about excessive calls
+### Твърде много retry опити
+**Проблем:** Leads се оплакват от прекалено много обаждания
 
-**Solutions:**
-1. **Reduce max retries:** Lower from 5 to 2-3 attempts
-2. **Increase retry interval:** Space calls 2-4 hours apart
-3. **Disable voicemail retry:** Accept voicemail as contact
-4. **Review goal variables:** Ensure proper completion tracking
+**Решения:**
+1. **Намалете максималните retry опити:** Понижете от 5 на 2-3 опита
+2. **Увеличете retry интервала:** Разпределете обажданията на 2-4 часа разстояние
+3. **Деактивирайте voicemail retry:** Приемете гласовата поща като контакт
+4. **Прегледайте goal променливите:** Уверете се за правилното проследяване на завършването
 
-### Not Enough Retries
-**Issue:** Missing potential contacts with limited attempts
+### Недостатъчно retry опити
+**Проблем:** Пропускане на потенциални контакти с ограничени опити
 
-**Solutions:**
-1. **Increase max retries:** Up to 5 attempts
-2. **Enable voicemail retry:** Continue until human contact
-3. **Adjust retry interval:** Try different times of day
-4. **Use goal-based retry:** For high-value prospects
+**Решения:**
+1. **Увеличете максималните retry опити:** До 5 опита
+2. **Активирайте voicemail retry:** Продължете до човешки контакт
+3. **Коригирайте retry интервала:** Опитайте различни часове от деня
+4. **Използвайте goal-базиран retry:** За високо ценни prospects
 
-## Goal Completion Issues
+## Проблеми със завършването на цели
 
-### Goal Variable Not Working
-**Issue:** Retry until goal completed not functioning
+### Goal променливата не работи
+**Проблем:** Retry until goal completed не функционира
 
-**Requirements:**
-1. **Post-call variables** must be configured in assistant
-2. **Boolean variable** must exist in post-call schema
-3. **Variable name** must match exactly in campaign settings
-4. **AI extraction** must be working properly
+**Изисквания:**
+1. **Post-call променливите** трябва да бъдат конфигурирани в асистента
+2. **Boolean променлива** трябва да съществува в post-call схемата
+3. **Името на променливата** трябва да съвпада точно в настройките на кампанията
+4. **AI извличането** трябва да работи правилно
 
-**Solution:** Test assistant's post-call variable extraction with manual calls
+**Решение:** Тествайте извличането на post-call променливи на асистента с ръчни обаждания
 
-### False Goal Completion
-**Issue:** Leads marked complete incorrectly
+### Фалшиво завършване на цел
+**Проблем:** Leads маркирани като завършени грешно
 
 **Debugging:**
-1. **Review call transcripts** for AI extraction errors
-2. **Test variable definitions** with sample calls
-3. **Adjust AI prompt** for clearer goal criteria
-4. **Refine variable descriptions** in assistant settings
+1. **Прегледайте записите на разговорите** за грешки в AI извличането
+2. **Тествайте дефинициите на променливите** с примерни обаждания
+3. **Коригирайте AI промпта** за по-ясни критерии за целта
+4. **Уточнете описанията на променливите** в настройките на асистента
 
-## Performance Optimization
+## Оптимизация на производителността
 
-### Slow Campaign Progress
-**Causes:**
-- Conservative retry intervals
-- Limited allowed calling hours
-- High failure rate reducing available leads
+### Бавен напредък на кампанията
+**Причини:**
+- Консервативни retry интервали
+- Ограничени разрешени часове за обаждане
+- Висок процент неуспех, намаляващ наличните leads
 
-**Solutions:**
-1. **Parallel processing:** Create multiple smaller campaigns
-2. **Optimize timing:** Use peak answer hours
-3. **Clean data:** Remove problematic numbers
-4. **Increase calling window:** Extend allowed hours
+**Решения:**
+1. **Паралелна обработка:** Създайте множество по-малки кампании
+2. **Оптимизирайте времето:** Използвайте часовете с най-висок процент отговор
+3. **Почистете данните:** Премахнете проблемните номера
+4. **Увеличете прозореца за обаждане:** Удължете разрешените часове
 
-### System Resource Issues
-**Symptoms:** Delayed calls, processing bottlenecks
+### Проблеми със системните ресурси
+**Симптоми:** Забавени обаждания, bottlenecks в обработката
 
-**Solutions:**
-1. **Reduce concurrent campaigns:** Limit active campaigns
-2. **Stagger campaign starts:** Don't start multiple campaigns simultaneously
-3. **Contact support:** For platform performance issues
+**Решения:**
+1. **Намалете едновременните кампании:** Ограничете активните кампании
+2. **Разпределете стартовете на кампании:** Не стартирайте множество кампании едновременно
+3. **Свържете се с поддръжката:** За проблеми с производителността на платформата
 
-## Lead Management Issues
+## Проблеми с управлението на leads
 
-### Duplicate Contacts
-**Issue:** Same person called multiple times from different leads
+### Дублиращи се контакти
+**Проблем:** Същият човек е обаден множество пъти от различни leads
 
-**Prevention:**
-1. **Data cleanup:** Remove duplicates before import
-2. **Phone number validation:** Check for format variations
-3. **Lead deduplication:** Use tools to identify duplicates
+**Предотвратяване:**
+1. **Почистване на данни:** Премахнете дубликатите преди импортиране
+2. **Валидация на телефонни номера:** Проверете за вариации във формата
+3. **Дедупликация на leads:** Използвайте инструменти за идентифициране на дубликати
 
-### Secondary Contact Confusion
-**Issue:** Unclear which contact was reached
+### Объркване с вторичен контакт
+**Проблем:** Неясно кой контакт е достигнат
 
-**Solution:**
-1. **Clear naming:** Use descriptive names for secondary contacts
-2. **Call notes:** Review transcripts to identify who answered
-3. **Lead organization:** Group related contacts properly
+**Решение:**
+1. **Ясно именуване:** Използвайте описателни имена за вторичните контакти
+2. **Бележки за обажданията:** Прегледайте записите за да идентифицирате кой е отговорил
+3. **Организация на leads:** Групирайте свързаните контакти правилно
 
-## Common Error Messages
+## Чести съобщения за грешка
 
 ### "Campaign is already in progress"
-**Solution:** Campaign is already running. Pause it first to make changes.
+**Решение:** Кампанията вече работи. Първо я паузирайте, за да направите промени.
 
 ### "Campaign is not running"
-**Solution:** Campaign is paused or stopped. Start it to resume calling.
+**Решение:** Кампанията е паузирана или спряна. Стартирайте я, за да възобновите обажданията.
 
 ### "Assistant timezone not set"
-**Solution:** Configure timezone in assistant settings before creating campaign.
+**Решение:** Конфигурирайте часовата зона в настройките на асистента преди създаване на кампания.
 
-## Getting Help
+## Получаване на помощ
 
-### Before Contacting Support
-1. **Check error messages** for specific guidance
-2. **Review campaign settings** for obvious issues
-3. **Test with single lead** to isolate problems
-4. **Check account status** and billing
+### Преди да се свържете с поддръжката
+1. **Проверете съобщенията за грешка** за конкретни указания
+2. **Прегледайте настройките на кампанията** за очевидни проблеми
+3. **Тествайте с един lead** за да изолирате проблемите
+4. **Проверете статуса на акаунта** и фактурирането
 
-### Information to Provide
-- Campaign ID and name
-- Error messages received
-- Steps taken before issue occurred
-- Expected vs actual behavior
-- Assistant and phone number configuration
+### Информация за предоставяне
+- ID и име на кампанията
+- Получени съобщения за грешка
+- Стъпки, предприети преди възникването на проблема
+- Очаквано срещу действително поведение
+- Конфигурация на асистента и телефонния номер
 
 <Warning>
-**Campaign delays:** Allow 10-15 minutes after starting before expecting calls to begin. The system needs time to initialize and queue leads.
+**Закъснения в кампанията:** Оставете 10-15 минути след стартиране преди да очаквате да започнат обажданията. Системата се нуждае от време за инициализация и поставяне на leads в опашка.
 </Warning>
 
 <Note>
-For additional help with campaign optimization, see [Campaign Best Practices](/campaigns/best-practices).
+За допълнителна помощ с оптимизацията на кампании, вижте [Най-добри практики за кампании](/campaigns/best-practices).
 </Note>

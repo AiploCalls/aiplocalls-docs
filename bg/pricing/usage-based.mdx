@@ -1,109 +1,111 @@
 ---
-title: "Pricing Breakdown"
+title: "Разбивка на цените"
 icon: "calculator"
-description: "Detailed explanation of how call minutes are calculated and billed"
+description: "Подробно обяснение как се изчисляват и таксуват минутите за разговори"
 ---
 
-# Pricing Breakdown
+# Разбивка на цените
 
-Aiplocalls uses a **minutes-based** system for billing. These minutes (or tokens/credits) get **deducted** from your balance each time you make or receive a call. The actual “per-minute cost” depends on your plan, and **carrier costs** are also converted into minutes. Below is how it works.
-
----
-
-## 1. Inbound vs. Outbound Calls
-
-- **Inbound**: You spend minutes as soon as the AI assistant picks up and is engaged in a call.
-- **Outbound**: Minutes start deducting once the customer answers the call and stays connected. Dial time is not billed.
-
-> **Note**: A call is considered active until the AI or the user hangs up, **or** until voicemail detection ends the call if the user’s voicemail answers (for outbound).
+Aiplocalls използва система за фактуриране **базирана на минути**. Тези минути (или токени/кредити) се **приспадат** от вашия баланс всеки път, когато правите или получавате обаждане. Действителната "цена за минута" зависи от вашия план, а **разходите за оператора** също се преобразуват в минути. По-долу е обяснено как работи.
 
 ---
 
-## 2. How Minutes Are Used
+## 1. Входящи срещу изходящи обаждания
 
-### a) AI Spoken Time
+- **Входящи**: Харчите минути веднага щом AI асистентът отговори и се включи в разговор.
+- **Изходящи**: Минутите започват да се приспадат след като клиентът отговори на обаждането и остане свързан. Времето за набиране не се таксува.
 
-- There is a **minimum charge of 30 seconds (0.5 min)** per call. Any call shorter than 30 seconds is still billed as 30 seconds.
-- Beyond 30 seconds, the cost is **prorated by the second**. For example, a 45-second call uses 0.75 minutes from your plan.
-
-### b) Carrier Conversion
-
-- **Carrier cost** (the telecom network fee) is also deducted from your balance **but** is typically **rounded up** to the next minute.
-- We convert the carrier’s dollar amount to minutes at your plan’s rate.
-  - **Example**: If your carrier charge is \$0.05 for a 1-minute call, and your plan’s AI rate is \$0.10/min, we convert that \$0.05 to 0.5 minutes from your balance.
-
-**So a single 1-minute conversation might consume:**
-
-- **1 AI minute** (for the assistant)
-- **+ 0.5 “carrier minutes”** (converted from the carrier’s \$0.05 to half your AI cost).
-- **= 1.5 minutes total** deducted from your plan balance.
+> **Забележка**: Обаждането се счита за активно докато AI или потребителят не затворят, **или** докато откриването на гласова поща не прекрати обаждането ако гласовата поща на потребителя отговори (за изходящи).
 
 ---
 
-## 3. Minimum Charge & Per-Second Billing vs. Rounding
+## 2. Как се използват минутите
 
-1. **AI Time**
+### а) Време на говорене на AI
 
-   - **Minimum charge of 30 seconds** (0.5 min). Calls under 30 seconds are billed as 30 seconds.
-   - Beyond 30 seconds, **measured per second** — so 70 seconds is ~1.17 minutes of AI usage.
-   - Deducted exactly from your plan’s minute balance.
+- Има **минимална такса от 30 секунди (0.5 мин)** за обаждане. Всяко обаждане по-кратко от 30 секунди все пак се таксува като 30 секунди.
+- След 30 секунди, разходът е **пропорционален по секунди**. Например, 45-секундно обаждане използва 0.75 минути от вашия план.
 
-2. **Carrier Time**
-   - **Rounded to next full minute** for the network fee.
-   - Then converted into a fraction of your AI plan cost to decide how many “minutes” to deduct from your credit balance.
+### б) Преобразуване на оператора
+
+- **Разходът за оператора** (таксата на телекомуникационната мрежа) също се приспада от вашия баланс **но** обикновено се **закръгля нагоре** до следващата минута.
+- Преобразуваме долларовата сума на оператора в минути по тарифата на вашия план.
+  - **Пример**: Ако таксата на вашия оператор е \$0.05 за 1-минутно обаждане, а AI тарифата на вашия план е \$0.10/мин, преобразуваме тези \$0.05 в 0.5 минути от вашия баланс.
+
+**Така един 1-минутен разговор може да консумира:**
+
+- **1 AI минута** (за асистента)
+- **+ 0.5 "минути за оператора"** (преобразувани от \$0.05 на оператора в половината от вашата AI цена).
+- **= 1.5 минути общо** приспаднати от баланса на вашия план.
 
 ---
 
-## 4. Included Minutes & Top-Ups
+## 3. Минимална такса и фактуриране по секунди срещу закръгляване
 
-- **Each Plan**: Usually includes a monthly allotment of minutes.
-- **Using Up Minutes**: Once you exceed included minutes, you can **top up** your wallet with additional minutes at your plan’s rate.
-- **No Rollover**: Unused minutes typically don’t roll over to the next month.
+1. **AI време**
 
-**Example**
+   - **Минимална такса от 30 секунди** (0.5 мин). Обаждания под 30 секунди се таксуват като 30 секунди.
+   - След 30 секунди, **мерено по секунди** — така 70 секунди е ~1.17 минути AI използване.
+   - Приспада се точно от баланса на минутите на вашия план.
 
-> You’re on the **Starter Plan** with 200 included minutes:
+2. **Време за оператора**
+   - **Закръглява се до следващата пълна минута** за мрежовата такса.
+   - След това се преобразува в част от разхода на вашия AI план, за да се реши колко "минути" да се приспаднат от баланса на кредитите ви.
+
+---
+
+## 4. Включени минути и допълнения
+
+- **Всеки план**: Обикновено включва месечна квота минути.
+- **Изразходване на минутите**: След като надвишите включените минути, можете да **допълните** портфейла си с допълнителни минути по тарифата на вашия план.
+- **Без пренасяне**: Неизползваните минути обикновено не се пренасят към следващия месец.
+
+**Пример**
+
+> Вие сте на **Starter Plan** със 200 включени минути:
 >
-> - If you make enough calls that total 180 AI minutes + carrier conversions = 180 used, you have 20 left this month.
-> - Next month, you reset to 200. If you need 210 minutes, you pay for 10 extra minutes at your plan’s rate.
+> - Ако направите достатъчно обаждания, които общо са 180 AI минути + преобразувания на оператора = 180 използвани, имате 20 останали за този месец.
+> - Следващия месец се нулирате до 200. Ако ви трябват 210 минути, плащате за 10 допълнителни минути по тарифата на вашия план.
 
 ---
 
-## 5. Volume Discounts or Tiers
+## 5. Отстъпки за обем или нива
 
-- Plans vary (e.g., **Starter** at \$0.20/min, **Pro** at \$0.15/min, **Agency** at \$0.09/min).
-- High-volume usage (like 50,000+ minutes/month) can often get **bulk discounts** by contacting sales.
-
----
-
-## 6. Quick Usage Examples
-
-### Example A (Outbound Call, Starter Plan)
-
-- **AI Rate**: \$0.20/min
-- **Call Duration**: 30 seconds → 0.5 AI minutes = \$0.10 AI cost.
-- **Carrier**: \$0.01/min, but 30 seconds → 1 minute rounded up → \$0.01.
-  - \$0.01 at your plan’s \$0.20 rate = 0.05 “plan minutes” used (Or if you do a simpler approach, \$0.01 / \$0.20 = 0.05 minutes)
-- **Total**: 0.5 (AI) + 0.05 (carrier) = 0.55 minutes from your plan. If you had 200 included, you’d have 199.45 left.
-
-### Example B (Inbound Call, Pro Plan)
-
-- **AI Rate**: \$0.15/min
-- **Call Duration**: 90 seconds → 1.5 AI minutes = \$0.225 AI cost.
-- **Carrier**: Suppose inbound is \$0.015/min, rounding up to 2 minutes if the call was 1.5 min. That’s \$0.03 total.
-  - \$0.03 / \$0.15 = 0.2 minutes from your plan.
-- **Total**: 1.5 (AI) + 0.2 (carrier) = 1.7 minutes deducted.
+- Плановете варират (напр., **Starter** на \$0.20/мин, **Pro** на \$0.15/мин, **Agency** на \$0.09/мин).
+- Високообемно използване (като 50,000+ минути/месец) често може да получи **отстъпки за количество** чрез контакт с продажбите.
 
 ---
 
-### FAQ
+## 6. Бързи примери за използване
 
-- **Do I pay double if user + AI talk simultaneously?**  
-  **No**, it’s based on total call duration, not per speaker concurrency.
-- **What if someone picks up then instantly hangs up?**  
-  The minimum AI charge is 30 seconds (0.5 min), even if the call lasted only a few seconds. The carrier portion may also round up to 1 minute.
+### Пример A (Изходящо обаждане, Starter Plan)
+
+- **AI тарифа**: \$0.20/мин
+- **Продължителност на обаждането**: 30 секунди → 0.5 AI минути = \$0.10 AI разход.
+- **Оператор**: \$0.01/мин, но 30 секунди → 1 минута закръглена нагоре → \$0.01.
+  - \$0.01 при тарифата на вашия план от \$0.20 = 0.05 "минути от плана" използвани (Или ако направите по-прост подход, \$0.01 / \$0.20 = 0.05 минути)
+- **Общо**: 0.5 (AI) + 0.05 (оператор) = 0.55 минути от вашия план. Ако сте имали 200 включени, ще ви останат 199.45.
+
+### Пример B (Входящо обаждане, Pro Plan)
+
+- **AI тарифа**: \$0.15/мин
+- **Продължителност на обаждането**: 90 секунди → 1.5 AI минути = \$0.225 AI разход.
+- **Оператор**: Да предположим, че входящото е \$0.015/мин, закръгляване нагоре до 2 минути ако обаждането е било 1.5 мин. Това е \$0.03 общо.
+  - \$0.03 / \$0.15 = 0.2 минути от вашия план.
+- **Общо**: 1.5 (AI) + 0.2 (оператор) = 1.7 минути приспаднати.
 
 ---
 
-**Bottom Line**  
-All calls burn **AI time** plus a **converted carrier cost** from your plan’s minute balance. Keep track of usage in your dashboard, top up if needed, and choose the plan that best suits your volume.
+### Често задавани въпроси
+
+- **Плащам ли двойно ако потребителят + AI говорят едновременно?**  
+  **Ne**, базира се на общата продължителност на обаждането, не на едновременността на говорителите.
+- **Какво става ако някой отговори и веднага затвори?**  
+  Минималната AI такса е 30 секунди (0.5 мин), дори ако обаждането е продължило само няколко секунди. Частта за оператора може също да се закръгли нагоре до 1 минута.
+
+---
+
+**Основното**  
+Всички обаждания консумират **AI време** плюс **преобразуван разход за оператора** от баланса на минутите на вашия план. Следете използването в таблото си, допълнете при нужда и изберете плана, който най-добре отговаря на вашия обем.
+
+---

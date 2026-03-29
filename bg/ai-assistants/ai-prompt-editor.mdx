@@ -1,230 +1,232 @@
 ---
-title: "AI Prompt Editor"
+title: "AI Редактор на подсказки"
 icon: "sparkles"
-description: "Edit and improve your assistant's prompts using AI-powered suggestions through a conversational interface"
+description: "Редактирайте и подобрявайте подсказките на вашия асистент използвайки AI предложения чрез разговорен интерфейс"
 ---
 
-The AI Prompt Editor is an intelligent tool that allows you to edit and improve your AI assistant's prompts using natural language. Instead of manually editing text, you can chat with an AI assistant that understands your requests and suggests intelligent modifications.
+AI Редакторът на подсказки е интелигентен инструмент, който ви позволява да редактирате и подобрявате подсказките на вашия AI асистент, използвайки естествен език. Вместо ръчно редактиране на текст, можете да разговаряте с AI асистент, който разбира вашите заявки и предлага интелигентни модификации.
 
-## Overview
+## Преглед
 
-The AI Prompt Editor provides:
+AI Редакторът на подсказки предоставя:
 
-- **Conversational editing** - Describe changes in plain language
-- **Smart suggestions** - AI understands context and makes relevant changes
-- **Review before apply** - Accept or reject each change individually
-- **Variable management** - Easily manage pre-call and post-call data
-- **Template library** - Start with proven prompt templates
+- **Разговорно редактиране** - Опишете промените на обикновен език
+- **Интелигентни предложения** - AI разбира контекста и прави подходящи промени
+- **Преглед преди прилагане** - Приемайте или отхвърляйте всяка промяна индивидуално
+- **Управление на променливи** - Лесно управлявайте данни преди и след разговора
+- **Библиотека от шаблони** - Започнете с доказани шаблони за подсказки
 
 <Frame>
   <img src="/resources/ai-assistants/ai-prompt-editor-overview.png" alt="AI Prompt Editor Interface" />
 </Frame>
 
-## Getting Started
+## Първи стъпки
 
 <Steps>
-  <Step title="Open your assistant">
-    Navigate to **Assistants** in the sidebar and click on the assistant you want to edit.
+  <Step title="Отворете вашия асистент">
+    Навигирайте до **Assistants** в страничната лента и кликнете върху асистента, който искате да редактирате.
   </Step>
-  <Step title="Find the AI Prompt Editor">
-    In the edit form, scroll to the **System Prompt** section and find the **AI Prompt Editor** tab.
+  <Step title="Намерете AI Редактора на подсказки">
+    В формата за редактиране, превъртете до секцията **System Prompt** и намерете таба **AI Prompt Editor**.
   </Step>
-  <Step title="Launch the editor">
-    Click the **Launch AI Prompt Editor** button. A modal window will open with the editor interface.
+  <Step title="Стартирайте редактора">
+    Кликнете върху бутона **Launch AI Prompt Editor**. Ще се отвори модален прозорец с интерфейса на редактора.
   </Step>
 </Steps>
 
 <Note>
-You must save your assistant at least once before you can use the AI Prompt Editor.
+Трябва да запазите вашия асистент поне веднъж, преди да можете да използвате AI Редактора на подсказки.
 </Note>
 
-## Interface Overview
+## Преглед на интерфейса
 
-The AI Prompt Editor has three main areas:
+AI Редакторът на подсказки има три основни области:
 
-### Chat Panel (Left Side)
+### Панел за чат (лява страна)
 
-This is where you interact with the AI:
+Тук взаимодействате с AI:
 
-- Type your requests in the input box at the bottom
-- View conversation history above
-- Use quick suggestion chips for common actions:
-  - **Make it more concise** - Shorten the prompt
-  - **Add more detail** - Expand with specifics
-  - **Improve clarity** - Make instructions clearer
-  - **Add instructions** - Add new behavioral guidelines
+- Въвеждайте заявките си в полето за въвеждане отдолу
+- Преглеждайте историята на разговорите отгоре
+- Използвайте бързите предложения за често срещани действия:
+  - **Make it more concise** - Съкратете подсказката
+  - **Add more detail** - Разширете с подробности
+  - **Improve clarity** - Направете инструкциите по-ясни
+  - **Add instructions** - Добавете нови поведенчески указания
 
-### Editor Panel (Right Side)
+### Панел на редактора (дясна страна)
 
-This shows your current prompt with two tabs:
+Тук се показва текущата ви подсказка с два таба:
 
-- **System Prompt** - The main instructions for your assistant
-- **Initial Message** - The greeting message when calls start
+- **System Prompt** - Основните инструкции за вашия асистент
+- **Initial Message** - Приветственото съобщение при започване на разговори
 
-Toggle between **Edit** mode (textarea) and **Preview** mode (formatted view with diff highlights).
+Превключвайте между режим **Edit** (текстова област) и режим **Preview** (форматиран изглед с подчертаване на разликите).
 
-### Side Tabs
+### Странични табове
 
-- **Variables** - Manage pre-call data variables
-- **Post-Call** - Define data to collect after calls
+- **Variables** - Управлявайте променливи за данни преди разговора
+- **Post-Call** - Дефинирайте данни за събиране след разговорите
 
-## Using the Chat
+## Използване на чата
 
-### Making Requests
+### Правене на заявки
 
-Simply describe what you want to change:
+Просто опишете какво искате да промените:
 
 <AccordionGroup>
-  <Accordion title="Example: Make the tone friendlier">
-    **You:** "Make the tone more friendly and casual"
+  <Accordion title="Пример: Направете тона по-приятелски">
+    **Вие:** "Направи тона по-приятелски и непринуден"
 
-    **AI:** The AI will suggest changes to make greetings warmer, use more conversational language, and soften formal phrases.
+    **AI:** AI ще предложи промени за по-топли поздрави, използване на по-разговорен език и омекотяване на формалните фрази.
   </Accordion>
 
-  <Accordion title="Example: Add information">
-    **You:** "Add information about our return policy - 30 days no questions asked"
+  <Accordion title="Пример: Добавете информация">
+    **Вие:** "Добави информация за нашата политика за връщане - 30 дни без въпроси"
 
-    **AI:** The AI will find the appropriate place in your prompt and add the return policy details.
+    **AI:** AI ще намери подходящото място в подсказката ви и ще добави подробностите за политиката за връщане.
   </Accordion>
 
-  <Accordion title="Example: Handle a scenario">
-    **You:** "Add instructions for handling angry customers"
+  <Accordion title="Пример: Обработете сценарий">
+    **Вие:** "Добави инструкции за справяне с ядосани клиенти"
 
-    **AI:** The AI will add behavioral guidelines for de-escalation and when to transfer to a human.
+    **AI:** AI ще добави поведенчески указания за деескалация и кога да прехвърли към човек.
   </Accordion>
 </AccordionGroup>
 
-### Tips for Better Results
+### Съвети за по-добри резултати
 
-- **Be specific** - "Add a 10% discount mention" is better than "add discount info"
-- **Provide context** - "When asked about pricing, mention..." gives AI better understanding
-- **One change at a time** - Break complex changes into multiple requests
+- **Бъдете конкретни** - "Добави споменаване на 10% отстъпка" е по-добре от "добави информация за отстъпка"
+- **Дайте контекст** - "Когато се пита за цени, спомени..." дава на AI по-добро разбиране
+- **По една промяна наведнъж** - Разделете сложните промени на множество заявки
 
-## Reviewing Changes
+## Преглед на промените
 
-When the AI suggests changes, they appear in the diff view:
+Когато AI предложи промени, те се появяват в изгледа за разлики:
 
-- **Green highlighting** - New text being added
-- **Red highlighting** - Text being removed
-- **Blue highlighting** - Text being modified
+- **Зелено подчертаване** - Нов текст, който се добавя
+- **Червено подчертаване** - Текст, който се премахва
+- **Синьо подчертаване** - Текст, който се модифицира
 
-### Accept or Reject Changes
+### Приемане или отхвърляне на промени
 
-Each change has two buttons:
+Всяка промяна има два бутона:
 
-- **✓ Accept** - Apply this specific change
-- **✗ Reject** - Discard this change
+- **✓ Accept** - Приложете тази конкретна промяна
+- **✗ Reject** - Отхвърлете тази промяна
 
-You can also use bulk actions:
+Можете също да използвате масови действия:
 
-- **Accept All** - Apply all pending changes
-- **Reject All** - Discard all pending changes
+- **Accept All** - Приложете всички чакащи промени
+- **Reject All** - Отхвърлете всички чакащи промени
 
 <Warning>
-Always review changes before accepting. The AI makes intelligent suggestions, but you know your business best.
+Винаги преглеждайте промените преди да ги приемете. AI прави интелигентни предложения, но вие познавате бизнеса си най-добре.
 </Warning>
 
 <Frame>
   <img src="/resources/ai-assistants/ai-prompt-editor-diff.png" alt="Reviewing Changes with Diff View" />
 </Frame>
 
-## Variables
+## Променливи
 
-Variables allow you to personalize calls with dynamic data.
+Променливите ви позволяват да персонализирате разговорите с динамични данни.
 
-### Adding Variables
+### Добавяне на променливи
 
-1. Click the **Variables** tab
-2. Click **Add Variable**
-3. Enter a name (e.g., `customer_name`, `appointment_time`)
-4. Set a default value
+1. Кликнете върху таба **Variables**
+2. Кликнете **Add Variable**
+3. Въведете име (например `customer_name`, `appointment_time`)
+4. Задайте стойност по подразбиране
 
-### Using Variables in Prompts
+### Използване на променливи в подсказки
 
-Type variables directly in your prompt using curly braces: `{variable_name}`
+Въведете променливите директно в подсказката си, използвайки къдрави скоби: `{variable_name}`
 
-**Example prompt:**
+**Примерна подсказка:**
 ```
-Hello {customer_name}, I'm calling from {company_name} about your appointment on {appointment_date}.
+Здравейте {customer_name}, обаждам се от {company_name} относно вашата среща на {appointment_date}.
 ```
 
-## Post-Call Schema
+## Post-Call схема
 
-Define structured data you want to collect during or after calls.
+Дефинирайте структурирани данни, които искате да събирате по време или след разговорите.
 
-### Adding Post-Call Fields
+### Добавяне на Post-Call полета
 
-1. Click the **Post-Call** tab
-2. Click **Add Field**
-3. Configure:
-   - **Name** - Field identifier (e.g., `meeting_scheduled`)
-   - **Type** - `string`, `number`, or `boolean`
-   - **Description** - What this field captures
+1. Кликнете върху таба **Post-Call**
+2. Кликнете **Add Field**
+3. Конфигурирайте:
+   - **Name** - Идентификатор на полето (например `meeting_scheduled`)
+   - **Type** - `string`, `number` или `boolean`
+   - **Description** - Какво улавя това поле
 
-### Example Fields
+### Примерни полета
 
 | Name | Type | Description |
 |------|------|-------------|
-| `meeting_scheduled` | boolean | Whether a meeting was booked |
-| `interest_level` | string | Customer's interest: hot, warm, cold |
-| `callback_time` | string | Preferred callback date/time |
-| `objection_reason` | string | Main objection if not interested |
+| `meeting_scheduled` | boolean | Дали е резервирана среща |
+| `interest_level` | string | Интерес на клиента: горещ, топъл, студен |
+| `callback_time` | string | Предпочитана дата/час за обратно обаждане |
+| `objection_reason` | string | Основна причина за възражение, ако не е заинтересован |
 
 <Tip>
-The AI can suggest post-call fields based on your prompt. Just ask: "What data should I collect from these calls?"
+AI може да предложи post-call полета въз основа на вашата подсказка. Просто попитайте: "Какви данни трябва да събирам от тези разговори?"
 </Tip>
 
 <Frame>
   <img src="/resources/ai-assistants/ai-prompt-editor-postcall.png" alt="Post-Call Fields Configuration" />
 </Frame>
 
-## Templates
+## Шаблони
 
-When you first open the AI Prompt Editor, you can choose to start with a template:
+Когато за първи път отворите AI Редактора на подсказки, можете да изберете да започнете с шаблон:
 
-- **Continue with existing** - Keep your current prompt
-- **Start from scratch** - Begin with a blank prompt
-- **Start with template** - Choose from pre-built templates
+- **Continue with existing** - Запазете текущата си подсказка
+- **Start from scratch** - Започнете с празна подсказка
+- **Start with template** - Изберете от готови шаблони
 
-Templates are organized by use case:
+Шаблоните са организирани по случаи на употреба:
 
-- Sales calls
-- Customer support
-- Appointment scheduling
-- Surveys and feedback
-- Lead qualification
+- Продажбени разговори
+- Клиентска поддръжка
+- Планиране на срещи
+- Проучвания и обратна връзка
+- Квалификация на потенциални клиенти
 
 <Frame>
   <img src="/resources/ai-assistants/ai-prompt-editor-templates.png" alt="Template Selection Screen" />
 </Frame>
 
-## Saving Your Work
+## Запазване на работата ви
 
-Click the **Save** button in the top-right to save all changes to your assistant.
+Кликнете върху бутона **Save** в горния десен ъгъл, за да запазите всички промени в асистента си.
 
 <Note>
-The editor auto-detects unsaved changes. If you try to close with unsaved work, you'll be prompted to save or discard.
+Редакторът автоматично открива незапазени промени. Ако опитате да затворите с незапазена работа, ще бъдете подканени да запазите или отхвърлите.
 </Note>
 
-## Best Practices
+## Най-добри практики
 
 <CardGroup cols={2}>
-  <Card title="Start with Templates" icon="layer-group">
-    Templates provide proven starting points. Customize rather than starting from zero.
+  <Card title="Започнете с шаблони" icon="layer-group">
+    Шаблоните предоставят доказани отправни точки. Персонализирайте, вместо да започвате от нула.
   </Card>
-  <Card title="Iterate Gradually" icon="repeat">
-    Make small changes, test, and refine. Don't overhaul everything at once.
+  <Card title="Итерирайте постепенно" icon="repeat">
+    Правете малки промени, тествайте и усъвършенствайте. Не преработвайте всичко наведнъж.
   </Card>
-  <Card title="Review Every Change" icon="magnifying-glass">
-    The AI is helpful but not perfect. Always review suggestions before accepting.
+  <Card title="Преглеждайте всяка промяна" icon="magnifying-glass">
+    AI е полезен, но не е перфектен. Винаги преглеждайте предложенията преди да ги приемете.
   </Card>
-  <Card title="Test After Editing" icon="phone">
-    Make test calls after changes to verify the assistant behaves as expected.
+  <Card title="Тествайте след редактиране" icon="phone">
+    Правете тестови разговори след промените, за да проверите дали асистентът се държи както очаквате.
   </Card>
 </CardGroup>
 
-## Related Resources
+## Свързани ресурси
 
-- [System Prompts Guide](/ai-assistants/system-prompt) - Deep dive into prompt writing
-- [Flow Builder](/ai-assistants/flow-builder) - Visual alternative for conversation design
-- [Testing Your Assistant](/ai-assistants/testing) - How to test your changes
+- [Ръководство за системни подсказки](/ai-assistants/system-prompt) - Задълбочен поглед върху писането на подсказки
+- [Flow Builder](/ai-assistants/flow-builder) - Визуална алтернатива за дизайн на разговори
+- [Тестване на вашия асистент](/ai-assistants/testing) - Как да тествате промените си
+
+---

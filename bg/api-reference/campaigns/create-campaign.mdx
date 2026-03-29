@@ -1,124 +1,124 @@
 ---
-title: "Create campaign"
+title: "Създаване на кампания"
 api: "POST /user/campaign"
-description: "Create a new outbound calling campaign"
+description: "Създаване на нова кампания за изходящи обаждания"
 ---
 
-This endpoint allows you to create a new outbound calling campaign with the specified configuration.
+Този endpoint ви позволява да създадете нова кампания за изходящи обаждания с указаната конфигурация.
 
 ### Request body
 
 <ParamField body="name" type="string" required>
-  The name of the campaign. Maximum 255 characters.
+  Името на кампанията. Максимум 255 символа.
 </ParamField>
 
 <ParamField body="assistant_id" type="integer" required>
-  The ID of the assistant to use for the campaign. Must be an outbound-capable assistant.
+  ID на асистента, който да се използва за кампанията. Трябва да бъде асистент, способен за изходящи обаждания.
 </ParamField>
 
 <ParamField body="timezone" type="string">
-  Timezone identifier for the campaign (e.g., `America/New_York`, `Europe/London`). Defaults to your account timezone.
+  Идентификатор на часовата зона за кампанията (напр. `America/New_York`, `Europe/London`). По подразбиране е часовата зона на вашия акаунт.
 </ParamField>
 
 <ParamField body="max_calls_in_parallel" type="integer" default="3">
-  Maximum number of simultaneous calls. Minimum: 1. Maximum depends on your plan's parallel calls limit (up to 10).
+  Максимален брой едновременни обаждания. Минимум: 1. Максимумът зависи от лимита за паралелни обаждания на вашия план (до 10).
 </ParamField>
 
 <ParamField body="allowed_hours_start_time" type="string" default="00:00">
-  Start of the allowed calling window in `H:i` format (e.g., `09:00`).
+  Начало на разрешения прозорец за обаждания в формат `H:i` (напр. `09:00`).
 </ParamField>
 
 <ParamField body="allowed_hours_end_time" type="string" default="23:59">
-  End of the allowed calling window in `H:i` format (e.g., `17:00`).
+  Край на разрешения прозорец за обаждания в формат `H:i` (напр. `17:00`).
 </ParamField>
 
-<ParamField body="allowed_days" type="array" default="all 7 days">
-  Array of weekday names when calls are allowed. Valid values: `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`.
+<ParamField body="allowed_days" type="array" default="всичките 7 дни">
+  Масив от имена на дни от седмицата, когато са разрешени обаждания. Валидни стойности: `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`.
 </ParamField>
 
 <ParamField body="max_retries" type="integer" default="3">
-  Maximum number of retry attempts for failed calls. Range: 1-5.
+  Максимален брой опити за повторение при неуспешни обаждания. Диапазон: 1-5.
 </ParamField>
 
 <ParamField body="retry_interval" type="integer" default="60">
-  Interval in minutes between retry attempts. Range: 10-4320 (up to 3 days).
+  Интервал в минути между опитите за повторение. Диапазон: 10-4320 (до 3 дни).
 </ParamField>
 
 <ParamField body="retry_on_voicemail" type="boolean">
-  Whether to retry calls that reached voicemail.
+  Дали да се повтарят обаждания, които са достигнали гласова поща.
 </ParamField>
 
 <ParamField body="retry_on_goal_incomplete" type="boolean">
-  Whether to retry calls where the goal was not completed.
+  Дали да се повтарят обаждания, при които целта не е постигната.
 </ParamField>
 
 <ParamField body="goal_completion_variable" type="string">
-  Name of a boolean variable from your assistant's post-call schema to track goal completion. Maximum 255 characters.
+  Име на boolean променлива от post-call схемата на вашия асистент за проследяване постигането на целта. Максимум 255 символа.
 </ParamField>
 
 <ParamField body="mark_complete_when_no_leads" type="boolean" default="true">
-  Whether to automatically mark the campaign as complete when there are no remaining leads to call.
+  Дали автоматично да се маркира кампанията като завършена, когато няма повече оставащи потенциални клиенти за обаждане.
 </ParamField>
 
 <ParamField body="phone_number_ids" type="array">
-  Array of phone number IDs to use for the campaign. Each ID must be a distinct integer.
+  Масив от ID-та на телефонни номера за използване в кампанията. Всяко ID трябва да бъде отделно цяло число.
 </ParamField>
 
 ### Response
 
 <ResponseField name="message" type="string">
-  Success message confirming the campaign was created
+  Съобщение за успех, потвърждаващо, че кампанията е създадена
 </ResponseField>
 
 <ResponseField name="data" type="object">
-  The created campaign data
+  Данните на създадената кампания
   <Expandable title="data properties">
     <ResponseField name="id" type="integer">
-      The ID of the created campaign
+      ID на създадената кампания
     </ResponseField>
 
     <ResponseField name="name" type="string">
-      The name of the campaign
+      Името на кампанията
     </ResponseField>
 
     <ResponseField name="status" type="string">
-      The status of the campaign (starts as `draft`)
+      Статусът на кампанията (започва като `draft`)
     </ResponseField>
 
     <ResponseField name="max_calls_in_parallel" type="integer">
-      Maximum number of simultaneous calls
+      Максимален брой едновременни обаждания
     </ResponseField>
 
     <ResponseField name="mark_complete_when_no_leads" type="boolean">
-      Whether to mark the campaign as complete when there are no leads
+      Дали да се маркира кампанията като завършена, когато няма потенциални клиенти
     </ResponseField>
 
     <ResponseField name="allowed_hours_start_time" type="string">
-      Start of the allowed calling window
+      Начало на разрешения прозорец за обаждания
     </ResponseField>
 
     <ResponseField name="allowed_hours_end_time" type="string">
-      End of the allowed calling window
+      Край на разрешения прозорец за обаждания
     </ResponseField>
 
     <ResponseField name="allowed_days" type="array">
-      Days of the week when calls are allowed
+      Дни от седмицата, когато са разрешени обаждания
     </ResponseField>
 
     <ResponseField name="max_retries" type="integer">
-      Maximum number of retry attempts
+      Максимален брой опити за повторение
     </ResponseField>
 
     <ResponseField name="retry_interval" type="integer">
-      Interval in minutes between retries
+      Интервал в минути между повторенията
     </ResponseField>
 
     <ResponseField name="created_at" type="string">
-      Timestamp when the campaign was created
+      Времева отметка, когато кампанията е създадена
     </ResponseField>
 
     <ResponseField name="updated_at" type="string">
-      Timestamp when the campaign was last updated
+      Времева отметка, когато кампанията е последно актуализирана
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -128,7 +128,7 @@ This endpoint allows you to create a new outbound calling campaign with the spec
 <ResponseField name="403 Forbidden">
   <Expandable title="Error Response">
     <ResponseField name="message" type="string">
-      Error message when the user has reached their plan's campaign limit
+      Съобщение за грешка, когато потребителят е достигнал лимита на кампании за своя план
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -136,7 +136,7 @@ This endpoint allows you to create a new outbound calling campaign with the spec
 <ResponseField name="404 Not Found">
   <Expandable title="Error Response">
     <ResponseField name="message" type="string">
-      Error message when the specified assistant is not found or is not an outbound assistant
+      Съобщение за грешка, когато указаният асистент не е намерен или не е асистент за изходящи обаждания
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -144,10 +144,10 @@ This endpoint allows you to create a new outbound calling campaign with the spec
 <ResponseField name="422 Validation Error">
   <Expandable title="Error Response">
     <ResponseField name="message" type="string">
-      Error message indicating validation failure
+      Съобщение за грешка, указващо неуспешна валидация
     </ResponseField>
     <ResponseField name="errors" type="object">
-      Detailed validation errors for each field
+      Подробни грешки от валидацията за всяко поле
     </ResponseField>
   </Expandable>
 </ResponseField>

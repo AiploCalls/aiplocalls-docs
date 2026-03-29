@@ -1,111 +1,111 @@
 ---
-title: "Assistant best practices"
+title: "Най-добри практики за асистенти"
 icon: "sliders"
-description: "Quick guide to fine-tune mode, transcriber, model, and other settings for the best call experience."
+description: "Бърз гид за настройка на режим, transcriber, модел и други настройки за най-доброто разговорно изживяване."
 ---
 
-> **Last updated:** September 1, 2025
+> **Последна актуализация:** 1 септември, 2025
 
-Getting great results often comes down to **picking the right engine settings**. Use this checklist when configuring an assistant:
+Получаването на отлични резултати често зависи от **избора на правилните настройки на engine**. Използвайте този списък при конфигуриране на асистент:
 
-## 1. Pick a Mode
+## 1. Изберете режим
 
-| Mode | Why choose it? | Notes |
+| Режим | Защо да го изберете? | Бележки |
 | --- | --- | --- |
-| **Dualplex (Beta)** | Fast turn-taking + premium/cloned voices | Recommended default. Pair with **Gemini Flash 2.0/2.5** or **GPT‑5 Realtime**. |
-| **Speech-to-Speech (Multimodal)** | Fastest turn-taking & most natural flow | Recommended model: **GPT‑5 Realtime**. |
-| **Pipeline** | Maximum control over voice & long-form replies | Recommended model: **GPT‑5 Mini**. If you select Pipeline, continue to the **Transcriber** step below. |
+| **Dualplex (Beta)** | Бързо редуване на говорещите + премиум/клонирани гласове | Препоръчителен по подразбиране. Съчетайте с **Gemini Flash 2.0/2.5** или **GPT‑5 Realtime**. |
+| **Speech-to-Speech (Multimodal)** | Най-бързо редуване и най-естествен поток | Препоръчителен модел: **GPT‑5 Realtime**. |
+| **Pipeline** | Максимален контрол върху гласа и дълги отговори | Препоръчителен модел: **GPT‑5 Mini**. Ако изберете Pipeline, продължете към стъпката **Transcriber** по-долу. |
 
-Want to know more about the differences between the modes? Read the <a href="/ai-assistants/assistant-modes">Assistant modes</a> guide.
+Искате да научите повече за разликите между режимите? Прочетете ръководството за <a href="/ai-assistants/assistant-modes">Режими на асистентите</a>.
 
 <Note>
-Experiment with all three modes: record the same scenario in each and compare response time and caller satisfaction.<br/>
+Експериментирайте с трите режима: записвайте един и същи сценарий във всеки и сравнете времето за отговор и удовлетворението на обаждащите се.<br/>
 </Note>
 
-## 2. Choose a Transcriber (Pipeline only)
+## 2. Изберете Transcriber (само за Pipeline)
 
-| Transcriber | Accuracy | Latency | Best for |
+| Transcriber | Точност | Латентност | Най-добър за |
 | --- | --- | --- | --- |
-| **Azure** | ⭐⭐⭐⭐ | ⏱️⏱️⏱️ (slower) | When you need the highest transcription fidelity. |
-| **Gladia** | ⭐⭐⭐ | ⏱️ (faster) | Good all-rounder for most languages. |
-| **Deepgram** | ⭐⭐⭐ | ⏱️ (faster) | Another solid choice—test which performs better for your language & audio setup. |
+| **Azure** | ⭐⭐⭐⭐ | ⏱️⏱️⏱️ (по-бавен) | Когато се нуждаете от най-висока точност на транскрипцията. |
+| **Gladia** | ⭐⭐⭐ | ⏱️ (по-бърз) | Добър универсален избор за повечето езици. |
+| **Deepgram** | ⭐⭐⭐ | ⏱️ (по-бърз) | Друг солиден избор—тествайте кой работи по-добре за вашия език и аудио настройка. |
 
-> **Tip:** Different languages, accents, or background noise can impact each engine differently. Run a quick A/B test and keep the best performer.
+> **Съвет:** Различните езици, акценти или фонов шум могат да повлияят различно на всеки engine. Направете бърз A/B тест и запазете най-добрия изпълнител.
 
-## 3. Select an LLM Model
+## 3. Изберете LLM модел
 
-| Model | Strengths | Trade-offs |
+| Модел | Силни страни | Компромиси |
 | --- | --- | --- |
-| **GPT-5 Mini** | Balanced reasoning with low latency | May be slower than realtime models for rapid turn-taking. |
-| **GPT-5 Realtime** | Designed for ultra-low-latency voice turns | Best for **Speech-to-Speech** and **Dualplex**. |
-| **GPT-4o** | Strong reasoning and multimodal understanding | Higher latency. |
-| **Gemini Flash 2.0 / 2.5** | Ultra-fast for voice turns in Dualplex/Multimodal | Excellent for minimizing perceived latency. |
+| **GPT-5 Mini** | Балансирано разсъждение с ниска латентност | Може да бъде по-бавен от realtime моделите за бързо редуване. |
+| **GPT-5 Realtime** | Проектиран за ултра-ниска латентност при гласови обръщения | Най-добър за **Speech-to-Speech** и **Dualplex**. |
+| **GPT-4o** | Силно разсъждение и multimodal разбиране | По-висока латентност. |
+| **Gemini Flash 2.0 / 2.5** | Ултра-бърз за гласови обръщения в Dualplex/Multimodal | Отличен за минимизиране на възприеманата латентност. |
 
-If speed is critical, use **GPT‑5 Realtime** (great for **Speech-to-Speech**) or **Gemini Flash 2.0/2.5** (great with **Dualplex**). For richer reasoning, use **GPT-4o** or **GPT-5 Mini** and offset latency by using filler audios.
+Ако скоростта е критична, използвайте **GPT‑5 Realtime** (отличен за **Speech-to-Speech**) или **Gemini Flash 2.0/2.5** (отличен с **Dualplex**). За по-богато разсъждение, използвайте **GPT-4o** или **GPT-5 Mini** и компенсирайте латентността, като използвате filler аудио.
 
-## 4. Noise Cancellation
+## 4. Шумопотискане
 
-If callers are on speaker phone or in a quiet environment, keep **noise cancellation ON**. If your call volume is low or some words are "clipped," **turn it OFF** so the transcriber gets the full waveform.
+Ако обаждащите се използват високоговорител или са в тиха среда, оставете **шумопотискането ВКЛЮЧЕНО**. Ако обемът на повикванията ви е нисък или някои думи са "отрязани", **ИЗКЛЮЧЕТЕ го**, за да получи transcriber пълната форма на вълната.
 
 <Note>
-If your assistant is not hearing you well, you can try to turn off noise cancellation.
+Ако вашият асистент не ви чува добре, можете да опитате да изключите шумопотискането.
 </Note>
 
-## 5. Conversation Timers
+## 5. Таймери за разговори
 
-Parameter | Recommended | Why
+Параметър | Препоръчително | Защо
 --- | --- | ---
-**Re-engagement** | `≈ 30 s` | Gives callers enough time to think. Lower values can feel pushy.
-**Max silence duration** | `≈ 60 s` | Prevents premature hang-ups while still ending truly silent calls.
+**Re-engagement** | `≈ 30 s` | Дава на обаждащите се достатъчно време за размисъл. По-ниски стойности могат да изглеждат натрапчиви.
+**Max silence duration** | `≈ 60 s` | Предотвратява преждевременното затваряне, като същевременно прекратява наистина мълчаливи обаждания.
 
-Test different values in real calls—too low can interrupt, too high leaves awkward gaps.
+Тествайте различни стойности в реални обаждания—твърде ниски могат да прекъснат, твърде високи оставят неудобни паузи.
 
-## 6. Initial Message
+## 6. Първоначално съобщение
 
-Mode | How it's used | Best practice
+Режим | Как се използва | Най-добра практика
 --- | --- | ---
-**Pipeline** | Read **exactly** as written (converted by TTS). | Write the greeting verbatim: "Hello, this is Alex from …".
-**Dualplex** | Read **exactly** as written (rendered via ElevenLabs TTS). | Write the greeting verbatim, then select your cloned voice.
-**Speech-to-Speech** | Interpreted as a **prompt** by the model. | Include instructions like "Greet the customer and say …" _or_ prepend `say exactly: ` to ensure literal output.
+**Pipeline** | Чете се **точно** както е написано (конвертирано от TTS). | Напишете поздрава думичка по думичка: "Здравейте, това е Алекс от …".
+**Dualplex** | Чете се **точно** както е написано (рендирано чрез ElevenLabs TTS). | Напишете поздрава думичка по думичка, след това изберете вашия клониран глас.
+**Speech-to-Speech** | Интерпретира се като **prompt** от модела. | Включете инструкции като "Поздравете клиента и кажете …" _или_ добавете `say exactly: ` за да осигурите буквален изход.
 
-## 7. Ambient sound
+## 7. Ambient звук
 
-Enabled by default, ambient sound is a feature that adds background noise to the assistant's voice.
+Включен по подразбиране, ambient звукът е функция, която добавя фонов шум към гласа на асистента.
 
 <Note>
-If the assistant is not hearing you well, you can try to turn off ambient sound or turn the volume lower.
+Ако асистентът не ви чува добре, можете да опитате да изключите ambient звука или да намалите силата му.
 </Note>
 
-## 8. Endpointing sliders
+## 8. Endpointing плъзгачи
 
-**Control when your assistant starts talking** with the endpointing sensitivity slider at the bottom of assistant settings.
+**Контролирайте кога вашият асистент започва да говори** с плъзгача за чувствителност на endpointing в долната част на настройките на асистента.
 
-| Setting | Effect | Use when |
+| Настройка | Ефект | Използвайте когато |
 | --- | --- | --- |
-| **Lower sensitivity** | Assistant responds **faster** after caller stops speaking | You want snappy, quick-turn conversations |
-| **Higher sensitivity** | Assistant waits **longer** before responding | Callers give longer, more detailed replies |
+| **По-ниска чувствителност** | Асистентът отговаря **по-бързо** след като обаждащият се спре да говори | Искате енергични разговори с бързо редуване |
+| **По-висока чувствителност** | Асистентът чака **по-дълго** преди да отговори | Обаждащите се дават по-дълги, по-подробни отговори |
 
 <Tip>
-**Pro tip:** If your assistant cuts off callers mid-sentence, **increase** the sensitivity. If responses feel sluggish, **decrease** it.
+**Pro съвет:** Ако вашият асистент прекъсва обаждащите се по средата на изречението, **увеличете** чувствителността. Ако отговорите изглеждат бавни, **намалете я**.
 </Tip>
 
-## 9. Debug using call transcript
+## 9. Debug чрез препис на разговора
 
-If you are having issues with your assistant, you can use the call transcript to debug the issue.
+Ако имате проблеми с вашия асистент, можете да използвате преписа на разговора за debug на проблема.
 
-1. Go to the Call history page.
-2. Click on the last call you tested
-3. The call transcript will be shown including function calls and its parameters.
+1. Отидете на страницата История на обажданията.
+2. Кликнете върху последното обаждане, което сте тествали
+3. Преписът на обаждането ще бъде показан, включително извиквания на функции и техните параметри.
 
-## 10. Still have questions?
+## 10. Все още имате въпроси?
 
-If you have any questions, please contact our support team via the chat widget inside the app.
+Ако имате въпроси, моля свържете се с нашия екип за поддръжка чрез chat widget-а в приложението.
 
 <Note>
-Test different settings with real calls—the right balance depends on your conversation flow and caller behavior patterns.
+Тествайте различни настройки с реални обаждания—правилният баланс зависи от потока на вашия разговор и моделите на поведение на обаждащите се.
 </Note>
 
 ---
 
-Need a complete list of every toggle and slider? See the full
-<a href="/ai-assistants/settings/general">Assistant settings reference</a>.
+Нуждаете се от пълен списък на всеки превключвател и плъзгач? Вижте пълната
+<a href="/ai-assistants/settings/general">Справка за настройките на асистентите</a>.

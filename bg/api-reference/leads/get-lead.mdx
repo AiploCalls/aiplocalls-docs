@@ -1,105 +1,106 @@
 ---
-title: "List leads"
+---
+title: "Списък с потенциални клиенти"
 api: "GET /user/leads"
-description: "List all leads for the authenticated user with filtering and pagination options"
+description: "Извеждане на всички потенциални клиенти за удостоверения потребител с опции за филтриране и пагинация"
 ---
 
-This endpoint allows you to list all leads belonging to the authenticated user with various filtering and pagination options.
+Този endpoint ви позволява да изведете всички потенциални клиенти, принадлежащи на удостоверения потребител, с различни опции за филтриране и пагинация.
 
-### Query Parameters
+### Query параметри
 
 <ParamField query="status" type="string" optional>
-  Filter leads by status. Possible values: `created`, `scheduled`, `processing`, `completed`, `rescheduled`, `reached-max-retries`, `blacklisted`
+  Филтриране на потенциални клиенти по статус. Възможни стойности: `created`, `scheduled`, `processing`, `completed`, `rescheduled`, `reached-max-retries`, `blacklisted`
 </ParamField>
 
 <ParamField query="campaign_id" type="integer" optional>
-  Filter leads by campaign ID
+  Филтриране на потенциални клиенти по ID на кампания
 </ParamField>
 
 <ParamField query="phone_number" type="string" optional>
-  Filter leads by phone number (partial match supported)
+  Филтриране на потенциални клиенти по телефонен номер (поддържа се частично съвпадение)
 </ParamField>
 
 <ParamField query="date_from" type="string" optional>
-  Filter leads created from this date (YYYY-MM-DD format)
+  Филтриране на потенциални клиенти, създадени от тази дата (формат YYYY-MM-DD)
 </ParamField>
 
 <ParamField query="date_to" type="string" optional>
-  Filter leads created until this date (YYYY-MM-DD format)
+  Филтриране на потенциални клиенти, създадени до тази дата (формат YYYY-MM-DD)
 </ParamField>
 
 <ParamField query="per_page" type="integer" optional>
-  Number of leads per page (1-100, default: 15)
+  Брой потенциални клиенти на страница (1-100, по подразбиране: 15)
 </ParamField>
 
 <ParamField query="page" type="integer" optional>
-  Page number (default: 1)
+  Номер на страница (по подразбиране: 1)
 </ParamField>
 
-### Response fields
+### Полета в отговора
 
 <ResponseField name="data" type="array">
-  <Expandable title="properties">
+  <Expandable title="свойства">
     <ResponseField name="id" type="integer">
-      The id of the lead
+      ID на потенциалния клиент
     </ResponseField>
 
     <ResponseField name="campaign_id" type="integer">
-      The ID of the campaign this lead belongs to
+      ID на кампанията, към която принадлежи този потенциален клиент
     </ResponseField>
 
     <ResponseField name="phone_number" type="string">
-      The phone number of the lead in E.164 format
+      Телефонният номер на потенциалния клиент във формат E.164
     </ResponseField>
 
     <ResponseField name="variables" type="object">
-      The variables associated with the lead
+      Променливите, свързани с потенциалния клиент
     </ResponseField>
 
     <ResponseField name="status" type="string">
-      The status of the lead
+      Статусът на потенциалния клиент
     </ResponseField>
 
     <ResponseField name="created_at" type="string">
-      The created at date of the lead
+      Датата на създаване на потенциалния клиент
     </ResponseField>
 
     <ResponseField name="updated_at" type="string">
-      The updated at date of the lead
+      Датата на актуализиране на потенциалния клиент
     </ResponseField>
 
     <ResponseField name="campaign" type="object">
-      The campaign information
-      <Expandable title="campaign properties">
+      Информацията за кампанията
+      <Expandable title="свойства на campaign">
         <ResponseField name="id" type="integer">
-          The id of the campaign
+          ID на кампанията
         </ResponseField>
         <ResponseField name="name" type="string">
-          The name of the campaign
+          Името на кампанията
         </ResponseField>
       </Expandable>
     </ResponseField>
 
     <ResponseField name="secondary_contacts" type="array">
-      Array of secondary contact leads associated with this lead
-      <Expandable title="secondary_contacts properties">
+      Масив от вторични контакти, свързани с този потенциален клиент
+      <Expandable title="свойства на secondary_contacts">
         <ResponseField name="id" type="integer">
-          The id of the secondary contact lead
+          ID на вторичния контакт
         </ResponseField>
         <ResponseField name="phone_number" type="string">
-          The phone number of the secondary contact in E.164 format
+          Телефонният номер на вторичния контакт във формат E.164
         </ResponseField>
         <ResponseField name="variables" type="object">
-          The variables associated with the secondary contact
+          Променливите, свързани с вторичния контакт
         </ResponseField>
         <ResponseField name="status" type="string">
-          The status of the secondary contact
+          Статусът на вторичния контакт
         </ResponseField>
         <ResponseField name="created_at" type="string">
-          The created at date of the secondary contact
+          Датата на създаване на вторичния контакт
         </ResponseField>
         <ResponseField name="updated_at" type="string">
-          The updated at date of the secondary contact
+          Датата на актуализиране на вторичния контакт
         </ResponseField>
       </Expandable>
     </ResponseField>
@@ -107,19 +108,19 @@ This endpoint allows you to list all leads belonging to the authenticated user w
 </ResponseField>
 
 <ResponseField name="current_page" type="integer">
-  The current page number
+  Номерът на текущата страница
 </ResponseField>
 
 <ResponseField name="per_page" type="integer">
-  Number of items per page
+  Брой елементи на страница
 </ResponseField>
 
 <ResponseField name="total" type="integer">
-  Total number of leads matching the criteria
+  Общ брой потенциални клиенти, отговарящи на критериите
 </ResponseField>
 
 <ResponseField name="last_page" type="integer">
-  The last page number
+  Номерът на последната страница
 </ResponseField>
 
 <ResponseExample>

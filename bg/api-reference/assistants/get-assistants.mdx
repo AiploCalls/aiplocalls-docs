@@ -1,35 +1,35 @@
 ---
-title: "List assistants"
+title: "Списък с асистенти"
 api: "GET /user/assistants/get"
-description: "List all assistants for the authenticated user with pagination"
+description: "Извличане на всички асистенти за удостоверения потребител със страницирване"
 ---
 
-This endpoint allows you to retrieve all AI assistants belonging to the authenticated user.
+Този endpoint ви позволява да извлечете всички AI асистенти, принадлежащи на удостоверения потребител.
 
 ### Query Parameters
 
 <ParamField query="per_page" type="integer" optional>
-  Number of assistants per page (1-100, default: 10)
+  Брой асистенти на страница (1-100, по подразбиране: 10)
 </ParamField>
 
 <ParamField query="page" type="integer" optional>
-  Page number (default: 1)
+  Номер на страницата (по подразбиране: 1)
 </ParamField>
 
-### Response fields
+### Полета в отговора
 
 <ResponseField name="data" type="array">
   <Expandable title="properties">
     <ResponseField name="id" type="integer">
-      The unique identifier of the assistant
+      Уникалният идентификатор на асистента
     </ResponseField>
 
     <ResponseField name="user_id" type="integer">
-      The ID of the user who owns this assistant
+      ID на потребителя, който притежава този асистент
     </ResponseField>
 
     <ResponseField name="phone_number_id" type="integer">
-      The ID of the phone number assigned to the assistant
+      ID на телефонния номер, присвоен на асистента
     </ResponseField>
 
     <ResponseField name="engine_id" type="integer">
@@ -45,254 +45,254 @@ This endpoint allows you to retrieve all AI assistants belonging to the authenti
     </ResponseField>
 
     <ResponseField name="voice_id" type="integer">
-      The ID of the voice used by the assistant
+      ID на гласа, използван от асистента
     </ResponseField>
 
     <ResponseField name="instance_id" type="integer">
-      The instance ID for the assistant
+      Instance ID за асистента
     </ResponseField>
 
     <ResponseField name="name" type="string">
-      The name of the assistant
+      Името на асистента
     </ResponseField>
 
     <ResponseField name="variables" type="object">
-      Custom variables defined for the assistant
+      Персонализирани променливи, дефинирани за асистента
     </ResponseField>
 
     <ResponseField name="post_call_evaluation" type="boolean">
-      Whether post-call evaluation is enabled
+      Дали е активирана оценката след разговора
     </ResponseField>
 
     <ResponseField name="fillers" type="integer">
-      Whether filler audio is enabled (1 = enabled, 0 = disabled)
+      Дали е активирано filler audio (1 = активирано, 0 = деактивирано)
     </ResponseField>
 
     <ResponseField name="post_call_schema" type="array">
-      Schema definition for post-call data extraction
+      Схема дефиниция за извличане на данни след разговора
       <Expandable title="post_call_schema properties">
         <ResponseField name="name" type="string">
-          The name of the schema field
+          Името на полето от схемата
         </ResponseField>
         <ResponseField name="type" type="string">
-          The data type (string, number, bool)
+          Типът данни (string, number, bool)
         </ResponseField>
         <ResponseField name="description" type="string">
-          Description of what this field represents
+          Описание на това, което представлява това поле
         </ResponseField>
       </Expandable>
     </ResponseField>
 
     <ResponseField name="tools" type="array">
-      Array of tools available to the assistant
+      Масив от инструменти, достъпни за асистента
     </ResponseField>
 
     <ResponseField name="is_webhook_active" type="boolean">
-      Whether webhook notifications are enabled
+      Дали са активирани webhook уведомленията
     </ResponseField>
 
     <ResponseField name="webhook_url" type="string">
-      The webhook URL for post-call notifications
+      Webhook URL за уведомления след разговора
     </ResponseField>
 
     <ResponseField name="inbound_webhook_url" type="string">
-      The webhook URL for inbound call notifications
+      Webhook URL за уведомления за входящи обаждания
     </ResponseField>
 
     <ResponseField name="language" type="string">
-      Language
+      Език
     </ResponseField>
 
     <ResponseField name="type" type="string">
-      The type of assistant (inbound or outbound)
+      Типът на асистента (inbound или outbound)
     </ResponseField>
 
     <ResponseField name="status" type="string">
-      The current status of the assistant (active or inactive)
+      Текущият статус на асистента (active или inactive)
     </ResponseField>
 
     <ResponseField name="max_duration" type="integer">
-      Maximum call duration in seconds
+      Максимална продължителност на разговора в секунди
     </ResponseField>
 
     <ResponseField name="record" type="boolean">
-      Whether to record calls
+      Дали да записва разговорите
     </ResponseField>
 
     <ResponseField name="initial_message" type="string">
-      The initial message the assistant will speak
+      Първоначалното съобщение, което асистентът ще изговори
     </ResponseField>
 
     <ResponseField name="system_prompt" type="string">
-      The system prompt that defines the assistant's behavior
+      Системният prompt, който дефинира поведението на асистента
     </ResponseField>
 
     <ResponseField name="flows_platform_id" type="integer">
-      ID for flows platform integration
+      ID за интеграция с flows platform
     </ResponseField>
 
     <ResponseField name="timezone" type="string">
-      The timezone setting for the assistant
+      Настройката за часова зона на асистента
     </ResponseField>
 
     <ResponseField name="created_at" type="string">
-      The date and time when the assistant was created
+      Датата и времето, когато асистентът е създаден
     </ResponseField>
 
     <ResponseField name="updated_at" type="string">
-      The date and time when the assistant was last updated
+      Датата и времето, когато асистентът е последно актуализиран
     </ResponseField>
 
     <ResponseField name="max_silence_duration" type="integer">
-      Maximum silence duration in seconds before re-engagement
+      Максимална продължителност на тишината в секунди преди повторно включване
     </ResponseField>
 
     <ResponseField name="reengagement_interval" type="integer">
-      Re-engagement interval in seconds
+      Интервал за повторно включване в секунди
     </ResponseField>
 
     <ResponseField name="deleted_at" type="string">
-      Soft deletion timestamp (null if not deleted)
+      Timestamp за soft deletion (null ако не е изтрит)
     </ResponseField>
 
     <ResponseField name="end_call_on_voicemail" type="integer">
-      Whether to end call when voicemail is detected (1 = yes, 0 = no)
+      Дали да прекратява разговора при засичане на гласова поща (1 = да, 0 = не)
     </ResponseField>
 
     <ResponseField name="llm_temperature" type="string">
-      LLM temperature setting as string
+      LLM temperature настройка като string
     </ResponseField>
 
     <ResponseField name="voice_stability" type="string">
-      Voice stability setting as string
+      Настройка за стабилност на гласа като string
     </ResponseField>
 
     <ResponseField name="voice_similarity" type="string">
-      Voice similarity setting as string
+      Настройка за сходство на гласа като string
     </ResponseField>
 
     <ResponseField name="allow_interruptions" type="boolean">
-      Whether to allow caller interruptions
+      Дали да позволява прекъсвания от обаждащия се
     </ResponseField>
 
     <ResponseField name="enable_noise_cancellation" type="boolean">
-      Whether noise cancellation is enabled
+      Дали е активирано потискането на шума
     </ResponseField>
 
     <ResponseField name="endpoint_sensitivity" type="number">
-      Endpoint sensitivity level
+      Ниво на чувствителност на endpoint
     </ResponseField>
 
     <ResponseField name="speech_speed" type="string">
-      Speech speed multiplier as string
+      Множител за скоростта на речта като string
     </ResponseField>
 
     <ResponseField name="endpoint_type" type="string">
-      Voice activity detection type (vad or ai)
+      Тип на засичане на гласова активност (vad или ai)
     </ResponseField>
 
     <ResponseField name="wait_for_customer" type="boolean">
-      Whether to wait for customer to speak first
+      Дали да чака клиентът първо да заговори
     </ResponseField>
 
     <ResponseField name="mode" type="string">
-      The engine mode (pipeline or multimodal)
+      Режимът на engine (pipeline или multimodal)
     </ResponseField>
 
     <ResponseField name="language_id" type="integer">
-      The ID of the language used by the assistant
+      ID на езика, използван от асистента
     </ResponseField>
 
     <ResponseField name="transcriber_provider_id" type="integer">
-      ID of the transcriber provider
+      ID на доставчика на transcriber
     </ResponseField>
 
     <ResponseField name="synthesizer_provider_id" type="integer">
-      ID of the synthesizer provider
+      ID на доставчика на synthesizer
     </ResponseField>
 
     <ResponseField name="llm_model_id" type="integer">
-      ID of the LLM model used
+      ID на използвания LLM модел
     </ResponseField>
 
     <ResponseField name="multimodal_model_id" type="integer">
-      ID of the multimodal model used
+      ID на използвания multimodal модел
     </ResponseField>
 
     <ResponseField name="ambient_sound" type="string">
-      Ambient sound setting
+      Настройка за околен звук
     </ResponseField>
 
     <ResponseField name="uuid" type="string">
-      Unique UUID for the assistant
+      Уникален UUID за асистента
     </ResponseField>
 
     <ResponseField name="send_webhook_only_on_completed" type="boolean">
-      Whether to send webhooks only on completed calls
+      Дали да изпраща webhooks само при завършени разговори
     </ResponseField>
 
     <ResponseField name="include_recording_in_webhook" type="boolean">
-      Whether to include recording URL in webhook payload
+      Дали да включва URL за запис в webhook payload
     </ResponseField>
 
     <ResponseField name="interrupt_sensitivity" type="number">
-      Interrupt sensitivity level
+      Ниво на чувствителност за прекъсване
     </ResponseField>
 
     <ResponseField name="filler_config" type="object">
-      Configuration for filler audio responses
+      Конфигурация за filler audio отговори
       <Expandable title="filler_config properties">
         <ResponseField name="neutral" type="array">
-          Array of neutral filler responses
+          Масив от неутрални filler отговори
         </ResponseField>
         <ResponseField name="negative" type="array">
-          Array of negative filler responses
+          Масив от негативни filler отговори
         </ResponseField>
         <ResponseField name="positive" type="array">
-          Array of positive filler responses
+          Масив от позитивни filler отговори
         </ResponseField>
         <ResponseField name="question" type="array">
-          Array of question filler responses
+          Масив от въпросителни filler отговори
         </ResponseField>
       </Expandable>
     </ResponseField>
 
     <ResponseField name="knowledgebase_id" type="integer">
-      ID of the associated knowledge base
+      ID на свързаната база знания
     </ResponseField>
 
     <ResponseField name="knowledgebase_mode" type="string">
-      Knowledge base mode setting
+      Настройка за режим на базата знания
     </ResponseField>
 
     <ResponseField name="min_interrupt_words" type="integer">
-      Minimum number of words before interruption is allowed
+      Минимален брой думи преди да се позволи прекъсване
     </ResponseField>
 
     <ResponseField name="ambient_sound_volume" type="string">
-      Ambient sound volume level as string
+      Ниво на околния звук като string
     </ResponseField>
 
     <ResponseField name="widget_settings" type="object">
-      Settings for web widget integration
+      Настройки за интеграция с уеб widget
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="current_page" type="integer">
-  The current page number
+  Текущият номер на страницата
 </ResponseField>
 
 <ResponseField name="per_page" type="integer">
-  Number of items per page
+  Брой елементи на страница
 </ResponseField>
 
 <ResponseField name="total" type="integer">
-  Total number of assistants
+  Общ брой асистенти
 </ResponseField>
 
 <ResponseField name="last_page" type="integer">
-  The last page number
+  Номерът на последната страница
 </ResponseField>
 
 <ResponseExample>

@@ -1,116 +1,116 @@
 ---
-title: "GoHighLevel Appointment Scheduling"
+title: "GoHighLevel Планиране на Срещи"
 icon: "calendar-plus"
-description: "Learn how to enable your AI assistant to schedule appointments using GoHighLevel integration"
+description: "Научете как да активирате вашия AI асистент да планира срещи използвайки GoHighLevel интеграция"
 ---
 
-Enable your AI assistant to seamlessly schedule meetings and appointments using GoHighLevel integration. This powerful feature allows your AI to check availability and book meetings directly during calls with your existing GoHighLevel calendar system.
+Дайте възможност на вашия AI асистент безпроблемно да планира срещи и назначения използвайки GoHighLevel интеграция. Тази мощна функция позволява на вашия AI да проверява наличността и записва срещи директно по време на повиквания с вашата съществуваща GoHighLevel календарна система.
 
-## Prerequisites
+## Предпоставки
 
-Before setting up GoHighLevel integration, you'll need:
-* An active GoHighLevel account
-* Calendar(s) configured in your GoHighLevel location
-* Admin or appropriate permissions to authorize app connections
+Преди да настроите GoHighLevel интеграцията, ще ви трябва:
+* Активен GoHighLevel профил
+* Календар(и) конфигуриран(и) в вашата GoHighLevel локация
+* Admin или подходящи права за упълномощаване на app връзки
 
-## Setup Process
+## Процес на Настройка
 
-### 1. GoHighLevel Account Requirements
+### 1. GoHighLevel Изисквания за Профил
 
-**Account Setup:**
-- Ensure you have an active GoHighLevel account
-- Verify that your calendars are properly set up in your account
-- Confirm you have the necessary permissions to connect external applications
+**Настройка на Профил:**
+- Уверете се, че имате активен GoHighLevel профил
+- Проверете дали вашите календари са правилно настроени в профила ви
+- Потвърдете, че имате необходимите права за свързване на външни приложения
 
-**Calendar Configuration:**
-- Create or verify existing calendars in your GoHighLevel location
-- Set appropriate availability times and booking settings
-- Configure any required custom fields for appointments
+**Конфигурация на Календар:**
+- Създайте или проверете съществуващи календари в вашата GoHighLevel локация
+- Задайте подходящи времена за наличност и настройки за резервация
+- Конфигурирайте всички необходими персонализирани полета за назначения
 
-### 2. Connecting GoHighLevel to Your Assistant
+### 2. Свързване на GoHighLevel към Вашия Асистент
 
-1. In your [AI assistant settings](/ai-assistants/settings/prompt-and-tools#default-tools), navigate to the **Tools** section
-2. Select **Appointment Scheduling** from the available tools
-3. Choose **GoHighLevel** as your calendar integration type
-4. Click **Connect to GoHighLevel**
+1. В [настройките на вашия AI асистент](/ai-assistants/settings/prompt-and-tools#default-tools), отидете в секцията **Tools**
+2. Изберете **Appointment Scheduling** от наличните инструменти
+3. Изберете **GoHighLevel** като тип календарна интеграция
+4. Кликнете **Connect to GoHighLevel**
 
-**OAuth Authorization Process:**
-1. You'll be redirected to GoHighLevel's authorization page
-2. **Choose your account** from the available options
-3. **Authorize the application** to access your calendar data
-4. You'll be redirected back to your assistant settings
+**OAuth Процес на Упълномощаване:**
+1. Ще бъдете пренасочени към страницата за упълномощаване на GoHighLevel
+2. **Изберете вашия профил** от наличните опции
+3. **Упълномощете приложението** за достъп до данните на вашия календар
+4. Ще бъдете пренасочени обратно към настройките на асистента
 
 <Note>
-If you have issues connecting to GoHighLevel, try using an **Incognito/Private browsing window** as this can resolve authentication conflicts.
+Ако имате проблеми със свързването към GoHighLevel, опитайте да използвате **Incognito/Private браузърна прозорец**, тъй като това може да реши конфликти при удостоверяване.
 </Note>
 
-### 3. Calendar Selection
+### 3. Избор на Календар
 
-After successful connection:
-1. Select the specific **calendar** from your GoHighLevel location
-2. Your available calendars will be automatically fetched and displayed
-3. Choose the calendar where appointments should be booked
+След успешно свързване:
+1. Изберете конкретния **календар** от вашата GoHighLevel локация
+2. Вашите налични календари ще бъдат автоматично извлечени и показани
+3. Изберете календара, където трябва да се записват назначенията
 
-### 4. Testing the Integration
+### 4. Тестване на Интеграцията
 
-**Essential testing steps:**
-1. Make a test call to your AI assistant
-2. Request to schedule an appointment during the conversation
-3. Verify the booking appears in your GoHighLevel calendar
-4. Check that confirmation details are sent appropriately
-5. Test different scenarios (available/unavailable times)
+**Основни стъпки за тестване:**
+1. Направете тестово повикване към вашия AI асистент
+2. Поискайте да планирате назначение по време на разговора
+3. Проверете дали резервацията се появява във вашия GoHighLevel календар
+4. Проверете дали потвърдителните детайли се изпращат подходящо
+5. Тествайте различни сценарии (налични/неналични времена)
 
-## Required Information from GoHighLevel
+## Необходима Информация от GoHighLevel
 
-To complete the integration, the system needs access to:
+За да завършите интеграцията, системата има нужда от достъп до:
 
-### From Your GoHighLevel Account:
-- **Location ID:** Automatically obtained during OAuth authorization
-- **Calendar IDs:** Retrieved from your location's available calendars
-- **Access Tokens:** Managed automatically through OAuth flow
+### От Вашия GoHighLevel Профил:
+- **Location ID:** Автоматично получен по време на OAuth упълномощаване
+- **Calendar IDs:** Извлечени от наличните календари на вашата локация
+- **Access Tokens:** Управлявани автоматично чрез OAuth поток
 
-### Calendar Permissions:
-- **Read calendar availability:** To check open time slots
-- **Create appointments:** To book new meetings
-- **Access calendar details:** To retrieve calendar names and settings
+### Права за Календар:
+- **Четене на наличността на календара:** За проверка на свободни времеви слотове
+- **Създаване на назначения:** За записване на нови срещи
+- **Достъп до детайли на календара:** За извличане на имена и настройки на календари
 
-## Integration Features
+## Функции на Интеграцията
 
-### Automatic Appointment Booking
-- **Real-time availability checking:** AI verifies open time slots
-- **Instant booking confirmation:** Appointments created immediately in GoHighLevel
-- **Conflict prevention:** System prevents double-booking
-- **Time zone handling:** Respects calendar and customer time zones
+### Автоматично Записване на Назначения
+- **Проверка на наличност в реално време:** AI проверява свободни времеви слотове
+- **Моментно потвърждение на резервация:** Назначения се създават веднага в GoHighLevel
+- **Предотвратяване на конфликти:** Системата предотвратява двойно записване
+- **Обработка на часови зони:** Уважава календарните и клиентските часови зони
 
-### Email Requirement for Appointments
+### Изискване за Email за Назначения
 
-**Important:** To book appointments, your AI assistant needs an email address from the customer.
+**Важно:** За да записва назначения, вашият AI асистент се нуждае от email адрес от клиента.
 
-**Setup options:**
-1. **Define email in input variables:** Add `email` as an input variable in your [assistant settings](/ai-assistants/settings/prompt-and-tools#call-variables)
-2. **Import leads with email:** When importing leads, ensure email addresses are included
-3. **AI collection during call:** Configure your assistant to ask for email during the conversation if not available
+**Опции за настройка:**
+1. **Дефинирайте email в входящи променливи:** Добавете `email` като входяща променлива в [настройките на асистента](/ai-assistants/settings/prompt-and-tools#call-variables)
+2. **Импортирайте leads с email:** При импортиране на leads, уверете се, че email адресите са включени
+3. **AI събиране по време на повикване:** Конфигурирайте асистента си да пита за email по време на разговора, ако не е наличен
 
-**Example prompt instruction:**
+**Примерна prompt инструкция:**
 ```
 "If the customer wants to book an appointment and I don't have their email address, 
 ask them to provide their email address for the booking confirmation."
 ```
 
-## Best Practices
+## Най-добри Практики
 
-### Calendar Management
-- **Keep calendars updated:** Ensure availability is current in GoHighLevel
-- **Set buffer times:** Configure appropriate gaps between appointments
-- **Use clear calendar names:** Makes selection easier during setup
+### Управление на Календар
+- **Поддържайте календарите актуални:** Уверете се, че наличността е актуална в GoHighLevel
+- **Задайте буферни времена:** Конфигурирайте подходящи интервали между назначенията
+- **Използвайте ясни имена на календари:** Прави избора по-лесен по време на настройката
 
-### Assistant Configuration
-- **Include calendar context in system prompt:** Help AI understand booking scenarios
-- **Define appointment variables:** Extract relevant information for GoHighLevel
-- **Configure appointment duration:** Specify how long appointments should be
+### Конфигурация на Асистент
+- **Включете контекст на календара в системния prompt:** Помогнете на AI да разбере сценариите за резервация
+- **Дефинирайте променливи за назначения:** Извлечете релевантна информация за GoHighLevel
+- **Конфигурирайте продължителност на назначението:** Уточнете колко дълги трябва да бъдат назначенията
 
-**Appointment Duration Setup:**
-Tell your AI assistant about appointment lengths in the system prompt:
+**Настройка на Продължителност на Назначението:**
+Кажете на вашия AI асистент за продължителността на назначенията в системния prompt:
 
 ```
 "When booking appointments, use 45-minute slots. If a customer says they want 
@@ -118,33 +118,35 @@ to meet at 8:00 AM, set the end_time to 8:45 AM. Always calculate the end_time
 based on the start time plus 45 minutes."
 ```
 
-**Example scenarios:**
-- Customer says: "Can we meet at 2:00 PM?"
-- AI books: 2:00 PM - 2:45 PM (45-minute slot)
+**Примерни сценарии:**
+- Клиентът казва: "Можем ли да се срещнем в 14:00?"
+- AI записва: 14:00 - 14:45 (45-минутен слот)
 
-- **Test various scenarios:** Different time requests, conflicts, rescheduling
+- **Тествайте различни сценарии:** Различни заявки за време, конфликти, пренасрочване
 
-### Security & Compliance
-- **Token management:** OAuth tokens are refreshed automatically
-- **Data privacy:** Only necessary calendar data is accessed
-- **Permission scope:** Integration uses minimal required permissions
+### Сигурност и Съответствие
+- **Управление на токени:** OAuth токените се обновяват автоматично
+- **Поверителност на данните:** Достъпват се само необходимите календарни данни
+- **Обхват на правата:** Интеграцията използва минималните необходими права
 
-## Troubleshooting
+## Отстраняване на Неизправности
 
-### Quick Fixes:
+### Бързи Решения:
 
-**Missing API Key Error:**
-- **Solution:** Disconnect and reconnect your GoHighLevel account, then select an assistant and save
-- **Steps:** Go to [assistant settings](/ai-assistants/settings/prompt-and-tools#default-tools) → Appointment Scheduling → Disconnect → Connect again → Select assistant → Save
+**Грешка за Липсващ API Key:**
+- **Решение:** Прекъснете връзката и отново свържете вашия GoHighLevel профил, след това изберете асистент и запазете
+- **Стъпки:** Отидете в [настройки на асистента](/ai-assistants/settings/prompt-and-tools#default-tools) → Appointment Scheduling → Disconnect → Connect отново → Изберете асистент → Save
 
-**Connection Issues:**
-- **Try incognito mode** for OAuth authorization
-- **Verify account permissions** and calendar setup
+**Проблеми със Свързването:**
+- **Опитайте incognito режим** за OAuth упълномощаване
+- **Проверете правата на профила** и настройката на календара
 
-**Calendar Problems:**
-- **Refresh connection** if calendars don't appear
-- **Check time zones** and availability settings
+**Проблеми с Календара:**
+- **Обновете връзката** ако календарите не се появяват
+- **Проверете часовите зони** и настройките за наличност
 
 <Note>
-For comprehensive GoHighLevel troubleshooting, including detailed solutions and additional issues, see [GoHighLevel Issues](/troubleshooting/gohighlevel).
+За цялостно отстраняване на неизправности в GoHighLevel, включително подробни решения и допълнителни проблеми, вижте [GoHighLevel Issues](/troubleshooting/gohighlevel).
 </Note>
+
+---

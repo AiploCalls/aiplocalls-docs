@@ -1,91 +1,91 @@
 ---
-title: "Generate AI Reply"
+title: "Генериране на AI Отговор"
 api: "POST /user/ai/generate-reply"
-description: "Generate an AI response using an assistant, identified by an external customer identifier"
+description: "Генерирайте AI отговор използвайки асистент, идентифициран чрез външен клиентски идентификатор"
 ---
 
-This endpoint generates an AI response for a given message using your configured assistant. It automatically creates or reuses conversations based on the customer identifier, making it ideal for integrating AI responses into external platforms, CRMs, or custom chat interfaces.
+Този endpoint генерира AI отговор за дадено съобщение използвайки вашия конфигуриран асистент. Той автоматично създава или използва повторно разговори въз основа на клиентския идентификатор, което го прави идеален за интегриране на AI отговори във външни платформи, CRM системи или персонализирани чат интерфейси.
 
 <Info>
-**Rate Limited** — This endpoint is rate limited to 5 requests per minute per API token to prevent abuse.
+**Ограничена скорост** — Този endpoint е ограничен до 5 заявки на минута за API токен за предотвратяване на злоупотреба.
 </Info>
 
-### Request Body
+### Тяло на Заявката
 
 <ParamField body="assistant_id" type="integer" required>
-  The ID of the assistant to use for generating the response. Must belong to your account.
+  ID-то на асистента, който да се използва за генериране на отговора. Трябва да принадлежи на вашия акаунт.
 </ParamField>
 
 <ParamField body="customer_identifier" type="string" required>
-  A unique identifier for the customer. This is used to maintain conversation context across multiple messages. 
+  Уникален идентификатор за клиента. Използва се за поддържане на контекста на разговора при множество съобщения.
   
-  Examples: phone number, email address, CRM contact ID, Facebook user ID.
+  Примери: телефонен номер, имейл адрес, ID на контакт от CRM, Facebook потребителски ID.
   
-  Maximum length: 255 characters.
+  Максимална дължина: 255 символа.
 </ParamField>
 
 <ParamField body="message" type="string" required>
-  The customer's message to respond to.
+  Съобщението на клиента, на което да се отговори.
 </ParamField>
 
 <ParamField body="variables" type="object">
-  Optional context variables to pass to the assistant. These are merged with any existing conversation variables.
+  Опционални контекстови променливи за предаване на асистента. Те се обединяват с всички съществуващи променливи на разговора.
   
-  Useful for passing customer data, session context, or other metadata.
+  Полезни за предаване на клиентски данни, контекст на сесията или други метаданни.
 </ParamField>
 
-### Response Fields
+### Полета в Отговора
 
 <ResponseField name="success" type="boolean">
-  Indicates whether the request was successful
+  Показва дали заявката е била успешна
 </ResponseField>
 
 <ResponseField name="conversation_id" type="string">
-  The UUID of the conversation. Use this to track or reference the conversation later.
+  UUID на разговора. Използвайте го за проследяване или позовавене на разговора по-късно.
 </ResponseField>
 
 <ResponseField name="customer_identifier" type="string">
-  The customer identifier provided in the request
+  Клиентският идентификатор предоставен в заявката
 </ResponseField>
 
 <ResponseField name="reply" type="string">
-  The AI-generated response to the customer's message
+  AI-генерираният отговор на съобщението на клиента
 </ResponseField>
 
 <ResponseField name="function_calls" type="array">
-  Array of function calls made by the assistant while processing the message. Empty array if no functions were called.
+  Масив от функционални извиквания направени от асистента по време на обработката на съобщението. Празен масив ако няма извикани функции.
 
-  <Expandable title="Function call object properties">
+  <Expandable title="Свойства на обекта функционално извикване">
     <ResponseField name="name" type="string">
-      The name of the function that was called
+      Името на функцията която е била извикана
     </ResponseField>
     <ResponseField name="arguments" type="object">
-      The arguments passed to the function
+      Аргументите предадени на функцията
     </ResponseField>
     <ResponseField name="result" type="object">
-      The result returned by the function
+      Резултатът върнат от функцията
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="ai_disabled" type="boolean">
-  Indicates if AI responses are disabled for this conversation (e.g., due to manual takeover)
+  Показва дали AI отговорите са деактивирани за този разговор (например поради ръчно поемане)
 </ResponseField>
 
-### Error Responses
+### Отговори при Грешка
 
 <ResponseField name="success" type="boolean">
-  Will be `false` when an error occurs
+  Ще бъде `false` когато възникне грешка
 </ResponseField>
 
 <ResponseField name="error" type="string">
-  Error message describing what went wrong
+  Съобщение за грешка описващо какво се е объркало
 </ResponseField>
 
 <ResponseField name="error_code" type="string">
-  Machine-readable error code. Possible values:
-  - `ASSISTANT_NOT_FOUND` - The assistant ID is invalid or doesn't belong to your account
-  - `INSUFFICIENT_BALANCE` - Your account balance is too low to process the message
+  Код за грешка четим от машини. Възможни стойности:
+  - `ASSISTANT_NOT_FOUND` - ID-то на асистента е невалидно или не принадлежи на вашия акаунт
+  - `INSUFFICIENT_BALANCE` - Баланса на вашия акаунт е твърде нисък за обработка на съобщението
 </ResponseField>
 
 <RequestExample>
@@ -237,44 +237,44 @@ $reply = $response->json()['reply'];
 
 </ResponseExample>
 
-## Use Cases
+## Случаи на Употреба
 
-### Multi-Channel AI Responses
+### Многоканални AI Отговори
 
-Use this endpoint to add AI responses to any messaging platform:
+Използвайте този endpoint за добавяне на AI отговори към всяка платформа за съобщения:
 
-1. Receive a message from WhatsApp, Facebook, SMS, or any other channel
-2. Call this endpoint with the message and customer identifier
-3. Send the AI response back through the original channel
+1. Получете съобщение от WhatsApp, Facebook, SMS или всеки друг канал
+2. Извикайте този endpoint със съобщението и клиентския идентификатор
+3. Изпратете AI отговора обратно през оригиналния канал
 
-### CRM Integration
+### CRM Интеграция
 
-Integrate AI responses into your CRM or helpdesk:
+Интегрирайте AI отговори в своята CRM или helpdesk система:
 
-1. Use the CRM contact ID as the `customer_identifier`
-2. Pass customer data as `variables` for personalized responses
-3. The conversation persists across sessions using the same identifier
+1. Използвайте ID-то на контакта от CRM като `customer_identifier`
+2. Предайте клиентски данни като `variables` за персонализирани отговори
+3. Разговорът се запазва между сесиите използвайки същия идентификатор
 
-### Custom Chat Interfaces
+### Персонализирани Чат Интерфейси
 
-Build your own chat interface powered by your Aiplocalls assistant:
+Изградете свой собствен чат интерфейс захранван от вашия Aiplocalls асистент:
 
-1. Generate a unique identifier for each user session
-2. Send messages through this endpoint
-3. Display the AI responses in your interface
+1. Генерирайте уникален идентификатор за всяка потребителска сесия
+2. Изпращайте съобщения чрез този endpoint
+3. Показвайте AI отговорите във вашия интерфейс
 
-## Conversation Persistence
+## Запазване на Разговора
 
-Conversations are automatically persisted based on the `assistant_id` and `customer_identifier` combination:
+Разговорите се запазват автоматично въз основа на комбинацията `assistant_id` и `customer_identifier`:
 
-- **Same identifier**: Messages are added to the existing conversation, maintaining full context
-- **New identifier**: A new conversation is created for the customer
-- **Variables merge**: When variables are provided, they are merged with existing conversation variables
+- **Същия идентификатор**: Съобщенията се добавят към съществуващия разговор, запазвайки пълния контекст
+- **Нов идентификатор**: Създава се нов разговор за клиента
+- **Обединяване на променливи**: Когато се предоставят променливи, те се обединяват със съществуващите променливи на разговора
 
-## Best Practices
+## Най-добри Практики
 
-1. **Use consistent identifiers**: Always use the same format for customer identifiers (e.g., always E.164 for phone numbers)
-2. **Pass relevant context**: Use the `variables` field to provide customer data that helps the AI personalize responses
-3. **Handle rate limits**: Implement retry logic with exponential backoff for rate-limited requests
-4. **Store conversation IDs**: Save the returned `conversation_id` for later reference or debugging
-5. **Monitor costs**: Track usage to manage costs, especially for high-volume integrations
+1. **Използвайте последователни идентификатори**: Винаги използвайте същия формат за клиентски идентификатори (например винаги E.164 за телефонни номера)
+2. **Предавайте релевантен контекст**: Използвайте полето `variables` за предоставяне на клиентски данни, които помагат на AI да персонализира отговорите
+3. **Обработвайте ограниченията на скоростта**: Имплементирайте логика за повторни опити с експоненциално забавяне за ограничени по скорост заявки
+4. **Запазвайте ID-тата на разговорите**: Запазете върнатото `conversation_id` за по-късна справка или отстраняване на грешки
+5. **Наблюдавайте разходите**: Проследявайте използването за управление на разходите, особено за високообемни интеграции

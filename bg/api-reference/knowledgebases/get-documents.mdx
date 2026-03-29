@@ -1,57 +1,57 @@
 ---
-title: "Get documents"
+title: "Получаване на документи"
 api: "GET /user/knowledgebases/{knowledgebaseId}/documents"
-description: "Get all documents in a knowledgebase"
+description: "Получаване на всички документи в база знания"
 ---
 
-This endpoint returns a list of all documents in a specific knowledgebase.
+Този endpoint връща списък с всички документи в конкретна база знания.
 
-### Path Parameters
+### Параметри от пътя
 
 <ParamField path="knowledgebaseId" type="integer" required>
-  The unique identifier of the knowledgebase
+  Уникалният идентификатор на базата знания
 </ParamField>
 
-### Response
+### Отговор
 
 <ResponseField name="data" type="array">
-  Array of document objects
+  Масив от обекти документи
   
-  <Expandable title="document properties">
+  <Expandable title="свойства на документа">
     <ResponseField name="id" type="integer">
-      The unique identifier of the document
+      Уникалният идентификатор на документа
     </ResponseField>
     
     <ResponseField name="name" type="string">
-      The name of the document
+      Името на документа
     </ResponseField>
     
     <ResponseField name="description" type="string">
-      Optional description of the document
+      Опционално описание на документа
     </ResponseField>
     
     <ResponseField name="type" type="string">
-      Document type: `website`, `pdf`, `txt`, or `docx`
+      Тип документ: `website`, `pdf`, `txt`, или `docx`
     </ResponseField>
     
     <ResponseField name="type_label" type="string">
-      Human-readable type label
+      Четим етикет за типа
     </ResponseField>
     
     <ResponseField name="status" type="string">
-      Processing status: `processing`, `active`, or `failed`
+      Статус на обработката: `processing`, `active`, или `failed`
     </ResponseField>
     
     <ResponseField name="status_label" type="string">
-      Human-readable status label
+      Четим етикет за статуса
     </ResponseField>
     
     <ResponseField name="created_at" type="string">
-      ISO 8601 timestamp of creation
+      ISO 8601 времеви печат на създаването
     </ResponseField>
     
     <ResponseField name="updated_at" type="string">
-      ISO 8601 timestamp of last update
+      ISO 8601 времеви печат на последната актуализация
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -95,10 +95,12 @@ This endpoint returns a list of all documents in a specific knowledgebase.
 
 </ResponseExample>
 
-### Document Statuses
+### Статуси на документи
 
-| Status | Description |
-|--------|-------------|
-| `processing` | Document is being parsed and embedded into the vector database |
-| `active` | Document has been processed and is ready for use |
-| `failed` | Document processing failed |
+| Статус | Описание |
+|--------|----------|
+| `processing` | Документът се обработва и вгражда във векторната база данни |
+| `active` | Документът е обработен и готов за използване |
+| `failed` | Обработката на документа е неуспешна |
+
+---

@@ -1,91 +1,91 @@
 ---
-title: "Create mid call tool"
+title: "Създаване на инструмент за време на повикване"
 api: "POST /user/tools"
-description: "Create a new mid call tool"
+description: "Създаване на нов инструмент за време на повикване"
 ---
 
-This endpoint allows you to create a new mid call tool that can be used by your AI assistants to interact with external APIs during calls.
+Този endpoint ви позволява да създадете нов инструмент за време на повикване, който може да бъде използван от вашите AI асистенти за взаимодействие с външни API по време на повиквания.
 
-### Body Parameters
+### Параметри в тялото на заявката
 
 <ParamField body="name" type="string" required>
-  Tool name - must contain only lowercase letters and underscores, and start with a letter (e.g., `get_weather`, `book_appointment`)
+  Име на инструмента - трябва да съдържа само малки букви и долни черти, и да започва с буква (например, `get_weather`, `book_appointment`)
 </ParamField>
 
 <ParamField body="description" type="string" required>
-  Detailed explanation of when and how the AI should use this tool (max 255 characters)
+  Подробно обяснение кога и как AI трябва да използва този инструмент (максимум 255 символа)
 </ParamField>
 
 <ParamField body="endpoint" type="string" required>
-  Valid URL of the API endpoint to call
+  Валиден URL на API endpoint за извикване
 </ParamField>
 
 <ParamField body="method" type="string" required>
-  HTTP method: `GET`, `POST`, `PUT`, `PATCH`, or `DELETE`
+  HTTP метод: `GET`, `POST`, `PUT`, `PATCH`, или `DELETE`
 </ParamField>
 
 <ParamField body="timeout" type="integer" optional>
-  Request timeout in seconds (1-30, default: 10)
+  Timeout на заявката в секунди (1-30, по подразбиране: 10)
 </ParamField>
 
 <ParamField body="headers" type="array" optional>
-  HTTP headers to send with the request
-  <Expandable title="headers properties">
+  HTTP headers за изпращане с заявката
+  <Expandable title="свойства на headers">
     <ParamField body="name" type="string" required>
-      Header name
+      Име на header
     </ParamField>
     <ParamField body="value" type="string" required>
-      Header value
+      Стойност на header
     </ParamField>
   </Expandable>
 </ParamField>
 
 <ParamField body="schema" type="array" optional>
-  Parameters that the AI will extract from conversation and send to the endpoint
-  <Expandable title="schema properties">
+  Параметри, които AI ще извлече от разговора и ще изпрати до endpoint
+  <Expandable title="свойства на schema">
     <ParamField body="name" type="string" required>
-      Parameter name (2-32 chars, must start with letter, can contain letters and underscores)
+      Име на параметър (2-32 символа, трябва да започва с буква, може да съдържа букви и долни черти)
     </ParamField>
     <ParamField body="type" type="string" required>
-      Parameter type: `string`, `number`, or `boolean`
+      Тип на параметър: `string`, `number`, или `boolean`
     </ParamField>
     <ParamField body="description" type="string" required>
-      Description to help AI understand how to extract this parameter (3-255 chars)
+      Описание за да помогне на AI да разбере как да извлече този параметър (3-255 символа)
     </ParamField>
   </Expandable>
 </ParamField>
 
-### Response fields
+### Полета в отговора
 
 <ResponseField name="message" type="string">
-  Success message
+  Съобщение за успех
 </ResponseField>
 
 <ResponseField name="data" type="object">
-  The created tool object
-  <Expandable title="data properties">
+  Обектът на създадения инструмент
+  <Expandable title="свойства на data">
     <ResponseField name="id" type="integer">
-      The unique identifier of the tool
+      Уникалният идентификатор на инструмента
     </ResponseField>
 
     <ResponseField name="name" type="string">
-      The name of the tool
+      Името на инструмента
     </ResponseField>
 
     <ResponseField name="description" type="string">
-      Tool description
+      Описание на инструмента
     </ResponseField>
 
     <ResponseField name="endpoint" type="string">
-      API endpoint URL
+      URL на API endpoint
     </ResponseField>
 
     <ResponseField name="method" type="string">
-      HTTP method
+      HTTP метод
     </ResponseField>
 
     <ResponseField name="timeout" type="integer">
-      Request timeout in seconds
+      Timeout на заявката в секунди
     </ResponseField>
 
     <ResponseField name="headers" type="array">
@@ -93,7 +93,7 @@ This endpoint allows you to create a new mid call tool that can be used by your 
     </ResponseField>
 
     <ResponseField name="schema" type="array">
-      Parameter schema
+      Схема на параметрите
     </ResponseField>
 
     <ResponseField name="created_at" type="string">
@@ -170,9 +170,9 @@ This endpoint allows you to create a new mid call tool that can be used by your 
 
 </ResponseExample>
 
-### Attaching Tools to Assistants
+### Прикачване на инструменти към асистенти
 
-After creating a tool, you need to attach it to an assistant to use it during calls. Tools are managed through the Assistant API:
+След създаването на инструмент, трябва да го прикачите към асистент за да го използвате по време на повиквания. Инструментите се управляват чрез Assistant API:
 
-- **[Create Assistant](/api-reference/assistants/create-assistant)** - Use the `tool_ids` parameter to attach tools when creating an assistant
-- **[Update Assistant](/api-reference/assistants/update-assistant)** - Use the `tool_ids` parameter to add, remove, or replace tools on an existing assistant
+- **[Създаване на асистент](/api-reference/assistants/create-assistant)** - Използвайте параметъра `tool_ids` за да прикачите инструменти при създаване на асистент
+- **[Актуализиране на асистент](/api-reference/assistants/update-assistant)** - Използвайте параметъра `tool_ids` за да добавите, премахнете или заместите инструменти на съществуващ асистент

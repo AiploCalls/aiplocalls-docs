@@ -1,21 +1,21 @@
 ---
-title: "Release phone number"
+title: "Освобождаване на телефонен номер"
 api: "DELETE /user/phone-numbers/{id}"
-description: "Release a phone number and cancel its subscription"
+description: "Освобождаване на телефонен номер и отказ на абонамента му"
 ---
 
-This endpoint releases a phone number from your account. For dedicated numbers with subscriptions, this cancels the subscription and the number will be released at the end of the current billing period.
+Този endpoint освобождава телефонен номер от вашия акаунт. За dedicated номера с абонаменти, това отменя абонамента и номерът ще бъде освободен в края на текущия период на таксуване.
 
 ### Path Parameters
 
 <ParamField path="id" type="integer" required>
-  The unique identifier of the phone number to release
+  Уникалният идентификатор на телефонния номер за освобождаване
 </ParamField>
 
 ### Response
 
 <ResponseField name="message" type="string">
-  Success message indicating the release status
+  Съобщение за успех, указващо статуса на освобождаването
 </ResponseField>
 
 <ResponseExample>
@@ -52,23 +52,23 @@ This endpoint releases a phone number from your account. For dedicated numbers w
 
 </ResponseExample>
 
-### Release Behavior
+### Поведение при освобождаване
 
-The release behavior depends on the phone number type:
+Поведението при освобождаване зависи от типа на телефонния номер:
 
-| Type | Behavior |
+| Тип | Поведение |
 |------|----------|
-| **Dedicated (normal)** | Subscription is cancelled. Number remains active until the end of the billing period, then is released. |
-| **SIP** | Immediately deleted from your account. |
-| **Caller ID** | Immediately deleted from your account and removed from the telephony provider. |
+| **Dedicated (нормален)** | Абонаментът се отменя. Номерът остава активен до края на периода на таксуване, след което се освобождава. |
+| **SIP** | Веднага се изтрива от вашия акаунт. |
+| **Caller ID** | Веднага се изтрива от вашия акаунт и се премахва от телефонния доставчик. |
 
 <Warning>
-Once a phone number is released, you may not be able to get the same number back. Make sure to update any assistants or campaigns using this number before releasing it.
+След като телефонен номер бъде освободен, може да не можете да получите същия номер обратно. Уверете се, че актуализирате всички асистенти или кампании, използващи този номер, преди да го освободите.
 </Warning>
 
-### What Happens to Attached Resources
+### Какво се случва с прикачените ресурси
 
-When you release a phone number:
-- Any **inbound assistants** attached to this number will have their phone number unassigned
-- Any **campaigns** using this number will have it removed from their phone number rotation
-- **Call history** is preserved and remains accessible
+Когато освободите телефонен номер:
+- Всички **inbound асистенти**, прикачени към този номер, ще имат неприсвоен телефонен номер
+- Всички **кампании**, използващи този номер, ще го имат премахнат от тяхната ротация на телефонни номера
+- **Историята на обаждания** се запазва и остава достъпна

@@ -1,77 +1,77 @@
 ---
-title: "Get outbound assistants"
+title: "Получаване на изходящи асистенти"
 api: "GET /user/assistants/outbound"
-description: "Retrieve all outbound assistants for the authenticated user"
+description: "Извличане на всички изходящи асистенти за удостоверения потребител"
 ---
 
-This endpoint returns a list of all outbound assistants belonging to the authenticated user. Outbound assistants are used for making calls to leads and prospects.
+Този endpoint връща списък с всички изходящи асистенти, принадлежащи на удостоверения потребител. Изходящите асистенти се използват за извършване на повиквания до потенциални клиенти и проспекти.
 
-### Response fields
+### Response полета
 
 <ResponseField name="data" type="array">
   <Expandable title="properties">
     <ResponseField name="id" type="integer">
-      The unique identifier of the assistant
+      Уникалният идентификатор на асистента
     </ResponseField>
 
     <ResponseField name="user_id" type="integer">
-      The ID of the user who owns this assistant
+      ID на потребителя, който притежава този асистент
     </ResponseField>
 
     <ResponseField name="name" type="string">
-      The name of the assistant
+      Името на асистента
     </ResponseField>
 
     <ResponseField name="type" type="string">
-      The type of assistant (will always be "outbound" for this endpoint)
+      Типът на асистента (винаги ще бъде "outbound" за този endpoint)
     </ResponseField>
 
     <ResponseField name="mode" type="string">
-      The engine mode (`pipeline` or `multimodal`)
+      Режимът на engine (`pipeline` или `multimodal`)
     </ResponseField>
 
     <ResponseField name="status" type="string">
-      The current status of the assistant
+      Текущият статус на асистента
     </ResponseField>
 
     <ResponseField name="voice_id" type="integer">
-      The ID of the voice used by the assistant
+      ID на гласа, използван от асистента
     </ResponseField>
 
     <ResponseField name="language_id" type="integer">
-      The ID of the language used by the assistant
+      ID на езика, използван от асистента
     </ResponseField>
 
     <ResponseField name="timezone" type="string">
-      The timezone setting for the assistant
+      Настройката за часова зона на асистента
     </ResponseField>
 
     <ResponseField name="initial_message" type="string">
-      The initial message the assistant will speak
+      Първоначалното съобщение, което асистентът ще произнесе
     </ResponseField>
 
     <ResponseField name="system_prompt" type="string">
-      The system prompt that defines the assistant's behavior
+      Системният prompt, който дефинира поведението на асистента
     </ResponseField>
 
     <ResponseField name="variables" type="object">
-      Custom variables defined for the assistant
+      Персонализирани променливи, дефинирани за асистента
     </ResponseField>
 
     <ResponseField name="webhook_url" type="string">
-      The webhook URL for post-call notifications
+      URL адресът на webhook за известия след разговор
     </ResponseField>
 
     <ResponseField name="is_webhook_active" type="boolean">
-      Whether webhook notifications are enabled
+      Дали webhook известията са активирани
     </ResponseField>
 
     <ResponseField name="created_at" type="string">
-      The date and time when the assistant was created
+      Датата и часът, когато асистентът е създаден
     </ResponseField>
 
     <ResponseField name="updated_at" type="string">
-      The date and time when the assistant was last updated
+      Датата и часът, когато асистентът е последно актуализиран
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -127,9 +127,9 @@ This endpoint returns a list of all outbound assistants belonging to the authent
 
 </ResponseExample>
 
-### Notes
+### Бележки
 
-- This endpoint only returns assistants with type "outbound"
-- All assistants belonging to the authenticated user are returned (no pagination)  
-- Use these assistants with the make call endpoint to initiate outbound calls
-- Outbound assistants can be used for sales calls, follow-ups, surveys, and other proactive calling scenarios
+- Този endpoint връща само асистенти с тип "outbound"
+- Връщат се всички асистенти, принадлежащи на удостоверения потребител (без пагинация)  
+- Използвайте тези асистенти с endpoint за извършване на повиквания, за да инициирате изходящи разговори
+- Изходящите асистенти могат да се използват за търговски разговори, проследявания, проучвания и други проактивни сценарии за обаждане

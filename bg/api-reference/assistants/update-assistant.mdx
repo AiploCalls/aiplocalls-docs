@@ -1,172 +1,173 @@
 ---
-title: "Update assistant"
+---
+title: "Актуализиране на асистент"
 api: "PUT /user/assistant/{id}"
-description: "Update an existing AI assistant's configuration"
+description: "Актуализиране на конфигурацията на съществуващ AI асистент"
 ---
 
-This endpoint allows you to update an existing AI assistant's configuration. All fields are optional - only provide the fields you want to update.
+Този endpoint ви позволява да актуализирате конфигурацията на съществуващ AI асистент. Всички полета са опционални - предоставете само полетата, които искате да актуализирате.
 
-### Path Parameters
+### Параметри в пътя
 
 <ParamField path="id" type="integer" required>
-  The unique identifier of the assistant to update
+  Уникалният идентификатор на асистента за актуализиране
 </ParamField>
 
-### Request Body
+### Тяло на заявката
 
-#### Core Fields
+#### Основни полета
 
 <ParamField body="name" type="string">
-  The name of the assistant (max 255 characters)
+  Името на асистента (максимум 255 символа)
 </ParamField>
 
 <ParamField body="voice_id" type="integer">
-  The voice ID to use for the assistant. Use the [Get Voices](/api-reference/assistants/get-voices) endpoint with the `mode` parameter to get compatible voices for your engine mode.
+  ID на гласа за използване от асистента. Използвайте endpoint-а [Get Voices](/api-reference/assistants/get-voices) с параметъра `mode`, за да получите съвместими гласове за вашия режим на двигателя.
 </ParamField>
 
 <ParamField body="language_id" type="integer">
-  The language ID for the assistant. Use the [Get Languages](/api-reference/assistants/get-languages) endpoint to get available languages.
+  ID на езика за асистента. Използвайте endpoint-а [Get Languages](/api-reference/assistants/get-languages), за да получите наличните езици.
 </ParamField>
 
 <ParamField body="type" type="string">
-  The assistant type. Options: `inbound`, `outbound`
+  Типът на асистента. Опции: `inbound`, `outbound`
 </ParamField>
 
 <ParamField body="mode" type="string">
-  The engine mode. Options: `pipeline`, `multimodal`, `dualplex`
+  Режимът на двигателя. Опции: `pipeline`, `multimodal`, `dualplex`
 
   <Warning>
-    Changing the mode will reset mode-specific settings to defaults for the new mode.
+    Промяната на режима ще нулира настройките, специфични за режима, към настройките по подразбиране за новия режим.
   </Warning>
 </ParamField>
 
 <ParamField body="timezone" type="string">
-  The timezone for the assistant (e.g., "Europe/Bucharest", "America/New_York")
+  Часовата зона за асистента (напр. "Europe/Bucharest", "America/New_York")
 </ParamField>
 
 <ParamField body="initial_message" type="string">
-  The initial message the assistant will speak when the call starts (max 200 characters)
+  Първоначалното съобщение, което асистентът ще произнесе, когато разговорът започне (максимум 200 символа)
 </ParamField>
 
 <ParamField body="system_prompt" type="string">
-  The system prompt that defines the assistant's behavior and personality
+  Системният prompt, който дефинира поведението и личността на асистента
 </ParamField>
 
-#### Mode-Specific Fields
+#### Полета, специфични за режима
 
 <ParamField body="llm_model_id" type="integer">
-  The LLM model ID to use. Only applies to `pipeline` mode.
+  ID на LLM модела за използване. Приложимо само за режим `pipeline`.
 
-  Use the [Get Models](/api-reference/assistants/get-models) endpoint to get available models.
+  Използвайте endpoint-а [Get Models](/api-reference/assistants/get-models), за да получите наличните модели.
 </ParamField>
 
 <ParamField body="multimodal_model_id" type="integer">
-  The multimodal model ID. Only applies to `multimodal` and `dualplex` modes.
+  ID на multimodal модела. Приложимо само за режими `multimodal` и `dualplex`.
 
-  Use the [Get Models](/api-reference/assistants/get-models) endpoint to get available multimodal models.
+  Използвайте endpoint-а [Get Models](/api-reference/assistants/get-models), за да получите наличните multimodal модели.
 </ParamField>
 
 <ParamField body="chat_llm_fallback_id" type="integer">
-  Fallback LLM model ID for tool calls in multimodal/dualplex modes. Set to `null` to remove.
+  Резервен LLM модел ID за извиквания на инструменти в multimodal/dualplex режими. Задайте `null` за премахване.
 </ParamField>
 
 <ParamField body="turn_detection_threshold" type="number">
-  Turn detection sensitivity for multimodal/dualplex modes (0-1). Set to `null` for auto.
+  Чувствителност за разпознаване на реда за multimodal/dualplex режими (0-1). Задайте `null` за автоматично.
 </ParamField>
 
-#### Secondary Languages
+#### Вторични езици
 
 <ParamField body="secondary_language_ids" type="integer[]">
-  Array of additional language IDs the assistant can speak. Replaces existing secondary languages. Pass an empty array `[]` to remove all secondary languages.
+  Масив от допълнителни ID на езици, на които асистентът може да говори. Заменя съществуващите вторични езици. Подайте празен масив `[]` за премахване на всички вторични езици.
 
   ```json
   "secondary_language_ids": [2, 3, 4]
   ```
 </ParamField>
 
-#### Knowledgebase Settings
+#### Настройки за knowledgebase
 
 <ParamField body="knowledgebase_id" type="integer">
-  The knowledgebase ID to attach. Set to `null` to remove knowledgebase.
+  ID на knowledgebase за прикачване. Задайте `null` за премахване на knowledgebase.
 </ParamField>
 
 <ParamField body="knowledgebase_mode" type="string">
-  How to use the knowledgebase. Options:
-  - `function_call` - AI calls a function to search (required for multimodal/dualplex)
-  - `prompt` - Knowledge is injected into prompt (pipeline only)
+  Как да се използва knowledgebase. Опции:
+  - `function_call` - AI извиква функция за търсене (необходимо за multimodal/dualplex)
+  - `prompt` - Знанията се инжектират в prompt-а (само pipeline)
 </ParamField>
 
-#### Phone Number
+#### Телефонен номер
 
 <ParamField body="phone_number_id" type="integer">
-  The ID of a phone number to assign. Set to `null` to unassign. Must belong to your account.
+  ID на телефонен номер за назначаване. Задайте `null` за отмяна на назначението. Трябва да принадлежи на вашия профил.
 
   <Warning>
-    For `inbound` assistants, the phone number cannot be a Caller ID type and cannot be already assigned to another inbound assistant.
+    За `inbound` асистенти телефонният номер не може да бъде от тип Caller ID и не може да бъде вече назначен към друг inbound асистент.
   </Warning>
 </ParamField>
 
-#### Custom Mid-Call Tools
+#### Персонализирани инструменти по време на разговор
 
 <ParamField body="tool_ids" type="integer[]">
-  Array of custom mid-call tool IDs to sync. **Replaces all existing tool assignments.** Pass an empty array `[]` to remove all tools. Each tool must belong to your account.
+  Масив от ID на персонализирани инструменти за синхронизиране по време на разговор. **Заменя всички съществуващи назначения на инструменти.** Подайте празен масив `[]` за премахване на всички инструменти. Всеки инструмент трябва да принадлежи на вашия профил.
 
   ```json
   "tool_ids": [1, 5, 12]
   ```
 </ParamField>
 
-#### Built-in Tools
+#### Вградени инструменти
 
 <ParamField body="tools" type="array">
-  Array of built-in tools. **Replaces all existing built-in tools.** Pass an empty array `[]` to remove all tools.
+  Масив от вградени инструменти. **Заменя всички съществуващи вградени инструменти.** Подайте празен масив `[]` за премахване на всички инструменти.
 
-  <Expandable title="Tool types">
-    **call_transfer** - Transfer the call to another phone number
-    - `phone_number` (required): Phone number to transfer to
-    - `description`: When to transfer the call
-    - `custom`: If true, AI can determine transfer number dynamically
-    - `timezone`: Timezone for transfer availability
-    - `warm_transfer`: Send a message to the customer before transferring (default: `false`)
-    - `warm_transfer_message`: Prompt telling the AI what to say before transferring (e.g., "Tell the customer that the call is being transferred.")
+  <Expandable title="Типове инструменти">
+    **call_transfer** - Прехвърляне на разговора към друг телефонен номер
+    - `phone_number` (задължително): Телефонен номер за прехвърляне
+    - `description`: Кога да се прехвърли разговорът
+    - `custom`: Ако е true, AI може да определи номера за прехвърляне динамично
+    - `timezone`: Часова зона за наличност на прехвърляне
+    - `warm_transfer`: Изпрати съобщение до клиента преди прехвърляне (по подразбиране: `false`)
+    - `warm_transfer_message`: Prompt, който казва на AI какво да каже преди прехвърляне (напр. "Кажете на клиента, че разговорът се прехвърля.")
 
-    **warm_call_transfer** - Warm transfer with supervisor briefing
-    - `supervisor_phone` (required): Phone number to dial for the warm transfer (e.g., "+14155552001"). If `custom_sip` is enabled, this is a SIP address or internal extension instead.
-    - `outbound_phone_id` (required): ID of the phone number used to dial the supervisor.
-    - `description` (required): **When to transfer** — describes when the AI should initiate the warm transfer (e.g., "Transfer the call to a human supervisor when the customer requests to speak with a real person.")
-    - `custom_sip`: Enable to enter a custom SIP address or internal extension instead of a phone number (default: `false`)
-    - `caller_id_mode`: What phone number the supervisor sees when receiving the call. Options: `outbound_number` (default — shows the outbound phone number), `customer_number` (shows the caller's number), `custom` (shows a custom number)
-    - `custom_caller_id`: Custom phone number shown to supervisor. Only used when `caller_id_mode` is `custom`.
-    - `hold_music`: Audio played to the caller while on hold. Options: `hold_music` (default — plays default hold music), `none` (silence, no music)
-    - `hold_music_volume`: Volume level for hold music, 0-100 (default: `80`)
-    - `hold_message`: Message spoken to caller before placing them on hold (default: "Please hold while I connect you with a supervisor.")
-    - `summary_instructions`: Instructions for how the AI should brief the supervisor about the call (default: "Introduce the conversation from your perspective:\n- WHO is calling (name, company if mentioned)\n- WHY they called (their goal or problem)\n- WHY a human is needed at this point\n\nKeep it brief (2-3 sentences).")
-    - `briefing_initial_message`: The first message the AI says to the supervisor when they answer (default: "Hello! I have a caller on the line who needs your assistance. May I brief you on the situation?")
-    - `connected_message`: Message spoken to caller after supervisor is connected (default: "You are now connected with a supervisor. I'll leave you to it.")
+    **warm_call_transfer** - Топло прехвърляне с инструктаж на супервайзора
+    - `supervisor_phone` (задължително): Телефонен номер за набиране при топло прехвърляне (напр. "+14155552001"). Ако `custom_sip` е активирано, това е SIP адрес или вътрешен номер.
+    - `outbound_phone_id` (задължително): ID на телефонния номер, използван за набиране на супервайзора.
+    - `description` (задължително): **Кога да се прехвърли** — описва кога AI трябва да започне топло прехвърляне (напр. "Прехвърли разговора към човешки супервайзор, когато клиентът поиска да говори с истински човек.")
+    - `custom_sip`: Активиране за въвеждане на персонализиран SIP адрес или вътрешен номер вместо телефонен номер (по подразбиране: `false`)
+    - `caller_id_mode`: Какъв телефонен номер вижда супервайзорът при получаване на обаждането. Опции: `outbound_number` (по подразбиране — показва изходящия телефонен номер), `customer_number` (показва номера на обаждащия се), `custom` (показва персонализиран номер)
+    - `custom_caller_id`: Персонализиран телефонен номер, показван на супервайзора. Използва се само когато `caller_id_mode` е `custom`.
+    - `hold_music`: Аудио, възпроизвеждано на обаждащия се, докато чака. Опции: `hold_music` (по подразбиране — възпроизвежда музика по подразбиране за чакане), `none` (тишина, без музика)
+    - `hold_music_volume`: Ниво на звука за музиката при чакане, 0-100 (по подразбиране: `80`)
+    - `hold_message`: Съобщение, произнесено на обаждащия се преди да бъде поставен на изчакване (по подразбиране: "Моля, изчакайте, докато ви свържа със супервайзор.")
+    - `summary_instructions`: Инструкции за това как AI трябва да инструктира супервайзора относно разговора (по подразбиране: "Представете разговора от ваша гледна точка:\n- КОЙ обажда се (име, фирма ако е споменато)\n- ЗАЩО се обадиха (тяхната цел или проблем)\n- ЗАЩО е нужен човек в този момент\n\nБъдете кратки (2-3 изречения).")
+    - `briefing_initial_message`: Първото съобщение, което AI казва на супервайзора, когато той отговори (по подразбиране: "Здравейте! Имам обаждащ се, който се нуждае от вашата помощ. Мога ли да ви запозная със ситуацията?")
+    - `connected_message`: Съобщение, произнесено на обаждащия се след свързване със супервайзора (по подразбиране: "Вече сте свързани със супервайзор. Ще ви оставя да си говорите.")
 
-    **end_call** - End the call programmatically
-    - `description`: When the AI should end the call
+    **end_call** - Приключване на разговора програмно
+    - `description`: Кога AI трябва да приключи разговора
 
-    **dtmf_input** - Send DTMF tones (keypad input)
-    - `description`: When to use DTMF input (for IVR navigation)
+    **dtmf_input** - Изпращане на DTMF тонове (въвеждане от клавиатурата)
+    - `description`: Кога да се използва DTMF въвеждане (за навигация в IVR)
 
-    **collect_keypad** - Collect keypad input from the caller
-    - `timeout`: Seconds to wait for input, 1-30 (default: 5)
-    - `stop_key`: Key that ends input. Options: `#` (default), `*`
+    **collect_keypad** - Събиране на въвеждане от клавиатурата на обаждащия се
+    - `timeout`: Секунди за чакане на въвеждане, 1-30 (по подразбиране: 5)
+    - `stop_key`: Клавиш, който приключва въвеждането. Опции: `#` (по подразбиране), `*`
 
-    **calendar_integration** - Schedule appointments via Cal.com
-    - `calcom_api_key` (required): Your Cal.com API key
-    - `calcom_event_slug` (required): The event type slug from Cal.com
-    - `calcom_team_slug`: Team slug if the event belongs to a Cal.com team
-    - `calcom_endpoint`: Cal.com API region. Options: `us` (default — `https://api.cal.com`), `eu` (`https://api.cal.eu`), `custom` (uses `calcom_custom_endpoint`)
-    - `calcom_custom_endpoint`: Custom Cal.com API base URL. Only used when `calcom_endpoint` is `custom` (e.g., `https://my-calcom-instance.com`).
-    - `calcom_booking_fields`: Array of custom booking fields for the event. Each field has:
-      - `slug` (required): Field identifier
-      - `type` (required): Field type (e.g., "text", "email", "phone", "select")
-      - `label` (required): Display label
-      - `required`: Whether the field is required (default: `false`)
-      - `options`: Array of options for select fields
-    - `description`: When to offer scheduling
+    **calendar_integration** - Планиране на срещи чрез Cal.com
+    - `calcom_api_key` (задължително): Вашият Cal.com API ключ
+    - `calcom_event_slug` (задължително): Slug на типа събитие от Cal.com
+    - `calcom_team_slug`: Team slug, ако събитието принадлежи на Cal.com екип
+    - `calcom_endpoint`: Cal.com API регион. Опции: `us` (по подразбиране — `https://api.cal.com`), `eu` (`https://api.cal.eu`), `custom` (използва `calcom_custom_endpoint`)
+    - `calcom_custom_endpoint`: Персонализиран Cal.com API базов URL. Използва се само когато `calcom_endpoint` е `custom` (напр. `https://my-calcom-instance.com`).
+    - `calcom_booking_fields`: Масив от персонализирани полета за резервация за събитието. Всяко поле има:
+      - `slug` (задължително): Идентификатор на полето
+      - `type` (задължително): Тип на полето (напр. "text", "email", "phone", "select")
+      - `label` (задължително): Етикет за показване
+      - `required`: Дали полето е задължително (по подразбиране: `false`)
+      - `options`: Масив от опции за select полета
+    - `description`: Кога да се предлага планиране
   </Expandable>
 
   ```json
@@ -202,57 +203,57 @@ This endpoint allows you to update an existing AI assistant's configuration. All
   ```
 </ParamField>
 
-#### Voice and TTS Settings
+#### Настройки за глас и TTS
 
 <ParamField body="tts_emotion_enabled" type="boolean">
-  Whether to enable emotional text-to-speech synthesis
+  Дали да се активира емоционална text-to-speech синтеза
 </ParamField>
 
 <ParamField body="voice_stability" type="number">
-  Voice stability setting (0-1). Higher = more consistent voice
+  Настройка за стабилност на гласа (0-1). По-високо = по-последователен глас
 </ParamField>
 
 <ParamField body="voice_similarity" type="number">
-  Voice similarity setting (0-1). Higher = closer to original voice
+  Настройка за приличност на гласа (0-1). По-високо = по-близо до оригиналния глас
 </ParamField>
 
 <ParamField body="speech_speed" type="number">
-  Speech speed multiplier (0.7-1.2)
+  Множител за скорост на говора (0.7-1.2)
 </ParamField>
 
 <ParamField body="llm_temperature" type="number">
-  LLM temperature setting (0-1). Lower = more deterministic
+  Настройка за LLM температура (0-1). По-ниско = по-детерминистично
 </ParamField>
 
 <ParamField body="synthesizer_provider_id" type="integer">
-  Custom TTS provider ID. Set to `null` to use language default. Use the [Get Synthesizer Providers](/api-reference/assistants/get-synthesizer-providers) endpoint to discover available providers.
+  ID на персонализиран TTS доставчик. Задайте `null`, за да използвате езиковия по подразбиране. Използвайте endpoint-а [Get Synthesizer Providers](/api-reference/assistants/get-synthesizer-providers), за да откриете наличните доставчици.
 </ParamField>
 
 <ParamField body="transcriber_provider_id" type="integer">
-  Custom STT provider ID. Pipeline mode only. Set to `null` to use language default. Use the [Get Transcriber Providers](/api-reference/assistants/get-transcriber-providers) endpoint to discover available providers.
+  ID на персонализиран STT доставчик. Само за Pipeline режим. Задайте `null`, за да използвате езиковия по подразбиране. Използвайте endpoint-а [Get Transcriber Providers](/api-reference/assistants/get-transcriber-providers), за да откриете наличните доставчици.
 </ParamField>
 
-#### Call Behavior Settings
+#### Настройки за поведение при разговор
 
 <ParamField body="allow_interruptions" type="boolean">
-  Whether to allow caller interruptions.
+  Дали да се позволят прекъсвания от обаждащия се.
 
-  <Warning>Cannot be disabled for `multimodal` and `dualplex` modes.</Warning>
+  <Warning>Не може да се деактивира за режими `multimodal` и `dualplex`.</Warning>
 </ParamField>
 
 <ParamField body="fillers" type="boolean">
-  Whether to use filler audio during processing.
+  Дали да се използва filler аудио по време на обработка.
 
-  <Warning>Only available for `pipeline` mode.</Warning>
+  <Warning>Налично само за режим `pipeline`.</Warning>
 </ParamField>
 
 <ParamField body="filler_config" type="object">
-  Custom filler word profiles per category. Replaces existing filler config. Each category is an array of short phrases.
+  Персонализирани профили за filler думи по категория. Заменя съществуващата filler конфигурация. Всяка категория е масив от кратки фрази.
 
-  - `positive`: Filler words for positive/affirmative responses
-  - `negative`: Filler words for negative/neutral responses
-  - `question`: Filler words when processing a question
-  - `neutral`: Filler words for neutral acknowledgments
+  - `positive`: Filler думи за позитивни/утвърдителни отговори
+  - `negative`: Filler думи за негативни/неутрални отговори
+  - `question`: Filler думи при обработване на въпрос
+  - `neutral`: Filler думи за неутрални потвърждения
 
   ```json
   "filler_config": {
@@ -265,127 +266,127 @@ This endpoint allows you to update an existing AI assistant's configuration. All
 </ParamField>
 
 <ParamField body="record" type="boolean">
-  Whether to record the call
+  Дали да се записва разговорът
 </ParamField>
 
 <ParamField body="enable_noise_cancellation" type="boolean">
-  Whether to enable noise cancellation
+  Дали да се активира потискане на шума
 </ParamField>
 
 <ParamField body="wait_for_customer" type="boolean">
-  If true, the assistant waits for the customer to speak first
+  Ако е true, асистентът чака клиентът първо да заговори
 </ParamField>
 
-#### Timing Settings
+#### Настройки за време
 
 <ParamField body="max_duration" type="integer">
-  Maximum call duration in seconds (20-1200)
+  Максимална продължителност на разговора в секунди (20-1200)
 </ParamField>
 
 <ParamField body="max_silence_duration" type="integer">
-  Maximum silence duration before re-engagement in seconds (1-360)
+  Максимална продължителност на тишината преди повторно ангажиране в секунди (1-360)
 </ParamField>
 
 <ParamField body="max_initial_silence_duration" type="integer">
-  Maximum silence at call start before ending (1-120 seconds). Set to `null` to disable.
+  Максимална тишина в началото на разговора преди приключване (1-120 секунди). Задайте `null` за деактивиране.
 </ParamField>
 
 <ParamField body="ringing_time" type="integer">
-  Maximum ringing time before giving up (1-60 seconds)
+  Максимално време за звънене преди отказване (1-60 секунди)
 </ParamField>
 
-#### Re-engagement Settings
+#### Настройки за повторно ангажиране
 
 <ParamField body="reengagement_interval" type="integer">
-  Re-engagement interval in seconds (7-600)
+  Интервал за повторно ангажиране в секунди (7-600)
 </ParamField>
 
 <ParamField body="reengagement_prompt" type="string">
-  Custom prompt for re-engagement messages (max 1000 characters). Set to `null` to use default.
+  Персонализиран prompt за съобщения за повторно ангажиране (максимум 1000 символа). Задайте `null`, за да използвате по подразбиране.
 </ParamField>
 
-#### Voicemail Settings
+#### Настройки за гласова поща
 
 <ParamField body="end_call_on_voicemail" type="boolean">
-  Whether to end call when voicemail is detected
+  Дали да се приключи разговорът, когато се открие гласова поща
 </ParamField>
 
 <ParamField body="voice_mail_message" type="string">
-  Message to leave on voicemail before hanging up (max 1000 characters). Set to `null` to disable.
+  Съобщение за оставяне в гласовата поща преди затваряне (максимум 1000 символа). Задайте `null` за деактивиране.
 </ParamField>
 
-#### Endpoint Detection
+#### Разпознаване на край
 
 <ParamField body="endpoint_type" type="string">
-  Voice activity detection type. Options: `vad`, `ai`
+  Тип разпознаване на гласова активност. Опции: `vad`, `ai`
 </ParamField>
 
 <ParamField body="endpoint_sensitivity" type="number">
-  Endpoint sensitivity level (0-5)
+  Ниво на чувствителност за край (0-5)
 </ParamField>
 
 <ParamField body="interrupt_sensitivity" type="number">
-  Interrupt sensitivity level (0-5)
+  Ниво на чувствителност за прекъсване (0-5)
 </ParamField>
 
 <ParamField body="min_interrupt_words" type="integer">
-  Minimum words before interruption is allowed (0-10). Set to `null` to disable.
+  Минимален брой думи преди разрешаване на прекъсване (0-10). Задайте `null` за деактивиране.
 </ParamField>
 
-#### Ambient Sound
+#### Фонов звук
 
 <ParamField body="ambient_sound" type="string">
-  Background ambient sound. Options: `off`, `office`, `city`, `forest`, `crowded_room`, `cafe`, `nature`
+  Фонов звук. Опции: `off`, `office`, `city`, `forest`, `crowded_room`, `cafe`, `nature`
 </ParamField>
 
 <ParamField body="ambient_sound_volume" type="number">
-  Ambient sound volume level (0-1)
+  Ниво на звука на фоновия звук (0-1)
 </ParamField>
 
-#### Webhook Configuration
+#### Конфигурация за webhook
 
 <ParamField body="is_webhook_active" type="boolean">
-  Whether webhook notifications are enabled
+  Дали webhook нотификациите са активирани
 </ParamField>
 
 <ParamField body="webhook_url" type="string">
-  The webhook URL for post-call notifications. Set to `null` to remove.
+  URL на webhook за нотификации след разговор. Задайте `null` за премахване.
 </ParamField>
 
 <ParamField body="send_webhook_only_on_completed" type="boolean">
-  Whether to send webhooks only on completed calls (not failed/no-answer)
+  Дали да се изпращат webhook-и само при завършени разговори (не неуспешни/без отговор)
 </ParamField>
 
 <ParamField body="include_recording_in_webhook" type="boolean">
-  Whether to include recording URL in webhook payload
+  Дали да се включи URL за записа в webhook payload-а
 </ParamField>
 
-#### Post-Call Evaluation
+#### Оценка след разговор
 
 <ParamField body="post_call_evaluation" type="boolean">
-  Whether to enable AI post-call evaluation
+  Дали да се активира AI оценка след разговор
 </ParamField>
 
 <ParamField body="post_call_schema" type="array">
-  Schema definition for post-call data extraction. Replaces existing schema.
+  Схема за дефиниция за извличане на данни след разговор. Заменя съществуващата схема.
 
-  <Expandable title="post_call_schema properties">
+  <Expandable title="post_call_schema свойства">
     <ParamField body="name" type="string" required>
-      Field name (3-16 chars, lowercase, alphanumeric and underscores only)
+      Име на полето (3-16 символа, малки букви, буквено-цифрови символи и долни черти само)
     </ParamField>
     <ParamField body="type" type="string" required>
-      Data type. Options: `string`, `number`, `bool`
+      Тип данни. Опции: `string`, `number`, `bool`
     </ParamField>
     <ParamField body="description" type="string" required>
-      Description of what this field represents (3-255 characters)
+      Описание на това, което това поле представлява (3-255 символа)
     </ParamField>
   </Expandable>
 </ParamField>
 
-#### Variables
+#### Променливи
 
 <ParamField body="variables" type="object">
-  Key-value pairs of custom variables. **Replaces all existing variables.**
+  Ключ-стойност двойки от персонализирани променливи. **Заменя всички съществуващи променливи.**
 
   ```json
   "variables": {
@@ -395,35 +396,35 @@ This endpoint allows you to update an existing AI assistant's configuration. All
   ```
 </ParamField>
 
-#### Conversation Ended Settings
+#### Настройки за приключен разговор
 
 <ParamField body="conversation_inactivity_timeout" type="integer">
-  Minutes of chat inactivity before the conversation is considered ended (1-1440). Set to `null` to disable. Default: `30`
+  Минути на неактивност в чата преди разговорът да се счита за приключен (1-1440). Задайте `null` за деактивиране. По подразбиране: `30`
 </ParamField>
 
 <ParamField body="conversation_ended_retrigger" type="boolean">
-  Whether to allow re-triggering the conversation after it ends due to inactivity
+  Дали да се позволи повторно задействане на разговора след приключване поради неактивност
 </ParamField>
 
 <ParamField body="conversation_ended_webhook_url" type="string">
-  Webhook URL called when a chat conversation ends due to inactivity. Set to `null` to remove. Separate from the main call webhook.
+  URL на webhook, извикван когато чат разговорът приключи поради неактивност. Задайте `null` за премахване. Отделно от основния разговорен webhook.
 </ParamField>
 
 ---
 
-## Example Requests
+## Примерни заявки
 
-### Update Basic Settings
+### Актуализиране на основни настройки
 
 ```json
 {
-  "name": "Updated Assistant Name",
-  "initial_message": "Hello! How may I assist you?",
+  "name": "Актуализирано име на асистент",
+  "initial_message": "Здравейте! Как мога да ви помогна?",
   "max_duration": 900
 }
 ```
 
-### Switch to Multimodal Mode
+### Превключване към Multimodal режим
 
 ```json
 {
@@ -435,7 +436,7 @@ This endpoint allows you to update an existing AI assistant's configuration. All
 }
 ```
 
-### Update Tools and Knowledgebase
+### Актуализиране на инструменти и knowledgebase
 
 ```json
 {
@@ -445,18 +446,18 @@ This endpoint allows you to update an existing AI assistant's configuration. All
 }
 ```
 
-### Update Re-engagement and Voicemail
+### Актуализиране на повторно ангажиране и гласова поща
 
 ```json
 {
   "reengagement_interval": 15,
-  "reengagement_prompt": "Are you still there? I'm here to help.",
+  "reengagement_prompt": "Все още ли сте там? Тук съм, за да помогна.",
   "end_call_on_voicemail": true,
-  "voice_mail_message": "Hello, please call us back at your convenience."
+  "voice_mail_message": "Здравейте, моля, обадете ни се отново, когато ви е удобно."
 }
 ```
 
-### Remove Optional Settings
+### Премахване на опционални настройки
 
 ```json
 {
@@ -469,28 +470,28 @@ This endpoint allows you to update an existing AI assistant's configuration. All
 
 ---
 
-## Response
+## Отговор
 
 <ResponseField name="message" type="string">
-  Success message confirming assistant update
+  Съобщение за успех, потвърждаващо актуализацията на асистента
 </ResponseField>
 
 <ResponseField name="data" type="object">
-  <Expandable title="properties">
+  <Expandable title="свойства">
     <ResponseField name="id" type="integer">
-      The unique identifier of the updated assistant
+      Уникалният идентификатор на актуализирания асистент
     </ResponseField>
     <ResponseField name="name" type="string">
-      The name of the assistant
+      Името на асистента
     </ResponseField>
     <ResponseField name="status" type="string">
-      The current status of the assistant
+      Текущият статус на асистента
     </ResponseField>
     <ResponseField name="type" type="string">
-      The type (`inbound` or `outbound`)
+      Типът (`inbound` или `outbound`)
     </ResponseField>
     <ResponseField name="mode" type="string">
-      The engine mode (`pipeline`, `multimodal`, or `dualplex`)
+      Режимът на двигателя (`pipeline`, `multimodal` или `dualplex`)
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -531,13 +532,15 @@ This endpoint allows you to update an existing AI assistant's configuration. All
 
 ---
 
-## Notes
+## Бележки
 
-- Only the fields you provide in the request body will be updated
-- To remove optional fields, explicitly set them to `null`
-- To clear arrays (tools, secondary languages), pass an empty array `[]`
-- The assistant must belong to the authenticated user
-- Use the Get Voices endpoint with `mode` parameter to get compatible voices
-- For multimodal/dualplex modes, `knowledgebase_mode` must be `function_call`
-- For multimodal/dualplex modes, `allow_interruptions` cannot be disabled
-- Changing the mode resets mode-specific settings (LLM model, multimodal model, providers)
+- Само полетата, които предоставите в тялото на заявката, ще бъдат актуализирани
+- За премахване на опционални полета, изрично ги задайте на `null`
+- За изчистване на масиви (инструменти, вторични езици), подайте празен масив `[]`
+- Асистентът трябва да принадлежи на удостоверения потребител
+- Използвайте Get Voices endpoint с параметър `mode` за получаване на съвместими гласове
+- За multimodal/dualplex режими, `knowledgebase_mode` трябва да бъде `function_call`
+- За multimodal/dualplex режими, `allow_interruptions` не може да се деактивира
+- Промяната на режима нулира настройките, специфични за режима (LLM модел, multimodal модел, доставчици)
+
+---

@@ -1,42 +1,42 @@
 ---
-title: "Authentication"
+title: "Автентификация"
 icon: "key"
-description: "Learn how to authenticate your API requests"
+description: "Научете как да автентифицирате вашите API заявки"
 ---
 
-The Aiplocalls API uses API keys to authenticate requests. You need to include your API key in the header of each request you make to the API.
+Aiplocalls API използва API ключове за автентификация на заявките. Трябва да включите вашия API ключ в заглавката на всяка заявка, която правите към API.
 
-## Obtaining an API Key
+## Получаване на API ключ
 
-To obtain an API key:
+За да получите API ключ:
 
-1. Log in to your Aiplocalls account at [https://call.aiployees.com](https://call.aiployees.com)
-2. Navigate to the "API Keys" page
-3. Click on the "Create new API Key" button
-4. Copy your new API key and store it securely
+1. Влезте в вашия Aiplocalls акаунт на [https://call.aiployees.com](https://call.aiployees.com)
+2. Отидете на страницата "API Keys"
+3. Кликнете на бутона "Create new API Key"
+4. Копирайте вашия нов API ключ и го съхранете сигурно
 
 <Warning>
-  Keep your API key confidential and secure. Do not share it publicly or commit
-  it to version control systems.
+  Пазете вашия API ключ поверителен и сигурен. Не го споделяйте публично или го
+  качвайте в системи за контрол на версиите.
 </Warning>
 
-## Using the API Key
+## Използване на API ключа
 
-Include your API key in the `Authorization` header of each request:
+Включете вашия API ключ в заглавката `Authorization` на всяка заявка:
 
 ```
 Authorization: Bearer YOUR_API_KEY
 ```
 
-Replace `YOUR_API_KEY` with your actual API key.
+Заменете `YOUR_API_KEY` с вашия действителен API ключ.
 
-## Example Request
+## Примерна заявка
 
-Here's an example of how to include the API key in a cURL request:
+Ето пример за това как да включите API ключа в cURL заявка:
 
 ```bash
 curl -X GET "https://call.aiployees.com/api/user/campaigns" \
      -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
-Replace `YOUR_API_KEY` with your actual API key when making requests.
+Заменете `YOUR_API_KEY` с вашия действителен API ключ при правенето на заявки.

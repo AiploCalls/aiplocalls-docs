@@ -1,47 +1,47 @@
 ---
-title: "List calls"
+title: "Списък на обажданията"
 api: "GET /user/calls"
-description: "List all calls for the authenticated user with filtering options"
+description: "Списък на всички обаждания за автентикирания потребител с опции за филтриране"
 ---
 
-This endpoint allows you to list all calls belonging to the authenticated user with various filtering options.
+Този endpoint ви позволява да получите списък на всички обаждания принадлежащи на автентикирания потребител с различни опции за филтриране.
 
 ### Query Parameters
 
 <ParamField query="status" type="string" optional>
-  Filter calls by status. Possible values: `initiated`, `ringing`, `busy`, `in-progress`, `ended`, `completed`, `ended_by_customer`, `ended_by_assistant`, `no-answer`, `failed`
+  Филтриране на обажданията по статус. Възможни стойности: `initiated`, `ringing`, `busy`, `in-progress`, `ended`, `completed`, `ended_by_customer`, `ended_by_assistant`, `no-answer`, `failed`
 </ParamField>
 
 <ParamField query="type" type="string" optional>
-  Filter calls by type. Possible values: `inbound`, `outbound`, `web`
+  Филтриране на обажданията по тип. Възможни стойности: `inbound`, `outbound`, `web`
 </ParamField>
 
 <ParamField query="phone_number" type="string" optional>
-  Filter calls by client phone number
+  Филтриране на обажданията по телефонен номер на клиента
 </ParamField>
 
 <ParamField query="assistant_id" type="integer" optional>
-  Filter calls by assistant ID
+  Филтриране на обажданията по ID на асистента
 </ParamField>
 
 <ParamField query="campaign_id" type="integer" optional>
-  Filter calls by campaign ID
+  Филтриране на обажданията по ID на кампанията
 </ParamField>
 
 <ParamField query="date_from" type="string" optional>
-  Filter calls from this date (YYYY-MM-DD format)
+  Филтриране на обаждания от тази дата (формат YYYY-MM-DD)
 </ParamField>
 
 <ParamField query="date_to" type="string" optional>
-  Filter calls until this date (YYYY-MM-DD format)
+  Филтриране на обаждания до тази дата (формат YYYY-MM-DD)
 </ParamField>
 
 <ParamField query="per_page" type="integer" optional>
-  Number of calls per page (1-100, default: 15)
+  Брой обаждания на страница (1-100, по подразбиране: 15)
 </ParamField>
 
 <ParamField query="page" type="integer" optional>
-  Page number (default: 1)
+  Номер на страницата (по подразбиране: 1)
 </ParamField>
 
 ### Response fields
@@ -49,93 +49,93 @@ This endpoint allows you to list all calls belonging to the authenticated user w
 <ResponseField name="data" type="array">
   <Expandable title="properties">
     <ResponseField name="id" type="integer">
-      The unique identifier of the call
+      Уникалният идентификатор на обаждането
     </ResponseField>
 
     <ResponseField name="assistant_name" type="string">
-      The name of the assistant that handled the call
+      Името на асистента, който обработи обаждането
     </ResponseField>
 
     <ResponseField name="campaign_name" type="string">
-      The name of the campaign this call belongs to (if applicable)
+      Името на кампанията, към която принадлежи това обаждане (ако е приложимо)
     </ResponseField>
 
     <ResponseField name="type" type="string">
-      The type of the call (`inbound`, `outbound`, or `web`)
+      Типът на обаждането (`inbound`, `outbound`, или `web`)
     </ResponseField>
 
     <ResponseField name="duration" type="integer">
-      The duration of the call in seconds
+      Продължителността на обаждането в секунди
     </ResponseField>
 
     <ResponseField name="assistant_phone_number" type="string">
-      The phone number used by the assistant
+      Телефонният номер използван от асистента
     </ResponseField>
 
     <ResponseField name="client_phone_number" type="string">
-      The phone number of the client
+      Телефонният номер на клиента
     </ResponseField>
 
     <ResponseField name="status" type="string">
-      The current status of the call
+      Текущият статус на обаждането
     </ResponseField>
 
     <ResponseField name="transcript" type="string">
-      The transcript of the call conversation
+      Транскриптът на разговора от обаждането
     </ResponseField>
 
     <ResponseField name="variables" type="object">
-      Variables collected during the call
+      Променливи събрани по време на обаждането
     </ResponseField>
 
     <ResponseField name="evaluation" type="object">
-      Evaluation data for the call performance
+      Данни за оценка на представянето на обаждането
     </ResponseField>
 
     <ResponseField name="webhook_response" type="object">
-      Response from any configured webhooks
+      Отговор от конфигурирани webhooks
     </ResponseField>
 
     <ResponseField name="carrier_cost" type="number">
-      The cost charged by the carrier for this call
+      Цената наложена от оператора за това обаждане
     </ResponseField>
 
     <ResponseField name="total_cost" type="number">
-      The total cost of the call including all fees
+      Общата цена на обаждането включително всички такси
     </ResponseField>
 
     <ResponseField name="answered_by" type="string">
-      Who answered the call (`human`, `machine`, or `unknown`)
+      Кой отговори на обаждането (`human`, `machine`, или `unknown`)
     </ResponseField>
 
     <ResponseField name="recording_url" type="string">
-      URL to the call recording (if available and enabled)
+      URL към записа на обаждането (ако е налично и активирано)
     </ResponseField>
 
     <ResponseField name="created_at" type="string">
-      The date and time when the call was created
+      Датата и времето когато обаждането е създадено
     </ResponseField>
 
     <ResponseField name="updated_at" type="string">
-      The date and time when the call was last updated
+      Датата и времето когато обаждането е актуализирано последно
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="current_page" type="integer">
-  The current page number
+  Номерът на текущата страница
 </ResponseField>
 
 <ResponseField name="per_page" type="integer">
-  Number of items per page
+  Брой елементи на страница
 </ResponseField>
 
 <ResponseField name="total" type="integer">
-  Total number of calls matching the criteria
+  Общ брой обаждания отговарящи на критериите
 </ResponseField>
 
 <ResponseField name="last_page" type="integer">
-  The last page number
+  Номерът на последната страница
 </ResponseField>
 
 <ResponseExample>

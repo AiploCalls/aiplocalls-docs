@@ -1,143 +1,143 @@
 ---
-title: "Creating a Campaign"
+title: "Създаване на кампания"
 icon: "plus"
-description: "Step-by-step guide to setting up your first automated calling campaign"
+description: "Стъпка по стъпка ръководство за настройване на първата ви автоматизирана кампания за обаждания"
 ---
 
-Create and configure automated calling campaigns to efficiently reach multiple leads with your AI assistant.
+Създайте и конфигурирайте автоматизирани кампании за обаждания, за да достигнете ефективно до множество потенциални клиенти с вашия AI асистент.
 
-## Prerequisites
+## Предпоставки
 
-Before creating a campaign, ensure you have:
-- **AI assistant** configured for outbound calls
-- **Phone number** assigned to your assistant  
-- **Account balance** sufficient for call costs
-- **Leads ready** to import or add manually
+Преди да създадете кампания, уверете се, че имате:
+- **AI асистент** конфигуриран за изходящи обаждания
+- **Телефонен номер** присвоен на вашия асистент  
+- **Баланс по сметката** достатъчен за разходите за обаждания
+- **Готови потенциални клиенти** за импорт или ръчно добавяне
 
-## Campaign Setup
+## Настройка на кампанията
 
-### 1. Basic Information
+### 1. Основна информация
 
-**Campaign Name:** Choose a descriptive name for easy identification
-**Assistant Selection:** Select which AI assistant will make the calls
+**Име на кампанията:** Изберете описателно име за лесна идентификация
+**Избор на асистент:** Изберете кой AI асистент ще прави обажданията
 
 <Note>
-The assistant's configuration (voice, prompt, tools) will be used for all campaign calls.
+Конфигурацията на асистента (глас, подканване, инструменти) ще се използва за всички обаждания в кампанията.
 </Note>
 
-### 2. Scheduling Configuration
+### 2. Конфигурация на планирането
 
-#### Allowed Calling Hours
-Set when your campaign can make calls:
-- **Start time:** Earliest time to begin calling (default: 00:00)
-- **End time:** Latest time to stop calling (default: 23:59)
-- **Timezone:** Uses assistant's configured timezone
+#### Разрешени часове за обаждания
+Задайте кога вашата кампания може да прави обаждания:
+- **Начален час:** Най-ранен час за започване на обаждания (по подразбиране: 00:00)
+- **Краен час:** Най-късен час за спиране на обажданията (по подразбиране: 23:59)
+- **Часова зона:** Използва конфигурираната часова зона на асистента
 
-#### Allowed Days
-Select which days of the week to make calls:
-- **Default:** Monday through Sunday
-- **Business only:** Monday through Friday
-- **Custom:** Choose specific days
+#### Разрешени дни
+Изберете в кои дни от седмицата да се правят обаждания:
+- **По подразбиране:** Понеделник до неделя
+- **Само работни дни:** Понеделник до петък
+- **По избор:** Изберете специфични дни
 
 <Tip>
-**Recommendation:** For business calls, use Monday-Friday 9:00 AM - 6:00 PM in the prospect's timezone.
+**Препоръка:** За бизнес обаждания използвайте понеделник-петък 9:00 - 18:00 в часовата зона на потенциалния клиент.
 </Tip>
 
-### 3. Retry Settings
+### 3. Настройки за повторни опити
 
-#### Basic Retry Options
-- **Max retries:** 1-5 attempts for unanswered calls (default: 3)
-- **Retry interval:** 10-4320 minutes between attempts (default: 60 minutes)
+#### Основни опции за повторни опити
+- **Максимални повторни опити:** 1-5 опита за неотговорени обаждания (по подразбиране: 3)
+- **Интервал за повторни опити:** 10-4320 минути между опитите (по подразбиране: 60 минути)
 
-#### Advanced Retry Conditions
+#### Разширени условия за повторни опити
 
-**Retry on Voicemail:**
-- **Enabled:** Continue calling until human answers
-- **Disabled:** Count voicemail as attempted contact
+**Повторен опит при гласова поща:**
+- **Включено:** Продължете да се обаждате докато човек не отговори
+- **Изключено:** Броете гласовата поща като опит за контакт
 
-**Retry Until Goal Completed:**
-- **Enabled:** Keep calling until objective is achieved
-- **Goal variable:** Select boolean variable from assistant's post-call schema
-- **Use case:** Sales calls, appointment booking, lead qualification
+**Повторни опити до постигане на целта:**
+- **Включено:** Продължете да се обаждате докато целта не бъде постигната
+- **Променлива за целта:** Изберете boolean променлива от схемата след обаждането на асистента
+- **Случай на употреба:** Продажби, записване на срещи, квалификация на потенциални клиенти
 
 <Warning>
-**Goal-based retry** requires your assistant to have post-call variables configured with boolean fields (true/false).
+**Повторните опити базирани на цел** изискват вашият асистент да има конфигурирани променливи след обаждането с boolean полета (true/false).
 </Warning>
 
-### 4. Lead Management
+### 4. Управление на потенциални клиенти
 
-#### Adding Leads
+#### Добавяне на потенциални клиенти
 
-**Manual Entry:**
-- Add individual leads with phone numbers
-- Include names and additional contact information
+**Ръчно въвеждане:**
+- Добавете индивидуални потенциални клиенти с телефонни номера
+- Включете имена и допълнителна контактна информация
 
-**CSV Import:**
-- Upload spreadsheet with lead information
-- Required: Phone number column
-- Optional: Name, email, additional fields
+**CSV импорт:**
+- Качете електронна таблица с информация за потенциални клиенти
+- Задължително: Колона с телефонен номер
+- По избор: Име, имейл, допълнителни полета
 
-**Integration Import:**
-- Import from GoHighLevel, Google Sheets, or other connected platforms
-- Automatic sync with external lead sources
+**Импорт чрез интеграция:**
+- Импортирайте от GoHighLevel, Google Sheets или други свързани платформи
+- Автоматична синхронизация с външни източници на потенциални клиенти
 
-#### Secondary Contacts
-Add additional phone numbers for the same lead:
-- **Use case:** Multiple decision-makers, backup contacts
-- **Logic:** Campaign will try all numbers for each lead
-- **Status:** Independent tracking for each contact
+#### Вторични контакти
+Добавете допълнителни телефонни номера за същия потенциален клиент:
+- **Случай на употреба:** Множество лица, вземащи решения, резервни контакти
+- **Логика:** Кампанията ще опита всички номера за всеки потенциален клиент
+- **Статус:** Независимо проследяване за всеки контакт
 
-## Starting Your Campaign
+## Стартиране на вашата кампания
 
-### Pre-launch Checklist
-- [ ] Assistant has phone number configured
-- [ ] Sufficient account balance
-- [ ] Leads added with valid phone numbers
-- [ ] Schedule configured appropriately
-- [ ] Retry logic matches campaign goals
+### Списък за проверка преди стартиране
+- [ ] Асистентът има конфигуриран телефонен номер
+- [ ] Достатъчен баланс по сметката
+- [ ] Добавени потенциални клиенти с валидни телефонни номера
+- [ ] Графикът е конфигуриран подходящо
+- [ ] Логиката за повторни опити отговаря на целите на кампанията
 
-### Launch Process
-1. **Review settings** one final time
-2. **Click "Start Campaign"** to begin
-3. **Monitor progress** in campaign dashboard
-4. **Adjust settings** if needed (pause campaign first)
+### Процес на стартиране
+1. **Прегледайте настройките** за последен път
+2. **Кликнете "Стартирай кампания"** за да започнете
+3. **Наблюдавайте прогреса** в таблото на кампанията
+4. **Коригирайте настройките** при нужда (първо спрете кампанията)
 
-## Campaign Monitoring
+## Наблюдение на кампанията
 
-### Real-time Status
-- **Calls in progress:** Currently active calls
-- **Calls completed:** Finished calls with outcomes
-- **Leads remaining:** Contacts still to be called
-- **Next call time:** When next call will be made
+### Статус в реално време
+- **Текущи обаждания:** В момента активни обаждания
+- **Завършени обаждания:** Приключили обаждания с резултати
+- **Останали потенциални клиенти:** Контакти, до които все още да се обадят
+- **Време на следващото обаждане:** Кога ще се направи следващото обаждане
 
-### Monitoring Progress
-Track lead status and call results in the campaign dashboard. See [Campaign Overview](/campaigns/index#campaign-monitoring) for detailed status explanations.
+### Наблюдение на прогреса
+Проследявайте статуса на потенциалните клиенти и резултатите от обажданията в таблото на кампанията. Вижте [Общ преглед на кампанията](/campaigns/index#campaign-monitoring) за подробни обяснения на статуса.
 
-## Managing Active Campaigns
+## Управление на активни кампании
 
-### Pausing a Campaign
-- **Immediate stop:** Current call completes, no new calls start
-- **Resume capability:** Can restart without losing progress
-- **Use cases:** Adjust settings, review results, temporary pause
+### Поставяне на кампанията на пауза
+- **Незабавно спиране:** Текущото обаждане завършва, не започват нови обаждания
+- **Възможност за възобновяване:** Може да се рестартира без загуба на прогрес
+- **Случаи на употреба:** Коригиране на настройки, преглед на резултати, временна пауза
 
-### Modifying Settings
-1. **Pause the campaign** first
-2. **Edit configuration** as needed
-3. **Save changes**
-4. **Resume campaign** to continue with new settings
+### Модифициране на настройки
+1. **Спрете кампанията** първо
+2. **Редактирайте конфигурацията** според нуждите
+3. **Запазете промените**
+4. **Възобновете кампанията** за да продължите с новите настройки
 
-### Adding More Leads
-- **Add to active campaign:** New leads join existing retry queue
-- **Import additional contacts:** CSV or integration import
-- **Secondary contacts:** Add backup numbers for existing leads
+### Добавяне на още потенциални клиенти
+- **Добавете към активна кампания:** Новите потенциални клиенти се присъединяват към съществуващата опашка за повторни опити
+- **Импорт на допълнителни контакти:** CSV или импорт чрез интеграция
+- **Вторични контакти:** Добавете резервни номера за съществуващи потенциални клиенти
 
-## Best Practices
+## Най-добри практики
 
-- **Conservative scheduling:** Business hours, respect time zones
-- **Start with 2-3 retries:** Monitor and adjust based on feedback
-- **Clean lead data:** Valid numbers, remove duplicates
-- **Compliance:** Follow local regulations and opt-out requests
+- **Консервативно планиране:** Работно време, уважавайте часовите зони
+- **Започнете с 2-3 повторни опита:** Наблюдавайте и коригирайте въз основа на обратната връзка
+- **Чисти данни за потенциални клиенти:** Валидни номера, премахнете дубликати
+- **Съответствие:** Следвайте местните регулации и заявки за отписване
 
 <Note>
-For troubleshooting common issues, see [Campaign Troubleshooting](/troubleshooting/campaigns).
+За отстраняване на често срещани проблеми, вижте [Отстраняване на проблеми с кампании](/troubleshooting/campaigns).
 </Note>

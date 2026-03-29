@@ -1,84 +1,84 @@
 ---
-title: "Calendly Issues"
+title: "Проблеми с Calendly"
 icon: "calendar-days"
-description: "Troubleshoot common Calendly integration issues"
+description: "Отстраняване на често срещани проблеми с интеграция на Calendly"
 ---
 
-Solutions for common Calendly integration problems.
+Решения за често срещани проблеми с интеграция на Calendly.
 
-## Connection Issues
+## Проблеми с връзката
 
-### OAuth Authorization Fails
+### OAuth упълномощаването не успява
 
-**Problem:** Unable to connect Calendly account
+**Проблем:** Невъзможно е да се свърже Calendly акаунт
 
-**Solution:**
-- Try connecting in an incognito/private browser window
-- Verify you have admin access to your Calendly account
-- Check that third-party app permissions are enabled in Calendly
+**Решение:**
+- Опитайте да се свържете в инкогнито/частен прозорец на браузъра
+- Проверете дали имате администраторски достъп до вашия Calendly акаунт
+- Проверете дали разрешенията за приложения на трети страни са активирани в Calendly
 
-### Events Not Loading
+### Събитията не се зареждат
 
-**Problem:** Event dropdown is empty after connecting
+**Проблем:** Падащото меню за събития е празно след свързването
 
-**Solution:**
-- Click **"Load Events"** button to fetch event types
-- Wait for the sync to complete (may take a few seconds)
-- Refresh the page if events still don't appear
-- Verify you have active event types in your Calendly account
+**Решение:**
+- Кликнете върху бутона **"Load Events"**, за да извлечете типовете събития
+- Изчакайте синхронизацията да завърши (може да отнеме няколко секунди)
+- Обновете страницата, ако събитията все още не се показват
+- Проверете дали имате активни типове събития във вашия Calendly акаунт
 
-## Booking Failures
+## Неуспешни резервации
 
-### Location Kind Error
+### Грешка с вида местоположение
 
-**Problem:** "Failed to book appointment: Specified location kind is not configured for this event type"
+**Проблем:** "Failed to book appointment: Specified location kind is not configured for this event type"
 
-**Cause:** Your Calendly event type has a location setting (e.g., Google Meet, Zoom) that doesn't match what the voice agent uses when booking.
+**Причина:** Вашият тип събитие в Calendly има настройка за местоположение (например Google Meet, Zoom), която не съответства на това, което гласовият агент използва при резервирането.
 
-**Solution:**
-1. Log in to your Calendly account at [calendly.com](https://calendly.com)
-2. Go to **Event Types** and click on the event type linked to your assistant
-3. Click **Edit** on that event type
-4. Scroll to the **Location** section
-5. Change the location to one of these options:
-   - **"Custom"** — this is the safest option and works in all cases
-   - **"Phone Call" → "Inbound call"** — also works well for voice AI use cases
-   - If you have multiple locations, make sure **"Custom"** is included as one of the options
-6. **Save** the event type
-7. Try booking again through the assistant
+**Решение:**
+1. Влезте във вашия Calendly акаунт на [calendly.com](https://calendly.com)
+2. Отидете на **Event Types** и кликнете върху типа събитие, свързан с вашия асистент
+3. Кликнете **Edit** на този тип събитие
+4. Превъртете до секцията **Location**
+5. Променете местоположението на една от тези опции:
+   - **"Custom"** — това е най-безопасната опция и работи във всички случаи
+   - **"Phone Call" → "Inbound call"** — също работи добре за случаи с гласов AI
+   - Ако имате множество местоположения, уверете се, че **"Custom"** е включено като една от опциите
+6. **Запазете** типа събитие
+7. Опитайте отново резервация чрез асистента
 
 <Warning>
-If your event type is set to a video conferencing location only (Google Meet, Zoom, Microsoft Teams), bookings will fail because the voice agent doesn't generate meeting links. Either switch to "Custom" or add "Custom" as an additional location option.
+Ако вашият тип събитие е настроен само за местоположение за видеоконферентни връзки (Google Meet, Zoom, Microsoft Teams), резервациите ще неуспяват, защото гласовият агент не генерира връзки за срещи. Или сменете на "Custom", или добавете "Custom" като допълнителна опция за местоположение.
 </Warning>
 
-### Booking Time Zone Issues
+### Проблеми с часовия пояс при резервации
 
-**Problem:** Appointments scheduled at wrong time
+**Проблем:** Срещите са планирани в грешно време
 
-**Solution:**
-- Check the time zone in your Calendly event settings
-- Verify the assistant's time zone is configured correctly
-- Test with specific time mentions during a call
+**Решение:**
+- Проверете часовия пояс в настройките на вашето Calendly събитие
+- Проверете дали часовият пояс на асистента е конфигуриран правилно
+- Тествайте със специфични спомени на време по време на разговор
 
-## Testing Issues
+## Проблеми с тестването
 
-### Web Call Bookings Fail
+### Резервации чрез уеб повиквания неуспяват
 
-**Problem:** Bookings work inconsistently with web calls
+**Проблем:** Резервациите работят непостоянно с уеб повиквания
 
-**Solution:**
-- Use real phone calls for testing (not web calls)
-- Web calls may not pass the phone variable correctly
-- When using web calls, provide the phone number in international format with + prefix (e.g., "+1 555-123-4567")
+**Решение:**
+- Използвайте истински телефонни обаждания за тестване (не уеб повиквания)
+- Уеб повикванията може да не предават правилно променливата за телефон
+- При използване на уеб повиквания, предоставете телефонния номер в международен формат с + префикс (например "+1 555-123-4567")
 
-## Getting Help
+## Получаване на помощ
 
-If issues persist:
+Ако проблемите продължават:
 
-1. Check call transcripts for booking attempts
-2. Verify the event type shows correctly in your Calendly dashboard
-3. Test with a simple phone call booking
-4. Contact support with:
-   - Error message screenshot
-   - Calendly event type settings screenshot (especially the Location section)
-   - Call transcript showing the booking attempt
+1. Проверете транскриптите на разговорите за опити за резервация
+2. Проверете дали типът събитие се показва правилно в таблото на Calendly
+3. Тествайте с обикновена телефонна резервация
+4. Свържете се с поддръжката с:
+   - Снимка на екрана на съобщението за грешка
+   - Снимка на екрана на настройките на типа събитие в Calendly (особено секцията Location)
+   - Транскрипт на разговора, показващ опита за резервация

@@ -1,77 +1,78 @@
 ---
-title: "Send Template Message"
+---
+title: "Изпращане на шаблонно съобщение"
 api: "POST /user/whatsapp/send"
-description: "Send a WhatsApp message using an approved template"
+description: "Изпращане на WhatsApp съобщение чрез одобрен шаблон"
 ---
 
-This endpoint sends a WhatsApp message using a pre-approved template. Template messages are required when initiating a conversation with a user for the first time or when messaging outside the 24-hour messaging window.
+Този endpoint изпраща WhatsApp съобщение чрез предварително одобрен шаблон. Шаблонните съобщения са задължителни при започване на разговор с потребител за първи път или при изпращане на съобщения извън 24-часовия прозорец за съобщения.
 
 <Note>
-  This endpoint is rate-limited to **5 requests per second** per user.
+  Този endpoint има ограничение от **5 заявки в секунда** на потребител.
 </Note>
 
-### Request Body
+### Тяло на заявката
 
 <ParamField body="sender_id" type="integer" required>
-  The ID of the WhatsApp sender to send from (obtained from the [Get Senders](/api-reference/whatsapp/get-senders) endpoint)
+  ID на WhatsApp изпращача от който да се изпрати (получен от endpoint-а [Get Senders](/api-reference/whatsapp/get-senders))
 </ParamField>
 
 <ParamField body="template_id" type="integer" required>
-  The ID of the message template to use (obtained from the [Get Templates](/api-reference/whatsapp/get-templates) endpoint)
+  ID на шаблона за съобщение който да се използва (получен от endpoint-а [Get Templates](/api-reference/whatsapp/get-templates))
 </ParamField>
 
 <ParamField body="recipient_phone" type="string" required>
-  The recipient's phone number in international format (e.g., `+1234567890`)
+  Телефонния номер на получателя в международен формат (например, `+1234567890`)
 </ParamField>
 
 <ParamField body="recipient_name" type="string">
-  The recipient's name, max 255 characters (used for conversation tracking and CRM purposes)
+  Името на получателя, максимум 255 символа (използва се за проследяване на разговори и CRM цели)
 </ParamField>
 
 <ParamField body="variables" type="object">
-  Key-value pairs for template variables. Keys should match the variable names from the template. If the template has variables `{{1}}`, `{{2}}`, etc., provide them as `{"1": "value1", "2": "value2"}` or using the named keys from the template's `variables` array.
+  Двойки ключ-стойност за променливите на шаблона. Ключовете трябва да съответстват на имената на променливите от шаблона. Ако шаблонът има променливи `{{1}}`, `{{2}}`, и т.н., подайте ги като `{"1": "стойност1", "2": "стойност2"}` или използвайте именуваните ключове от масива `variables` на шаблона.
 
-  <Expandable title="Example variables">
+  <Expandable title="Примерни променливи">
     <ParamField body="1" type="string">
-      Value for the first template variable
+      Стойност за първата променлива на шаблона
     </ParamField>
 
     <ParamField body="2" type="string">
-      Value for the second template variable
+      Стойност за втората променлива на шаблона
     </ParamField>
   </Expandable>
 </ParamField>
 
-### Response Fields
+### Полета в отговора
 
 <ResponseField name="success" type="boolean">
-  Whether the message was sent successfully
+  Дали съобщението е изпратено успешно
 </ResponseField>
 
 <ResponseField name="conversation_id" type="integer">
-  The ID of the conversation (new or existing) associated with this message
+  ID на разговора (нов или съществуващ) свързан с това съобщение
 </ResponseField>
 
 <ResponseField name="message_id" type="integer">
-  The ID of the conversation message record
+  ID на записа на съобщението в разговора
 </ResponseField>
 
 <ResponseField name="whatsapp_message_id" type="integer">
-  The ID of the WhatsApp message record
+  ID на записа на WhatsApp съобщението
 </ResponseField>
 
 <ResponseField name="message_sid" type="string">
-  The Twilio message SID for tracking delivery
+  Twilio message SID за проследяване на доставката
 </ResponseField>
 
 <ResponseField name="status" type="string">
-  The initial message delivery status (e.g., `queued`, `sent`)
+  Началният статус на доставка на съобщението (например, `queued`, `sent`)
 </ResponseField>
 
-### Error Responses
+### Отговори при грешки
 
 <ResponseField name="402 Insufficient Balance">
-  <Expandable title="Error Response">
+  <Expandable title="Отговор при грешка">
     <ResponseField name="success" type="boolean">`false`</ResponseField>
     <ResponseField name="error" type="string">`Insufficient balance. Please top up your account.`</ResponseField>
     <ResponseField name="error_code" type="string">`INSUFFICIENT_BALANCE`</ResponseField>
@@ -79,19 +80,19 @@ This endpoint sends a WhatsApp message using a pre-approved template. Template m
 </ResponseField>
 
 <ResponseField name="404 Not Found">
-  <Expandable title="Error Response">
+  <Expandable title="Отговор при грешка">
     <ResponseField name="success" type="boolean">`false`</ResponseField>
-    <ResponseField name="error" type="string">`Sender not found or does not belong to you` or `Template not found or does not belong to this sender`</ResponseField>
-    <ResponseField name="error_code" type="string">`SENDER_NOT_FOUND` or `TEMPLATE_NOT_FOUND`</ResponseField>
+    <ResponseField name="error" type="string">`Sender not found or does not belong to you` или `Template not found or does not belong to this sender`</ResponseField>
+    <ResponseField name="error_code" type="string">`SENDER_NOT_FOUND` или `TEMPLATE_NOT_FOUND`</ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="422 Unprocessable Entity">
-  <Expandable title="Error Response">
+  <Expandable title="Отговор при грешка">
     <ResponseField name="success" type="boolean">`false`</ResponseField>
-    <ResponseField name="error" type="string">Detailed error message</ResponseField>
+    <ResponseField name="error" type="string">Подробно съобщение за грешката</ResponseField>
     <ResponseField name="error_code" type="string">
-      One of: `SENDER_OFFLINE`, `TEMPLATE_NOT_APPROVED`, `TEMPLATE_NOT_SYNCED`, `TEMPLATE_MISMATCH`, `NO_ASSISTANT_CONFIGURED`, `INVALID_PHONE`, `MESSAGING_LIMIT_UNAVAILABLE`, `VOICE_CALL_LIMIT_NOT_MET`, `TWILIO_ERROR_{code}`, `UNKNOWN_ERROR`
+      Един от: `SENDER_OFFLINE`, `TEMPLATE_NOT_APPROVED`, `TEMPLATE_NOT_SYNCED`, `TEMPLATE_MISMATCH`, `NO_ASSISTANT_CONFIGURED`, `INVALID_PHONE`, `MESSAGING_LIMIT_UNAVAILABLE`, `VOICE_CALL_LIMIT_NOT_MET`, `TWILIO_ERROR_{code}`, `UNKNOWN_ERROR`
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -115,7 +116,7 @@ curl -X POST "https://call.aiployees.com/api/user/whatsapp/send" \
   }'
 ```
 
-```bash Template without variables
+```bash Шаблон без променливи
 curl -X POST "https://call.aiployees.com/api/user/whatsapp/send" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -182,7 +183,7 @@ print(response.json())
 
 <ResponseExample>
 
-```json 200 Success
+```json 200 Успех
 {
   "success": true,
   "conversation_id": 1234,
@@ -193,7 +194,7 @@ print(response.json())
 }
 ```
 
-```json 402 Insufficient Balance
+```json 402 Недостатъчен баланс
 {
   "success": false,
   "error": "Insufficient balance. Please top up your account.",
@@ -201,7 +202,7 @@ print(response.json())
 }
 ```
 
-```json 404 Sender Not Found
+```json 404 Изпращачът не е намерен
 {
   "success": false,
   "error": "Sender not found or does not belong to you",
@@ -209,7 +210,7 @@ print(response.json())
 }
 ```
 
-```json 404 Template Not Found
+```json 404 Шаблонът не е намерен
 {
   "success": false,
   "error": "Template not found or does not belong to this sender",
@@ -217,7 +218,7 @@ print(response.json())
 }
 ```
 
-```json 422 Template Not Approved
+```json 422 Шаблонът не е одобрен
 {
   "success": false,
   "error": "Template is not approved. Current status: pending",
@@ -225,7 +226,7 @@ print(response.json())
 }
 ```
 
-```json 422 Invalid Phone
+```json 422 Невалиден телефон
 {
   "success": false,
   "error": "Invalid phone number format. Use E.164 format (e.g., +14155551234).",
@@ -233,7 +234,7 @@ print(response.json())
 }
 ```
 
-```json 422 Sender Offline
+```json 422 Изпращачът е офлайн
 {
   "success": false,
   "error": "Sender is not online. Current status: Offline",
@@ -243,11 +244,13 @@ print(response.json())
 
 </ResponseExample>
 
-### Notes
+### Забележки
 
-- Template messages must use **approved** templates. Templates with `pending` or `rejected` status will fail.
-- The sender must be `online`. Offline senders cannot send messages.
-- Message costs are automatically deducted from your account balance (credits for tenant users, minutes for direct users).
-- After sending a template message, a 24-hour messaging window opens. During this window, you can send [freeform messages](/api-reference/whatsapp/send-freeform) without needing a template.
-- If a conversation already exists with the recipient, the message is added to the existing conversation.
-- Rate limit: 5 requests per second per user.
+- Шаблонните съобщения трябва да използват **одобрени** шаблони. Шаблони със статус `pending` или `rejected` ще се провалят.
+- Изпращачът трябва да е `online`. Офлайн изпращачи не могат да изпращат съобщения.
+- Разходите за съобщения се приспадат автоматично от баланса на акаунта ви (кредити за tenant потребители, минути за директни потребители).
+- След изпращане на шаблонно съобщение се отваря 24-часов прозорец за съобщения. През този прозорец можете да изпращате [свободни съобщения](/api-reference/whatsapp/send-freeform) без нужда от шаблон.
+- Ако разговор със получателя вече съществува, съобщението се добавя към съществуващия разговор.
+- Ограничение на честотата: 5 заявки в секунда на потребител.
+
+---

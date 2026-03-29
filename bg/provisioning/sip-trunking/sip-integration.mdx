@@ -1,287 +1,289 @@
 ---
-title: "Overview"
-description: "Connect your existing phone system and numbers to Aiplocalls"
+title: "Преглед"
+description: "Свържете съществуващата си телефонна система и номера с Aiplocalls"
 ---
 
 <Note>
-  This guide will help you understand and set up SIP integration. If you need
-  clarification during setup, our support team is available to assist.
+  Това ръководство ще ви помогне да разберете и настроите SIP интеграция. Ако се нуждаете
+  от разяснения по време на настройката, нашият екип за поддръжка е на разположение да помогне.
 </Note>
 
-## What is SIP Integration?
+## Какво е SIP интеграция?
 
-SIP (Session Initiation Protocol) integration allows you to connect your existing phone system to Aiplocalls. Think of it as building a bridge between your current phone setup and our AI platform. This means you can:
+SIP (Session Initiation Protocol) интеграцията ви позволява да свържете съществуващата си телефонна система с Aiplocalls. Представете си я като изграждане на мост между настоящата ви телефонна настройка и нашата AI платформа. Това означава, че можете да:
 
-- Use your existing phone numbers with our AI assistants
-- Keep your current phone system and provider
-- Make and receive calls through your existing setup
-- Maintain full control of your numbers
-- Reduce carrier costs by using local VoIP providers with better rates
+- Използвате съществуващите си телефонни номера с нашите AI асистенти
+- Запазите настоящата си телефонна система и доставчик
+- Извършвате и получавате обаждания чрез съществуващата си настройка
+- Поддържате пълен контрол над номерата си
+- Намалите разходите за оператор, използвайки локални VoIP доставчици с по-добри цени
 
-## How It Works
+## Как работи
 
-When you integrate your phone system with Aiplocalls:
+Когато интегрирате телефонната си система с Aiplocalls:
 
-1. **Inbound Calls**: Calls to your numbers are routed through your phone system to our AI assistants
-2. **Outbound Calls**: Our AI assistants can make calls appearing from your numbers
-3. **Management**: You keep managing your numbers through your current provider
-4. **Cost Efficiency**: Leverage your VoIP provider's competitive rates for call termination
+1. **Входящи обаждания**: Обажданията към вашите номера се пренасочват през телефонната ви система към нашите AI асистенти
+2. **Изходящи обаждания**: Нашите AI асистенти могат да извършват обаждания, показвайки се от вашите номера
+3. **Управление**: Продължавате да управлявате номерата си чрез настоящия си доставчик
+4. **Икономическа ефективност**: Използвате конкурентните цени на вашия VoIP доставчик за прекратяване на обаждания
 
-## Integration Options
+## Опции за интеграция
 
-You can connect your phone system to Aiplocalls in two ways:
+Можете да свържете телефонната си система с Aiplocalls по два начина:
 
-### 1. PBX Extension Integration
+### 1. Интеграция с PBX вътрешен номер
 
-This is like giving our AI platform an "extension" on your phone system:
+Това е като да дадете на нашата AI платформа "вътрешен номер" в телефонната ви система:
 
-- **What it is**: Connect a specific extension from your PBX/phone system
-- **Perfect for**:
-  - Testing the integration
-  - Routing specific extensions to AI
-  - Simple setup with existing phone systems
-- **You'll need**:
-  - Your extension number (e.g., 1000)
-  - Extension username and password
-  - Your PBX server address (e.g., pbx.yourcompany.com)
+- **Какво е**: Свързване на конкретен вътрешен номер от вашата PBX/телефонна система
+- **Перфектно за**:
+  - Тестване на интеграцията
+  - Пренасочване на конкретни вътрешни номера към AI
+  - Проста настройка със съществуващи телефонни системи
+- **Ще ви трябва**:
+  - Номерът на вътрешния номер (напр. 1000)
+  - Потребителско име и парола на вътрешния номер
+  - Адресът на PBX сървъра (напр. pbx.yourcompany.com)
 
-**Real-world example**:
-
-```
-Your office uses extensions 1001-1010 for staff
-You set up extension 1011 for the AI assistant
-Calls to 1011 go to the AI
-The AI can make calls appearing as extension 1011
-```
-
-### 2. Direct Number Integration
-
-This connects specific phone numbers to our platform:
-
-- **What it is**: Route one or more of your phone numbers to our AI
-- **Perfect for**:
-  - Dedicated AI phone lines
-  - Customer service numbers
-  - Sales or support lines
-- **You'll need**:
-  - Your phone number (e.g., +1 555 0123)
-  - SIP credentials from your provider
-  - Provider's SIP server address
-
-**Real-world example**:
+**Пример от реалния живот**:
 
 ```
-You have a support number: +1 555 0123
-You connect this number to our AI
-All calls to +1 555 0123 are handled by the AI assistant
-The AI makes outbound calls showing +1 555 0123
+Офисът ви използва вътрешни номера 1001-1010 за персонала
+Настройвате вътрешен номер 1011 за AI асистента
+Обажданията към 1011 отиват при AI-то
+AI-то може да прави обаждания, показвайки се като вътрешен номер 1011
 ```
 
-## Authentication & Call Flow
+### 2. Директна интеграция на номер
 
-### Bidirectional Configuration
+Това свързва конкретни телефонни номера с нашата платформа:
 
-The SIP integration uses the same credentials for both inbound and outbound calls:
+- **Какво е**: Пренасочване на един или повече от телефонните ви номера към нашето AI
+- **Перфектно за**:
+  - Специализирани AI телефонни линии
+  - Номера за обслужване на клиенти
+  - Линии за продажби или поддръжка
+- **Ще ви трябва**:
+  - Телефонният ви номер (напр. +1 555 0123)
+  - SIP идентификационни данни от вашия доставчик
+  - Адресът на SIP сървъра на доставчика
 
-- **Inbound Calls** (VoIP → Aiplocalls):
+**Пример от реалния живот**:
+
+```
+Имате номер за поддръжка: +1 555 0123
+Свързвате този номер с нашето AI
+Всички обаждания към +1 555 0123 се обработват от AI асистента
+AI-то прави изходящи обаждания, показвайки +1 555 0123
+```
+
+## Удостоверяване и поток от обаждания
+
+### Двупосочна конфигурация
+
+SIP интеграцията използва същите идентификационни данни за входящи и изходящи обаждания:
+
+- **Входящи обаждания** (VoIP → Aiplocalls):
 
   ```
-  Your VoIP system authenticates using username/password
+  Вашата VoIP система се удостоверява използвайки потребителско име/парола
   ↓
-  Calls reach our platform
+  Обажданията достигат нашата платформа
   ↓
-  AI assistant answers
+  AI асистентът отговаря
   ```
 
-- **Outbound Calls** (Aiplocalls → VoIP):
+- **Изходящи обаждания** (Aiplocalls → VoIP):
   ```
-  AI initiates call
+  AI-то инициира обаждане
   ↓
-  Our platform authenticates to your VoIP using same username/password
+  Нашата платформа се удостоверява към вашия VoIP използвайки същото потребителско име/парола
   ↓
-  Call reaches destination
+  Обаждането достига дестинацията
   ```
 
-### Credential Synchronization
+### Синхронизация на идентификационни данни
 
-For the integration to work properly:
+За да работи интеграцията правилно:
 
-1. The credentials you set in Aiplocalls dashboard must match exactly with your VoIP configuration
-2. The same username/password combination is used for both directions
-3. Any changes to credentials must be updated in both systems
+1. Идентификационните данни, които задавате в Aiplocalls панела, трябва да съвпадат точно с вашата VoIP конфигурация
+2. Същата комбинация от потребителско име/парола се използва в двете посоки
+3. Всички промени в идентификационните данни трябва да бъдат актуализирани в двете системи
 
 <Warning>
-  If you change credentials in your VoIP system, remember to update them in
-  Aiplocalls dashboard (and vice versa) to maintain the connection.
+  Ако промените идентификационните данни във вашата VoIP система, не забравяйте да ги актуализирате в
+  Aiplocalls панела (и обратно), за да поддържате връзката.
 </Warning>
 
-## Setting Up Your Integration
+## Настройване на интеграцията
 
-### Step 1: Gather Your Information
+### Стъпка 1: Съберете информацията си
 
-For PBX Extension:
-
-```
-Extension number: e.g., 1000
-Server address: e.g., pbx.company.com
-Username: Your extension username
-Password: Your extension password
-```
-
-For Direct Number:
+За PBX вътрешен номер:
 
 ```
-Phone number: e.g., +1 555 0123
-SIP server: e.g., sip.provider.com
-Username: Provided by your phone company
-Password: Provided by your phone company
+Номер на вътрешен номер: напр. 1000
+Адрес на сървър: напр. pbx.company.com
+Потребителско име: Потребителското име на вътрешния номер
+Парола: Паролата на вътрешния номер
 ```
 
-### Step 2: Configure in Dashboard
+За директен номер:
 
-1. Go to your Aiplocalls dashboard
-2. Navigate to **Your Phone Numbers**
-3. Click "Integrate SIP trunk"
-
-### Step 3: Select SIP Trunk Type 
-
-At the top of the form, select one of these trunk types:
-
-- **SIP Extension** - Use this if you already have an existing SIP credential (an extension) provided by your VoIP provider.
-- **Phone Number (DID)** - Use this if you want to integrate a dedicated Direct Inward Dial (DID) number instead of a generic SIP extension.
-
-For PBX Extension:
 ```
-Extension number: e.g., 1000
-Username: Your extension username
-Password: Your extension password
+Телефонен номер: напр. +1 555 0123
+SIP сървър: напр. sip.provider.com
+Потребителско име: Предоставено от вашата телефонна компания
+Парола: Предоставена от вашата телефонна компания
+```
+
+### Стъпка 2: Конфигуриране в панела
+
+1. Отидете в панела на Aiplocalls
+2. Навигирайте до **Your Phone Numbers**
+3. Кликнете "Integrate SIP trunk"
+
+### Стъпка 3: Изберете тип SIP trunk 
+
+В горната част на формата изберете един от тези типове trunk:
+
+- **SIP Extension** - Използвайте това, ако вече имате съществуващи SIP идентификационни данни (вътрешен номер), предоставени от вашия VoIP доставчик.
+- **Phone Number (DID)** - Използвайте това, ако искате да интегрирате специализиран Direct Inward Dial (DID) номер вместо общ SIP вътрешен номер.
+
+За PBX вътрешен номер:
+```
+Extension number: напр. 1000
+Username: Потребителското име на вътрешния номер
+Password: Паролата на вътрешния номер
 ```
 <img height="200" src="/resources/sip-integration-sip-type.png" />
 
-For Direct Number:
+За директен номер:
 
 ```
-Phone number: e.g., +1 555 0123
-Username: Provided by your phone company
-Password: Provided by your phone company
+Phone number: напр. +1 555 0123
+Username: Предоставено от вашата телефонна компания
+Password: Предоставена от вашата телефонна компания
 ```
 <img height="200" src="/resources/sip-integration-did.png" />
 
-### Step 4: Outbound Settings
+### Стъпка 4: Настройки за изходящи обаждания
 
-These settings control how Aiplocalls sends outbound calls through your SIP provider.
+Тези настройки контролират как Aiplocalls изпраща изходящи обаждания чрез вашия SIP доставчик.
 
-- **SIP Address** - Enter the address/server of the SIP trunk without the port.
-- **Outbound Proxy (Fixed IP)** - Some SIP providers require calls to originate from a single, whitelisted IP address. Configure this as follows:
-  - **Toggle ON** - If your SIP provider requires a fixed source IP, enable Outbound proxy will come from a fixed IP address. Aiplocalls will then send all outbound requests through a known static IP.
-  Use this option only if your provider explicitly requires a single source IP.
-  - **Toggle OFF:** - If your provider accepts calls from any IP, leave this option off. In that case, Aiplocalls will send calls from dynamic IPs.
+- **SIP Address** - Въведете адреса/сървъра на SIP trunk без порта.
+- **Outbound Proxy (Fixed IP)** - Някои SIP доставчици изискват обажданията да произхождат от един единствен, включен в бял списък IP адрес. Конфигурирайте това както следва:
+  - **Включено** - Ако вашият SIP доставчик изисква фиксиран източник IP, включването на Outbound proxy ще идва от фиксиран IP адрес. Aiplocalls тогава ще изпраща всички изходящи заявки чрез известен статичен IP.
+  Използвайте тази опция само ако вашият доставчик изрично изисква един източник IP.
+  - **Изключено:** - Ако вашият доставчик приема обаждания от всеки IP, оставете тази опция изключена. В този случай Aiplocalls ще изпраща обаждания от динамични IP адреси.
 
 ```
-SIP address: (e.g., pbx.company.com/sip.provider.com)
+SIP address: (напр. pbx.company.com/sip.provider.com)
 ```
 <img height="200" src="/resources/sip-integration-outbound.png" />
 
-### Step 5: Number Format Configuration
+### Стъпка 5: Конфигурация на формат на номер
 
-This tells our system how to format phone numbers when making calls. Choose based on your provider's requirements:
+Това казва на нашата система как да форматира телефонните номера при правене на обаждания. Изберете въз основа на изискванията на вашия доставчик:
 
-1. **International with +**
-
-   ```
-   Format: +[country][number]
-   Example: +1 202 555 0123
-   SIP Request: sip:+12025550123@your.pbx.com
-   ```
-
-2. **International without +**
+1. **Международен с +**
 
    ```
-   Format: [country][number]
-   Example: 1 202 555 0123
-   SIP Request: sip:12025550123@your.pbx.com
+   Формат: +[държава][номер]
+   Пример: +1 202 555 0123
+   SIP заявка: sip:+12025550123@your.pbx.com
    ```
 
-3. **National format**
+2. **Международен без +**
+
    ```
-   Format: [local number]
-   Example: 0741926265
-   SIP Request: sip:0741926265@your.pbx.com
+   Формат: [държава][номер]
+   Пример: 1 202 555 0123
+   SIP заявка: sip:12025550123@your.pbx.com
    ```
 
-### Step 6: Inbound Settings
+3. **Национален формат**
+   ```
+   Формат: [местен номер]
+   Пример: 0741926265
+   SIP заявка: sip:0741926265@your.pbx.com
+   ```
 
-These settings determine how Aiplocalls receives and authenticates inbound calls from your SIP provider.
+### Стъпка 6: Настройки за входящи обаждания
 
-1. **Our SIP Address** - Aiplocalls assigns a unique inbound SIP URI ```5wed79aeavr.sip.livekit.cloud```. Your SIP provider must be configured to send inbound calls to this address by pointing their outbound trunk or routing rule to this URI.
-2. **IP Address (Whitelist IPs)** - If your SIP provider can send calls from a known set of public IP addresses, choose IP Address. Then add each provider IP to the whitelist under Inbound Authentication.
-3. **Username and Password** - If your provider supports SIP auth, choose Username and password. The same credentials you entered under Outbound Settings (username/password) will be used to authenticate inbound calls. Make sure your provider’s PBX is configured to include those credentials.
+Тези настройки определят как Aiplocalls получава и удостоверява входящи обаждания от вашия SIP доставчик.
+
+1. **Our SIP Address** - Aiplocalls присвоява уникален входящ SIP URI ```5wed79aeavr.sip.livekit.cloud```. Вашият SIP доставчик трябва да бъде конфигуриран да изпраща входящи обаждания към този адрес, насочвайки изходящия си trunk или правило за пренасочване към този URI.
+2. **IP Address (Whitelist IPs)** - Ако вашият SIP доставчик може да изпраща обаждания от известен набор от публични IP адреси, изберете IP Address. След това добавете всеки доставчик IP към белия списък под Inbound Authentication.
+3. **Username and Password** - Ако вашият доставчик поддържа SIP удостоверяване, изберете Username and password. Същите идентификационни данни, които въведохте под Outbound Settings (потребителско име/парола), ще се използват за удостоверяване на входящи обаждания. Уверете се, че PBX-ът на вашия доставчик е конфигуриран да включва тези идентификационни данни.
 
 <img height="200" src="/resources/sip-integration-inbound.png" />
 
-### Step 7: Country Selection 
-Select the country where your SIP trunk is provisioned.
+### Стъпка 7: Избор на държава 
+Изберете държавата, в която е предоставен вашият SIP trunk.
 
 <img height="200" src="/resources/sip-integration-country.png" />
 
-### Step 8: Verify Setup
+### Стъпка 8: Проверете настройката
 
-After configuration:
+След конфигурирането:
 
-1. Make a test call to your number/extension
-2. Check that the AI assistant answers
-3. Use the test call feature to verify outbound calling
+1. Направете тестово обаждане към номера/вътрешния номер
+2. Проверете дали AI асистентът отговаря
+3. Използвайте функцията за тестово обаждане, за да проверите изходящите обаждания
 
-## Security Requirements
+## Изисквания за сигурност
 
-Your SIP credentials need to be secure:
+Вашите SIP идентификационни данни трябва да са сигурни:
 
-- **Username**: Your extension number or provider-supplied username
-- **Password must have**:
-  - 12 or more characters
-  - Numbers
-  - Upper and lowercase letters
-  - Special characters recommended
+- **Потребителско име**: Номерът на вътрешния номер или потребителското име, предоставено от доставчика
+- **Паролата трябва да има**:
+  - 12 или повече символа
+  - Числа
+  - Главни и малки букви
+  - Препоръчват се специални символи
 
-## Common Questions
+## Често задавани въпроси
 
 <AccordionGroup>
-  <Accordion title="Can I use multiple numbers?">
-    Yes! You can integrate multiple extensions or direct numbers with our platform.
+  <Accordion title="Мога ли да използвам множество номера?">
+    Да! Можете да интегрирате множество вътрешни номера или директни номера с нашата платформа.
   </Accordion>
 
 {" "}
 
-<Accordion title="Will I lose control of my numbers?">
-  No, you maintain full control through your current provider. The integration
-  only establishes a connection between your system and our platform.
+<Accordion title="Ще загубя ли контрола над номерата си?">
+  Не, поддържате пълен контрол чрез настоящия си доставчик. Интеграцията
+  само установява връзка между вашата система и нашата платформа.
 </Accordion>
 
 {" "}
 
-<Accordion title="Can I still use my numbers for regular calls?">
-  Yes, you can set up routing rules in your phone system to decide which calls
-  go to the AI and which go to your regular phone system.
+<Accordion title="Мога ли все още да използвам номерата си за обикновени обаждания?">
+  Да, можете да настроите правила за пренасочване в телефонната си система, за да решавате кои обаждания
+  отиват при AI-то и кои отиват при обикновената ви телефонна система.
 </Accordion>
 
 {" "}
 
-<Accordion title="What if I need to change settings later?">
-  You can update your integration settings anytime through the dashboard. All
-  configuration options remain accessible after initial setup.
+<Accordion title="Какво става, ако трябва да променя настройките по-късно?">
+  Можете да актуализирате настройките за интеграция по всяко време чрез панела. Всички
+  опции за конфигурация остават достъпни след първоначалната настройка.
 </Accordion>
 
-  <Accordion title="How does this help with call costs?">
-    By using your own VoIP provider, you can take advantage of their local rates
-    and existing agreements, which are often more competitive than standard carrier
-    rates. This is especially beneficial for international calls.
+  <Accordion title="Как това помага с разходите за обаждания?">
+    Използвайки собствения си VoIP доставчик, можете да се възползвате от техните местни цени
+    и съществуващи споразумения, които често са по-конкурентни от стандартните цени на операторите.
+    Това е особено полезно за международни обаждания.
   </Accordion>
 </AccordionGroup>
 
 ---
 
 <Note>
-  Need help setting up? Our support team specializes in helping customers
-  integrate their phone systems. We'll guide you through the entire process,
-  ensuring a smooth setup with your specific phone system configuration.
+  Нуждаете се от помощ за настройка? Нашият екип за поддръжка се специализира в помагането на клиентите
+  да интегрират телефонните си системи. Ще ви водим през целия процес,
+  осигурявайки гладка настройка с конкретната конфигурация на вашата телефонна система.
 </Note>
+
+---

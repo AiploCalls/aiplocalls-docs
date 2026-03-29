@@ -1,375 +1,375 @@
 ---
 title: "Prompt & Tools"
 icon: "wrench"
-description: "Configure your assistant's knowledge base, tools, variables, and system prompt to define its capabilities and behavior."
+description: "Конфигурирайте базата от знания, инструментите, променливите и системния prompt на вашия асистент, за да дефинирате неговите възможности и поведение."
 ---
 
-Configure the objective of the assistant and the tools it can use during calls.
+Конфигурирайте целта на асистента и инструментите, които може да използва по време на обаждания.
 
-## Knowledge Base
+## База от знания
 
-Give information to the assistant to use as a knowledge base when responding to customers. From website contents, documents, etc.
+Предоставете информация на асистента, която да използва като база от знания при отговаряне на клиенти. От съдържание на уебсайтове, документи и др.
 
-### Knowledge Base Selection
+### Избор на база от знания
 
 <AccordionGroup>
-  <Accordion title="Choose Knowledge Base" icon="book-open">
-    Select a knowledge base store containing relevant information for the assistant to use.
+  <Accordion title="Избор на база от знания" icon="book-open">
+    Изберете хранилище на база от знания, съдържащо релевантна информация за използване от асистента.
     
-    **Requirements:**
-    - Must be created in your [Knowledge Bases](/knowledgebases) section first
-    - Shows status (Active, Processing, etc.) and description
-    - Only your own knowledge bases are available
+    **Изисквания:**
+    - Трябва първо да бъде създадена в секцията [Knowledge Bases](/knowledgebases)
+    - Показва статус (Активна, Обработва се и др.) и описание
+    - Достъпни са само вашите собствени бази от знания
     
     <Tip>
-    Create knowledge bases from website content, PDFs, or custom documents to give your assistant domain-specific information. For comprehensive setup guide including content types, processing status, website scraping, and troubleshooting, see the complete [Knowledge Base Guide](/conversation-design/knowledge-bases).
+    Създайте бази от знания от съдържание на уебсайтове, PDF файлове или персонализирани документи, за да предоставите на вашия асистент специфична за дадена област информация. За пълно ръководство за настройка, включително типове съдържание, статус на обработка, извличане на данни от уебсайтове и отстраняване на неизправности, вижте пълното [ръководство за база от знания](/conversation-design/knowledge-bases).
     </Tip>
   </Accordion>
   
-  <Accordion title="Knowledge Base Mode" icon="brain">
-    Choose how the AI will use the knowledge base.
+  <Accordion title="Режим на базата от знания" icon="brain">
+    Изберете как AI ще използва базата от знания.
     
     <CardGroup cols={2}>
       <Card title="Function Call" icon="function">
-        **Recommended for most cases**
+        **Препоръчително за повечето случаи**
         
-        Uses a function call to search for information in the knowledgebase, only when needed. More accurate and efficient.
+        Използва function call за търсене на информация в базата от знания, само когато е необходимо. По-точен и ефективен.
       </Card>
       
       <Card title="Prompt Injection" icon="syringe">
-        **For simple use cases**
+        **За прости случаи на употреба**
         
-        Performs a search after every customer speech. More accurate but can be slower without filler audios.
+        Извършва търсене след всяка реч на клиента. По-точен, но може да бъде по-бавен без аудио файлове за попълване.
       </Card>
     </CardGroup>
     
     <Note>
-    **Mode availability:** Speech-to-Speech and Dualplex modes only support Function Call mode.
+    **Наличност на режими:** Speech-to-Speech и Dualplex режимите поддържат само Function Call режим.
     </Note>
   </Accordion>
 </AccordionGroup>
 
-## Custom Mid-Call Tools
+## Персонализирани инструменти за време на обаждане
 
-Create and assign your own custom tools that AI can use **mid-call** with the customer.
+Създайте и назначете ваши собствени персонализирани инструменти, които AI може да използва **по време на обаждане** с клиента.
 
 <CardGroup cols={2}>
-  <Card title="Create Custom Tools" icon="plus">
-    Build tools tailored to your specific business needs: API integrations, database queries, custom workflows, and external service calls.
+  <Card title="Създаване на персонализирани инструменти" icon="plus">
+    Изградете инструменти, приспособени към вашите специфични бизнес нужди: API интеграции, заявки към база данни, персонализирани работни процеси и обаждания към външни услуги.
     
-    **Quick action:** Direct link to tool creation page.
+    **Бързо действие:** Директна връзка към страницата за създаване на инструменти.
   </Card>
   
-  <Card title="Assign to Assistant" icon="link">
-    Select which custom tools this assistant can use with multiple selection, search by name/description, and real-time assignment.
+  <Card title="Назначаване на асистент" icon="link">
+    Изберете кои персонализирани инструменти този асистент може да използва с възможност за множествен избор, търсене по име/описание и назначаване в реално време.
     
-    **Scope:** Only your own tools are available.
+    **Обхват:** Достъпни са само вашите собствени инструменти.
   </Card>
 </CardGroup>
 
 <Tip>
-Read the [Custom Tools documentation](/ai-assistants/custom-tools) for detailed guides on creating and configuring custom tools.
+Прочетете [документацията за персонализирани инструменти](/ai-assistants/custom-tools) за подробни ръководства за създаване и конфигуриране на персонализирани инструменти.
 </Tip>
 
-## Default Tools
+## Инструменти по подразбиране
 
-Choose built-in tools that AI can use **mid-call** with the customer.
+Изберете вградени инструменти, които AI може да използва **по време на обаждане** с клиента.
 
 <AccordionGroup>
-  <Accordion title="Multi Call Transfer" icon="phone-arrow-right">
-    Route calls to multiple destination phone numbers like different people or departments according to your flow.
+  <Accordion title="Пренасочване на множество обаждания" icon="phone-arrow-right">
+    Насочвайте обаждания към множество номера за дестинация като различни хора или отдели според вашия процес.
 
-    **Use cases:**
-    - Escalation to human agents
-    - Department routing
-    - Specialist handoffs
+    **Случаи на употреба:**
+    - Ескалация към човешки агенти
+    - Насочване към отдели
+    - Предаване на специалисти
 
-    **Configuration options:**
-    - **Standard mode:** Use regular phone numbers (e.g., +1234567890)
-    - **Advanced mode:** Use SIP URI format for SIP providers (e.g., sip:+1234567890@sip-server)
+    **Опции за конфигурация:**
+    - **Стандартен режим:** Използвайте обикновени телефонни номера (например +1234567890)
+    - **Разширен режим:** Използвайте SIP URI формат за SIP доставчици (например sip:+1234567890@sip-server)
 
-    **For SIP integrations:**
-    - Set transfer to "Advanced" mode
-    - Use SIP URI format: `sip:number@sip-server`
-    - Verify your SIP provider supports SIP REFER
-    - Test with different URI formats if transfers fail
+    **За SIP интеграции:**
+    - Задайте пренасочването на "Разширен" режим
+    - Използвайте SIP URI формат: `sip:number@sip-server`
+    - Проверете дали вашият SIP доставчик поддържа SIP REFER
+    - Тествайте с различни URI формати, ако пренасочванията не работят
 
     <Note>
-    **Prompt instruction:** Include in your system prompt something like "call the transfer function when the user requests to speak with someone else" to ensure the AI uses this tool appropriately.
+    **Инструкция за prompt:** Включете в системния си prompt нещо като "извикай функцията за пренасочване, когато потребителят поиска да говори с някой друг", за да гарантирате, че AI използва този инструмент подходящо.
     </Note>
 
     <Tip>
-    If transfers aren't working, see our [SIP Integration troubleshooting guide](/troubleshooting/sip-integration#transfer-phone-call-not-working) for detailed solutions.
+    Ако пренасочванията не работят, вижте нашето [ръководство за отстраняване на неизправности при SIP интеграция](/troubleshooting/sip-integration#transfer-phone-call-not-working) за подробни решения.
     </Tip>
   </Accordion>
   
-  <Accordion title="End Call" icon="phone-slash">
-    Ends the call when the conversation is complete.
+  <Accordion title="Приключване на обаждане" icon="phone-slash">
+    Приключва обаждането, когато разговорът е завършен.
     
-    **Use cases:**
-    - Natural conversation conclusion
-    - Objective achieved
-    - Customer satisfaction confirmed
+    **Случаи на употреба:**
+    - Естествено приключване на разговора
+    - Постигната цел
+    - Потвърдено удовлетворение на клиента
     
     <Note>
-    **Prompt instruction:** If the AI doesn't call the end call function automatically, include in your system prompt "call the hang_up function to close the call" when the conversation should end.
+    **Инструкция за prompt:** Ако AI не извиква автоматично функцията за приключване на обаждане, включете в системния си prompt "извикай функцията hang_up за затваряне на обаждането", когато разговорът трябва да приключи.
     </Note>
   </Accordion>
   
-  <Accordion title="DTMF Input" icon="hashtag">
-    Easily send keypad inputs during outbound calls, enabling smooth navigation through IVR menus and automated workflows. The AI navigates using keypad buttons when calling and responding to prompts.
+  <Accordion title="DTMF вход" icon="hashtag">
+    Лесно изпращане на въвеждания от клавиатура по време на изходящи обаждания, позволявайки гладко навигиране през IVR менюта и автоматизирани работни процеси. AI навигира, използвайки бутоните от клавиатурата при обаждане и отговаряне на подканите.
     
-    **Use cases:**
-    - Navigate phone menus
-    - Enter extension numbers
-    - Input security codes
-    - IVR system navigation
+    **Случаи на употреба:**
+    - Навигиране в телефонни менюта
+    - Въвеждане на номера на вътрешни линии
+    - Въвеждане на кодове за сигурност
+    - Навигация в IVR системи
     
     <Note>
-    **Prompt instruction:** Include in your system prompt instructions about when to use DTMF input, such as "use the send_dtmf tool to navigate phone menus when needed to reach the right person."
+    **Инструкция за prompt:** Включете в системния си prompt инструкции за кога да използвате DTMF вход, като "използвай инструмента send_dtmf за навигиране в телефонни менюта, когато е необходимо да достигнеш правилния човек."
     </Note>
     
-    For detailed information about DTMF capabilities, see [Tools & Functions](/ai-assistants/tools-and-functions#4-dtmf-input).
+    За подробна информация за възможностите на DTMF вижте [Инструменти и функции](/ai-assistants/tools-and-functions#4-dtmf-input).
   </Accordion>
   
-  <Accordion title="Appointment Scheduling" icon="calendar">
-    Real-time booking scheduling integration with multiple calendar platforms.
+  <Accordion title="Планиране на срещи" icon="calendar">
+    Интеграция за резервиране в реално време с множество календарни платформи.
 
-    **Available integrations:**
-    - **Cal.com:** Full setup guide available at [Cal.com Scheduling](/ai-assistants/cal-com-scheduling)
-    - **GoHighLevel:** Complete integration guide at [GoHighLevel Scheduling](/ai-assistants/gohighlevel-scheduling)
-    - **Calendly:** Full setup guide available at [Calendly Scheduling](/ai-assistants/calendly-scheduling)
+    **Налични интеграции:**
+    - **Cal.com:** Пълно ръководство за настройка налично на [Cal.com Scheduling](/ai-assistants/cal-com-scheduling)
+    - **GoHighLevel:** Пълно ръководство за интеграция на [GoHighLevel Scheduling](/ai-assistants/gohighlevel-scheduling)
+    - **Calendly:** Пълно ръководство за настройка налично на [Calendly Scheduling](/ai-assistants/calendly-scheduling)
 
-    **Use cases:**
-    - Book appointments with calendars
-    - Check real-time availability
-    - Send automatic confirmation details
-    - Sync with existing calendar systems
+    **Случаи на употреба:**
+    - Резервиране на срещи с календари
+    - Проверка на наличност в реално време
+    - Изпращане на автоматични детайли за потвърждение
+    - Синхронизиране със съществуващи календарни системи
 
-    **Setup:**
-    1. Select your calendar provider (Cal.com, GoHighLevel, or Calendly)
-    2. Authenticate with your calendar account
-    3. Choose the event type/calendar to use for bookings
-    4. The AI will automatically check availability and book appointments
+    **Настройка:**
+    1. Изберете вашия календарен доставчик (Cal.com, GoHighLevel или Calendly)
+    2. Автентикирайте се с вашия календарен профил
+    3. Изберете типа събитие/календар за използване при резервации
+    4. AI автоматично ще проверява наличността и ще резервира срещи
 
     <Note>
-    Available when calendar integration is enabled in your platform settings.
+    Достъпно, когато календарната интеграция е активирана в настройките на вашата платформа.
     </Note>
   </Accordion>
 </AccordionGroup>
 
-## Call Variables
+## Променливи на обаждането
 
-Define variables that can be passed **before** making the call and used in the prompt **like {variable_name}**.
+Дефинирайте променливи, които могат да бъдат предадени **преди** извършването на обаждането и използвани в prompt-а **като {variable_name}**.
 
-### Variable Configuration
+### Конфигурация на променливи
 
 <AccordionGroup>
-  <Accordion title="Variable Definition" icon="code">
-    Create call variables to pass information to your assistant before the call starts.
+  <Accordion title="Дефиниране на променливи" icon="code">
+    Създайте променливи за обаждането, за да предадете информация на вашия асистент преди започване на обаждането.
     
-    **Setup process:**
-    - Define variable names and default values
-    - Pass values when creating calls/leads or importing clients
-    - Variables available immediately in prompts and during calls
-    - Use for personalization and context
+    **Процес на настройка:**
+    - Дефинирайте имена на променливи и стойности по подразбиране
+    - Предавайте стойности при създаване на обаждания/потенциални клиенти или импортиране на клиенти
+    - Променливите са налични незабавно в prompt-овете и по време на обаждания
+    - Използвайте за персонализация и контекст
     
-    **Configuration:**
-    - **Variable name:** The identifier (e.g., `customer_name`)
-    - **Default value:** Used when not passed (e.g., "John")
+    **Конфигурация:**
+    - **Име на променливата:** Идентификаторът (например `customer_name`)
+    - **Стойност по подразбиране:** Използва се, когато не е предадена (например "Иван")
   </Accordion>
   
-  <Accordion title="Variable Usage" icon="code">
-    How to use call variables in your assistant:
+  <Accordion title="Използване на променливи" icon="code">
+    Как да използвате променливите за обаждане във вашия асистент:
     
-    **In system prompts:**
-    - Reference variables with `{variable_name}` syntax
-    - Personalize conversations dynamically
-    - Provide context-specific information
+    **В системни prompt-ове:**
+    - Референтирайте променливи със синтаксис `{variable_name}`
+    - Персонализирайте разговори динамично
+    - Предоставете контекстно-специфична информация
     
-    **Examples:**
-    - `{customer_name}` for personalization ("Hello {customer_name}")
-    - `{email}` for calendar integrations
-    - `{account_type}` for tailored responses
-    - `{company}` for business context
+    **Примери:**
+    - `{customer_name}` за персонализация ("Здравей {customer_name}")
+    - `{email}` за календарни интеграции
+    - `{account_type}` за приспособени отговори
+    - `{company}` за бизнес контекст
   </Accordion>
   
-  <Accordion title="Data Sources" icon="database">
-    Ways to populate call variables:
+  <Accordion title="Източници на данни" icon="database">
+    Начини за попълване на променливите за обаждане:
     
-    **Manual entry:**
-    - When creating individual calls
-    - Through campaign lead creation
+    **Ръчно въвеждане:**
+    - При създаване на индивидуални обаждания
+    - Чрез създаване на потенциални клиенти в кампания
     
-    **Import methods:**
-    - CSV import with variable columns
-    - API integration with client data
-    - Direct CRM synchronization
+    **Методи за импорт:**
+    - CSV импорт с колони за променливи
+    - API интеграция с клиентски данни
+    - Директна CRM синхронизация
     
-    **Automation platform integrations:**
-    - **GoHighLevel (GHL):** Automatically pull contact data and custom fields
-    - **Google Sheets:** Import leads with variables from spreadsheet columns
-    - **Connect with 250+ popular tools** and platforms using our no-code platform
-    - **Any other platform** through webhooks for custom integrations
+    **Интеграции с платформи за автоматизация:**
+    - **GoHighLevel (GHL):** Автоматично извличане на контактни данни и персонализирани полета
+    - **Google Sheets:** Импорт на потенциални клиенти с променливи от колони в електронни таблици
+    - **Свързване с над 250 популярни инструмента** и платформи, използвайки нашата no-code платформа
+    - **Всяка друга платформа** чрез webhook-ове за персонализирани интеграции
     
-    **Platform integration:**
-    - Automatically populated from client profiles
-    - Connected to existing customer databases
-    - No-code automation workflows
+    **Интеграция на платформа:**
+    - Автоматично попълване от клиентски профили
+    - Свързване със съществуващи клиентски бази данни
+    - No-code автоматизирани работни процеси
   </Accordion>
 </AccordionGroup>
 
 <Note>
-Call variables are essential for personalizing AI conversations. They allow the AI to use specific customer information during calls, making interactions more relevant and effective.
+Променливите за обаждане са от съществено значение за персонализирането на AI разговори. Те позволяват на AI да използва специфична клиентска информация по време на обаждания, правейки взаимодействията по-релевантни и ефективни.
 </Note>
 
-## Call Flow Configuration
+## Конфигурация на процеса на обаждане
 
-### Who Speaks First?
+### Кой говори първи?
 
-Control whether your assistant or the customer initiates the conversation.
+Контролирайте дали вашият асистент или клиентът започва разговора.
 
 <CardGroup cols={2}>
-  <Card title="AI Assistant" icon="robot">
-    **Default behavior:** Assistant starts the conversation
+  <Card title="AI Асистент" icon="robot">
+    **Поведение по подразбиране:** Асистентът започва разговора
     
-    The AI will immediately greet the caller and begin the conversation flow as soon as the call connects.
+    AI незабавно ще поздрави обаждащия се и ще започне процеса на разговор веднага щом обаждането се свърже.
     
-    **Best for:** Most outbound scenarios, sales calls, appointment reminders
+    **Най-добре за:** Повечето изходящи сценарии, продажби, напомняния за срещи
   </Card>
   
-  <Card title="Customer" icon="user">
-    **Wait for customer:** Assistant listens first
+  <Card title="Клиент" icon="user">
+    **Изчакване на клиента:** Асистентът първо слуша
     
-    If you choose "Customer", the AI will wait for the customer to speak first before responding.
+    Ако изберете "Клиент", AI ще изчака клиентът да заговори първи преди да отговори.
     
-    **Best for:** Inbound support calls, reception scenarios, reactive assistance
+    **Най-добре за:** Входящи обаждания за поддръжка, рецепционни сценарии, реактивна помощ
   </Card>
 </CardGroup>
 
-### Initial Message
+### Начално съобщение
 
-Configure the first thing your assistant says when the call begins.
+Конфигурирайте първото нещо, което вашият асистент казва, когато започне обаждането.
 
 <AccordionGroup>
-  <Accordion title="Initial Message Text" icon="message">
-    Write the opening message your assistant will speak at the start of each call.
+  <Accordion title="Текст на началното съобщение" icon="message">
+    Напишете началното съобщение, което вашият асистент ще произнесе в началото на всяко обаждане.
     
-    **Best practices:**
-    - Keep it concise and friendly
-    - Introduce your company/purpose clearly
-    - Set expectations for the conversation
-    - Use variables for personalization (e.g., `{customer_name}`)
+    **Най-добри практики:**
+    - Поддържайте го кратко и приятелско
+    - Представете ясно вашата компания/цел
+    - Задайте очаквания за разговора
+    - Използвайте променливи за персонализация (например `{customer_name}`)
     
-    **Example:** "Hi {customer_name}, this is Sarah from ABC Company. I'm calling to follow up on your recent inquiry about our services. Do you have a moment to chat?"
+    **Пример:** "Здравей {customer_name}, аз съм Мария от ABC Компания. Обаждам се да проследя вашето скорошно запитване за нашите услуги. Имате ли момент за разговор?"
   </Accordion>
   
-  <Accordion title="Initial Audio File" icon="volume">
-    **Optional:** Upload a custom audio file instead of text-to-speech
+  <Accordion title="Начален аудио файл" icon="volume">
+    **Незадължително:** Качете персонализиран аудио файл вместо text-to-speech
     
-    **Requirements:**
-    - MP3 or WAV format
-    - Clear, high-quality recording
-    - Professional voice and tone
-    - Matches your assistant's voice if using voice cloning
+    **Изисквания:**
+    - MP3 или WAV формат
+    - Ясно, висококачествено записване
+    - Професионален глас и тон
+    - Съответства на гласа на вашия асистент, ако използвате клониране на глас
     
-    **Benefits:**
-    - Perfect pronunciation and delivery
-    - Consistent brand voice
-    - Professional first impression
-    - No text-to-speech latency for opening
+    **Предимства:**
+    - Перфектно произношение и подаване
+    - Последователен фирмен глас
+    - Професионално първо впечатление
+    - Няма забавяне на text-to-speech за отварянето
     
     <Tip>
-    This works best if the AI voice is cloned using the same voice used in the initial audio.
+    Това работи най-добре, ако гласът на AI е клониран, използвайки същия глас, използван в началното аудио.
     </Tip>
   </Accordion>
 </AccordionGroup>
 
 <Note>
-See our [Initial Message guide](/ai-assistants/initial-message) for detailed best practices and examples.
+Вижте нашето [ръководство за начално съобщение](/ai-assistants/initial-message) за подробни най-добри практики и примери.
 </Note>
 
-## System Prompt
+## Системен Prompt
 
-Define the assistant's personality, objectives, and behavior guidelines.
+Дефинирайте личността, целите и насоките за поведение на асистента.
 
-### Editing Tools
+### Инструменти за редактиране
 
-Choose the editing experience that works best for you:
+Изберете редакторското изживяване, което работи най-добре за вас:
 
 <CardGroup cols={2}>
   <Card title="AI Prompt Editor" icon="sparkles" href="/ai-assistants/ai-prompt-editor">
-    **Chat-based editing with AI assistance**
+    **Редактиране базирано на чат с AI помощ**
 
-    Describe changes in plain language and let AI suggest intelligent modifications. Review and accept/reject each change individually.
+    Опишете промените на обикновен език и позволете на AI да предложи интелигентни модификации. Прегледайте и приемете/отхвърлете всяка промяна индивидуално.
 
-    **Best for:** Quick iterations, improving existing prompts, text-focused editing
+    **Най-добре за:** Бързи итерации, подобряване на съществуващи prompt-ове, редактиране фокусирано върху текст
   </Card>
 
   <Card title="Flow Builder" icon="share-nodes" href="/ai-assistants/flow-builder">
-    **Visual drag-and-drop editor**
+    **Визуален drag-and-drop редактор**
 
-    Design conversation flows by connecting nodes on a canvas. Create branching logic and multi-path decision trees visually.
+    Дизайнирайте разговорни процеси, като свързвате възли на платно. Създавайте визуално разклонена логика и дървета за решения с множество пътища.
 
-    **Best for:** Complex call flows, structured scripts, visual thinkers
+    **Най-добре за:** Сложни процеси на обаждане, структурирани скриптове, визуално мислещи
   </Card>
 </CardGroup>
 
 <Note>
-Both tools store the prompt in the same field - switching between them is possible but may require adjustments.
+И двата инструмента съхраняват prompt-а в едно и също поле - превключването между тях е възможно, но може да изисква корекции.
 </Note>
 
-### Prompt Configuration
+### Конфигурация на Prompt
 
 <CardGroup cols={2}>
-  <Card title="Custom Prompt" icon="pencil">
-    Write your own system prompt from scratch
+  <Card title="Персонализиран Prompt" icon="pencil">
+    Напишете вашия собствен системен prompt от нулата
 
-    - Full control over assistant behavior
-    - Tailored to specific use cases
-    - Markdown formatting supported
+    - Пълен контрол върху поведението на асистента
+    - Приспособен към специфични случаи на употреба
+    - Поддържано Markdown форматиране
   </Card>
 
-  <Card title="Template Library" icon="folder">
-    Start with pre-built templates
+  <Card title="Библиотека с шаблони" icon="folder">
+    Започнете с готови шаблони
 
-    - Multiple languages available
-    - Different conversation types
-    - Proven effective prompts
+    - Налични множество езици
+    - Различни типове разговори
+    - Доказано ефективни prompt-ове
   </Card>
 </CardGroup>
 
-### Best Practices
+### Най-добри практики
 
 <AccordionGroup>
-  <Accordion title="Be Specific" icon="bullseye">
-    Clearly define the assistant's role, objectives, and constraints.
+  <Accordion title="Бъдете конкретни" icon="bullseye">
+    Ясно дефинирайте ролята, целите и ограниченията на асистента.
     
-    **Include:**
-    - Who the assistant represents
-    - What they're trying to achieve
-    - What they should/shouldn't do
+    **Включете:**
+    - Кого представлява асистентът
+    - Какво се опитва да постигне
+    - Какво трябва/не трябва да прави
   </Accordion>
   
-  <Accordion title="Set Boundaries" icon="shield">
-    Define what topics and actions are off-limits.
+  <Accordion title="Задайте граници" icon="shield">
+    Дефинирайте кои теми и действия са забранени.
     
-    **Consider:**
-    - Data privacy requirements
-    - Legal compliance
-    - Brand guidelines
+    **Обмислете:**
+    - Изисквания за поверителност на данни
+    - Правно съответствие
+    - Фирмени насоки
   </Accordion>
   
-  <Accordion title="Use Examples" icon="lightbulb">
-    Provide sample conversations to guide behavior.
+  <Accordion title="Използвайте примери" icon="lightbulb">
+    Предоставете примерни разговори за ръководство на поведението.
     
-    **Examples help with:**
-    - Tone and style
-    - Response length
-    - Handling objections
+    **Примерите помагат с:**
+    - Тон и стил
+    - Дължина на отговора
+    - Справяне с възражения
   </Accordion>
 </AccordionGroup>
 
 <Tip>
-See our [System Prompt guide](/ai-assistants/system-prompt) for detailed best practices and examples.
+Вижте нашето [ръководство за системен Prompt](/ai-assistants/system-prompt) за подробни най-добри практики и примери.
 </Tip>

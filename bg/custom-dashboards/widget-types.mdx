@@ -1,781 +1,726 @@
 ---
-title: "Widget Configuration"
+title: "Конфигуриране на Widget-и"
 icon: "sliders"
-description: "Complete guide for configuring Stat, Chart, and Table widgets with all available options"
+description: "Пълно ръководство за конфигуриране на Stat, Chart и Table widget-и с всички налични опции"
 ---
 
-Learn how to configure each widget type with detailed explanations of every option.
+Научете как да конфигурирате всеки тип widget с подробни обяснения на всяка опция.
 
-## Creating Widgets
+## Създаване на Widget-и
 
-1. Navigate to custom dashboard
-2. Click **"Manage Widgets"** then **"Create New Widget"**
-3. Select widget type
-4. Follow 2-3 step wizard
-5. Save and add to dashboard
+1. Отидете в персонализирано табло
+2. Кликнете **"Управление на Widget-и"** след това **"Създай нов Widget"**
+3. Изберете тип widget
+4. Следвайте wizard-а от 2-3 стъпки
+5. Запазете и добавете в таблото
 
-## Stat Widgets
+## Stat Widget-и
 
-Single metric display with optional comparison and trend chart.
+Показване на една метрика с незадължително сравнение и тенденчна диаграма.
 
-### Step 1: Basics
+### Стъпка 1: Основни настройки
 
-**Widget Name**
-- Internal identifier for widget list
-- Not displayed on dashboard
-- Example: "Total Calls This Month"
+**Име на Widget**
+- Вътрешен идентификатор за списъка с widget-и
+- Не се показва в таблото
+- Пример: "Общо повиквания този месец"
 
-**Data Table**
-- Choose data source: calls, leads, campaigns, assistants, phone_numbers, sms
-- Determines available columns
+**Таблица с данни**
+- Изберете източник на данни: calls, leads, campaigns, assistants, phone_numbers, sms
+- Определя наличните колони
 
-**Aggregation**
-- `COUNT` - Total number of records (no column needed)
-- `SUM` - Sum of values (requires column selection)
-- `AVG` - Average of values (requires column selection)
-- `MAX` - Maximum value (requires column selection)
-- `MIN` - Minimum value (requires column selection)
+**Агрегация**
+- `COUNT` - Общ брой записи (не е нужна колона)
+- `SUM` - Сума от стойностите (изисква избор на колона)
+- `AVG` - Средна стойност (изисква избор на колона)
+- `MAX` - Максимална стойност (изисква избор на колона)
+- `MIN` - Минимална стойност (изисква избор на колона)
 
-**Column** (if SUM/AVG/MAX/MIN selected)
-- Select numeric column to aggregate
-- Example: `duration` for average call length
-- Not needed for COUNT
+**Колона** (ако е избрано SUM/AVG/MAX/MIN)
+- Изберете числова колона за агрегиране
+- Пример: `duration` за средна продължителност на разговора
+- Не е нужна за COUNT
 
-### Step 2: Display & Filters
+### Стъпка 2: Показване и филтри
 
-**Label** (required)
-- Main heading shown on widget
-- Example: "Total Calls"
+**Етикет** (задължителен)
+- Основно заглавие, показано на widget-а
+- Пример: "Общо повиквания"
 
-**Description**
-- Optional text below the value
-- Hidden if comparison enabled
-- Example: "Calls made this month"
+**Описание**
+- Незадължителен текст под стойността
+- Скрит ако сравнението е активирано
+- Пример: "Повиквания направени този месец"
 
-**Color**
-- primary (blue), success (green), warning (yellow), danger (red), info (cyan), gray
-- Choose based on metric type (green for positive, red for negative)
+**Цвят**
+- primary (син), success (зелен), warning (жълт), danger (червен), info (циан), gray
+- Изберете според типа метрика (зелен за положителни, червен за отрицателни)
 
-**Show Mini Chart**
-- Displays small line chart showing daily trend
-- Uses same date range as stat
+**Покажи мини диаграма**
+- Показва малка линейна диаграма с дневни тенденции
+- Използва същия интервал от дати като статистиката
 
-**Compare with Previous Period**
-- Shows percentage change from previous period
-- Example: Last 7 days vs previous 7 days
-- Displays "+15%" or "-8%" with up/down arrow
-- Overrides description field
+**Сравнение с предишен период**
+- Показва процентна промяна спрямо предишния период
+- Пример: Последни 7 дни срещу предишните 7 дни
+- Показва "+15%" или "-8%" със стрелка нагоре/надолу
+- Замества полето за описание
 
-**Date Range**
-- Filter by creation date
-- Options: Today, 1, 7, 14, 30, 60, 90, 180, 365 days
+**Интервал от дати**
+- Филтриране по дата на създаване
+- Опции: Днес, 1, 7, 14, 30, 60, 90, 180, 365 дни
 
-**Conditions** (optional)
-- Add filters to narrow data
-- Multiple conditions combined with AND
-- See [Filtering Data](#filtering-data) section
+**Условия** (незадължителни)
+- Добавете филтри за ограничаване на данните
+- Множество условия са комбинирани с AND
+- Вижте секция [Филтриране на данни](#filtering-data)
 
-### Examples
+### Примери
 
-**Total Calls**
+**Общо повиквания**
 ```
-Aggregation: COUNT
-Table: calls
-Label: "Total Calls"
-Description: "Last 30 days"
-Color: primary
-Date Range: 30 days
-```
-
-**Average Call Duration**
-```
-Aggregation: AVG
-Table: calls
-Column: duration
-Label: "Avg Duration"
-Color: info
-Show Mini Chart: Yes
-Date Range: 30 days
+Агрегация: COUNT
+Таблица: calls
+Етикет: "Общо повиквания"
+Описание: "Последни 30 дни"
+Цвят: primary
+Интервал от дати: 30 дни
 ```
 
-**Successful Appointments**
+**Средна продължителност на разговора**
 ```
-Aggregation: COUNT
-Table: calls
-Label: "Appointments Booked"
-Color: success
-Compare: Yes
-Date Range: 7 days
-Conditions:
+Агрегация: AVG
+Таблица: calls
+Колона: duration
+Етикет: "Ср. продължителност"
+Цвят: info
+Покажи мини диаграма: Да
+Интервал от дати: 30 дни
+```
+
+**Успешни срещи**
+```
+Агрегация: COUNT
+Таблица: calls
+Етикет: "Резервирани срещи"
+Цвят: success
+Сравнение: Да
+Интервал от дати: 7 дни
+Условия:
   - status = completed
   - evaluation.appointment_booked = true
 ```
 
-## Chart Widgets
+## Chart Widget-и
 
-Visualize trends with 8 chart types.
+Визуализирайте тенденции с 8 типа диаграми.
 
-### Step 1: Basics
+### Стъпка 1: Основни настройки
 
-Same as Stat widgets, plus:
+Същото като Stat widget-и, плюс:
 
-**Chart Type**
-- `line` - Trends over time
-- `bar` - Compare categories or time periods
-- `area` - Filled trend chart
-- `pie` - Proportions (requires Group By)
-- `donut` - Pie with center hole (requires Group By)
-- `polarArea` - Circular with varying radius (requires Group By)
-- `radar` - Multi-axis comparison
-- `radialBar` - Single progress indicator
+**Тип диаграма**
+- `line` - Тенденции във времето
+- `bar` - Сравнение на категории или периоди от време
+- `area` - Запълнена тенденчна диаграма
+- `pie` - Пропорции (изисква Group By)
+- `donut` - Пай с дупка в центъра (изисква Group By)
+- `polarArea` - Кръгла с променлив радиус (изисква Group By)
+- `radar` - Сравнение с множество оси
+- `radialBar` - Единичен индикатор за напредък
 
-### Step 2: Display & Filters
+### Стъпка 2: Показване и филтри
 
-**Label** (required)
-- Chart title
+**Етикет** (задължителен)
+- Заглавие на диаграмата
 
-**Description**
-- Optional subheading text below the chart
-- Example: "Last 30 days performance"
+**Описание**
+- Незадължителен подзаглавен текст под диаграмата
+- Пример: "Производителност за последните 30 дни"
 
-**Color**
-- Chart primary color
-- For pie/donut, uses multi-color palette (blue, green, orange, red, purple, pink)
+**Цвят**
+- Основен цвят на диаграмата
+- За pie/donut използва многоцветна палитра (син, зелен, оранжев, червен, лилав, розов)
 
-**Date Range**
-- Same as stats
+**Интервал от дати**
+- Същото като статистиките
 
-**Group By** OR **Group By Period** (mutually exclusive)
+**Group By** ИЛИ **Group By Period** (взаимно изключващи се)
 
-**Group By** - Categorical grouping
-- Group data by column values
-- Examples: Status, Campaign Id, Assistant Name
-- **Required** for pie/donut/polarArea charts
-- Optional for bar/radar charts
-- **Cannot use** with Group By Period
+**Group By** - Категориално групиране
+- Групиране на данните по стойности от колона
+- Примери: Status, Campaign Id, Assistant Name
+- **Задължително** за pie/donut/polarArea диаграми
+- Незадължително за bar/radar диаграми
+- **Не може да се използва** с Group By Period
 
-**Group By Period** - Time-based grouping
-- Group by time buckets
-- Options: hour, day, week, month
-- Used for line/bar/area charts
-- **Cannot use** with Group By
+**Group By Period** - Групиране по време
+- Групиране по времеви интервали
+- Опции: hour, day, week, month
+- Използва се за line/bar/area диаграми
+- **Не може да се използва** с Group By
 
-**Conditions**
-- Same as stats
+**Условия**
+- Същото като статистиките
 
-### Step 3: Advanced (Charts Only)
+### Стъпка 3: Разширени настройки (само за диаграми)
 
-**Show Grid Lines** (line/bar/area only)
-- Background horizontal/vertical lines
-- Helps read exact values
-- Default: Yes
+**Покажи мрежови линии** (само line/bar/area)
+- Хоризонтални/вертикални линии на фона
+- Помагат за четене на точни стойности
+- По подразбиране: Да
 
-**Show Legend**
-- Color-coded labels
-- Default: Yes for pie/donut/polarArea, No for others
-- Position: Bottom of chart
+**Покажи легенда**
+- Етикети с цветово кодиране
+- По подразбиране: Да за pie/donut/polarArea, Не за останалите
+- Позиция: Долу от диаграмата
 
-**Show Tooltips**
-- Hover popups with exact values
-- Default: Yes (recommended)
+**Покажи подсказки**
+- Изплуващи прозорчета при посочване с точни стойности
+- По подразбиране: Да (препоръчително)
 
-**Show Data Labels**
-- Values displayed directly on chart elements
-- Default: Yes for pie/donut/polarArea, No for others
-- Can clutter line/bar charts
+**Покажи етикети с данни**
+- Стойности показани директно на елементите на диаграмата
+- По подразбиране: Да за pie/donut/polarArea, Не за останалите
+- Може да претрупа line/bar диаграмите
 
-**Show Toolbar** (line/bar/area only)
-- Zoom and download controls
-- Default: No
+**Покажи лента с инструменти** (само line/bar/area)
+- Контроли за увеличение и изтегляне
+- По подразбиране: Не
 
-**Line Curve** (line/area only)
-- `smooth` - Rounded curves (default, visually appealing)
-- `straight` - Direct lines (precise)
-- `stepline` - Step-wise (good for discrete events)
+**Извивка на линията** (само line/area)
+- `smooth` - Закръглени криви (по подразбиране, визуално привлекателно)
+- `straight` - Директни линии (точно)
+- `stepline` - Стъпаловидно (добро за дискретни събития)
 
-**Line Width** (line/bar/area only)
-- Thickness in pixels (1-10)
-- Default: 2px
+**Дебелина на линията** (само line/bar/area)
+- Дебелина в пиксели (1-10)
+- По подразбиране: 2px
 
-**Chart Height**
-- Vertical space in pixels (200-800)
-- Default: 300px
-- Taller charts better for more data points
+**Височина на диаграмата**
+- Вертикално пространство в пиксели (200-800)
+- По подразбиране: 300px
+- По-високи диаграми са по-добри за повече точки с данни
 
-**Enable Gradient** (radialBar only)
-- Color gradient effect
-- Default: No
+**Активирай градиент** (само radialBar)
+- Ефект с цветен градиент
+- По подразбиране: Не
 
-**Gradient Color** (if gradient enabled)
-- End color for gradient
-- Default: Green (#10b981)
+**Цвят на градиента** (ако градиентът е активиран)
+- Краен цвят за градиента
+- По подразбиране: Зелен (#10b981)
 
-**Calculate as Percentage** (radialBar only)
-- Automatically calculates percentage from conditions
-- Formula: (conditions met / total) × 100
-- **Requires:** At least one condition must be added first
-- Example: Condition "status = completed" calculates completed leads / total leads × 100
-- Appears after adding conditions in Step 2
+**Изчисли като процент** (само radialBar)
+- Автоматично изчислява процент от условията
+- Формула: (изпълнени условия / общо) × 100
+- **Изисква:** Първо трябва да се добави поне едно условие
+- Пример: Условие "status = completed" изчислява завършени лийдове / общо лийдове × 100
+- Появява се след добавяне на условия в Стъпка 2
 
-**Show Footer with Numbers** (radialBar only)
-- Displays "X achieved / Y total" below the radialBar chart
-- Only visible when "Calculate as Percentage" is enabled
-- Shows exact numbers alongside the percentage
-- Example footer: "150 achieved / 1,000 total"
+**Покажи долен колонтитул с числа** (само radialBar)
+- Показва "X постигнати / Y общо" под radialBar диаграмата
+- Видим само когато "Изчисли като процент" е активирано
+- Показва точни числа заедно с процента
+- Пример за долен колонтитул: "150 постигнати / 1,000 общо"
 
-**Start Angle** (radialBar only)
-- Where the arc begins in degrees (-360° to 360°)
-- Default: -140°
-- Common values: -140° (default), -90° (left semicircle), 0° (bottom)
+**Начален ъгъл** (само radialBar)
+- Където започва дъгата в градуси (-360° до 360°)
+- По подразбиране: -140°
+- Обичайни стойности: -140° (по подразбиране), -90° (лев полукръг), 0° (отдолу)
 
-**End Angle** (radialBar only)
-- Where the arc ends in degrees (-360° to 360°)
-- Default: 130°
-- **Validation:** Total arc (end - start) cannot exceed 360°
-- Common values: 130° (default), 90° (right semicircle), 180° (half circle), 270° (three-quarters)
+**Краен ъгъл** (само radialBar)
+- Където завършва дъгата в градуси (-360° до 360°)
+- По подразбиране: 130°
+- **Валидация:** Общата дъга (край - начало) не може да надвишава 360°
+- Обичайни стойности: 130° (по подразбиране), 90° (десен полукръг), 180° (половин кръг), 270° (три четвърти)
 
-**Hollow Size** (radialBar only)
-- Inner circle size as percentage (0-100%)
-- Default: 60%
-- Higher value = thinner ring, lower value = thicker ring
+**Размер на дупката** (само radialBar)
+- Размер на вътрешния кръг като процент (0-100%)
+- По подразбиране: 60%
+- По-висока стойност = по-тънък пръстен, по-ниска стойност = по-дебел пръстен
 
-**Dash Array** (radialBar only)
-- Spacing for dashed ring pattern (0-50)
-- Default: 10
-- 0 = solid line, higher numbers = more spacing between dashes
+**Dash Array** (само radialBar)
+- Разстояние за пунктиран пръстеновиден модел (0-50)
+- По подразбиране: 10
+- 0 = непрекъсната линия, по-високи числа = повече разстояние между тиретата
 
-### Chart Type Guide
+### Ръководство за типове диаграми
 
-**Line Chart**
-- **Use for:** Daily/weekly trends, continuous data
-- **Requires:** Group By Period
-- **Example:** Calls per day last 30 days
+**Линейна диаграма**
+- **Използвайте за:** Дневни/седмични тенденции, непрекъснати данни
+- **Изисква:** Group By Period
+- **Пример:** Повиквания на ден за последните 30 дни
 
-**Bar Chart**
-- **Use for:** Category comparison, time periods
-- **Can use:** Group By (categories) OR Group By Period (time)
-- **Example:** Calls per campaign, hourly distribution
+**Стълбовидна диаграма**
+- **Използвайте за:** Сравнение на категории, периоди от време
+- **Може да използва:** Group By (категории) ИЛИ Group By Period (време)
+- **Пример:** Повиквания по кампания, почасово разпределение
 
-**Area Chart**
-- **Use for:** Same as line, emphasizes volume
-- **Requires:** Group By Period
-- **Example:** Call volume trend
+**Area диаграма**
+- **Използвайте за:** Същото като линейна, подчертава обема
+- **Изисква:** Group By Period
+- **Пример:** Тенденция в обема на повикванията
 
-**Pie/Donut Chart**
-- **Use for:** Proportions, percentages
-- **Requires:** Group By (NOT Group By Period)
-- **Example:** Call status breakdown
+**Pie/Donut диаграма**
+- **Използвайте за:** Пропорции, проценти
+- **Изисква:** Group By (НЕ Group By Period)
+- **Пример:** Разбивка на статуса на повикванията
 
 **Polar Area**
-- **Use for:** Like pie but shows magnitude via radius
-- **Requires:** Group By
-- **Example:** Campaign contribution
+- **Използвайте за:** Като pie, но показва величината чрез радиуса
+- **Изисква:** Group By
+- **Пример:** Принос на кампанията
 
-**Radar Chart**
-- **Use for:** Multi-variable comparison
-- **Requires:** Group By
-- **Example:** Performance across metrics
+**Radar диаграма**
+- **Използвайте за:** Сравнение с множество променливи
+- **Изисква:** Group By
+- **Пример:** Производителност в различни метрики
 
 **Radial Bar**
-- **Use for:** Circular progress indicators showing percentages (0-100%)
-- **Does not use:** Group By or Group By Period
-- **Percentage Calculation:** Add conditions, then enable "Calculate as Percentage" to automatically compute (conditions met / total) × 100
-- **Example:** Lead conversion rate (15%), SMS delivery success (82.8%), goal completion
+- **Използвайте за:** Кръгли индикатори за напредък показващи проценти (0-100%)
+- **Не използва:** Group By или Group By Period
+- **Изчисление на проценти:** Добавете условия, след това активирайте "Изчисли като процент" за автоматично изчисляване на (изпълнени условия / общо) × 100
+- **Пример:** Коефициент на конверсия на лийдове (15%), успех при доставка на SMS (82.8%), завършване на цели
 
-### Examples
+### Примери
 
-**Daily Call Volume (Line)**
+**Дневен обем повиквания (линейна)**
 ```
-Table: calls
-Aggregation: COUNT
-Chart Type: line
-Label: "Daily Calls"
+Таблица: calls
+Агрегация: COUNT
+Тип диаграма: line
+Етикет: "Дневни повиквания"
 Group By Period: day
-Show Grid: Yes
+Покажи мрежа: Да
 Stroke Curve: smooth
-Date Range: 30 days
+Интервал от дати: 30 дни
 ```
 
-**Status Breakdown (Pie)**
+**Разбивка по статус (pie)**
 ```
-Table: calls
-Aggregation: COUNT
-Chart Type: pie
-Label: "Call Status"
+Таблица: calls
+Агрегация: COUNT
+Тип диаграма: pie
+Етикет: "Статус на повикванията"
 Group By: status
-Show Legend: Yes
-Show Data Labels: Yes
-Date Range: 7 days
+Покажи легенда: Да
+Покажи етикети с данни: Да
+Интервал от дати: 7 дни
 ```
 
-**Hourly Pattern (Bar)**
+**Почасов модел (стълбовидна)**
 ```
-Table: calls
-Aggregation: COUNT
-Chart Type: bar
-Label: "Calls By Hour"
+Таблица: calls
+Агрегация: COUNT
+Тип диаграма: bar
+Етикет: "Повиквания по час"
 Group By Period: hour
-Date Range: 7 days
+Интервал от дати: 7 дни
 ```
 
-**Campaign Comparison (Bar)**
+**Сравнение на кампании (стълбовидна)**
 ```
-Table: calls
-Aggregation: COUNT
-Chart Type: bar
-Label: "Calls Per Campaign"
+Таблица: calls
+Агрегация: COUNT
+Тип диаграма: bar
+Етикет: "Повиквания по кампания"
 Group By: campaign.name
-Date Range: 30 days
+Интервал от дати: 30 дни
 ```
 
-**Lead Conversion Rate (Radial Bar with Percentage)**
+**Коефициент на конверсия на лийдове (Radial Bar с процент)**
 ```
-Table: leads
-Aggregation: COUNT
-Chart Type: radialBar
-Label: "Conversion Rate"
-Description: "Completed leads"
-Color: success
-Date Range: 30 days
+Таблица: leads
+Агрегация: COUNT
+Тип диаграма: radialBar
+Етикет: "Коефициент на конверсия"
+Описание: "Завършени лийдове"
+Цвят: success
+Интервал от дати: 30 дни
 
-Step 2 - Conditions:
-  Field: status
-  Operator: =
-  Value: completed
+Стъпка 2 - Условия:
+  Поле: status
+  Оператор: =
+  Стойност: completed
 
-Step 2 - Percentage (appears after adding condition):
-  Calculate as Percentage: Yes
-  Show Footer with Numbers: Yes
+Стъпка 2 - Процент (появява се след добавяне на условие):
+  Изчисли като процент: Да
+  Покажи долен колонтитул с числа: Да
 
-Step 3 - Advanced (optional):
-  Start Angle: -140°
-  End Angle: 130°
-  Hollow Size: 60%
+Стъпка 3 - Разширени настройки (незадължително):
+  Начален ъгъл: -140°
+  Краен ъгъл: 130°
+  Размер на дупката: 60%
   Dash Array: 10
 
-How it works:
-  - Counts leads where status = completed (e.g., 150)
-  - Counts total leads (e.g., 1,000)
-  - Calculates: 150 / 1,000 × 100 = 15%
-  - Displays: "15%" with footer "150 achieved / 1,000 total"
+Как работи:
+  - Брои лийдове където status = completed (напр. 150)
+  - Брои общо лийдове (напр. 1,000)
+  - Изчислява: 150 / 1,000 × 100 = 15%
+  - Показва: "15%" с долен колонтитул "150 постигнати / 1,000 общо"
 ```
 
-**SMS Delivery Success (Radial Bar with Gradient)**
+**SMS успех при доставка (Radial Bar с градиент)**
 ```
-Table: sms
-Aggregation: COUNT
-Chart Type: radialBar
-Label: "SMS Delivered"
-Description: "Delivery success rate"
-Color: info
-Date Range: 7 days
+Таблица: sms
+Агрегация: COUNT
+Тип диаграма: radialBar
+Етикет: "SMS доставени"
+Описание: "Коефициент на успех при доставка"
+Цвят: info
+Интервал от дати: 7 дни
 
-Step 2 - Conditions:
-  Field: status
-  Operator: =
-  Value: delivered
+Стъпка 2 - Условия:
+  Поле: status
+  Оператор: =
+  Стойност: delivered
 
-Step 2 - Percentage:
-  Calculate as Percentage: Yes
-  Show Footer with Numbers: Yes
+Стъпка 2 - Процент:
+  Изчисли като процент: Да
+  Покажи долен колонтитул с числа: Да
 
-Step 3 - Advanced:
-  Enable Gradient: Yes
-  Gradient To Color: #10b981 (green)
-  Start Angle: -90°
-  End Angle: 270° (creates three-quarter circle)
-  Hollow Size: 55%
+Стъпка 3 - Разширени настройки:
+  Активирай градиент: Да
+  Градиент към цвят: #10b981 (зелен)
+  Начален ъгъл: -90°
+  Краен ъгъл: 270° (създава три четвърти кръг)
+  Размер на дупката: 55%
   Dash Array: 12
 
-Result: "82.8%" with footer "120 achieved / 145 total"
-Visual: Blue to green gradient, three-quarter circle
+Резултат: "82.8%" с долен колонтитул "120 постигнати / 145 общо"
+Визуализация: Син към зелен градиент, три четвърти кръг
 ```
 
-**Quality Calls (Multiple Conditions)**
+**Качествени повиквания (множество условия)**
 ```
-Table: calls
-Aggregation: COUNT
-Chart Type: radialBar
-Label: "Quality Calls"
-Description: "Long completed outbound calls"
-Color: success
-Date Range: 30 days
+Таблица: calls
+Агрегация: COUNT
+Тип диаграма: radialBar
+Етикет: "Качествени повиквания"
+Описание: "Дълги завършени изходящи повиквания"
+Цвят: success
+Интервал от дати: 30 дни
 
-Step 2 - Conditions (all must be true):
-  Condition 1:
-    Field: status
-    Operator: =
-    Value: completed
+Стъпка 2 - Условия (всички трябва да са верни):
+  Условие 1:
+    Поле: status
+    Оператор: =
+    Стойност: completed
 
-  Condition 2:
-    Field: duration
-    Operator: >
-    Value: 180
+  Условие 2:
+    Поле: duration
+    Оператор: >
+    Стойност: 180
 
-  Condition 3:
-    Field: type
-    Operator: =
-    Value: outbound
+  Условие 3:
+    Поле: type
+    Оператор: =
+    Стойност: outbound
 
-Step 2 - Percentage:
-  Calculate as Percentage: Yes
-  Show Footer with Numbers: Yes
+Стъпка 2 - Процент:
+  Изчисли като процент: Да
+  Покажи долен колонтитул с числа: Да
 
-Step 3 - Advanced:
-  Enable Gradient: Yes
-  Gradient To Color: #3b82f6
+Стъпка 3 - Разширени настройки:
+  Активирай градиент: Да
+  Градиент към цвят: #3b82f6
   Dash Array: 8
 
-How it works:
-  - Counts calls meeting ALL three conditions (e.g., 45)
-  - Counts total calls (e.g., 100)
-  - Calculates: 45 / 100 × 100 = 45%
-  - Displays: "45%" with footer "45 achieved / 100 total"
+Как работи:
+  - Брои повиквания отговарящи на ВСИЧКИ три условия (напр. 45)
+  - Брои общо повиквания (напр. 100)
+  - Изчислява: 45 / 100 × 100 = 45%
+  - Показва: "45%" с долен колонтитул "45 постигнати / 100 общо"
 ```
 
-**Qualified Leads (Semicircle Style)**
+**Квалифицирани лийдове (стил полукръг)**
 ```
-Table: leads
-Aggregation: COUNT
-Chart Type: radialBar
-Label: "Qualified Leads"
-Color: info
-Date Range: 30 days
+Таблица: leads
+Агрегация: COUNT
+Тип диаграма: radialBar
+Етикет: "Квалифицирани лийдове"
+Цвят: info
+Интервал от дати: 30 дни
 
-Step 2 - Conditions:
-  Field: status
-  Operator: =
-  Value: scheduled
+Стъпка 2 - Условия:
+  Поле: status
+  Оператор: =
+  Стойност: scheduled
 
-Step 2 - Percentage:
-  Calculate as Percentage: Yes
-  Show Footer with Numbers: Yes
+Стъпка 2 - Процент:
+  Изчисли като процент: Да
+  Покажи долен колонтитул с числа: Да
 
-Step 3 - Advanced (semicircle design):
-  Enable Gradient: Yes
-  Gradient To Color: #10b981
-  Start Angle: -90°
-  End Angle: 90° (creates perfect semicircle)
-  Hollow Size: 70% (thinner ring)
-  Dash Array: 0 (solid line)
+Стъпка 3 - Разширени настройки (дизайн полукръг):
+  Активирай градиент: Да
+  Градиент към цвят: #10b981
+  Начален ъгъл: -90°
+  Краен ъгъл: 90° (създава перфектен полукръг)
+  Размер на дупката: 70% (по-тънък пръстен)
+  Dash Array: 0 (непрекъсната линия)
 
-Result: "2.2%" with footer "4,841 achieved / 220,073 total"
-Visual: Clean semicircle from left to right, blue to green gradient
+Резултат: "2.2%" с долен колонтитул "4,841 постигнати / 220,073 общо"
+Визуализация: Чист полукръг от ляво на дясно, син към зелен градиент
 ```
 
-## Table Widgets
+## Table Widget-и
 
-Display detailed records with custom columns.
+Показване на подробни записи с персонализирани колони.
 
-### Step 1: Basics
+### Стъпка 1: Основни настройки
 
-**Data Table**
-- Choose source: calls, leads, campaigns, assistants, phone_numbers, sms
+**Таблица с данни**
+- Изберете източник: calls, leads, campaigns, assistants, phone_numbers, sms
 
-**Campaign Filter** (leads table only)
-- Select campaign to:
-  - Filter table to that campaign
-  - Enable custom variable columns
-- Optional
+**Филтър за кампания** (само за leads таблица)
+- Изберете кампания за да:
+  - Филтрирате таблицата към тази кампания
+  - Активирате колони с персонализирани променливи
+- Незадължително
 
-**Assistant Filter** (calls table only)
-- Select assistant to:
-  - Filter table to that assistant
-  - Enable evaluation field columns
-- Optional
+**Филтър за асистент** (само за calls таблица)
+- Изберете асистент за да:
+  - Филтрирате таблицата към този асистент
+  - Активирате колони с полета за оценка
+- Незадължително
 
-**Column Selection**
-- Basic columns: Id, Status, Created At, etc.
-- Relationship columns: Assistant Name, Campaign Name
-- Evaluation fields: evaluation.{field_name} (if assistant selected)
-- Lead variables: variables.{variable_name} (if campaign selected)
-- Default if none selected: Id, Status, Created At
+**Избор на колони**
+- Основни колони: Id, Status, Created At, др.
+- Колони за връзки: Assistant Name, Campaign Name
+- Полета за оценка: evaluation.{field_name} (ако е избран асистент)
+- Променливи на лийдове: variables.{variable_name} (ако е избрана кампания)
+- По подразбиране ако няма избрани: Id, Status, Created At
 
-### Step 2: Display & Filters
+### Стъпка 2: Показване и филтри
 
-**Label** (required)
-- Table heading
+**Етикет** (задължителен)
+- Заглавие на таблицата
 
-**Description**
-- Optional subheading
+**Описание**
+- Незадължителен подзаглавен текст
 
-**Date Range**
-- Same as stats/charts
+**Интервал от дати**
+- Същото като статистики/диаграми
 
-**Sort By**
-- Default sort column
-- Only simple columns (not relationships)
-- Default: created_at
+**Сортиране по**
+- Колона за сортиране по подразбиране
+- Само прости колони (не връзки)
+- По подразбиране: created_at
 
-**Sort Direction**
-- desc (newest first) - default
-- asc (oldest first)
+**Посока на сортиране**
+- desc (най-новите първи) - по подразбиране
+- asc (най-старите първи)
 
-**Rows Per Page**
-- Number of rows to display (1-100)
-- Default: 10
+**Редове на страница**
+- Брой редове за показване (1-100)
+- По подразбиране: 10
 
-**Conditions**
-- Same as stats/charts
+**Условия**
+- Същото като статистики/диаграми
 
-### Interactive Features
+### Интерактивни функции
 
-**Clickable Rows**
-- Table rows are clickable
-- Automatically links to detail/edit page for the record
-- Works for: Calls, Leads, Campaigns, Assistants
+**Кликаеми редове**
+- Редовете на таблицата са кликаеми
+- Автоматично препраща към страницата за детайли/редактиране на записа
+- Работи за: Повиквания, Лийдове, Кампании, Асистенти
 
-**Live Date Filter**
-- Change date range directly on the widget
-- Overrides the configured default date range
-- Useful for exploring different time periods
+**Живо филтриране по дата**
+- Променяйте интервала от дати директно на widget-а
+- Заменя конфигурирания интервал по подразбиране
+- Полезно за изследване на различни периоди от време
 
-**Status Filter**
-- Multi-select dropdown to filter by status
-- Available for: Calls, Leads, Campaigns, Assistants, SMS
-- Select multiple statuses at once
+**Филтър по статус**
+- Падащо меню с множество избор за филтриране по статус
+- Налично за: Повиквания, Лийдове, Кампании, Асистенти, SMS
+- Изберете множество статуси наведнъж
 
-**Text Display**
-- Long text automatically truncates at 50 characters
-- Hover over truncated text shows full content in tooltip
+**Показване на текст**
+- Дълъг текст се съкращава автоматично на 50 знака
+- Посочването върху съкратен текст показва пълното съдържание в подсказка
 
-### Column Types
+### Типове колони
 
-**Phone Number Columns**
-- International format (+1 555 123 4567)
-- Country flag prefix
-- Examples: client_phone_number, phone_number
+**Колони за телефонни номера**
+- Международен формат (+1 555 123 4567)
+- Префикс със знаме на държавата
+- Примери: client_phone_number, phone_number
 
-**Status Columns**
-- Colored badges
-- Examples: status field on any table
+**Колони за статус**
+- Цветни значки
+- Примери: поле status в която и да е таблица
 
-**Date Columns**
-- "3 hours ago" format
-- Hover shows full datetime
-- Examples: created_at, updated_at
+**Колони за дати**
+- Формат "преди 3 часа"
+- Посочването показва пълната дата и час
+- Примери: created_at, updated_at
 
-**Evaluation Columns** (calls table with assistant)
-- Boolean fields: checkmark or X with green/red badge
-- Non-boolean fields: value with gray badge
-- Hover shows field description
-- Format: evaluation.{field_name}
+**Колони за оценка** (calls таблица с асистент)
+- Boolean полета: отметка или X със зелена/червена значка
+- Не-boolean полета: стойност със сива значка
+- Посочването показва описанието на полето
+- Формат: evaluation.{field_name}
 
-**Variable Columns** (leads table with campaign)
-- Custom lead data
-- Format: variables.{variable_name}
-- Examples: customer_name, company
+**Колони за променливи** (leads таблица с кампания)
+- Персонализирани данни за лийдове
+- Формат: variables.{variable_name}
+- Примери: customer_name, company
 
-**Relationship Columns**
-- Access related data
-- Examples: Assistant Name, Campaign Name
-- Cannot sort by these
+**Колони за връзки**
+- Достъп до свързани данни
+- Примери: Assistant Name, Campaign Name
+- Не може да се сортира по тях
 
-### Examples
+### Примери
 
-**Recent Calls**
+**Последни повиквания**
 ```
-Table: calls
-Columns:
+Таблица: calls
+Колони:
   - Client Phone Number
   - Assistant Name
   - Duration
   - Status
   - Created At
-Sort: Created At desc
-Rows: 25
-Date Range: 7 days
+Сортиране: Created At desc
+Редове: 25
+Интервал от дати: 7 дни
 ```
 
-**Successful Appointments**
+**Успешни срещи**
 ```
-Table: calls
-Assistant: [Select to load fields]
-Columns:
+Таблица: calls
+Асистент: [Изберете за зареждане на полета]
+Колони:
   - Client Phone Number
   - Assistant Name
   - evaluation.appointment_booked
   - Created At
-Sort: Created At desc
-Rows: 50
-Date Range: 30 days
-Conditions:
+Сортиране: Created At desc
+Редове: 50
+Интервал от дати: 30 дни
+Условия:
   - Status = completed
-  - Column: Extracted Variables
+  - Колона: Extracted Variables
     Extracted Variable Name: Custom variable
     Custom Variable Name: appointment_booked
-    Operator: =
+    Оператор: =
     Variable Value: true
 ```
 
-## Filtering Data
+## Филтриране на данни
 
-All widgets support conditions to filter data.
+Всички widget-и поддържат условия за филтриране на данните.
 
-### Operators
+### Оператори
 
-- `=` - Equals
-- `!=` - Not equals
-- `>` - Greater than
-- `>=` - Greater or equal
-- `<` - Less than
-- `<=` - Less or equal
-- `like` - Contains text
-- `in` - One of (comma-separated)
-- `not in` - Not one of
-- `is null` - No value
-- `is not null` - Has value
+- `=` - Равно
+- `!=` - Не е равно
+- `>` - По-голямо от
+- `>=` - По-голямо или равно
+- `<` - По-малко от
+- `<=` - По-малко или равно
+- `like` - Съдържа текст
+- `in` - Едно от (разделени със запетая)
+- `not in` - Не едно от
+- `is null` - Няма стойност
+- `is not null` - Има стойност
 
-### Basic Filtering
+### Основно филтриране
 
-**Status Filter**
+**Филтър за статус**
 ```
-Column: Status
-Operator: =
-Value: completed
-```
-
-**Duration Filter**
-```
-Column: Duration
-Operator: >
-Value: 60
+Колона: Status
+Оператор: =
+Стойност: completed
 ```
 
-**Multiple Values**
+**Филтър за продължителност**
 ```
-Column: Status
-Operator: in
-Value: completed,in-progress
+Колона: Duration
+Оператор: >
+Стойност: 60
 ```
 
-### Evaluation Field Filtering
-
-Filter by post-call evaluation values.
-
-**Setup:**
-1. Column: Extracted Variables
-2. Extracted Variable Name: Status or Custom variable
-3. If Custom variable: Enter field name in Custom Variable Name
-4. Variable Value: true/false for booleans, or any + custom value
-
-**Boolean Example - Appointment Booked**
+**Множество стойности**
 ```
-Column: Extracted Variables
+Колона: Status
+Оператор: in
+Стойност: completed,in-progress
+```
+
+### Филтриране по полета за оценка
+
+Филтрирайте по стойности от оценка след повикване.
+
+**Настройка:**
+1. Колона: Extracted Variables
+2. Extracted Variable Name: Status или Custom variable
+3. Ако Custom variable: Въведете името на полето в Custom Variable Name
+4. Variable Value: true/false за boolean, или any + персонализирана стойност
+
+**Boolean пример - Резервирана среща**
+```
+Колона: Extracted Variables
 Extracted Variable Name: Custom variable
 Custom Variable Name: appointment_booked
-Operator: =
+Оператор: =
 Variable Value: true
 ```
 
-**Non-Boolean Example - Sentiment**
+**Не-boolean пример - Настроение**
 ```
-Column: Extracted Variables
+Колона: Extracted Variables
 Extracted Variable Name: Custom variable
 Custom Variable Name: sentiment
-Operator: =
+Оператор: =
 Variable Value: any
 Custom Value: positive
 ```
 
-**Check Field Exists**
+**Проверка дали полето съществува**
 ```
-Column: Extracted Variables
+Колона: Extracted Variables
 Extracted Variable Name: Custom variable
 Custom Variable Name: interested
-Operator: =
+Оператор: =
 Variable Value: any
 ```
 
-### Multiple Conditions
+### Множество условия
 
-Conditions combined with AND:
+Условията се комбинират с AND:
 
 ```
-Filter for successful long calls:
-Condition 1:
-  - Column: Status
-  - Operator: =
-  - Value: completed
+Филтър за успешни дълги повиквания:
+Условие 1:
+  - Колона: Status
+  - Оператор: =
+  - Стойност: completed
 
-Condition 2:
-  - Column: Duration
-  - Operator: >
-  - Value: 120
+Условие 2:
+  - Колона: Duration
+  - Оператор: >
+  - Стойност: 120
 
-Condition 3:
-  - Column: Extracted Variables
+Условие 3:
+  - Колона: Extracted Variables
   - Extracted Variable Name: Custom variable
   - Custom Variable Name: appointment_booked
-  - Operator: =
+  - Оператор: =
   - Variable Value: true
 ```
 
-## Best Practices
+## Най-добри практики
 
-### Widget Naming
+### Именуване на widget-и
 
-Use descriptive internal names:
-- ✅ "Sales Calls - Last 30 Days"
-- ✅ "Support Duration Average"
+Използвайте описателни вътрешни имена:
+- ✅ "Продажби повиквания - Последни 30 дни"
+- ✅ "Средна продължителност поддръжка"
 - ❌ "Widget 1"
 
-### Date Ranges
+### Интервали от дати
 
-Match range to use case:
-- **Today:** Real-time monitoring
-- **7 days:** Weekly performance
-- **30 days:** Monthly trends
-- **90+ days:** Long-term analysis
-
-### Colors
-
-Strategic color usage:
-- **Green (success):** Positive metrics
-- **Red (danger):** Alert metrics
-- **Blue (primary):** Neutral metrics
-- **Yellow (warning):** Attention needed
-- **Gray (info):** Secondary info
-
-### Performance
-
-Keep dashboards fast:
-- Use date range filters
-- Limit widgets per dashboard to under 20
-- Use COUNT when possible (faster)
-- Avoid very long date ranges
-
-## Troubleshooting
-
-**Widget shows "No data"**
-- Expand date range
-- Remove/adjust filters
-- Verify table has records
-
-**Evaluation fields not showing**
-- Select assistant in widget config
-- Ensure assistant has post-call schema
-- Check field names match
-
-**Chart shows empty**
-- Pie/donut: Must use Group By (not Period)
-- Line/area: Must use Group By Period (not Category)
-- Check date range includes data
-
-**Table missing columns**
-- Relationship columns need related records
-- Evaluation columns need assistant selection
-- Variable columns need campaign selection
-
-**"Group By required" error**
-- Pie/donut/polarArea charts MUST have Group By
-- Cannot use Group By Period with these chart types
-
-**Cannot sort by column**
-- Relationship columns (with .) not sortable
-- Evaluation fields not sortable
-- Use basic columns for sorting
-
-<Note>
-For dashboard creation and layout management, see [Custom Dashboards Overview](/custom-dashboards/overview).
-</Note>
+Съответствайте интервала с случая на използване:
+- **Днес:** Наблюдение в

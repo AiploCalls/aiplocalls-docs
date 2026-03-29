@@ -1,110 +1,112 @@
 ---
-title: "Cal.com Issues"
+title: "Cal.com Проблеми"
 icon: "calendar-days"
-description: "Troubleshoot common Cal.com integration issues"
+description: "Отстранявайте проблеми с интеграцията на Cal.com"
 ---
 
-Solutions for common Cal.com integration problems.
+Решения за често срещани проблеми с интеграцията на Cal.com.
 
-## Connection Issues
+## Проблеми със Свързването
 
-### Invalid API Key
+### Невалиден API Key
 
-**Problem:** Events not loading or sync fails
+**Проблем:** Събитията не се зареждат или синхронизацията се проваля
 
-**Solution:**
-- Verify API key is active in Cal.com → Settings → Developer → API Keys
-- Ensure key includes `cal_live_` prefix
-- Generate a new API key if needed
+**Решение:**
+- Проверете дали API key-ят е активен в Cal.com → Settings → Developer → API Keys
+- Уверете се, че ключът включва префикса `cal_live_`
+- Генерирайте нов API key ако е необходимо
 
-### Events Not Loading
+### Събитията Не Се Зареждат
 
-**Problem:** Event dropdown is empty after entering API key
+**Проблем:** Падащото меню със събития е празно след въвеждане на API key
 
-**Solution:**
-- Check API key is correct
-- Click outside the API key field to trigger event loading
-- Refresh the page if events still don't appear
-- Verify you have events created in Cal.com
+**Решение:**
+- Проверете дали API key-ят е правилен
+- Кликнете извън полето с API key за да се задейства зареждането на събития
+- Опреснете страницата ако събитията все още не се появят
+- Проверете дали имате създадени събития в Cal.com
 
-## Sync Issues
+## Проблеми със Синхронизацията
 
-### Sync Event Failed
+### Синхронизирането на Събитие Се Провали
 
-**Problem:** "Sync Event" button fails or shows error
+**Проблем:** Бутонът "Sync Event" се проваля или показва грешка
 
-**Solution:**
-1. Click **"Troubleshoot"** button instead
-2. This resets all booking fields to correct configuration
-3. Verify changes in Cal.com event settings
+**Решение:**
+1. Кликнете върху бутона **"Troubleshoot"** вместо това
+2. Това нулира всички полета за резервация до правилната конфигурация
+3. Проверете промените в настройките на събитието в Cal.com
 
-### Field Configuration Errors
+### Грешки в Конфигурацията на Полетата
 
-**Problem:** Getting errors about required fields or missing fields
+**Проблем:** Получавате грешки относно задължителни полета или липсващи полета
 
-**Solution:**
-- Click **"Troubleshoot"** to reset fields
-- Only name, email, phone should be required
-- All other fields (location, guests, etc.) should be optional
+**Решение:**
+- Кликнете **"Troubleshoot"** за да нулирате полетата
+- Само име, имейл, телефон трябва да са задължителни
+- Всички други полета (местоположение, гости и т.н.) трябва да са по избор
 
-## Booking Failures
+## Провали при Резервации
 
-### No Calendar Invites Sent
+### Не Се Изпращат Календарни Покани
 
-**Problem:** Bookings succeed but customer doesn't receive invite
+**Проблем:** Резервациите успяват, но клиентът не получава покана
 
-**Solution:**
-- Define `email` variable in [assistant settings](/ai-assistants/settings/prompt-and-tools#call-variables)
-- Pass customer email when creating leads
-- Verify email format is valid
+**Решение:**
+- Дефинирайте променливата `email` в [настройките на асистента](/ai-assistants/settings/prompt-and-tools#call-variables)
+- Подавайте имейла на клиента при създаване на leads
+- Проверете дали форматът на имейла е валиден
 
-### Phone Number Missing
+### Липсва Телефонен Номер
 
-**Problem:** Phone number doesn't appear in calendar events
+**Проблем:** Телефонният номер не се появява в календарните събития
 
-**Solution:**
-- Click **"Sync Event"** or **"Troubleshoot"** button
-- This automatically adds the phone field to the event
-- Phone number is included after sync
+**Решение:**
+- Кликнете върху бутона **"Sync Event"** или **"Troubleshoot"**
+- Това автоматично добавя полето за телефон към събитието
+- Телефонният номер е включен след синхронизацията
 
-### Booking Time Zone Issues
+### Проблеми с Часовата Зона при Резервации
 
-**Problem:** Appointments scheduled at wrong time
+**Проблем:** Срещите се планират в грешно време
 
-**Solution:**
-- Check time zone in Cal.com event settings
-- Verify assistant is getting correct time from customer
-- Test with specific time mentions during call
+**Решение:**
+- Проверете часовата зона в настройките на събитието в Cal.com
+- Проверете дали асистентът получава правилното време от клиента
+- Тествайте с конкретни споменавания на време по време на разговора
 
-## Testing Issues
+## Проблеми с Тестването
 
-### Web Call Bookings Fail
+### Резервациите с Web Call Се Провалят
 
-**Problem:** Bookings work inconsistently with web calls
+**Проблем:** Резервациите работят непоследователно с web calls
 
-**Solution:**
-- Use real phone calls for testing (not web calls)
-- Web calls may not pass phone variable correctly
-- When using web calls, provide phone in international format with + prefix (e.g., "+1 555-123-4567")
-- Phone calls ensure all variables are transmitted correctly
+**Решение:**
+- Използвайте истински телефонни обаждания за тестване (не web calls)
+- Web calls може да не подават променливата за телефона правилно
+- При използване на web calls, подавайте телефона в международен формат с + префикс (напр. "+1 555-123-4567")
+- Телефонните обаждания осигуряват правилното предаване на всички променливи
 
-### Multiple Calendars Not Working
+### Множество Календари Не Работят
 
-**Problem:** Only one calendar works or events conflict
+**Проблем:** Само един календар работи или събитията конфликтуват
 
-**Solution:**
-- Each calendar should have different event selected
-- Use distinct event names (e.g., "15min", "30min")
-- Sync each event separately after adding
+**Решение:**
+- Всеки календар трябва да има избрано различно събитие
+- Използвайте различни имена за събитията (напр. "15min", "30min")
+- Синхронизирайте всяко събитие отделно след добавяне
 
-## Getting Help
+## Получаване на Помощ
 
-If issues persist:
+Ако проблемите продължават:
 
-1. Check call transcripts for booking attempts
-2. Verify Cal.com event shows in Cal.com dashboard
-3. Test with simple phone call booking
-4. Contact support with:
-   - Error message screenshot
-   - Cal.com event settings screenshot
-   - Call transcript showing booking attempt
+1. Проверете транскриптите на обажданията за опити за резервация
+2. Проверете дали събитието от Cal.com се показва в dashboard-а на Cal.com
+3. Тествайте с просто телефонно обаждане за резервация
+4. Свържете се с поддръжката с:
+   - Снимка на екрана с грешката
+   - Снимка на екрана с настройките на събитието в Cal.com
+   - Транскрипт на обаждането показващ опита за резервация
+
+---

@@ -1,21 +1,22 @@
 ---
-title: "Delete API key"
+---
+title: "Изтриване на API ключ"
 api: "DELETE /user/api-keys/{id}"
-description: "Delete an API key"
+description: "Изтриване на API ключ"
 ---
 
-This endpoint permanently deletes an API key. Any applications using this key will immediately lose access.
+Този endpoint окончателно изтрива API ключ. Всички приложения, които използват този ключ, незабавно ще загубят достъп.
 
 ### Path Parameters
 
 <ParamField path="id" type="integer" required>
-  The unique identifier of the API key to delete
+  Уникалният идентификатор на API ключа за изтриване
 </ParamField>
 
 ### Response
 
 <ResponseField name="message" type="string">
-  Success message
+  Съобщение за успех
 </ResponseField>
 
 <ResponseExample>
@@ -35,5 +36,5 @@ This endpoint permanently deletes an API key. Any applications using this key wi
 </ResponseExample>
 
 <Warning>
-This action is immediate and cannot be undone. Any applications using this API key will stop working immediately.
+Това действие е незабавно и не може да бъде отменено. Всички приложения, които използват този API ключ, ще спрат да работят незабавно.
 </Warning>

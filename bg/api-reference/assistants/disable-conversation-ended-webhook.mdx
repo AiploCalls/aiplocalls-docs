@@ -1,44 +1,44 @@
 ---
-title: "Disable conversation ended webhook"
+title: "Деактивиране на webhook за приключена конversация"
 api: "POST /user/assistants/disable-conversation-ended-webhook"
-description: "Disable conversation ended webhook notifications for an assistant"
+description: "Деактивиране на webhook уведомления за приключена конversация за асистент"
 ---
 
-This endpoint disables conversation ended webhook notifications for an assistant, stopping the delivery of updates when chat conversations end.
+Този endpoint деактивира webhook уведомленията за приключена конversация за асистент, спирайки доставката на актуализации когато чат конversациите приключат.
 
 ### Request Body
 
 <ParamField body="assistant_id" type="integer" required>
-  The ID of the assistant to disable the conversation ended webhook for
+  ID на асистента за който да се деактивира webhook за приключена конversация
 </ParamField>
 
 ### Response
 
 <ResponseField name="message" type="string">
-  Success message confirming webhook was disabled
+  Съобщение за успех потвърждаващо че webhook е деактивиран
 </ResponseField>
 
 <ResponseField name="data" type="array">
-  Empty array (reserved for future use)
+  Празен масив (запазен за бъдеща употреба)
 </ResponseField>
 
 ### Error Responses
 
 <ResponseField name="404 Not Found">
-  <Expandable title="Error Response">
+  <Expandable title="Отговор при грешка">
     <ResponseField name="message" type="string">
-      Error message when the assistant is not found or doesn't belong to the authenticated user
+      Съобщение за грешка когато асистентът не е намерен или не принадлежи на автентикирания потребител
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="422 Validation Error">
-  <Expandable title="Error Response">
+  <Expandable title="Отговор при грешка">
     <ResponseField name="message" type="string">
-      Error message indicating validation failure
+      Съобщение за грешка указващо неуспешна валидация
     </ResponseField>
     <ResponseField name="errors" type="object">
-      Detailed validation errors for each field
+      Подробни грешки при валидация за всяко поле
     </ResponseField>
   </Expandable>
 </ResponseField>

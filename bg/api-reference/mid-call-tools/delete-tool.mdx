@@ -1,35 +1,35 @@
 ---
-title: "Delete mid call tool"
+title: "Изтриване на инструмент по време на разговор"
 api: "DELETE /user/tools/{id}"
-description: "Delete a mid call tool"
+description: "Изтриване на инструмент по време на разговор"
 ---
 
-This endpoint allows you to permanently delete a mid call tool. This will also remove the tool from all assistants it was assigned to.
+Този endpoint ви позволява окончателно да изтриете инструмент по време на разговор. Това също така ще премахне инструмента от всички асистенти, на които е бил присвоен.
 
 ### Headers
 
 <ParamField header="Authorization" type="string" required>
-  Bearer token for authentication
+  Bearer token за автентикация
 </ParamField>
 
 <ParamField header="Content-Type" type="string" required>
-  Must be `application/json`
+  Трябва да бъде `application/json`
 </ParamField>
 
 <ParamField header="Accept" type="string" required>
-  Must be `application/json`
+  Трябва да бъде `application/json`
 </ParamField>
 
 ### Path Parameters
 
 <ParamField path="id" type="integer" required>
-  The unique identifier of the tool to delete
+  Уникалният идентификатор на инструмента за изтриване
 </ParamField>
 
 ### Response fields
 
 <ResponseField name="message" type="string">
-  Success message confirming deletion
+  Съобщение за успех, потвърждаващо изтриването
 </ResponseField>
 
 <ResponseExample>
@@ -48,8 +48,10 @@ This endpoint allows you to permanently delete a mid call tool. This will also r
 
 </ResponseExample>
 
-### Note
+### Забележка
 
-When a tool is deleted, it is automatically removed from all assistants. To manage tool assignments without deleting the tool, use:
+Когато инструмент се изтрие, той автоматично се премахва от всички асистенти. За да управлявате присвояването на инструменти без да изтривате инструмента, използвайте:
 
-- **[Update Assistant](/api-reference/assistants/update-assistant)** - Use the `tool_ids` parameter to remove tools from specific assistants
+- **[Update Assistant](/api-reference/assistants/update-assistant)** - Използвайте параметъра `tool_ids`, за да премахнете инструменти от конкретни асистенти
+
+---

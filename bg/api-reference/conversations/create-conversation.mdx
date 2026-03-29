@@ -1,65 +1,65 @@
 ---
-title: "Create Conversation"
+title: "Създаване на разговор"
 api: "POST /conversations"
-description: "Create a new conversation session with an AI assistant"
+description: "Създаване на нова сесия за разговор с AI асистент"
 ---
 
-This endpoint creates a new conversation session with an AI assistant. Use this to initiate a text-based chat session through your web widget or application.
+Този endpoint създава нова сесия за разговор с AI асистент. Използвайте го за инициране на текстова чат сесия чрез вашия уеб widget или приложение.
 
 ### Request Body
 
 <ParamField body="assistant_id" type="string" required>
-  The UUID of the assistant to start the conversation with. Must be a valid assistant UUID that exists in the system.
+  UUID на асистента, с който да започне разговора. Трябва да бъде валиден UUID на асистент, който съществува в системата.
 </ParamField>
 
 <ParamField body="type" type="string" default="widget">
-  The type of conversation. Possible values:
-  - `widget` - Web widget conversation (default, charged)
-  - `test` - Test conversation (free, for development)
+  Типът на разговора. Възможни стойности:
+  - `widget` - Разговор чрез уеб widget (по подразбиране, таксуван)
+  - `test` - Тестов разговор (безплатен, за разработка)
 </ParamField>
 
 <ParamField body="variables" type="object">
-  Custom variables to pass to the assistant. These variables can be used in the assistant's system prompt and initial message using `{{variable_name}}` syntax.
+  Персонализирани променливи за предаване към асистента. Тези променливи могат да се използват в системния prompt на асистента и първоначалното съобщение със синтаксис `{{variable_name}}`.
 
-  Common use cases:
-  - Pre-filling customer information from forms
-  - Passing context from your application
-  - Customizing assistant behavior per session
+  Обичайни случаи на употреба:
+  - Предварително попълване на клиентска информация от форми
+  - Предаване на контекст от вашето приложение
+  - Персонализиране на поведението на асистента за всяка сесия
 </ParamField>
 
 ### Response Fields
 
 <ResponseField name="status" type="boolean">
-  Indicates whether the request was successful
+  Показва дали заявката е била успешна
 </ResponseField>
 
 <ResponseField name="conversation_id" type="string">
-  The unique UUID identifier for the created conversation. Use this ID for subsequent message requests.
+  Уникалният UUID идентификатор за създадения разговор. Използвайте този ID за последващи заявки за съобщения.
 </ResponseField>
 
 <ResponseField name="history" type="array">
-  The initial conversation history. If the assistant has an initial message configured, it will be included here.
+  Първоначалната история на разговора. Ако асистентът има конфигурирано първоначално съобщение, то ще бъде включено тук.
 
-  <Expandable title="Message object properties">
+  <Expandable title="Свойства на обекта съобщение">
     <ResponseField name="role" type="string">
-      The message role: `assistant` or `user`
+      Ролята на съобщението: `assistant` или `user`
     </ResponseField>
     <ResponseField name="content" type="string">
-      The message content
+      Съдържанието на съобщението
     </ResponseField>
   </Expandable>
 </ResponseField>
 
-### Error Responses
+### Отговори при грешка
 
 <ResponseField name="status" type="boolean">
-  Will be `false` when an error occurs
+  Ще бъде `false` когато възникне грешка
 </ResponseField>
 
 <ResponseField name="error" type="string">
-  Error message describing what went wrong. Possible values:
-  - `Assistant not found` - The provided assistant_id does not exist
-  - `Insufficient balance. Please top up your account.` - The assistant owner's account balance is too low
+  Съобщение за грешка, описващо какво се е объркало. Възможни стойности:
+  - `Assistant not found` - Предоставеният assistant_id не съществува
+  - `Insufficient balance. Please top up your account.` - Балансът в акаунта на собственика на асистента е твърде нисък
 </ResponseField>
 
 <RequestExample>
@@ -160,11 +160,11 @@ print(data['conversation_id'])
 
 </ResponseExample>
 
-## Pricing
+## Ценообразуване
 
-- **Widget conversations**: $0.01 per user message
-- **Test conversations**: Free (for development and testing)
+- **Widget разговори**: $0.01 на потребителско съобщение
+- **Тестови разговори**: Безплатни (за разработка и тестване)
 
-## Next Steps
+## Следващи стъпки
 
-After creating a conversation, use the [Send Message](/api-reference/conversations/send-message) endpoint to exchange messages with the assistant.
+След създаване на разговор, използвайте endpoint-а [Изпращане на съобщение](/api-reference/conversations/send-message) за обмен на съобщения с асистента.

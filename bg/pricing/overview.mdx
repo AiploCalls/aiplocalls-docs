@@ -1,65 +1,68 @@
 ---
-title: "Cost Overview"
+---
+title: "Преглед на разходите"
 icon: "dollar-sign"
-description: "Understand the main components of Aiplocalls pricing, including call minutes, number rentals, and optional fees"
+description: "Разберете основните компоненти на ценообразуването на Aiplocalls, включително минути за разговори, наем на номера и опционални такси"
 ---
 
-Aiplocalls uses a **credit/minute system** to track usage for both AI processing and carrier network fees. Here's how it breaks down:
-
----
-
-## 1. Main Components
-
-1. **AI Cost**
-
-   - **Minimum charge of 30 seconds (0.5 min)** per call. Any call under 30 seconds is billed as 30 seconds — e.g., a 10-second call deducts 0.5 min from your balance.
-   - Beyond 30 seconds, billing is **per second**. For example, a 35-second call deducts exactly 35 seconds (~0.58 min) from your balance.
-   - Rate depends on your plan (Starter, Pro, Agency, etc.).
-
-2. **Carrier Cost**
-
-   - The telecom side of the call, generally **rounded up** to the next minute and converted to your plan’s minute rate.
-   - Region-dependent: e.g., calling US vs. Europe vs. Asia has different carrier rates.
-
-3. **Number Rental**
-
-   - If you rent a phone number, there’s a monthly fee (e.g., \$3.99 for a standard US number).
-   - If your region isn’t listed, we can custom-provision a number upon verifying documents.
-   - Each number’s cost is billed monthly until released.
-
-4. **Extra Fees (Optional)**
-   - **SMS**: If your number is SMS-capable, standard per-message fees apply.
-   - **Voicemail detection**: Billed as 1 minute per call.
-   - **High-Volume**: Potential bulk discounts if you exceed tens of thousands of minutes monthly.
+Aiplocalls използва **система с кредити/минути** за проследяване на употребата както за AI обработка, така и за такси на операторската мрежа. Ето как се разделя:
 
 ---
 
-## 2. Visual Example
+## 1. Основни компоненти
 
-Suppose you have 200 included minutes in your plan. A typical 1-minute call might consume ~1.5 minutes from your balance if carrier cost is half your plan’s rate. This means you’d have about 198.5 left. By the end of the billing cycle, any unused minutes do no rollover.
+1. **AI разход**
+
+   - **Минимална такса от 30 секунди (0.5 мин)** на разговор. Всеки разговор под 30 секунди се таксува като 30 секунди — напр. 10-секунден разговор приспада 0.5 мин от вашия баланс.
+   - След 30 секунди таксуването е **на секунда**. Например 35-секунден разговор приспада точно 35 секунди (~0.58 мин) от вашия баланс.
+   - Тарифата зависи от вашия план (Starter, Pro, Agency и др.).
+
+2. **Разход на оператора**
+
+   - Телекомуникационната страна на разговора, обикновено **закръглена нагоре** до следващата минута и преобразувана в тарифата на минутите на вашия план.
+   - Зависи от региона: напр. обаждане в САЩ срещу Европа срещу Азия има различни тарифи на операторите.
+
+3. **Наем на номер**
+
+   - Ако наемате телефонен номер, има месечна такса (напр. $3.99 за стандартен номер в САЩ).
+   - Ако вашият регион не е в списъка, можем да предоставим номер по поръчка след верификация на документи.
+   - Разходът за всеки номер се таксува месечно до освобождаването му.
+
+4. **Допълнителни такси (опционални)**
+   - **SMS**: Ако вашият номер поддържа SMS, се прилагат стандартни такси за съобщение.
+   - **Откриване на гласова поща**: Таксува се като 1 минута на разговор.
+   - **Голям обем**: Потенциални отстъпки за големи количества при надвишаване на десетки хиляди минути месечно.
 
 ---
 
-## 3. Checking Call Logs
+## 2. Визуален пример
 
-- **Dashboard → Call History**: See each call’s final cost breakdown.
-  - AI usage (seconds → fraction of a minute).
-  - Carrier usage (rounded up → fraction of a minute after conversion).
-  - Summed total in “minutes” deducted from your included or purchased balance.
+Да предположим, че имате 200 включени минути в плана си. Типичен 1-минутен разговор може да консумира ~1.5 минути от баланса ви, ако разходът на оператора е половината от тарифата на плана ви. Това означава, че ще ви останат около 198.5. В края на фактурационния цикъл неизползваните минути не се прехвърлят.
 
 ---
 
-## 4. Monitoring & Alerts
+## 3. Проверка на регистри на разговори
 
-- Watch your real-time usage in the **dashboard**.
+- **Dashboard → Call History**: Вижте разбивката на окончателните разходи за всеки разговор.
+  - AI употреба (секунди → част от минута).
+  - Употреба на оператор (закръглена нагоре → част от минута след преобразуване).
+  - Обща сума в "минути" приспадната от включения или закупен баланс.
 
 ---
 
-## 5. Putting It All Together
+## 4. Мониторинг и предупреждения
 
-1. **Pick a Plan**: Decide on Starter, Pro, or Agency—higher plans have cheaper AI rates.
-2. **Acquire or Verify a Number**: Rent from Aiplocalls or add your own as caller ID for outbound.
-3. **Start Making Calls**: Inbound or outbound usage deducts from your minute balance.
-4. **SMS & Extras**: If relevant, each text or advanced feature also deducts from your balance or is billed separately.
+- Следете употребата си в реално време в **dashboard**-а.
 
-That’s the overall cost structure. For a deeper look at the math behind minute conversion, check our [Pricing Breakdown](/pricing/usage-based) page.
+---
+
+## 5. Обединяване на всичко
+
+1. **Изберете план**: Решете между Starter, Pro или Agency—по-високите планове имат по-евтини AI тарифи.
+2. **Придобийте или верифицирайте номер**: Наемете от Aiplocalls или добавете собствения си като caller ID за изходящи разговори.
+3. **Започнете да се обаждате**: Употребата на входящи или изходящи разговори приспада от баланса ви в минути.
+4. **SMS и допълнения**: Ако е приложимо, всеки текст или разширена функция също приспада от баланса ви или се таксува отделно.
+
+Това е общата структура на разходите. За по-задълбочен поглед върху математиката зад преобразуването на минути, вижте нашата страница [Разбивка на цените](/pricing/usage-based).
+
+---

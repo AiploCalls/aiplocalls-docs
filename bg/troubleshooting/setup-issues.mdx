@@ -1,27 +1,30 @@
 ---
-title: "General Setup Issues"
+---
+title: "Общи проблеми при настройка"
 icon: "wrench"
-description: "Troubleshoot common setup problems including AI response issues, OTP verification, and credential errors"
+description: "Отстраняване на общи проблеми при настройка включително проблеми с AI отговор, OTP верификация и грешки в данните за достъп"
 ---
 
-Some common pitfalls when first configuring Aiplocalls:
+Някои често срещани проблеми при първоначалната конфигурация на Aiplocalls:
 
-## 1. AI Not Responding or Call Dropping
+## 1. AI не отговаря или разговорът се прекъсва
 
-- **Check the System Prompt**: Possibly missing instructions.
-- **Voice Activity Detection**: If set too low or high, it may cause awkward silences or interruptions.
-- **Connection**: If your internet or SIP trunk is unstable, calls might drop.
+- **Проверете System Prompt**: Възможно е да липсват инструкции.
+- **Voice Activity Detection**: Ако е зададен твърде нисък или висок, може да причини неудобни тишини или прекъсвания.
+- **Връзка**: Ако вашият интернет или SIP trunk е нестабилен, разговорите може да се прекъсват.
 
-## 2. Not Receiving OTP (for Caller ID Verification)
+## 2. Не получавате OTP (за верификация на Caller ID)
 
-- **Carrier Blocks**: Some operators filter out short codes or unknown international SMS.
-- **Try Alternate Method**: Ask support if you can verify by a quick voice call or another phone line.
+- **Блокиране от оператор**: Някои оператори филтрират кратки кодове или неизвестни международни SMS.
+- **Опитайте алтернативен метод**: Попитайте поддръжката дали можете да се верифицирате чрез кратко гласово обаждане или друга телефонна линия.
 
-## 3. Credential Errors
+## 3. Грешки в данните за достъп
 
-- **SIP**: Wrong username/password? Double-check with your PBX provider.
-- **API/Webhooks**: Ensure you copied the correct token or endpoint URL.
+- **SIP**: Грешно потребителско име/парола? Проверете отново с вашия PBX доставчик.
+- **API/Webhooks**: Уверете се, че сте копирали правилния token или endpoint URL.
 
 ---
 
-**Tip:** Look at call logs for error codes if a call fails. Usually, it'll show a reason like "Number not found" or "Network unreachable."
+**Съвет:** Разгледайте логовете на обажданията за кодове на грешки, ако разговор се провали. Обикновено ще покаже причина като "Number not found" или "Network unreachable."
+
+---

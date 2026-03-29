@@ -1,125 +1,125 @@
 ---
-title: "DIDLogic Integration"
-description: "A step by step guide to connect your DIDLogic account via SIP trunking"
+title: "DIDLogic Интеграция"
+description: "Стъпка по стъпка ръководство за свързване на вашия DIDLogic акаунт чрез SIP trunking"
 ---
 
 <Steps titleSize="h2">
-  <Step title="Purchase a Phone Number">
-    Log in to your DIDLogic dashboard at [app.didlogic.com](https://app.didlogic.com) and go to the **BUY** tab. Search by country and area code, add a number to your cart, and complete checkout. Your new number will appear under the **PURCHASED** tab.
+  <Step title="Закупуване на телефонен номер">
+    Влезте в своя DIDLogic dashboard на [app.didlogic.com](https://app.didlogic.com) и отидете на раздела **BUY**. Търсете по държава и регионален код, добавете номер в кошницата и завършете поръчката. Вашият нов номер ще се появи под раздела **PURCHASED**.
 
     <Frame>
       <img
         src="/resources/did-logic/didlogic-buy-number.png"
-        alt="DIDLogic BUY tab with country search"
+        alt="DIDLogic BUY раздел с търсене по държава"
       />
     </Frame>
   </Step>
 
-  <Step title="Configure Your SIP Account (Outbound)">
-    Go to the **SIP** tab and click **Edit** on your SIP account.
+  <Step title="Конфигуриране на вашия SIP акаунт (Изходящи повиквания)">
+    Отидете на раздела **SIP** и кликнете **Edit** на вашия SIP акаунт.
 
     <Frame>
       <img
         src="/resources/did-logic/didlogic-sip-tab.png"
-        alt="DIDLogic SIP tab showing accounts list"
+        alt="DIDLogic SIP раздел показващ списък с акаунти"
       />
     </Frame>
 
     <Frame>
       <img
         src="/resources/did-logic/didlogic-sip-edit.png"
-        alt="DIDLogic Edit SIP account"
+        alt="DIDLogic Редактиране на SIP акаунт"
       />
     </Frame>
 
-    Note the **SIP account number** (e.g., `12345`) — this is your **username** that you will use in Aiplocalls. Set a password in both the **Password** and **Confirm Password** fields — you will use this same password when importing the number to Aiplocalls.
+    Отбележете **SIP account number** (например `12345`) — това е вашето **потребителско име**, което ще използвате в Aiplocalls. Задайте парола в полетата **Password** и **Confirm Password** — ще използвате същата парола при импортиране на номера в Aiplocalls.
 
     <Frame>
       <img
         src="/resources/did-logic/didlogic-sip-password.png"
-        alt="DIDLogic SIP password fields"
+        alt="DIDLogic SIP полета за парола"
       />
     </Frame>
 
-    Enable **"Restrict to authorized IPs"** and add the IP address `34.195.177.252`, then click **Add** and **Update**.
+    Активирайте **"Restrict to authorized IPs"** и добавете IP адреса `34.195.177.252`, след това кликнете **Add** и **Update**.
 
     <Frame>
       <img
         src="/resources/did-logic/didlogic-sip-restrict-ip.png"
-        alt="DIDLogic Restrict to authorized IPs with 34.195.177.252 added"
+        alt="DIDLogic Ограничаване до оторизирани IP адреси с добавен 34.195.177.252"
       />
     </Frame>
 
-    Scroll down to find your region and copy the **SIP URI** from the regional gateway list. You will need this for the outbound settings in Aiplocalls.
+    Превъртете надолу, за да намерите вашия регион и копирайте **SIP URI** от списъка с регионални gateway. Ще ви е необходимо за настройките на изходящите повиквания в Aiplocalls.
 
     <Frame>
       <img
         src="/resources/did-logic/didlogic-sip-region.png"
-        alt="DIDLogic regional SIP URI selection"
+        alt="DIDLogic избор на регионален SIP URI"
       />
     </Frame>
   </Step>
 
-  <Step title="Configure Inbound Routing (in DIDLogic)">
-    Go to the **PURCHASED** tab and click **Destination** next to your phone number. 
+  <Step title="Конфигуриране на входящо маршрутизиране (в DIDLogic)">
+    Отидете на раздела **PURCHASED** и кликнете **Destination** до вашия телефонен номер. 
     <Frame>
       <img
         src="/resources/did-logic/didlogic-purchased-tab.png"
-        alt="DIDLogic Purchased numbers list"
+        alt="DIDLogic списък със закупени номера"
       />
     </Frame>
 
-  Delete any existing destination, then change the selector from "SIP device" to **"SIP URI"**.
+  Изтрийте всякакви съществуващи дестинации, след това променете селектора от "SIP device" на **"SIP URI"**.
 
 
     <Frame>
       <img
         src="/resources/did-logic/didlogic-destination-select.png"
-        alt="DIDLogic selecting SIP URI type"
+        alt="DIDLogic избиране на SIP URI тип"
       />
     </Frame>
 
-    Enter the SIP URI in the following format:
+    Въведете SIP URI в следния формат:
 
     ```
     <number_without_plus>@5wed79aeavr.sip.livekit.cloud
     ```
 
-    For example, if your number is `+15551234567`, enter:
+    Например, ако вашият номер е `+15551234567`, въведете:
 
     ```
     15551234567@5wed79aeavr.sip.livekit.cloud
     ```
 
-    Click **Add**.
+    Кликнете **Add**.
   </Step>
 
-  <Step title="Import Number to Aiplocalls">
-    Go to your Aiplocalls dashboard → **Your Phone Numbers** → **"Integrate SIP trunk"** and fill in your details:
+  <Step title="Импортиране на номер в Aiplocalls">
+    Отидете в своя Aiplocalls dashboard → **Your Phone Numbers** → **"Integrate SIP trunk"** и попълнете вашите данни:
 
     ```
-    Phone number: Your DIDLogic number in E.164 format (e.g., +15551234567)
-    Username: The SIP account number from Step 2 (e.g., 12345)
-    Password: The password you set in Step 2
+    Phone number: Вашият DIDLogic номер в E.164 формат (например +15551234567)
+    Username: Номерът на SIP акаунта от Стъпка 2 (например 12345)
+    Password: Паролата, която зададохте в Стъпка 2
     ```
 
     <Frame>
       <img
         src="/resources/did-logic/sip-integration-sip-type.png"
-        alt="Fill in SIP integration details"
+        alt="Попълване на детайли за SIP интеграция"
       />
     </Frame>
 
-    Under **Outbound settings**, paste the regional SIP URI you copied in Step 2. Set **Number format** to **"International with + in front"** and enable **"Outbound call will come from a fixed IP address"**.
+    Под **Outbound settings**, поставете регионалния SIP URI, който копирахте в Стъпка 2. Задайте **Number format** на **"International with + in front"** и активирайте **"Outbound call will come from a fixed IP address"**.
 
     <Frame>
       <img
         src="/resources/did-logic/sip-integration-outbound.png"
-        alt="Outbound SIP settings"
+        alt="Настройки за изходящи SIP повиквания"
       />
     </Frame>
 
-    Under **Inbound settings**, select **"IP Address"** as the authorization type. Add the IP address of your chosen DIDLogic regional gateway from the table below:
+    Под **Inbound settings**, изберете **"IP Address"** като тип оторизация. Добавете IP адреса на избрания от вас DIDLogic регионален gateway от таблицата по-долу:
 
     | Gateway | IP Address |
     |---------|-----------|
@@ -142,51 +142,51 @@ description: "A step by step guide to connect your DIDLogic account via SIP trun
     <Frame>
       <img
         src="/resources/did-logic/sip-integration-inbound.png"
-        alt="Inbound SIP settings"
+        alt="Настройки за входящи SIP повиквания"
       />
     </Frame>
 
-    Select the **Country** where your SIP trunk is located.
+    Изберете **Country**, където се намира вашия SIP trunk.
 
     <Frame>
       <img
         src="/resources/did-logic/sip-integration-country.png"
-        alt="SIP country selection"
+        alt="Избор на държава за SIP"
       />
     </Frame>
   </Step>
 
-  <Step title="Verify Setup">
-    Make a test call to your number to verify inbound calling, then use the test call feature to verify outbound calling.
+  <Step title="Проверка на настройките">
+    Направете тестово повикване към вашия номер, за да проверите входящите повиквания, след това използвайте функцията за тестово повикване, за да проверите изходящите повиквания.
   </Step>
 </Steps>
 
-## Security Requirements
+## Изисквания за сигурност
 
 <Warning>
-  Your SIP credentials need to be secure. Your password must have at least 12 characters, include numbers, upper and lowercase letters, and special characters are recommended.
+  Вашите SIP данни за достъп трябва да бъдат сигурни. Паролата ви трябва да има поне 12 символа, да включва цифри, главни и малки букви, и се препоръчват специални символи.
 </Warning>
 
-## Common Issues
+## Често срещани проблеми
 
 <AccordionGroup>
-  <Accordion title="Outbound calls not working?">
-    - **Verify the SIP URI** — Make sure you copied the correct regional SIP URI from Step 2. Remove any trailing spaces.
-    - **Check your username** — The username is the numeric SIP account number (e.g., `12345`), not your email address or account name.
-    - **Check your password** — Ensure the password in Aiplocalls matches exactly what you set in the DIDLogic SIP account settings.
-    - **Verify IP whitelist** — Make sure `34.195.177.252` is added to the authorized IPs in your DIDLogic SIP account.
+  <Accordion title="Изходящите повиквания не работят?">
+    - **Проверете SIP URI** — Уверете се, че сте копирали правилния регионален SIP URI от Стъпка 2. Премахнете всякакви интервали в края.
+    - **Проверете потребителското име** — Потребителското име е цифровият номер на SIP акаунта (например `12345`), не вашия email адрес или име на акаунта.
+    - **Проверете паролата** — Уверете се, че паролата в Aiplocalls точно съвпада с тази, която зададохте в настройките на DIDLogic SIP акаунта.
+    - **Проверете IP whitelist** — Уверете се, че `34.195.177.252` е добавен към оторизираните IP адреси във вашия DIDLogic SIP акаунт.
   </Accordion>
 
-  <Accordion title="Inbound calls not working?">
-    - **Verify the SIP URI destination** — In DIDLogic, make sure the destination is set to SIP URI (not SIP device) and the format is correct: `<number_without_plus>@5wed79aeavr.sip.livekit.cloud`
-    - **Check the IP whitelist in Aiplocalls.* — Make sure the IP address you added in the Aiplocalls inbound settings matches the regional gateway you are using. Refer to the gateway IP table in Step 4.
+  <Accordion title="Входящите повиквания не работят?">
+    - **Проверете SIP URI дестинацията** — В DIDLogic, уверете се, че дестинацията е зададена на SIP URI (не SIP device) и форматът е правилен: `<number_without_plus>@5wed79aeavr.sip.livekit.cloud`
+    - **Проверете IP whitelist в Aiplocalls** — Уверете се, че IP адресът, който добавихте в настройките за входящи повиквания в Aiplocalls, съвпада с регионалния gateway, който използвате. Вижте таблицата с gateway IP адреси в Стъпка 4.
   </Accordion>
 </AccordionGroup>
 
 ---
 
 <Note>
-  Need help setting up? Our support team specializes in helping customers
-  integrate their phone systems. We'll guide you through the entire process,
-  ensuring a smooth setup with your specific phone system configuration.
+  Нуждаете се от помощ при настройването? Нашият екип за поддръжка се специализира в помагането на клиентите при интегрирането на техните телефонни системи. Ще ви направляваме през целия процес, осигурявайки гладко настройване с конфигурацията на вашата конкретна телефонна система.
 </Note>
+
+---

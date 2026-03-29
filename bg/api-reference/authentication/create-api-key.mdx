@@ -1,41 +1,42 @@
 ---
-title: "Create API key"
+---
+title: "Създаване на API ключ"
 api: "POST /user/api-keys"
-description: "Generate a new API key for the authenticated user"
+description: "Генериране на нов API ключ за удостоверения потребител"
 ---
 
-This endpoint generates a new API key for the authenticated user. Unlike the login endpoint which creates a session token, this creates a persistent API key that can be used for long-term API access.
+Този endpoint генерира нов API ключ за удостоверения потребител. За разлика от login endpoint-а, който създава session token, този създава постоянен API ключ, който може да се използва за дългосрочен достъп до API.
 
 <Note>
-This endpoint requires authentication. Use your existing API key or session token to create additional API keys.
+Този endpoint изисква удостоверяване. Използвайте съществуващия си API ключ или session token, за да създадете допълнителни API ключове.
 </Note>
 
-### Request Body
+### Тяло на заявката
 
 <ParamField body="name" type="string" required>
-  A name/label for the API key (e.g., "Production", "Development", "My App")
+  Име/етикет за API ключа (напр. "Production", "Development", "My App")
 </ParamField>
 
-### Response
+### Отговор
 
 <ResponseField name="message" type="string">
-  Success message
+  Съобщение за успех
 </ResponseField>
 
 <ResponseField name="api_key" type="object">
-  The created API key details
+  Подробности за създадения API ключ
   
   <Expandable title="api_key properties">
     <ResponseField name="name" type="string">
-      The name/label of the API key
+      Името/етикета на API ключа
     </ResponseField>
     
     <ResponseField name="token" type="string">
-      The API key token. **Store this securely** - it will only be shown once.
+      Token-а на API ключа. **Съхранете го сигурно** - ще бъде показан само веднъж.
     </ResponseField>
     
     <ResponseField name="created_at" type="string">
-      ISO 8601 timestamp of when the API key was created
+      ISO 8601 timestamp на момента, в който е създаден API ключа
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -64,7 +65,7 @@ This endpoint requires authentication. Use your existing API key or session toke
 
 </ResponseExample>
 
-### Example Request
+### Примерна заявка
 
 ```bash
 curl -X POST https://call.aiployees.com/api/user/api-keys \
@@ -76,10 +77,12 @@ curl -X POST https://call.aiployees.com/api/user/api-keys \
 ```
 
 <Warning>
-The API key token is only returned once. Make sure to store it securely. If you lose it, you'll need to create a new one.
+Token-ът на API ключа се връща само веднъж. Уверете се, че го съхранявате сигурно. Ако го загубите, ще трябва да създадете нов.
 </Warning>
 
-### Managing API Keys
+### Управление на API ключове
 
-- **GET /user/api-keys** - List all API keys for the authenticated user
-- **DELETE /user/api-keys/{id}** - Delete a specific API key
+- **GET /user/api-keys** - Показване на всички API ключове за удостоверения потребител
+- **DELETE /user/api-keys/{id}** - Изтриване на конкретен API ключ
+
+---

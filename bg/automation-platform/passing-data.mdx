@@ -1,16 +1,17 @@
 ---
-title: "Passing Data"
+---
+title: "Предаване на данни"
 icon: "wand-sparkles"
-description: "Using data from previous steps in the current one"
+description: "Използване на данни от предишни стъпки в текущата"
 ---
 
-## Data flow
+## Поток от данни
 
-Any flow is a vertical diagram that **starts with a trigger step** followed by **any number of action steps**.
+Всеки поток е вертикална диаграма, която **започва с тригер стъпка**, последвана от **произволен брой стъпки за действие**.
 
-Steps are connected vertically. Data flows from parent steps to the children. Children steps have access to the output data of the parent steps.
+Стъпките са свързани вертикално. Данните текат от родителските стъпки към децата. Стъпките деца имат достъп до изходните данни на родителските стъпки.
 
-## Example Steps
+## Примерни стъпки
 
 <video
   width="450"
@@ -20,17 +21,17 @@ Steps are connected vertically. Data flows from parent steps to the children. Ch
   playsinline
   src="/resources/passing-data-3steps.mp4"></video>
 
-This flow has 3 steps, they can access data as follows:
+Този поток има 3 стъпки, те могат да достъпват данни както следва:
 
-- **Step 1** is the main data producer to be used in the next steps. Data produced by Step 1 will be accessible in Steps 2 and 3. Some triggers don't produce data though, like Schedules.
+- **Стъпка 1** е основният производител на данни, който ще се използва в следващите стъпки. Данните, произведени от Стъпка 1, ще бъдат достъпни в Стъпки 2 и 3. Някои тригери обаче не произвеждат данни, като например Schedules.
 
-- **Step 2** can access data produced by Step 1. After execution, this step will also produce data to be used in the next step(s).
+- **Стъпка 2** може да достъпва данни, произведени от Стъпка 1. След изпълнение тази стъпка също ще произведе данни за използване в следващата стъпка(и).
 
-- **Step 3** can access data produced by Steps 1 and 2 as they're its parent steps. This step can produce data but since it's the last step in the flow, it can't be used by other ones.
+- **Стъпка 3** може да достъпва данни, произведени от Стъпки 1 и 2, тъй като те са нейни родителски стъпки. Тази стъпка може да произвежда данни, но тъй като е последната стъпка в потока, не може да бъде използвана от други.
 
-## Data to Insert Panel
+## Панел с данни за вмъкване
 
-In order to use data from a previous step in your current step, place your cursor in any input, the **Data to Insert** panel will pop up.
+За да използвате данни от предишна стъпка в текущата стъпка, поставете курсора в произволно входно поле и панелът **Data to Insert** ще се появи.
 
 <video
   autoPlay
@@ -39,11 +40,11 @@ In order to use data from a previous step in your current step, place your curso
   playsinline
   src="/resources/passing-data-data-to-insert-panel.mp4"></video>
 
-This panel shows the accessible steps and their data. You can expand the data items to view their content, and you can click the items to insert them in your current settings input.
+Този панел показва достъпните стъпки и техните данни. Можете да разгънете елементите с данни, за да видите съдържанието им, и можете да щракнете върху елементите, за да ги вмъкнете във вашите текущи настройки.
 
-If an item in this panel has a caret (⌄) to the right, it means you can click on the item to expand its child properties. You can select the parent item or its properties as you need.
+Ако елемент в този панел има символ (⌄) отдясно, това означава, че можете да щракнете върху елемента, за да разгънете неговите дъщерни свойства. Можете да изберете родителския елемент или неговите свойства според нуждите си.
 
-When you insert data from this panel, it gets inserted at the cursor's position in the input. This means you can combine static text and dynamic data in any field.
+Когато вмъквате данни от този панел, те се вмъкват на позицията на курсора във входното поле. Това означава, че можете да комбинирате статичен текст и динамични данни в произволно поле.
 
 <video
   autoPlay
@@ -52,13 +53,13 @@ When you insert data from this panel, it gets inserted at the cursor's position 
   playsinline
   src="/resources/passing-data-main-insert-data-example.mp4"></video>
 
-We generally recommend that you expand the items before inserting them to understand the type of data they contain and whether they're the right fit to the input you're filling.
+Общо препоръчваме да разгънете елементите преди да ги вмъкнете, за да разберете типа данни, които съдържат, и дали са подходящи за входното поле, което попълвате.
 
-## Testing Steps to Generate Data
+## Тестване на стъпки за генериране на данни
 
-We require you to test steps before accessing their data. This approach protects you from selecting the wrong data and breaking your flows after publishing them.
+Изискваме да тествате стъпките преди да достъпите техните данни. Този подход ви защитава от избиране на грешни данни и счупване на потоците ви след публикуването им.
 
-If a step is not tested and you try to access its data, you will see the following message:
+Ако стъпка не е тествана и се опитате да достъпите нейните данни, ще видите следното съобщение:
 
 <img
   width="350"
@@ -66,16 +67,16 @@ If a step is not tested and you try to access its data, you will see the followi
   alt="Test your automation step first"
 />
 
-To fix this, go to the step and use the Generate Sample Data panel to test it. Steps use different approaches for testing. These are the common ones:
+За да поправите това, отидете на стъпката и използвайте панела Generate Sample Data, за да я тествате. Стъпките използват различни подходи за тестване. Ето най-често срещаните:
 
-- **Load Data:** Some triggers will let you load data from your connected account without having to perform any action in that account.
-- **Test Trigger:** Some triggers will require you to head to your connected account and fire the trigger in order to generate sample data.
-- **Send Data:** Webhooks require you to send a sample request to the webhook URL to generate sample data.
-- **Test Action:** Action steps will let you run the action in order to generate sample data.
+- **Load Data:** Някои тригери ще ви позволят да заредите данни от вашия свързан акаунт, без да се налага да извършвате действие в този акаунт.
+- **Test Trigger:** Някои тригери ще изискват да отидете на вашия свързан акаунт и да активирате тригера, за да генерирате примерни данни.
+- **Send Data:** Webhooks изискват да изпратите примерна заявка към webhook URL, за да генерирате примерни данни.
+- **Test Action:** Стъпките за действие ще ви позволят да изпълните действието, за да генерирате примерни данни.
 
-Follow the instructions in the Generate Sample Data panel to know how your step should be tested. Some triggers will also let you Use Mock Data, which will generate static sample data from the piece. We recommend that you test the step instead of using mock data.
+Следвайте инструкциите в панела Generate Sample Data, за да знаете как трябва да се тества вашата стъпка. Някои тригери също ще ви позволят да използвате Use Mock Data, което ще генерира статични примерни данни от частта. Препоръчваме да тествате стъпката вместо да използвате mock данни.
 
-This is an example for generating sample data for a trigger using the **Load Data** button:
+Това е пример за генериране на примерни данни за тригер с помощта на бутона **Load Data**:
 
 <video
   autoPlay
@@ -84,11 +85,11 @@ This is an example for generating sample data for a trigger using the **Load Dat
   playsinline
   src="/resources/passing-data-load-data.mp4"></video>
 
-## Advanced Tips
+## Допълнителни съвети
 
-### Switching to Dynamic Values
+### Превключване към динамични стойности
 
-Dropdowns and some other input types don't let you select data from previous steps. If you'd like to bypass this and use data from previous steps instead, switch the input into a dynamic one using this button:
+Падащите менюта и някои други типове входни полета не ви позволяват да избирате данни от предишни стъпки. Ако искате да заобиколите това и да използвате данни от предишни стъпки вместо това, превключете входното поле в динамично с помощта на този бутон:
 
 <video
   autoPlay
@@ -97,12 +98,14 @@ Dropdowns and some other input types don't let you select data from previous ste
   playsinline
   src="/resources/passing-data-dynamic-value.mp4"></video>
 
-### Accessing data by path
+### Достъпване на данни чрез път
 
-If you can't find the data you're looking for in the **Data to Insert** panel but you'd like to use it, you can write a JSON path instead.
+Ако не можете да намерите данните, които търсите, в панела **Data to Insert**, но искате да ги използвате, можете да напишете JSON път вместо това.
 
-Use the following syntax to write JSON paths:
+Използвайте следния синтаксис за писане на JSON пътища:
 
 `{{step_slug.path.to.property}}`
 
-The `step_slug` can be found by moving your cursor over any of your flow steps, it will show to the right of the step.
+`step_slug` може да бъде намерен чрез преместване на курсора над която и да е от стъпките във вашия поток - той ще се покаже отдясно на стъпката.
+
+---

@@ -1,131 +1,133 @@
 ---
-title: "Aiplocalls Tool"
+title: "Aiplocalls Инструмент"
 icon: "phone"
-description: "Learn how to use Aiplocalls triggers and actions in your AI calling flows"
+description: "Научете как да използвате Aiplocalls тригерите и действията във вашите AI обаждания"
 ---
 
-# Aiplocalls Tool
+# Aiplocalls Инструмент
 
-The Aiplocalls tool is the core component that connects your AI calling system with automation flows. It enables real-time data exchange between your AI assistants and business systems, allowing for personalized conversations and automated follow-ups.
+Aiplocalls инструментът е основният компонент, който свързва вашата AI система за обаждания с автоматизационни потоци. Той позволява обмен на данни в реално време между вашите AI асистенти и бизнес системите, като дава възможност за персонализирани разговори и автоматизирани проследявания.
 
 <Note>
-  You can find the Aiplocalls tool prominently displayed at the top of the
-  searching sidebar when looking for either triggers or actions.
+  Можете да намерите Aiplocalls инструмента на видно място в горната част на
+  страничната лента за търсене при търсене на тригери или действия.
 </Note>
 
-## Triggers
+## Тригери
 
-### Call Ended
+### Приключено Обаждане
 
 ![Aiplocalls Call Ended Trigger](/resources/aiplocalls-trigger.jpg)
 
-The Call Ended trigger activates immediately after an AI call completes, providing comprehensive data about the interaction:
+Тригерът Приключено Обаждане се активира веднага след като AI обаждането приключи, предоставяйки цялостни данни за взаимодействието:
 
-- Complete conversation transcript with timestamps
-- AI assistant responses and decisions
-- Call duration and technical metadata
-- Customer information and phone number
-- Call outcome and sentiment analysis
-- Variables set during the conversation
+- Пълен запис на разговора с времеви отметки
+- AI асистент отговори и решения
+- Продължителност на обаждането и технически метаданни
+- Информация за клиента и телефонен номер
+- Резултат от обаждането и анализ на настроението
+- Променливи зададени по време на разговора
 
-#### Configuration
+#### Конфигурация
 
-1. Select "Call Ended" as your trigger
-2. Choose specific AI assistant to monitor
-3. Configure variable mapping
+1. Изберете "Приключено Обаждане" като ваш тригер
+2. Изберете специфичен AI асистент за мониториране
+3. Конфигурирайте съпоставката на променливи
 
-### Inbound Call Variable Injection
+### Инжектиране на Променливи при Входящо Обаждане
 
-This powerful trigger activates before your AI assistant picks up an inbound call, allowing you to:
+Този мощен тригер се активира преди вашият AI асистент да вдигне входящо обаждане, позволявайки ви да:
 
-- Fetch and inject real-time customer data
-- Customize AI behavior based on context
-- Set conversation parameters
-- Define AI personality traits
-- Provide business logic variables
+- Извличате и инжектирате данни за клиента в реално време
+- Персонализирате AI поведението на база контекст
+- Задавате параметри на разговора
+- Дефинирате AI черти на личността
+- Предоставяте променливи за бизнес логика
 
-#### Configuration
+#### Конфигурация
 
-1. Select "Inbound Call" as your trigger
-2. Define required variables for AI context
+1. Изберете "Входящо Обаждане" като ваш тригер
+2. Дефинирайте необходимите променливи за AI контекст
 
-## Actions
+## Действия
 
-### Add Lead to Campaign
+### Добави Потенциален Клиент към Кампания
 
 ![Aiplocalls Action](/resources/aiplocalls-action.jpg)
 
-This action helps manage your AI calling campaigns by:
+Това действие помага за управлението на вашите AI кампании за обаждания чрез:
 
-- Creating new leads from extenal tools like Sheets, Hubspot, Facebook leads
-- Assigning leads to specific AI campaigns
-- Adding context for future calls
+- Създаване на нови потенциални клиенти от външни инструменти като Sheets, Hubspot, Facebook потенциални клиенти
+- Присвояване на потенциални клиенти към специфични AI кампании
+- Добавяне на контекст за бъдещи обаждания
 
-#### Configuration
+#### Конфигурация
 
-1. Select target AI campaign
-2. Map contact details from trigger data
-3. Add custom attributes for AI context
+1. Изберете целева AI кампания
+2. Съпоставете данните за контакт от тригер данните
+3. Добавете персонализирани атрибути за AI контекст
 
-### Return Variables
+### Върни Променливи
 
-This action is crucial for inbound calls, returning context that gets injected into the AI's prompt:
+Това действие е ключово за входящи обаждания, връщайки контекст който се инжектира в AI подканата:
 
-- Customer profile and preferences
-- Conversation history summary
-- Business rules and constraints
-- Custom AI behavior flags
-- Dynamic response templates
+- Профил и предпочитания на клиента
+- Резюме на историята на разговорите
+- Бизнес правила и ограничения
+- Персонализирани флагове за AI поведение
+- Динамични шаблони за отговори
 
-#### Configuration
+#### Конфигурация
 
-1. Structure response JSON
-2. Map customer data to variables
-3. Set AI conversation parameters
-4. Configure timeout handling
+1. Структурирайте отговор JSON
+2. Съпоставете данните за клиента към променливи
+3. Задайте параметри за AI разговор
+4. Конфигурирайте обработка на timeout
 
-## Example Usage
+## Примерна Употреба
 
-### Post-Call Lead Management
-
-```javascript
-Trigger: AI Call Ended
-↓
-Extract conversation insights
-↓
-Update Hubspot record
-↓
-Add to follow-up campaign if qualified
-```
-
-### Intelligent Inbound Routing
+### Управление на Потенциални Клиенти След Обаждане
 
 ```javascript
-Trigger: Inbound Call to AI
+Тригер: AI Обаждане Приключено
 ↓
-Fetch customer profile from CRM
+Извличане на прозрения от разговора
 ↓
-Get interaction history
+Актуализиране на Hubspot записа
 ↓
-Return enriched context for AI prompt
+Добавяне към кампания за проследяване ако е квалифициран
 ```
 
-## Best Practices
+### Интелигентна Маршрутизация на Входящи Обаждания
 
-1. **Variable Injection Performance**
+```javascript
+Тригер: Входящо Обаждане към AI
+↓
+Извличане на профил на клиента от CRM
+↓
+Получаване на история на взаимодействията
+↓
+Връщане на обогатен контекст за AI подканата
+```
 
-   - Keep processing under 2 seconds
-   - Set sensible defaults
+## Най-добри Практики
 
-2. **Data Structure**
+1. **Производителност на Инжектиране на Променливи**
 
-   - Follow AI prompt requirements
-   - Validate all variables
-   - Structure nested objects clearly
-   - Document custom fields
+   - Дръжте обработката под 2 секунди
+   - Задайте разумни стойности по подразбиране
 
-3. **Error Handling**
-   - Provide fallback values
-   - Log injection failures
-   - Monitor response times
-   - Handle missing data gracefully
+2. **Структура на Данните**
+
+   - Следвайте изискванията за AI подкана
+   - Валидирайте всички променливи
+   - Структурирайте вложените обекти ясно
+   - Документирайте персонализираните полета
+
+3. **Обработка на Грешки**
+   - Осигурете резервни стойности
+   - Логвайте неуспешните инжектирания
+   - Мониторирайте времената за отговор
+   - Обработвайте липсващи данни грациозно
+
+---

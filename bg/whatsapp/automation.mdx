@@ -1,145 +1,146 @@
 ---
-title: "WhatsApp Automation"
+---
+title: "WhatsApp Автоматизация"
 icon: "bolt"
-description: "Automate WhatsApp messaging with triggers and actions in the automation platform"
+description: "Автоматизирайте WhatsApp съобщения с тригери и действия в платформата за автоматизация"
 ---
 
-The automation platform integrates with WhatsApp to let you send messages automatically, trigger flows from WhatsApp events, and generate AI responses programmatically.
+Платформата за автоматизация се интегрира с WhatsApp, за да ви позволи да изпращате съобщения автоматично, да задействате потоци от WhatsApp събития и да генерирате AI отговори програмно.
 
-## Available Actions
+## Налични Действия
 
-### Send WhatsApp Template Message
+### Изпращане на WhatsApp Template Съобщение
 
-Send a pre-approved template message to a customer.
+Изпратете предварително одобрено template съобщение до клиент.
 
-**Use Cases:**
-- Send order confirmations after a purchase
-- Trigger appointment reminders on schedule
-- Deliver follow-up messages after calls
-- Re-engage customers who haven't responded
+**Случаи на употреба:**
+- Изпращане на потвърждения за поръчки след покупка
+- Задействане на напомняния за срещи по график
+- Доставяне на последващи съобщения след повиквания
+- Повторно ангажиране на клиенти, които не са отговорили
 
-**Configuration:**
+**Конфигурация:**
 
-| Field | Description |
+| Поле | Описание |
 |-------|-------------|
-| **Sender** | Select your WhatsApp sender (must be online) |
-| **Template** | Choose from approved templates |
-| **Recipient Phone** | Customer phone number (E.164 format: +1234567890) |
-| **Recipient Name** | Optional customer name for personalization |
-| **Variables** | Dynamic values for template placeholders |
+| **Изпращач** | Изберете вашия WhatsApp изпращач (трябва да е онлайн) |
+| **Template** | Изберете от одобрени template-и |
+| **Телефон на Получател** | Телефонен номер на клиента (E.164 формат: +1234567890) |
+| **Име на Получател** | Незадължително име на клиента за персонализация |
+| **Variables** | Динамични стойности за template placeholder-и |
 
 <Tip>
-**E.164 Format** — Phone numbers must be in international format with country code. Examples:
+**E.164 Формат** — Телефонните номера трябва да бъдат в международен формат с кода на страната. Примери:
 - ✅ `+14155551234`
 - ✅ `+442071234567`
 - ❌ `(415) 555-1234`
 - ❌ `07123456789`
 </Tip>
 
-### Send WhatsApp Message (Free-form)
+### Изпращане на WhatsApp Съобщение (Свободна форма)
 
-Send a free-form text message to a customer within the 24-hour messaging window.
+Изпратете текстово съобщение в свободна форма до клиент в рамките на 24-часовия прозорец за съобщения.
 
 <Warning>
-**24-Hour Window Required** — Free-form messages can only be sent to customers who have messaged you within the last 24 hours. For customers outside this window, use a template message.
+**Изисква се 24-часов прозорец** — Съобщения в свободна форма могат да се изпращат само до клиенти, които са ви писали през последните 24 часа. За клиенти извън този прозорец, използвайте template съобщение.
 </Warning>
 
-**Use Cases:**
-- Send immediate follow-up to recent conversations
-- Deliver time-sensitive information
-- Respond to customer inquiries automatically
+**Случаи на употреба:**
+- Изпращане на незабавен отговор на скорошни разговори
+- Доставяне на спешна информация
+- Автоматичен отговор на клиентски запитвания
 
-**Configuration:**
+**Конфигурация:**
 
-| Field | Description |
+| Поле | Описание |
 |-------|-------------|
-| **Sender** | Select your WhatsApp sender |
-| **Recipient Phone** | Customer phone number (E.164 format) |
-| **Message** | Message content (max 4096 characters) |
+| **Изпращач** | Изберете вашия WhatsApp изпращач |
+| **Телефон на Получател** | Телефонен номер на клиента (E.164 формат) |
+| **Съобщение** | Съдържание на съобщението (максимум 4096 символа) |
 
-### Generate AI Reply
+### Генериране на AI Отговор
 
-Generate an AI response using your assistant, identified by an external customer identifier.
+Генерирайте AI отговор, използвайки вашия асистент, идентифициран чрез външен клиентски идентификатор.
 
-**Use Cases:**
-- Build custom chat interfaces
-- Integrate WhatsApp with external CRM systems
-- Create multi-channel AI responses
-- Process messages from external platforms
+**Случаи на употреба:**
+- Изграждане на персонализирани чат интерфейси
+- Интегриране на WhatsApp с външни CRM системи
+- Създаване на многоканални AI отговори
+- Обработка на съобщения от външни платформи
 
-**Configuration:**
+**Конфигурация:**
 
-| Field | Description |
+| Поле | Описание |
 |-------|-------------|
-| **Assistant** | Select the AI assistant to use |
-| **Customer Identifier** | Unique customer ID (e.g., phone number, email, CRM ID) |
-| **Message** | The message to respond to |
-| **Variables** | Optional context variables for the assistant |
+| **Асистент** | Изберете AI асистента за използване |
+| **Клиентски Идентификатор** | Уникален клиентски ID (напр. телефонен номер, email, CRM ID) |
+| **Съобщение** | Съобщението, на което да се отговори |
+| **Variables** | Незадължителни контекстови променливи за асистента |
 
-**How It Works:**
-1. The action finds or creates a conversation for the customer identifier
-2. Sends the message to your AI assistant
-3. Returns the AI-generated response
-4. You can then send this response via WhatsApp or other channels
+**Как работи:**
+1. Действието намира или създава разговор за клиентския идентификатор
+2. Изпраща съобщението до вашия AI асистент
+3. Връща AI-генерирания отговор
+4. След това можете да изпратите този отговор чрез WhatsApp или други канали
 
-## Triggers
+## Тригери
 
-### WhatsApp Message Received
+### WhatsApp Съобщение Получено
 
-Trigger a flow when a customer sends a WhatsApp message.
+Задействайте поток, когато клиент изпрати WhatsApp съобщение.
 
-**Available Data:**
-- Customer phone number
-- Message content
-- Sender ID
-- Timestamp
-- Conversation ID
+**Налични данни:**
+- Телефонен номер на клиента
+- Съдържание на съобщението
+- ID на изпращача
+- Времева отметка
+- ID на разговора
 
-**Example Use Cases:**
-- Log messages to a CRM or database
-- Send notifications to your team
-- Trigger follow-up sequences
-- Collect and process customer data
+**Примерни случаи на употреба:**
+- Записване на съобщения в CRM или база данни
+- Изпращане на известия до вашия екип
+- Задействане на последващи поредици
+- Събиране и обработка на клиентски данни
 
-### WhatsApp Conversation Started
+### WhatsApp Разговор Започнат
 
-Trigger a flow when a new WhatsApp conversation begins.
+Задействайте поток, когато започне нов WhatsApp разговор.
 
-**Available Data:**
-- Customer phone number
-- First message content
-- Sender information
-- Conversation ID
+**Налични данни:**
+- Телефонен номер на клиента
+- Съдържание на първото съобщение
+- Информация за изпращача
+- ID на разговора
 
-### Conversation Ended
+### Разговор Приключен
 
-Trigger a flow when a WhatsApp conversation ends (due to inactivity timeout or manual closure).
+Задействайте поток, когато WhatsApp разговор приключи (поради изтичане на време за неактивност или ръчно затваряне).
 
-**Available Data:**
-- Full conversation transcript (array of messages and formatted string)
-- Extracted variables (from AI post-call evaluation)
-- Input variables passed to the assistant
-- Customer phone number and name
-- WhatsApp sender information (phone number, display name)
-- Conversation ID and type
-- Message count
-- Timestamps (created_at, ended_at)
+**Налични данни:**
+- Пълен запис на разговора (масив от съобщения и форматиран низ)
+- Извлечени променливи (от AI post-call оценка)
+- Входни променливи, подадени на асистента
+- Телефонен номер и име на клиента
+- WhatsApp информация за изпращача (телефонен номер, показвано име)
+- ID и тип на разговора
+- Брой съобщения
+- Времеви отметки (created_at, ended_at)
 
-**Example Use Cases:**
-- Sync conversation summaries and extracted data to your CRM
-- Trigger follow-up sequences based on conversation outcomes
-- Log conversation analytics to external systems
-- Send satisfaction surveys after conversations end
+**Примерни случаи на употреба:**
+- Синхронизиране на резюмета на разговори и извлечени данни към вашия CRM
+- Задействане на последващи поредици въз основа на резултатите от разговора
+- Записване на аналитика на разговори във външни системи
+- Изпращане на анкети за удовлетвореност след приключване на разговори
 
 <Tip>
-The Conversation Ended trigger provides the same payload as the [Conversation Ended Webhook](/api-reference/webhooks/conversation-ended-webhook). Use the webhook for direct integrations, or this trigger for no-code automation flows.
+Тригерът Разговор Приключен предоставя същия payload като [Conversation Ended Webhook](/api-reference/webhooks/conversation-ended-webhook). Използвайте webhook-а за директни интеграции или този тригер за no-code automation потоци.
 </Tip>
 
-## Example Workflows
+## Примерни Работни Потоци
 
-### Post-Call WhatsApp Follow-up
+### Post-Call WhatsApp Последващо Съобщение
 
-Send a WhatsApp template message after a call completes:
+Изпратете WhatsApp template съобщение след приключване на повикване:
 
 ```mermaid
 flowchart LR
@@ -150,16 +151,16 @@ flowchart LR
     C -->|Not Interested| F[End]
 ```
 
-**Setup:**
-1. Add **Call Completed** trigger
-2. Add **Delay** action (optional)
-3. Add **Branch** based on call outcome
-4. Add **Send WhatsApp Template** action for each branch
-5. Configure template and variables
+**Настройка:**
+1. Добавете **Call Completed** тригер
+2. Добавете **Delay** действие (незадължително)
+3. Добавете **Branch** въз основа на резултата от повикването
+4. Добавете **Send WhatsApp Template** действие за всеки клон
+5. Конфигурирайте template и променливи
 
-### Lead Qualification via WhatsApp
+### Квалифициране на Lead-ове чрез WhatsApp
 
-Qualify leads through WhatsApp conversations:
+Квалифицирайте потенциални клиенти чрез WhatsApp разговори:
 
 ```mermaid
 flowchart LR
@@ -169,9 +170,9 @@ flowchart LR
     D --> E[Update CRM]
 ```
 
-### Appointment Reminder Flow
+### Поток за Напомняне на Срещи
 
-Send automated appointment reminders:
+Изпращайте автоматични напомняния за срещи:
 
 ```mermaid
 flowchart LR
@@ -181,73 +182,75 @@ flowchart LR
     D --> E[Log to Sheet]
 ```
 
-## Variable Mapping
+## Мапиране на Променливи
 
-When sending template messages, map your flow data to template variables:
+При изпращане на template съобщения, мапирайте данните от вашия поток към template променливи:
 
 **Template:**
 ```
-Hi {{1}}, your appointment with {{2}} is confirmed for {{3}}.
+Здравейте {{1}}, вашата среща с {{2}} е потвърдена за {{3}}.
 
-Location: {{4}}
+Място: {{4}}
 ```
 
-**Variable Mapping:**
-| Template Variable | Flow Data |
+**Мапиране на променливи:**
+| Template Променлива | Данни от потока |
 |------------------|-----------|
 | `{{1}}` | `{{trigger.customer_name}}` |
 | `{{2}}` | `{{trigger.agent_name}}` |
 | `{{3}}` | `{{trigger.appointment_date}}` |
 | `{{4}}` | `{{trigger.location}}` |
 
-## Error Handling
+## Обработка на Грешки
 
-### Common Errors
+### Често срещани грешки
 
-| Error | Cause | Solution |
+| Грешка | Причина | Решение |
 |-------|-------|----------|
-| **Template not found** | Template ID invalid or not approved | Verify template is approved and ID is correct |
-| **Sender offline** | WhatsApp sender is not online | Check sender status, ensure it's connected |
-| **Invalid phone number** | Phone number not in E.164 format | Format as +[country code][number] |
-| **Outside 24-hour window** | Trying to send free-form outside window | Use a template message instead |
-| **Rate limited** | Too many messages sent | Implement delays between messages |
+| **Template не е намерен** | Template ID е невалиден или неодобрен | Проверете дали template-ът е одобрен и ID-то е правилно |
+| **Изпращачът е офлайн** | WhatsApp изпращачът не е онлайн | Проверете статуса на изпращача, уверете се че е свързан |
+| **Невалиден телефонен номер** | Телефонният номер не е в E.164 формат | Форматирайте като +[код на страната][номер] |
+| **Извън 24-часовия прозорец** | Опит за изпращане в свободна форма извън прозореца | Използвайте template съобщение вместо това |
+| **Rate limited** | Изпратени са твърде много съобщения | Имплементирайте забавяния между съобщенията |
 
-### Retry Strategy
+### Стратегия за повторни опити
 
-For failed messages, implement a retry strategy:
+За неуспешни съобщения, имплементирайте стратегия за повторни опити:
 
-1. Wait 1 minute
-2. Retry the action
-3. If still failing, log the error and notify your team
+1. Изчакайте 1 минута
+2. Повторете действието
+3. Ако все още се проваля, записвайте грешката и уведомете вашия екип
 
-## Best Practices
+## Най-добри практики
 
-### 1. Always Use Templates for Outbound
+### 1. Винаги използвайте Template-и за изходящи съобщения
 
-When initiating contact with customers, always use approved templates. Free-form messages only work within the 24-hour window.
+Когато инициирате контакт с клиенти, винаги използвайте одобрени template-и. Съобщенията в свободна форма работят само в рамките на 24-часовия прозорец.
 
-### 2. Include Opt-Out Options
+### 2. Включвайте опции за отказ
 
-For marketing messages, include opt-out instructions to comply with regulations and maintain quality rating.
+За маркетингови съобщения, включвайте инструкции за отказ, за да съответствате на регулациите и да поддържате качествен рейтинг.
 
-### 3. Respect Rate Limits
+### 3. Спазвайте ограниченията за честота
 
-Don't send too many messages too quickly. Implement reasonable delays between batch sends.
+Не изпращайте твърде много съобщения твърде бързо. Имплементирайте разумни забавяния между групови изпращания.
 
-### 4. Handle Errors Gracefully
+### 4. Обработвайте грешките елегантно
 
-Always add error handling to your flows. Log failures and notify your team of issues.
+Винаги добавяйте обработка на грешки към вашите потоци. Записвайте неуспехите и уведомявайте вашия екип за проблемите.
 
-### 5. Test with Single Recipients First
+### 5. Тествайте първо с единични получатели
 
-Before running bulk campaigns, test your flow with a single recipient to verify everything works correctly.
+Преди да стартирате масови кампании, тествайте вашия поток с единичен получател, за да проверите че всичко работи правилно.
 
-### 6. Monitor Quality Rating
+### 6. Наблюдавайте рейтинга за качество
 
-Keep an eye on your sender's quality rating. Pause campaigns if you notice declining quality.
+Следете рейтинга за качество на вашия изпращач. Паузирайте кампаниите, ако забележите намаляващо качество.
 
-## Next Steps
+## Следващи стъпки
 
-- Learn about [message templates](/whatsapp/templates) and how to create them
-- Set up [WhatsApp senders](/whatsapp/senders) for your phone numbers
-- Explore the [automation platform](/automation-platform/introduction) for more workflow options
+- Научете за [message template-и](/whatsapp/templates) и как да ги създавате
+- Настройте [WhatsApp изпращачи](/whatsapp/senders) за вашите телефонни номера
+- Разгледайте [платформата за автоматизация](/automation-platform/introduction) за повече опции за работни потоци
+
+---

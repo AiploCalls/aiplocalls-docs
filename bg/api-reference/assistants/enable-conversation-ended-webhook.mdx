@@ -1,48 +1,48 @@
 ---
-title: "Enable conversation ended webhook"
+title: "Активиране на webhook за приключена беседа"
 api: "POST /user/assistants/enable-conversation-ended-webhook"
-description: "Enable webhook notifications when a chat conversation ends"
+description: "Активиране на webhook уведомления когато чат беседа приключи"
 ---
 
-This endpoint enables conversation ended webhook notifications for an assistant, allowing you to receive real-time updates when a chat conversation (WhatsApp or Web Widget) ends. The webhook includes the full transcript, extracted variables, and customer information.
+Този endpoint активира webhook уведомления за приключена беседа за асистент, позволявайки ви да получавате актуализации в реално време когато чат беседа (WhatsApp или Web Widget) приключи. Webhook-ът включва пълната транскрипция, извлечените променливи и информация за клиента.
 
-### Request Body
+### Тяло на заявката
 
 <ParamField body="assistant_id" type="integer" required>
-  The ID of the assistant to enable the conversation ended webhook for
+  ID-то на асистента за който да се активира webhook-ът за приключена беседа
 </ParamField>
 
 <ParamField body="webhook_url" type="string" required>
-  The URL where webhook notifications will be sent when a conversation ends
+  URL-то където ще се изпращат webhook уведомленията когато беседа приключи
 </ParamField>
 
-### Response
+### Отговор
 
 <ResponseField name="message" type="string">
-  Success message confirming webhook was enabled
+  Съобщение за успех потвърждаващо че webhook-ът е активиран
 </ResponseField>
 
 <ResponseField name="data" type="array">
-  Empty array (reserved for future use)
+  Празен масив (запазен за бъдеща употреба)
 </ResponseField>
 
-### Error Responses
+### Грешни отговори
 
 <ResponseField name="404 Not Found">
-  <Expandable title="Error Response">
+  <Expandable title="Отговор за грешка">
     <ResponseField name="message" type="string">
-      Error message when the assistant is not found or doesn't belong to the authenticated user
+      Съобщение за грешка когато асистентът не е намерен или не принадлежи на автентикирания потребител
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="422 Validation Error">
-  <Expandable title="Error Response">
+  <Expandable title="Отговор за грешка">
     <ResponseField name="message" type="string">
-      Error message indicating validation failure
+      Съобщение за грешка указващо неуспешна валидация
     </ResponseField>
     <ResponseField name="errors" type="object">
-      Detailed validation errors for each field
+      Детайлни грешки от валидацията за всяко поле
     </ResponseField>
   </Expandable>
 </ResponseField>

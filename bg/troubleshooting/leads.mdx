@@ -1,198 +1,198 @@
 ---
-title: "Leads Issues"
+title: "Проблеми с потенциални клиенти"
 icon: "user-gear"
-description: "Solve common lead management issues and import problems"
+description: "Решете често срещани проблеми с управлението на потенциални клиенти и проблеми с импорта"
 ---
 
-Quick solutions for common lead management problems and import issues.
+Бързи решения за често срещани проблеми с управлението на потенциални клиенти и проблеми с импорта.
 
-## Lead Import Issues
+## Проблеми с импорта на потенциални клиенти
 
-### Import Fails Completely
-**Error:** "Import failed" or "File format not supported"
+### Импортът се проваля напълно
+**Грешка:** "Import failed" или "File format not supported"
 
-**Solutions:**
-1. **Check file format:** Use CSV or Excel files only
-2. **Verify campaign selection:** Ensure a campaign is selected for import
-3. **File size limits:** Keep files under 10MB for optimal performance
-4. **Encoding issues:** Save CSV with UTF-8 encoding
+**Решения:**
+1. **Проверете формата на файла:** Използвайте само CSV или Excel файлове
+2. **Проверете избора на кампания:** Уверете се, че е избрана кампания за импорт
+3. **Ограничения за размер на файла:** Дръжте файловете под 10MB за оптимална производителност
+4. **Проблеми с кодирането:** Запазете CSV с UTF-8 кодиране
 
-### No Leads Imported
-**Issue:** Import completes but no leads appear
+### Не са импортирани потенциални клиенти
+**Проблем:** Импортът се завършва, но не се появяват потенциални клиенти
 
-**Solutions:**
-1. **Column mapping:** Verify you mapped the phone number column during import
-2. **Data validation:** Check that phone numbers are in correct format
-3. **Empty rows:** Remove empty rows from file
-4. **Required fields:** Ensure phone number column contains valid data
-5. **File headers:** Ensure your CSV/Excel has a header row (any names work)
+**Решения:**
+1. **Mapиране на колони:** Проверете дали сте съпоставили колоната с телефонния номер по време на импорта
+2. **Валидация на данни:** Проверете дали телефонните номера са в правилен формат
+3. **Празни редове:** Премахнете празните редове от файла
+4. **Задължителни полета:** Уверете се, че колоната с телефонния номер съдържа валидни данни
+5. **Заглавия на файла:** Уверете се, че вашият CSV/Excel има ред със заглавия (всякакви имена работят)
 
-### Partial Import Success
-**Issue:** Some leads imported, others failed
+### Частичен успех при импорта
+**Проблем:** Някои потенциални клиенти са импортирани, други са се провалили
 
-**Solutions:**
-1. **Download error report:** Check failed rows for specific issues
-2. **Phone number format:** Ensure international format (+1234567890)
-3. **Duplicate detection:** Remove duplicate phone numbers
-4. **Invalid data:** Fix malformed phone numbers or missing required data
+**Решения:**
+1. **Изтеглете доклада за грешки:** Проверете неуспешните редове за конкретни проблеми
+2. **Формат на телефонния номер:** Уверете се за международен формат (+1234567890)
+3. **Откриване на дубликати:** Премахнете дублиращите се телефонни номера
+4. **Невалидни данни:** Поправете деформирани телефонни номера или липсващи задължителни данни
 
-### Processing Delays
-**Issue:** Import shows as processing for extended time
+### Закъснения при обработката
+**Проблем:** Импортът се показва като обработващ се за продължително време
 
-**Explanation:**
-- Large files are processed in background
-- Processing time increases with file size
-- System queues multiple imports
+**Обяснение:**
+- Големите файлове се обработват на заден план
+- Времето за обработка се увеличава с размера на файла
+- Системата поставя в опашка множество импорти
 
-**Solutions:**
-1. **Wait for completion:** Check notifications for updates
-2. **Break up large files:** Split into smaller batches (500-1000 leads)
-3. **Contact support:** If processing exceeds 30 minutes
+**Решения:**
+1. **Изчакайте завършването:** Проверете известията за актуализации
+2. **Разделете големите файлове:** Разделете в по-малки партиди (500-1000 потенциални клиенти)
+3. **Свържете се с поддръжката:** Ако обработката надвиши 30 минути
 
-## Lead Management Issues
+## Проблеми с управлението на потенциални клиенти
 
-### Lead Not Appearing in Campaign
-**Issue:** Imported lead doesn't show in campaign
+### Потенциален клиент не се появява в кампанията
+**Проблем:** Импортираният потенциален клиент не се показва в кампанията
 
-**Check:**
-- Lead status (should be "Created" or "Scheduled")
-- Campaign filters or search settings
-- Lead marked as completed accidentally
+**Проверете:**
+- Статуса на потенциалния клиент (трябва да е "Created" или "Scheduled")
+- Филтрите на кампанията или настройките за търсене
+- Потенциален клиент случайно маркиран като завършен
 
-**Solutions:**
-1. **Reset lead status:** Change status to "Created" to re-queue
-2. **Verify campaign assignment:** Check lead is assigned to correct campaign
-3. **Refresh interface:** Reload campaign page
+**Решения:**
+1. **Нулиране на статуса на потенциалния клиент:** Променете статуса на "Created" за повторно поставяне в опашката
+2. **Проверете присвояването на кампанията:** Проверете дали потенциалният клиент е присвоен на правилната кампания
+3. **Опресняване на интерфейса:** Презаредете страницата на кампанията
 
-### Invalid Phone Numbers
-**Issue:** Phone numbers rejected during import
+### Невалидни телефонни номера
+**Проблем:** Телефонните номера са отхвърлени по време на импорта
 
-**Common formats:**
-- **Correct:** +1234567890 (international format)
-- **Incorrect:** (123) 456-7890, 123-456-7890, 1234567890
+**Често срещани формати:**
+- **Правилен:** +1234567890 (международен формат)
+- **Неправилен:** (123) 456-7890, 123-456-7890, 1234567890
 
-**Solutions:**
-1. **Standardize format:** Convert all numbers to +1234567890 format
-2. **Remove formatting:** Strip spaces, parentheses, dashes
-3. **Country codes:** Add appropriate country code prefix
-4. **Validation tools:** Use phone validation before import
+**Решения:**
+1. **Стандартизиране на формата:** Преобразувайте всички номера във формат +1234567890
+2. **Премахване на форматирането:** Премахнете интервали, скоби, тирета
+3. **Кодове на страни:** Добавете подходящ префикс с код на страната
+4. **Инструменти за валидация:** Използвайте валидация на телефони преди импорта
 
-### Duplicate Leads
-**Issue:** Same person appears multiple times
+### Дублирани потенциални клиенти
+**Проблем:** Един и същ човек се появява няколко пъти
 
-**Prevention:**
-1. **Data cleanup:** Remove duplicates before import
-2. **Phone validation:** Check for format variations of same number
-3. **Name matching:** Identify potential duplicates by name + phone
-4. **Lead deduplication:** Use tools to identify similar entries
+**Предотвратяване:**
+1. **Почистване на данни:** Премахнете дубликатите преди импорта
+2. **Валидация на телефони:** Проверете за форматни вариации на същия номер
+3. **Съвпадение на имена:** Идентифицирайте потенциални дубликати по име + телефон
+4. **Дедублиране на потенциални клиенти:** Използвайте инструменти за идентифициране на подобни записи
 
-### Secondary Contacts Not Working
-**Issue:** Secondary contacts not being called
+### Вторичните контакти не работят
+**Проблем:** Вторичните контакти не се обаждат
 
-**Requirements:**
-- Secondary contact must have valid phone number
-- Primary contact must reach max retries first
-- Campaign must be configured for secondary contacts
+**Изисквания:**
+- Вторичният контакт трябва да има валиден телефонен номер
+- Първичният контакт трябва първо да достигне максималните повторни опити
+- Кампанията трябва да е конфигурирана за вторични контакти
 
-**Solutions:**
-1. **Verify setup:** Check secondary contact configuration
-2. **Lead status:** Ensure primary contact has been attempted
-3. **Campaign settings:** Confirm secondary contact calling is enabled
+**Решения:**
+1. **Проверете настройката:** Проверете конфигурацията на вторичния контакт
+2. **Статус на потенциалния клиент:** Уверете се, че е направен опит за първичен контакт
+3. **Настройки на кампанията:** Потвърдете, че обаждането до вторичен контакт е активирано
 
-## Variable and Data Issues
+## Проблеми с променливите и данните
 
-### Variable Mapping Errors
-**Issue:** Custom variables not importing correctly
+### Грешки при съпоставянето на променливи
+**Проблем:** Персонализираните променливи не се импортират правилно
 
-**Solutions:**
-1. **Column mapping:** Ensure you correctly mapped each variable to its column during import
-2. **Auto-detection:** System auto-detects mappings based on common column names
-3. **Data types:** Ensure data matches expected variable types
-4. **Required variables:** Map all variables defined in [assistant configuration](/ai-assistants/settings/prompt-and-tools#call-variables)
-5. **Default values:** Unmapped variables will use assistant's default values
+**Решения:**
+1. **Съпоставяне на колони:** Уверете се, че сте съпоставили правилно всяка променлива с нейната колона по време на импорта
+2. **Автоматично откриване:** Системата автоматично открива съпоставянията въз основа на общи имена на колони
+3. **Типове данни:** Уверете се, че данните съвпадат с очакваните типове променливи
+4. **Задължителни променливи:** Съпоставете всички променливи дефинирани в [конфигурацията на асистента](/ai-assistants/settings/prompt-and-tools#call-variables)
+5. **Стойности по подразбиране:** Несъпоставените променливи ще използват стойностите по подразбиране на асистента
 
-### Missing Lead Information
-**Issue:** Leads missing names, emails, or custom data
+### Липсваща информация за потенциални клиенти
+**Проблем:** На потенциалните клиенти липсват имена, имейли или персонализирани данни
 
-**Solutions:**
-1. **Column mapping:** Verify all columns are mapped correctly
-2. **Optional fields:** Confirm optional fields are included in import
-3. **Data validation:** Check source data for completeness
-4. **Re-import:** Add missing data and re-import if needed
+**Решения:**
+1. **Съпоставяне на колони:** Проверете дали всички колони са съпоставени правилно
+2. **Опционални полета:** Потвърдете, че опционалните полета са включени в импорта
+3. **Валидация на данни:** Проверете пълнотата на изходните данни
+4. **Повторен импорт:** Добавете липсващите данни и импортирайте отново при нужда
 
-## Campaign Integration Issues
+## Проблеми с интеграцията на кампанията
 
-### Lead Status Problems
-**Issue:** Leads stuck in wrong status
+### Проблеми със статуса на потенциалните клиенти
+**Проблем:** Потенциалните клиенти са блокирани в грешен статус
 
-**Status meanings:**
-- **Created:** Ready to be called
-- **Scheduled:** Queued for next attempt
-- **Processing:** Currently being called
-- **Completed:** Finished or goal achieved
-- **Max Retries:** Reached retry limit
+**Значение на статусите:**
+- **Created:** Готов за обаждане
+- **Scheduled:** Поставен в опашка за следващ опит
+- **Processing:** В момента се обажда
+- **Completed:** Завършен или постигната цел
+- **Max Retries:** Достигнат лимит за повторни опити
 
-**Solutions:**
-1. **Manual status change:** Update status in leads table
-2. **Campaign restart:** Pause and restart campaign if needed
-3. **Retry settings:** Adjust max retries or intervals
+**Решения:**
+1. **Ръчна промяна на статус:** Актуализирайте статуса в таблицата с потенциални клиенти
+2. **Рестарт на кампанията:** Спрете и рестартирайте кампанията при нужда
+3. **Настройки за повторни опити:** Регулирайте максималните повторни опити или интервали
 
-### Variable Inheritance Issues
-**Issue:** Lead variables not working in calls
+### Проблеми с наследяването на променливи
+**Проблем:** Променливите на потенциалните клиенти не работят в обажданията
 
-**Solutions:**
-1. **Assistant setup:** Verify variables defined in [assistant settings](/ai-assistants/settings/prompt-and-tools#call-variables)
-2. **Variable names:** Ensure exact match between lead data and assistant variables
-3. **Data format:** Check variable data is in expected format
-4. **Test calls:** Use manual test calls to verify variable passing
+**Решения:**
+1. **Настройка на асистента:** Проверете дефинираните променливи в [настройките на асистента](/ai-assistants/settings/prompt-and-tools#call-variables)
+2. **Имена на променливи:** Уверете се за точно съвпадение между данните на потенциалния клиент и променливите на асистента
+3. **Формат на данните:** Проверете дали данните на променливата са в очаквания формат
+4. **Тестови обаждания:** Използвайте ръчни тестови обаждания за проверка на предаването на променливи
 
-## File Format Issues
+## Проблеми с формата на файла
 
-### CSV Problems
-**Common issues:**
-- Wrong delimiter (use comma, not semicolon)
-- Missing headers in first row
-- Quoted fields with unescaped quotes
-- Mixed encoding (use UTF-8)
+### Проблеми с CSV
+**Често срещани проблеми:**
+- Грешен разделител (използвайте запетая, не точка и запетая)
+- Липсващи заглавия в първия ред
+- Полета в кавички с неескейпнати кавички
+- Смесено кодиране (използвайте UTF-8)
 
-**Solutions:**
-1. **Standard format:** Use comma-separated values
-2. **Headers required:** First row must contain column names
-3. **Text qualification:** Use double quotes for text fields
-4. **Encoding:** Save as UTF-8 encoded CSV
+**Решения:**
+1. **Стандартен формат:** Използвайте стойности разделени със запетая
+2. **Необходими заглавия:** Първият ред трябва да съдържа имена на колони
+3. **Квалификация на текст:** Използвайте двойни кавички за текстови полета
+4. **Кодиране:** Запазете като CSV кодиран с UTF-8
 
-### Excel Problems
-**Common issues:**
-- Multiple sheets (only first sheet imported)
-- Merged cells causing data misalignment
-- Formulas instead of values
-- Hidden characters or formatting
+### Проблеми с Excel
+**Често срещани проблеми:**
+- Множество листове (импортира се само първия лист)
+- Обединени клетки причиняващи неподравняване на данните
+- Формули вместо стойности
+- Скрити символи или форматиране
 
-**Solutions:**
-1. **Single sheet:** Use only first worksheet
-2. **Unmerge cells:** Separate merged cells
-3. **Values only:** Convert formulas to values
-4. **Clean format:** Remove special formatting
+**Решения:**
+1. **Един лист:** Използвайте само първата работна таблица
+2. **Разделяне на клетки:** Разделете обединените клетки
+3. **Само стойности:** Преобразувайте формулите в стойности
+4. **Чист формат:** Премахнете специалното форматиране
 
-## Getting Help
+## Получаване на помощ
 
-### Before Contacting Support
-1. **Download error report:** Review specific error messages
-2. **Check file format:** Verify CSV/Excel format compliance
-3. **Test small batch:** Try importing 5-10 leads first
-4. **Review documentation:** Check import requirements
+### Преди да се свържете с поддръжката
+1. **Изтеглете доклада за грешки:** Прегледайте конкретните съобщения за грешки
+2. **Проверете формата на файла:** Проверете съответствието с CSV/Excel формата
+3. **Тествайте малка партида:** Опитайте първо да импортирате 5-10 потенциални клиенти
+4. **Прегледайте документацията:** Проверете изискванията за импорт
 
-### Information to Provide
-- Error messages received
-- Sample of import file (with sensitive data removed)
-- Campaign settings and requirements
-- Expected vs actual behavior
-- Assistant variable configuration
+### Информация за предоставяне
+- Получени съобщения за грешки
+- Примерен импортен файл (с премахнати чувствителни данни)
+- Настройки и изисквания на кампанията
+- Очаквано срещу действително поведение
+- Конфигурация на променливите на асистента
 
 <Warning>
-**Data privacy:** Remove sensitive information from sample files before sharing with support.
+**Поверителност на данните:** Премахнете чувствителната информация от примерните файлове преди споделяне с поддръжката.
 </Warning>
 
 <Note>
-For lead management best practices, see [Managing Leads](/leads/managing-leads) and [Campaign Setup](/campaigns/creating-campaigns).
+За най-добри практики за управление на потенциални клиенти вижте [Управление на потенциални клиенти](/leads/managing-leads) и [Настройка на кампания](/campaigns/creating-campaigns).
 </Note>

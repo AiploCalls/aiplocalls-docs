@@ -1,29 +1,29 @@
 ---
-title: "Enable assistant inbound webhook"
+title: "Активиране на входящ webhook за асистент"
 api: "POST /user/assistants/enable-inbound-webhook"
-description: "Enable inbound webhook notifications for a specific assistant"
+description: "Активиране на уведомления чрез входящ webhook за конкретен асистент"
 ---
 
-This endpoint enables inbound webhook notifications for an assistant, allowing you to receive real-time updates about inbound call completions and data.
+Този endpoint активира уведомленията чрез входящ webhook за асистент, позволявайки ви да получавате актуализации в реално време относно завършването на входящи обаждания и данните.
 
 ### Request Body
 
 <ParamField body="assistant_id" type="integer" required>
-  The ID of the assistant to enable webhook for
+  ID-то на асистента, за който да се активира webhook-ът
 </ParamField>
 
 <ParamField body="webhook_url" type="string" required>
-  The URL where webhook notifications will be sent
+  URL-то, където ще се изпращат webhook уведомленията
 </ParamField>
 
 ### Response
 
 <ResponseField name="message" type="string">
-  Success message confirming webhook was enabled
+  Съобщение за успех, потвърждаващо че webhook-ът е активиран
 </ResponseField>
 
 <ResponseField name="data" type="array">
-  Empty array (reserved for future use)
+  Празен масив (запазен за бъдеща употреба)
 </ResponseField>
 
 ### Error Responses
@@ -31,7 +31,7 @@ This endpoint enables inbound webhook notifications for an assistant, allowing y
 <ResponseField name="404 Not Found">
   <Expandable title="Error Response">
     <ResponseField name="message" type="string">
-      Error message when the assistant is not found or doesn't belong to the authenticated user
+      Съобщение за грешка, когато асистентът не е намерен или не принадлежи на автентикирания потребител
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -39,10 +39,10 @@ This endpoint enables inbound webhook notifications for an assistant, allowing y
 <ResponseField name="422 Validation Error">
   <Expandable title="Error Response">
     <ResponseField name="message" type="string">
-      Error message indicating validation failure
+      Съобщение за грешка, указващо неуспешна валидация
     </ResponseField>
     <ResponseField name="errors" type="object">
-      Detailed validation errors for each field
+      Подробни грешки от валидацията за всяко поле
     </ResponseField>
   </Expandable>
 </ResponseField>

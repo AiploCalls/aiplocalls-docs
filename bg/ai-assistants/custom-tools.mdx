@@ -1,56 +1,57 @@
 ---
-title: "Custom Mid-Call Tools"
+---
+title: "Персонализирани Mid-Call Tools"
 icon: "code-branch"
-description: "Learn how to create and configure custom API integrations that your AI assistant can use during calls"
+description: "Научете как да създавате и конфигурирате персонализирани API интеграции, които вашият AI асистент може да използва по време на разговори"
 ---
 
 <Note>
-  Custom Mid-Call Tools let your AI assistant interact with external systems
-  during calls. Whether checking inventory, verifying customer data, or fetching
-  real-time information, these tools make your AI more powerful and connected.
+  Персонализираните Mid-Call Tools позволяват на вашия AI асистент да взаимодейства с външни системи
+  по време на разговори. Било то проверка на наличности, верификация на клиентски данни или извличане на
+  информация в реalno време, тези инструменти правят вашия AI по-мощен и свързан.
 </Note>
 
-## Overview
+## Преглед
 
-Custom Mid-Call Tools enable your AI assistant to:
+Персонализираните Mid-Call Tools позволяват на вашия AI асистент да:
 
-- Make real-time API calls during conversations
-- Fetch or submit data to your systems
-- Make informed decisions based on live data
-- Provide accurate, up-to-date information to callers
+- Прави API повиквания в реално време по време на разговори
+- Извлича или подава данни към вашите системи
+- Взима информирани решения на база актуални данни
+- Предоставя точна, актуална информация на обаждащите се
 
-<Card title="Key Benefits" icon="star">
-  - No coding required - just configure the API endpoint and parameters - AI
-  automatically knows when and how to use the tools - Real-time data access
-  during calls - Seamless integration with your existing systems
+<Card title="Ключови предимства" icon="star">
+  - Не се изисква програмиране - просто конфигурирайте API endpoint-а и параметрите - AI
+  автоматично знае кога и как да използва инструментите - Достъп до данни в реално време
+  по време на разговори - Безпроблемна интеграция с вашите съществуващи системи
 </Card>
 
-## Setting Up Your Tool
+## Настройване на вашия инструмент
 
-### 1. Basic Configuration
+### 1. Основна конфигурация
 
 <Frame>
   <img src="/resources/mid-call.png" alt="Main Tool Configuration" />
 </Frame>
 
 <Steps>
-  <Step title="Access Tool Creation">
-    Navigate to **Mid call tools** and click **Create Mid-Call Tool**
+  <Step title="Достъп до създаването на инструмент">
+    Отидете на **Mid call tools** и кликнете **Create Mid-Call Tool**
   </Step>
 
-  <Step title="Configure Main Settings">
-    Fill in the essential details:
+  <Step title="Конфигурирайте основните настройки">
+    Попълнете основните детайли:
 
-    - **Name**: Use lowercase and underscores (e.g., `check_order_status`)
-    - **Description**: Explain when and how the AI should use this tool
-    - **Endpoint**: Your API URL (e.g., `https://api.yourcompany.com/orders`)
-    - **Timeout**: How long to wait for responses (in seconds)
-    - **Method**: Choose GET, POST, PUT, PATCH, or DELETE
+    - **Name**: Използвайте малки букви и долни черти (например, `check_order_status`)
+    - **Description**: Обяснете кога и как AI трябва да използва този инструмент
+    - **Endpoint**: Вашия API URL (например, `https://api.yourcompany.com/orders`)
+    - **Timeout**: Колко време да се чака за отговори (в секунди)
+    - **Method**: Изберете GET, POST, PUT, PATCH или DELETE
 
   </Step>
 
-  <Step title="Add Headers">
-    Common headers you might need:
+  <Step title="Добавете headers">
+    Често използвани headers, които може да се нуждаете:
     ```yaml
     Content-Type: application/json
     Authorization: Bearer your_token
@@ -58,39 +59,39 @@ Custom Mid-Call Tools enable your AI assistant to:
   </Step>
 </Steps>
 
-### 2. Variable Configuration
+### 2. Конфигурация на променливи
 
 <Frame>
   <img src="/resources/mid-call-param.png" alt="Variable Configuration" />
 </Frame>
 
 <Steps>
-  <Step title="Define Parameters">
-    These are the pieces of information your AI will collect during the call:
+  <Step title="Дефинирайте параметри">
+    Това са частите от информацията, които вашият AI ще събира по време на разговора:
     
     ```yaml
     Name: order_number
     Type: string
-    Description: "10-digit order number from the customer"
+    Description: "10-цифрен номер на поръчка от клиента"
     ```
   </Step>
 
-  <Step title="Set Validation Rules">
-    Add format requirements in the description:
+  <Step title="Задайте правила за валидация">
+    Добавете изисквания за формат в описанието:
     
     ```yaml
-    "Date in dd/mm/yyyy format"
-    "Phone number without spaces"
-    "Email address for confirmation"
+    "Дата във формат dd/mm/yyyy"
+    "Телефонен номер без интервали"
+    "Имейл адрес за потвърждение"
     ```
   </Step>
 </Steps>
 
-## Understanding Parameter Types
+## Разбиране на типовете параметри
 
 <CardGroup cols={2}>
   <Card title="String" icon="font">
-    Text values like names, addresses, or reference numbers
+    Текстови стойности като имена, адреси или референтни номера
 
     ```yaml
     Type: string
@@ -100,7 +101,7 @@ Custom Mid-Call Tools enable your AI assistant to:
   </Card>
 
   <Card title="Number" icon="calculator">
-    Numeric values like amounts, quantities, or IDs
+    Числови стойности като суми, количества или ID-та
 
     ```yaml
     Type: number
@@ -110,7 +111,7 @@ Custom Mid-Call Tools enable your AI assistant to:
   </Card>
 
   <Card title="true_false" icon="toggle-on">
-    Boolean values for yes/no situations
+    Boolean стойности за да/не ситуации
 
     ```yaml
     Type: true_false
@@ -119,162 +120,164 @@ Custom Mid-Call Tools enable your AI assistant to:
 
   </Card>
 
-  <Card title="Formatting Help" icon="wand-magic-sparkles">
-    Add format instructions in descriptions
+  <Card title="Помощ за форматиране" icon="wand-magic-sparkles">
+    Добавете инструкции за формат в описанията
 
     ```yaml
-    "Date in dd/mm/yyyy"
-    "Phone without spaces"
+    "Дата във формат dd/mm/yyyy"
+    "Телефон без интервали"
     ```
 
   </Card>
 </CardGroup>
 
-## Dynamic Endpoints
+## Динамични endpoints
 
 <Warning>
-  When using variables in your endpoint URL, make sure to enclose them in curly
-  braces and use the exact parameter name.
+  Когато използвате променливи във вашия endpoint URL, уверете се, че ги поставяте в къдрави
+  скоби и използвате точното име на параметъра.
 </Warning>
 
-You can make your endpoints dynamic using variables:
+Можете да направите вашите endpoints динамични, използвайки променливи:
 
 ```yaml
-Basic URL:
+Основен URL:
 https://api.example.com/orders/status
 
-With Variables:
+С променливи:
 https://api.example.com/orders/{order_id}/status
 ```
 
-The AI will automatically replace `{order_id}` with the actual value collected during the conversation.
+AI автоматично ще замени `{order_id}` с действителната стойност, събрана по време на разговора.
 
-## Testing Made Easy
+## Лесно тестване
 
-<Card title="Automatic Testing" icon="vial">
-Click "Test Tool" to run a test with dummy data:
-- String parameters: "test"
-- Number parameters: 1
-- Boolean parameters: true
+<Card title="Автоматично тестване" icon="vial">
+Кликнете "Test Tool", за да стартирате тест с примерни данни:
+- String параметри: "test"
+- Number параметри: 1
+- Boolean параметри: true
 
-You'll see the response code and body, helping you verify everything works.
+Ще видите response кода и тялото, което ви помага да потвърдите, че всичко работи.
 
 </Card>
 
-## Power User Feature: Automation Platform Integration
+## Функция за напреднали потребители: Интеграция с Automation Platform
 
 <Note>
-  Need more complex logic? Connect your tool to the automation platform for
-  advanced workflows.
+  Нуждаете се от по-сложна логика? Свържете вашия инструмент към automation platform за
+  напреднали workflows.
 </Note>
 
-For advanced integrations and complex workflows, you can combine custom tools with our [Automation Platform](/automation-platform/introduction).
+За напреднали интеграции и сложни workflows, можете да комбинирате персонализирани инструменти с нашата [Automation Platform](/automation-platform/introduction).
 
-Here's how to create powerful integrations:
+Ето как да създадете мощни интеграции:
 
-1. In the automation platform:
+1. В automation platform:
 
-   - Create a new flow
-   - Add a webhook trigger
-   - Build your logic (API calls, data transformation, etc.)
-   - End with "Return Response"
+   - Създайте нов flow
+   - Добавете webhook trigger
+   - Изградете вашата логика (API повиквания, трансформация на данни и др.)
+   - Завършете с "Return Response"
 
-2. In your custom tool:
-   - Use the webhook URL as your endpoint
-   - Add `/sync` at the end
-   - Example: `https://call.aiployees.com/automation/webhook/abc123/sync`
+2. В вашия персонализиран инструмент:
+   - Използвайте webhook URL като ваш endpoint
+   - Добавете `/sync` в края
+   - Пример: `https://call.aiployees.com/automation/webhook/abc123/sync`
 
-This lets you:
+Това ви позволява да:
 
-- Transform data before/after API calls
-- Make multiple API calls in sequence
-- Apply complex business logic
-- Handle errors gracefully
+- Трансформирате данни преди/след API повиквания
+- Правите множество API повиквания последователно
+- Прилагате сложна бизнес логика
+- Обработвате грешки елегантно
 
-## Real-World Examples
+## Примери от реалния свят
 
 <AccordionGroup>
-  <Accordion title="Order Lookup System" icon="magnifying-glass">
+  <Accordion title="Система за търсене на поръчки" icon="magnifying-glass">
     ```yaml
     Name: check_order
     Endpoint: https://api.yourshop.com/orders/{order_number}
     Parameters:
       - Name: order_number
         Type: string
-        Description: "Order reference (format: ORD-XXXXX)"
+        Description: "Референция на поръчка (формат: ORD-XXXXX)"
     ```
 
-    The AI will:
-    1. Ask for the order number
-    2. Fetch the status
-    3. Explain delivery dates and status to the customer
+    AI ще:
+    1. Попита за номера на поръчката
+    2. Извлече статуса
+    3. Обясни датите за доставка и статуса на клиента
 
   </Accordion>
 
-  <Accordion title="Appointment Availability" icon="calendar">
+  <Accordion title="Наличност на срещи" icon="calendar">
     ```yaml
     Name: check_slots
     Endpoint: https://api.calendar.com/availability
     Parameters:
       - Name: service
         Type: string
-        Description: "Service type (haircut, massage, consultation)"
+        Description: "Тип услуга (подстригване, масаж, консултация)"
       - Name: date
         Type: string
-        Description: "Preferred date (dd/mm/yyyy)"
+        Description: "Предпочитана дата (dd/mm/yyyy)"
     ```
 
-    The AI will:
-    1. Ask about the desired service
-    2. Get preferred date
-    3. Show available time slots
+    AI ще:
+    1. Попита за желаната услуга
+    2. Получи предпочитаната дата
+    3. Покаже наличните часове
 
   </Accordion>
 
-  <Accordion title="Customer Verification" icon="shield-check">
+  <Accordion title="Верификация на клиент" icon="shield-check">
     ```yaml
     Name: verify_customer
     Endpoint: https://api.crm.com/verify
     Parameters:
       - Name: phone
         Type: string
-        Description: "10-digit phone number"
+        Description: "10-цифрен телефонен номер"
       - Name: email
         Type: string
-        Description: "Email address for verification"
+        Description: "Имейл адрес за верификация"
     ```
 
-    The AI will:
-    1. Collect contact details
-    2. Verify against your CRM
-    3. Proceed based on verification status
+    AI ще:
+    1. Събере контактните данни
+    2. Верифицира срещу вашата CRM
+    3. Продължи на база статуса на верификацията
 
   </Accordion>
 </AccordionGroup>
 
-## Configuring Your AI
+## Конфигуриране на вашия AI
 
 <Info>
-  The AI needs clear instructions in its system prompt to effectively use your
-  custom tools.
+  AI се нуждае от ясни инструкции в системния си prompt, за да използва ефективно вашите
+  персонализирани инструменти.
 </Info>
 
-Example prompt section:
+Пример на секция от prompt:
 
 ```yaml
-When to use check_order tool:
-1. Customer asks about order status
-2. Mentions tracking or delivery
-3. Wants to know where their package is
+Кога да използва check_order tool:
+1. Клиентът пита за статус на поръчка
+2. Споменава проследяване или доставка
+3. Иска да знае къде е пакетът му
 
-How to use it:
-1. Ask for order number if not provided
-2. Verify format (ORD-XXXXX)
-3. Use tool to fetch status
-4. Explain results in simple terms
+Как да го използва:
+1. Попитай за номер на поръчка, ако не е предоставен
+2. Верифицирай формата (ORD-XXXXX)
+3. Използвай инструмента за извличане на статуса
+4. Обясни резултатите с прости думи
 ```
 
 <Tip>
-  Test your tools with various conversation flows to ensure the AI handles all
-  scenarios smoothly. Start with simple test calls before going live.
+  Тествайте вашите инструменти с различни разговорни потоци, за да се уверите, че AI обработва всички
+  сценарии гладко. Започнете с прости тестови обаждания, преди да пуснете на живо.
 </Tip>
+
+---

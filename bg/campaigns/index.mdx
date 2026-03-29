@@ -1,152 +1,152 @@
 ---
-title: "Campaigns Overview"
+title: "Преглед на кампаниите"
 icon: "bullhorn"
-description: "Learn how to create and manage automated calling campaigns to reach multiple leads efficiently"
+description: "Научете как да създавате и управлявате автоматизирани кампании за обаждания, за да достигнете множество потенциални клиенти ефективно"
 ---
 
-Campaigns enable you to automate calls to multiple leads using your AI assistant. Set up scheduling, retry logic, and lead management to run efficient outbound calling operations.
+Кампаниите ви позволяват да автоматизирате обажданията към множество потенциални клиенти, използвайки вашия AI асистент. Настройте планиране, логика за повторни опити и управление на потенциални клиенти, за да изпълнявате ефективни изходящи операции за обаждания.
 
-## What is a Campaign?
+## Какво е кампания?
 
-A campaign is an automated system that calls multiple leads on your behalf using a configured AI assistant. Each campaign includes:
+Кампанията е автоматизирана система, която се обажда на множество потенциални клиенти от ваше име, използвайки конфигуриран AI асистент. Всяка кампания включва:
 
 <CardGroup cols={2}>
-  <Card title="Lead Management" icon="users">
-    **Primary and secondary contacts** for comprehensive outreach
+  <Card title="Управление на потенциални клиенти" icon="users">
+    **Основни и вторични контакти** за всеобхватно достигане
     
-    Import leads from CSV, integrations, or add manually
+    Импортирайте потенциални клиенти от CSV, интеграции или добавете ръчно
   </Card>
   
-  <Card title="Scheduling Control" icon="calendar">
-    **Time and day restrictions** to respect customer preferences
+  <Card title="Контрол на планирането" icon="calendar">
+    **Ограничения за време и ден** за зачитане на предпочитанията на клиентите
     
-    Set allowed calling hours and days of the week
+    Задайте разрешени часове за обаждания и дни от седмицата
   </Card>
   
-  <Card title="Retry Logic" icon="repeat">
-    **Intelligent retry system** for unanswered calls
+  <Card title="Логика за повторни опити" icon="repeat">
+    **Интелигентна система за повторни опити** за неотговорени обаждания
     
-    Configure retry attempts, intervals, and conditions
+    Конфигурирайте опити за повторение, интервали и условия
   </Card>
   
-  <Card title="Goal Tracking" icon="bullseye">
-    **Success measurement** with completion variables
+  <Card title="Проследяване на цели" icon="bullseye">
+    **Измерване на успеха** с променливи за завършване
     
-    Track campaign objectives and lead conversion
+    Проследявайте целите на кампанията и конверсията на потенциални клиенти
   </Card>
 </CardGroup>
 
-## Campaign Status
+## Статус на кампанията
 
 <AccordionGroup>
-  <Accordion title="Draft" icon="file">
-    Campaign is being configured but not yet active. Add leads and configure settings.
+  <Accordion title="Чернова" icon="file">
+    Кампанията се конфигурира, но все още не е активна. Добавете потенциални клиенти и конфигурирайте настройки.
   </Accordion>
   
-  <Accordion title="In Progress" icon="play">
-    Campaign is actively making calls according to your schedule and retry settings.
+  <Accordion title="В ход" icon="play">
+    Кампанията активно прави обаждания според вашите настройки за планиране и повторни опити.
   </Accordion>
   
-  <Accordion title="Paused" icon="pause">
-    Campaign is temporarily stopped. Can be resumed without losing progress.
+  <Accordion title="На пауза" icon="pause">
+    Кампанията е временно спряна. Може да бъде възобновена без загуба на напредък.
   </Accordion>
   
-  <Accordion title="Completed" icon="check">
-    All leads have been successfully contacted or marked complete.
+  <Accordion title="Завършена" icon="check">
+    Всички потенциални клиенти са успешно контактувани или маркирани като завършени.
   </Accordion>
 </AccordionGroup>
 
-## Key Features
+## Ключови функции
 
-### Scheduling & Timing
-- **Allowed calling hours:** Set start and end times (e.g., 9:00 AM - 6:00 PM)
-- **Allowed days:** Choose specific days of the week for calling
-- **Timezone support:** Uses assistant's configured timezone
-- **Call window validation:** System automatically respects time restrictions
+### Планиране и време
+- **Разрешени часове за обаждания:** Задайте начален и краен час (например 9:00 - 18:00)
+- **Разрешени дни:** Изберете конкретни дни от седмицата за обаждания
+- **Поддръжка на часови зони:** Използва конфигурираната часова зона на асистента
+- **Валидиране на прозорец за обаждания:** Системата автоматично зачита времевите ограничения
 
-### Retry System
-- **Max retries:** 1-5 attempts for unanswered calls (default: 3)
-- **Retry interval:** 10-4320 minutes between attempts (default: 60 minutes)
-- **Retry on voicemail:** Continue calling until human answers
-- **Goal-based retry:** Keep calling until objective is achieved (requires [post-call variables](/ai-assistants/settings/post-call-actions#post-call-variables) with boolean type)
+### Система за повторни опити
+- **Максимални повторни опити:** 1-5 опита за неотговорени обаждания (по подразбиране: 3)
+- **Интервал за повторни опити:** 10-4320 минути между опитите (по подразбиране: 60 минути)
+- **Повторен опит при гласова поща:** Продължете да се обаждате, докато човек не отговори
+- **Повторен опит базиран на цел:** Продължете да се обаждате, докато целта не бъде постигната (изисква [post-call variables](/ai-assistants/settings/post-call-actions#post-call-variables) с boolean тип)
 
-### Lead Types
-- **Primary leads:** Main contacts imported or added to campaign
-- **Secondary contacts:** Additional contacts linked to primary leads
-- **Lead status tracking:** Monitor call progress and outcomes
+### Типове потенциални клиенти
+- **Основни потенциални клиенти:** Главни контакти импортирани или добавени към кампанията
+- **Вторични контакти:** Допълнителни контакти свързани с основните потенциални клиенти
+- **Проследяване на статуса на потенциалните клиенти:** Наблюдавайте напредъка и резултатите от обажданията
 
-## Requirements
+## Изисквания
 
-Before starting a campaign:
+Преди стартиране на кампания:
 
 <Warning>
-**Phone Number Required:** Your assistant must have a [phone number configured](/ai-assistants/settings/general#phone-number-configuration) for outbound calls.
+**Необходим телефонен номер:** Вашият асистент трябва да има [конфигуриран телефонен номер](/ai-assistants/settings/general#phone-number-configuration) за изходящи обаждания.
 </Warning>
 
-- **Configured AI assistant** with outbound calling capability
-- **Sufficient account balance** for call costs
-- **Leads added** to the campaign (manual, import, or integration)
-- **Valid phone numbers** for all leads
+- **Конфигуриран AI асистент** с възможност за изходящи обаждания
+- **Достатъчен баланс в акаунта** за разходи за обаждания
+- **Добавени потенциални клиенти** към кампанията (ръчно, импорт или интеграция)
+- **Валидни телефонни номера** за всички потенциални клиенти
 
-## Quick Start
+## Бърз старт
 
-1. **Create Campaign:** Choose a name and select your AI assistant
-2. **Set Schedule:** Define allowed calling hours and days
-3. **Configure Retries:** Set retry attempts and intervals
-4. **Add Leads:** Import from CSV or add manually
-5. **Start Campaign:** Click start when ready to begin calling
+1. **Създайте кампания:** Изберете име и изберете вашия AI асистент
+2. **Задайте график:** Дефинирайте разрешени часове и дни за обаждания
+3. **Конфигурирайте повторни опити:** Задайте опити за повторение и интервали
+4. **Добавете потенциални клиенти:** Импортирайте от CSV или добавете ръчно
+5. **Стартирайте кампанията:** Кликнете старт, когато сте готови да започнете обажданията
 
 <Note>
-For detailed setup instructions, see [Creating a Campaign](/campaigns/creating-campaigns).
+За подробни инструкции за настройка, вижте [Създаване на кампания](/campaigns/creating-campaigns).
 </Note>
 
-## Campaign Monitoring
+## Наблюдение на кампанията
 
-### Lead Status Tracking
-Monitor individual lead progress through the campaign:
-- **Created:** Ready to be called
-- **Scheduled:** Queued for next call attempt
-- **Processing:** Currently being called
-- **Completed:** Successfully contacted or goal achieved
-- **Rescheduled:** Scheduled for retry attempt
-- **Max Retries:** Reached maximum retry attempts
+### Проследяване на статуса на потенциалните клиенти
+Наблюдавайте индивидуалния напредък на потенциалните клиенти в кампанията:
+- **Създаден:** Готов за обаждане
+- **Планиран:** Поставен в опашка за следващ опит за обаждане
+- **В обработка:** В момента се обажда
+- **Завършен:** Успешно контактуван или цел постигната
+- **Препланиран:** Планиран за повторен опит
+- **Максимални повторни опити:** Достигнат максималния брой повторни опити
 
-**Manual lead management:** You can change lead status in the leads table:
-- **Set to "Created":** Reset lead to be called again
-- **Set to "Completed":** Mark lead as finished to stop calling
+**Ръчно управление на потенциални клиенти:** Можете да промените статуса на потенциалните клиенти в таблицата с потенциални клиенти:
+- **Задайте на "Създаден":** Рестартирайте потенциален клиент за повторно обаждане
+- **Задайте на "Завършен":** Маркирайте потенциален клиент като завършен, за да спрете обажданията
 
-### Call Results
-Individual call outcomes with detailed status:
-- **Initiated:** Call started
-- **Ringing:** Phone is ringing
-- **In Progress:** Call connected and active
-- **Completed:** Call finished successfully
-- **Busy:** Line was busy
-- **Unanswered:** No one answered
-- **Failed:** Technical issue prevented call
+### Резултати от обажданията
+Индивидуални резултати от обажданията с подробен статус:
+- **Инициирано:** Обаждането е започнато
+- **Звъни:** Телефонът звъни
+- **В ход:** Обаждането е свързано и активно
+- **Завършено:** Обаждането завърши успешно
+- **Заето:** Линията беше заета
+- **Неотговорено:** Никой не отговори
+- **Неуспешно:** Техническа грешка попречи на обаждането
 
-## Troubleshooting
+## Отстраняване на проблеми
 
-**Campaign won't start:**
-- Check if assistant has phone number configured
-- Verify sufficient account balance
-- Ensure leads are added to campaign
+**Кампанията не стартира:**
+- Проверете дали асистентът има конфигуриран телефонен номер
+- Проверете достатъчен баланс в акаунта
+- Уверете се, че са добавени потенциални клиенти към кампанията
 
-**No calls being made:**
-- Wait 10-15 minutes after starting - campaigns take time to initialize
-- Check if current time is within allowed calling hours
-- Verify allowed days include current day
-- Confirm leads have valid phone numbers
+**Не се правят обаждания:**
+- Изчакайте 10-15 минути след стартиране - кампаниите отнемат време за инициализиране
+- Проверете дали текущото време е в рамките на разрешените часове за обаждания
+- Проверете дали разрешените дни включват текущия ден
+- Потвърдете, че потенциалните клиенти имат валидни телефонни номера
 
-**Too many/few retries:**
-- Adjust max retries setting (1-5 attempts)
-- Modify retry interval (10-4320 minutes)
-- Review retry conditions (voicemail, goal completion)
+**Твърде много/малко повторни опити:**
+- Регулирайте настройката за максимални повторни опити (1-5 опита)
+- Променете интервала за повторни опити (10-4320 минути)
+- Прегледайте условията за повторни опити (гласова поща, завършване на цел)
 
 <Tip>
-**Best Practice:** Start with conservative retry settings and adjust based on campaign performance and customer feedback.
+**Най-добра практика:** Започнете с консервативни настройки за повторни опити и регулирайте въз основа на представянето на кампанията и обратната връзка от клиентите.
 </Tip>
 
 <Note>
-For detailed troubleshooting guidance, see [Campaign Troubleshooting](/troubleshooting/campaigns).
+За подробно ръководство за отстраняване на проблеми, вижте [Отстраняване на проблеми с кампании](/troubleshooting/campaigns).
 </Note>

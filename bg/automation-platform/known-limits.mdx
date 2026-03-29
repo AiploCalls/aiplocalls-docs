@@ -1,25 +1,27 @@
 ---
-title: "Technical limits"
+title: "Технически лимити"
 icon: "ban"
-description: "Technical limits for flows execution"
+description: "Технически лимити за изпълнение на потоци"
 ---
 
-### Overview
+### Общ преглед
 
-### Flow Limits
+### Лимити на потоците
 
-- **Execution Time**: Each flow has a maximum execution time of **600 seconds (10 minutes)**. Flows exceeding this limit will be marked as a timeout.
-- **Memory Usage**: During execution, a flow should not use more than **128 MB of RAM**.
+- **Време за изпълнение**: Всеки поток има максимално време за изпълнение от **600 секунди (10 минути)**. Потоците, които надвишат този лимит, ще бъдат маркирани като timeout.
+- **Използване на памет**: По време на изпълнение, потокът не трябва да използва повече от **128 MB RAM**.
 
-### File Storage Limits
+### Лимити за съхранение на файлове
 
-- **Maximum File Size**: 10 MB
+- **Максимален размер на файл**: 10 MB
 
-### Data Storage Limits
+### Лимити за съхранение на данни
 
-Some pieces utilize the built-in key store, such as the Store Piece and Queue Piece.
+Някои части използват вградения key store, като Store Piece и Queue Piece.
 
-The storage limits are as follows:
+Лимитите за съхранение са както следва:
 
-- **Maximum Key Length**: 128 characters
-- **Maximum Value Size**: 512 KB
+- **Максимална дължина на ключ**: 128 знака
+- **Максимален размер на стойност**: 512 KB
+
+---

@@ -1,34 +1,34 @@
 ---
-title: "Get available models"
+title: "Получаване на налични модели"
 api: "GET /user/assistants/models"
-description: "Retrieve available AI models for assistant configuration"
+description: "Извличане на наличните AI модели за конфигуриране на асистенти"
 ---
 
-This endpoint returns a list of available AI models that can be used when creating or updating assistants.
+Този endpoint връща списък с наличните AI модели, които могат да се използват при създаване или актуализиране на асистенти.
 
 ### Query Parameters
 
 <ParamField query="type" type="string" default="llm">
-  The type of models to retrieve based on engine mode:
-  - `llm` - LLM models for **pipeline** mode (default)
-  - `multimodal` - Multimodal models for **multimodal** mode
-  - `dualplex` - Multimodal models for **dualplex** mode
+  Типът модели за извличане въз основа на режима на работа:
+  - `llm` - LLM модели за **pipeline** режим (по подразбиране)
+  - `multimodal` - Multimodal модели за **multimodal** режим
+  - `dualplex` - Multimodal модели за **dualplex** режим
 </ParamField>
 
-### Response fields
+### Полета в отговора
 
 <ResponseField name="data" type="array">
   <Expandable title="properties">
     <ResponseField name="id" type="integer">
-      The unique identifier of the model
+      Уникалният идентификатор на модела
     </ResponseField>
 
     <ResponseField name="name" type="string">
-      The display name of the model
+      Показваното име на модела
     </ResponseField>
 
     <ResponseField name="code" type="string">
-      The internal code (only for multimodal/dualplex models)
+      Вътрешният код (само за multimodal/dualplex модели)
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -65,8 +65,8 @@ This endpoint returns a list of available AI models that can be used when creati
 
 </ResponseExample>
 
-### Notes
+### Забележки
 
-- If no `type` parameter is provided, LLM models are returned by default
-- Use `llm_model_id` field when creating **pipeline** assistants
-- Use `multimodal_model_id` field when creating **multimodal** or **dualplex** assistants
+- Ако не е предоставен параметър `type`, по подразбиране се връщат LLM модели
+- Използвайте полето `llm_model_id` при създаване на **pipeline** асистенти
+- Използвайте полето `multimodal_model_id` при създаване на **multimodal** или **dualplex** асистенти

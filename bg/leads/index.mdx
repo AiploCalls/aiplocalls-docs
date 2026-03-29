@@ -1,116 +1,116 @@
 ---
-title: "Leads Overview"
+title: "Преглед на потенциалните клиенти"
 icon: "users"
-description: "Manage your campaign contacts with primary leads, secondary contacts, and custom variables"
+description: "Управлявайте контактите на вашите кампании с основни потенциални клиенти, вторични контакти и персонализирани променливи"
 ---
 
-Leads are the contacts that your campaigns will call. Each lead can have multiple phone numbers (secondary contacts) and custom variables that your AI assistant can use during conversations.
+Потенциалните клиенти са контактите, които вашите кампании ще обаждат. Всеки потенциален клиент може да има множество телефонни номера (вторични контакти) и персонализирани променливи, които вашият AI асистент може да използва по време на разговори.
 
-## What are Leads?
+## Какво са потенциалните клиенти?
 
-Leads represent the people or businesses you want to contact through your campaigns. The lead system supports:
+Потенциалните клиенти представляват хората или бизнесите, с които искате да се свържете чрез вашите кампании. Системата за потенциални клиенти поддържа:
 
 <CardGroup cols={2}>
-  <Card title="Primary Contacts" icon="user">
-    **Main contact** for each lead
+  <Card title="Основни контакти" icon="user">
+    **Главен контакт** за всеки потенциален клиент
     
-    The primary phone number and contact information
+    Основният телефонен номер и контактна информация
   </Card>
   
-  <Card title="Secondary Contacts" icon="users">
-    **Additional phone numbers** for the same lead
+  <Card title="Вторични контакти" icon="users">
+    **Допълнителни телефонни номера** за същия потенциален клиент
     
-    Backup contacts, decision makers, or alternative numbers
+    Резервни контакти, лица вземащи решения или алтернативни номера
   </Card>
   
-  <Card title="Custom Variables" icon="code">
-    **Personalized information** for AI conversations
+  <Card title="Персонализирани променливи" icon="code">
+    **Персонализирана информация** за AI разговори
     
-    Names, preferences, history, or any data your assistant needs
+    Имена, предпочитания, история или всякакви данни, които вашият асистент се нуждае
   </Card>
   
-  <Card title="Status Tracking" icon="chart-line">
-    **Progress monitoring** through campaign lifecycle
+  <Card title="Проследяване на статус" icon="chart-line">
+    **Мониторинг на прогреса** през жизнения цикъл на кампанията
     
-    Track call attempts, completions, and retry status
+    Проследяване на опити за обаждане, завършени обаждания и статус за повторни опити
   </Card>
 </CardGroup>
 
-## Lead Status System
+## Система за статус на потенциални клиенти
 
-Every lead moves through different statuses during campaign execution:
+Всеки потенциален клиент преминава през различни статуси по време на изпълнението на кампанията:
 
 <AccordionGroup>
-  <Accordion title="Created" icon="plus">
-    **Ready to call** - Lead is queued for first contact attempt
+  <Accordion title="Създаден" icon="plus">
+    **Готов за обаждане** - Потенциалният клиент е на опашка за първи опит за контакт
   </Accordion>
   
-  <Accordion title="Scheduled" icon="calendar">
-    **Queued for retry** - Scheduled for next call attempt based on campaign settings
+  <Accordion title="Планиран" icon="calendar">
+    **На опашка за повторен опит** - Планиран за следващ опит за обаждане въз основа на настройките на кампанията
   </Accordion>
   
-  <Accordion title="Processing" icon="phone">
-    **Currently being called** - Call is in progress
+  <Accordion title="Обработва се" icon="phone">
+    **В момента се обажда** - Обаждането е в ход
   </Accordion>
   
-  <Accordion title="Rescheduled" icon="clock">
-    **Waiting for retry** - Will be called again after retry interval
+  <Accordion title="Препланиран" icon="clock">
+    **Чака повторен опит** - Ще бъде обаден отново след интервала за повторен опит
   </Accordion>
   
-  <Accordion title="Max Retries" icon="ban">
-    **Retry limit reached** - Maximum call attempts exceeded
+  <Accordion title="Максимални опити" icon="ban">
+    **Достигната лимита за опити** - Надвишен максималният брой опити за обаждане
   </Accordion>
   
-  <Accordion title="Completed" icon="check">
-    **Successfully contacted** - Call completed or goal achieved
+  <Accordion title="Завършен" icon="check">
+    **Успешно контактуван** - Обаждането е завършено или целта е постигната
   </Accordion>
 </AccordionGroup>
 
-## Primary vs Secondary Contacts
+## Основни срещу вторични контакти
 
-### Primary Contacts
-- **Main lead record** with complete information
-- **First to be called** in campaign sequence  
-- **Inherits campaign variables** from assistant settings
-- **Controls overall lead status** and completion
+### Основни контакти
+- **Главен запис за потенциален клиент** с пълна информация
+- **Първи за обаждане** в последователността на кампанията  
+- **Наследяват променливите на кампанията** от настройките на асистента
+- **Контролират общия статус на потенциалния клиент** и завършването
 
-### Secondary Contacts
-- **Additional phone numbers** for the same person/business
-- **Called if primary doesn't answer** (based on campaign retry settings)
-- **Independent status tracking** from primary contact
-- **Can have unique variables** different from primary
+### Вторични контакти
+- **Допълнителни телефонни номера** за същото лице/бизнес
+- **Обаждат се, ако основният не отговори** (въз основа на настройките за повторни опити на кампанията)
+- **Независимо проследяване на статуса** от основния контакт
+- **Могат да имат уникални променливи** различни от основния
 
 <Tip>
-**Use case example:** A business lead might have the main office number as primary contact, with the decision maker's direct line and mobile as secondary contacts.
+**Пример за използване:** Бизнес потенциален клиент може да има основния офис номер като основен контакт, с директната линия на лицето вземащо решения и мобилния като вторични контакти.
 </Tip>
 
-## Variables System
+## Система за променливи
 
-Variables personalize AI conversations with lead-specific information. They are inherited from [assistant configuration](/ai-assistants/settings/prompt-and-tools#call-variables) and can be customized per lead.
+Променливите персонализират AI разговорите със специфична за потенциалния клиент информация. Те се наследяват от [конфигурацията на асистента](/ai-assistants/settings/prompt-and-tools#call-variables) и могат да бъдат персонализирани за всеки потенциален клиент.
 
-**Usage in conversations:** Assistant uses variables like `{customer_name}` and `{company}` for personalized responses.
+**Използване в разговори:** Асистентът използва променливи като `{customer_name}` и `{company}` за персонализирани отговори.
 
-## Key Features
+## Ключови функции
 
-### Lead Management
-- **Manual creation** or **CSV/Excel import** with validation
-- **Status tracking** through campaign lifecycle
-- **Export capabilities** with filtering options
+### Управление на потенциални клиенти
+- **Ръчно създаване** или **импортиране на CSV/Excel** с валидация
+- **Проследяване на статуса** през жизнения цикъл на кампанията
+- **Възможности за експортиране** с опции за филтриране
 
-### Campaign Integration
-- **Single campaign** assignment per lead
-- **Automatic status updates** based on call outcomes  
-- **Manual status control** for campaign management
+### Интеграция с кампании
+- **Отделна кампания** задача за всеки потенциален клиент
+- **Автоматични актуализации на статуса** въз основа на резултатите от обажданията  
+- **Ръчно управление на статуса** за управление на кампании
 
-### Best Practices
-- **Phone format:** International format without spaces (+1234567890)
-- **Clean data:** Accurate, current contact information
-- **Logical organization:** Prioritize secondary contacts appropriately
+### Най-добри практики
+- **Формат на телефона:** Международен формат без интервали (+1234567890)
+- **Чисти данни:** Точна, актуална контактна информация
+- **Логическа организация:** Подредете вторичните контакти подходящо по приоритет
 
 <Note>
-For troubleshooting lead management issues, see [Leads Troubleshooting](/troubleshooting/leads).
+За отстраняване на проблеми с управлението на потенциални клиенти, вижте [Отстраняване на проблеми с потенциални клиенти](/troubleshooting/leads).
 </Note>
 
 <Note>
-For detailed setup instructions, see [Managing Leads](/leads/managing-leads) and [Importing Leads](/leads/importing-leads).
+За подробни инструкции за настройка, вижте [Управление на потенциални клиенти](/leads/managing-leads) и [Импортиране на потенциални клиенти](/leads/importing-leads).
 </Note>

@@ -1,41 +1,41 @@
 ---
-title: "Update campaign status"
+title: "Актуализиране на статуса на кампания"
 api: "POST /user/campaigns/update-status"
-description: "Start or stop a campaign in the Aiplocalls system"
+description: "Стартиране или спиране на кампания в системата на Aiplocalls"
 ---
 
-This endpoint allows you to start or stop a campaign in the Aiplocalls system.
+Този endpoint ви позволява да стартирате или спрете кампания в системата на Aiplocalls.
 
 ### Request body
 
 <ParamField body="campaign_id" type="integer" required>
-  The ID of the campaign to update
+  ID-то на кампанията за актуализиране
 </ParamField>
 
 <ParamField body="action" type="string" required>
-  The action to perform on the campaign. Must be either "start" or "stop"
+  Действието, което да се извърши върху кампанията. Трябва да бъде или "start" или "stop"
 </ParamField>
 
 ### Response
 
 <ResponseField name="message" type="string" default="Campaign started successfully.">
-  The message of the response
+  Съобщението на отговора
 </ResponseField>
 
 <ResponseField name="success" type="boolean" default="true">
-  Whether the operation was successful
+  Дали операцията беше успешна
 </ResponseField>
 
 <ResponseField name="data" type="object">
-  The data of the response
+  Данните на отговора
   
   <Expandable title="data properties">
     <ResponseField name="campaign_id" type="integer">
-      The ID of the updated campaign
+      ID-то на актуализираната кампания
     </ResponseField>
     
     <ResponseField name="status" type="string" default="in-progress">
-      The new status of the campaign (e.g., "in-progress" for started campaigns, "stopped" for stopped campaigns)
+      Новият статус на кампанията (напр., "in-progress" за стартирани кампании, "stopped" за спрени кампании)
     </ResponseField>
   </Expandable>
 </ResponseField>

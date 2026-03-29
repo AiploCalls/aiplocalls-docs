@@ -1,23 +1,24 @@
 ---
-title: "Get current user"
+---
+title: "Получаване на текущия потребител"
 api: "GET /user/me"
-description: "Get the authenticated user's profile information"
+description: "Получаване на профилната информация на автентикирания потребител"
 ---
 
-This endpoint returns the profile information for the currently authenticated user, including their account balance.
+Този endpoint връща профилната информация за текущо автентикирания потребител, включително баланса на неговия акаунт.
 
 ### Response
 
 <ResponseField name="name" type="string">
-  The user's full name
+  Пълното име на потребителя
 </ResponseField>
 
 <ResponseField name="email" type="string">
-  The user's email address
+  Имейл адресът на потребителя
 </ResponseField>
 
 <ResponseField name="total_balance" type="number">
-  The user's current account balance in USD
+  Текущият баланс на акаунта на потребителя в USD
 </ResponseField>
 
 <ResponseExample>
@@ -32,10 +33,12 @@ This endpoint returns the profile information for the currently authenticated us
 
 </ResponseExample>
 
-### Use Cases
+### Случаи на използване
 
-This endpoint is useful for:
+Този endpoint е полезен за:
 
-- **Verifying authentication** - Confirm the API key is valid and belongs to the expected user
-- **Checking account balance** - Monitor available credits before making API calls
-- **Displaying user info** - Show the current user in your application's UI
+- **Проверка на автентикацията** - Потвърждаване, че API ключът е валиден и принадлежи на очаквания потребител
+- **Проверка на баланса на акаунта** - Наблюдение на наличните кредити преди извършване на API повиквания
+- **Показване на потребителска информация** - Показване на текущия потребител в UI на вашето приложение
+
+---

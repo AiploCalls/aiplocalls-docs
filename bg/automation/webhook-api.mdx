@@ -1,31 +1,34 @@
 ---
+---
 title: "Webhook & API"
 icon: "code"
-description: "Learn how to use webhooks and the REST API for custom integrations and automation"
+description: "Научете как да използвате webhooks и REST API за персонализирани интеграции и автоматизация"
 ---
 
-If you want deeper customization beyond no-code blocks, Aiplocalls supports **webhooks** and a **REST API**.
+Ако искате по-задълбочена персонализация отвъд no-code блоковете, Aiplocalls поддържа **webhooks** и **REST API**.
 
 ## 1. Webhooks
 
-- **When to Use**: Trigger events in external systems the moment something happens in Aiplocalls (e.g., "Call Ended,").
-- **Configuration**: Set a webhook URL in your assistant/campaign settings or the automation platform.
-- **Payload**: Typically includes call ID, transcript, call outcome, or any user data collected.
+- **Кога да използвате**: Задействайте събития във външни системи в момента, в който нещо се случи в Aiplocalls (напр. "Разговорът приключи").
+- **Конфигурация**: Задайте webhook URL в настройките на вашия асистент/кампания или в платформата за автоматизация.
+- **Payload**: Обикновено включва ID на разговор, транскрипт, резултат от разговора или всички събрани потребителски данни.
 
 ## 2. REST API
 
-- **Key Functions**:
+- **Основни функции**:
 
-  1. **Create/Update Leads**
-  2. **Manage Campaigns**
+  1. **Създаване/Актуализиране на Потенциални клиенти**
+  2. **Управление на кампании**
 
-- **Auth & Rate Limits**: Usually uses API tokens. Check [API docs](/api-reference/introduction) for details on endpoints and usage quotas.
+- **Удостоверяване и ограничения на скоростта**: Обикновено използва API токени. Проверете [API документацията](/api-reference/introduction) за подробности относно endpoints и квоти за използване.
 
-## 3. Example Use Cases
+## 3. Примерни случаи на употреба
 
-- **Real-Time CRM Sync**: For each new call, post data to your CRM's endpoint.
-- **Custom Dashboards**: Pull call data into your own analytics dashboard.
+- **Синхронизация с CRM в реално време**: За всеки нов разговор изпращайте данни към endpoint на вашата CRM система.
+- **Персонализирани табла за управление**: Извличайте данни от разговори във вашето собствено аналитично табло за управление.
 
 ---
 
-**Note:** You'll find the official API reference in a dedicated docs section or via your Aiplocalls dashboard. Always secure your tokens and test endpoints in a dev environment.
+**Забележка:** Ще намерите официалната API справка в специална секция на документацията или чрез вашето Aiplocalls табло за управление. Винаги защитавайте вашите токени и тествайте endpoints в среда за разработка.
+
+---

@@ -1,61 +1,62 @@
 ---
-title: "List campaigns"
+---
+title: "Списък на кампании"
 api: "GET /user/campaigns"
-description: "List all campaigns"
+description: "Списък на всички кампании"
 ---
 
-This endpoint allows you to list all campaigns.
+Този endpoint ви позволява да получите списък на всички кампании.
 
-### Response fields
+### Полета в отговора
 
 <ResponseField name="campaigns" type="array">
-  <Expandable title="properties">
+  <Expandable title="свойства">
     <ResponseField name="id" type="integer">
-      The id of the campaign
+      Идентификаторът на кампанията
     </ResponseField>
 
     <ResponseField name="name" type="string">
-      The name of the campaign
+      Името на кампанията
     </ResponseField>
 
     <ResponseField name="status" type="string">
-      The status of the campaign
+      Статусът на кампанията
     </ResponseField>
 
     <ResponseField name="max_calls_in_parallel" type="integer">
-      Maximum number of calls that can be made in parallel
+      Максимален брой обаждания, които могат да се извършват паралелно
     </ResponseField>
 
     <ResponseField name="mark_complete_when_no_leads" type="boolean">
-      Whether to mark the campaign as complete when there are no leads
+      Дали да се маркира кампанията като завършена, когато няма leads
     </ResponseField>
 
     <ResponseField name="allowed_hours_start_time" type="string">
-      The start time for allowed calling hours
+      Началното време за разрешените часове за обаждания
     </ResponseField>
 
     <ResponseField name="allowed_hours_end_time" type="string">
-      The end time for allowed calling hours
+      Крайното време за разрешените часове за обаждания
     </ResponseField>
 
     <ResponseField name="allowed_days" type="array">
-      The days of the week when calls are allowed
+      Дните от седмицата, в които са разрешени обаждания
     </ResponseField>
 
     <ResponseField name="max_retries" type="integer">
-      Maximum number of retry attempts for failed calls
+      Максимален брой опити за повторно обаждане при неуспешни повиквания
     </ResponseField>
 
     <ResponseField name="retry_interval" type="integer">
-      Interval in seconds between retry attempts
+      Интервал в секунди между опитите за повторно обаждане
     </ResponseField>
 
     <ResponseField name="created_at" type="string">
-      The timestamp when the campaign was created
+      Времевата отметка, когато кампанията е създадена
     </ResponseField>
 
     <ResponseField name="updated_at" type="string">
-      The timestamp when the campaign was last updated
+      Времевата отметка, когато кампанията е била последно актуализирана
     </ResponseField>
 
   </Expandable>

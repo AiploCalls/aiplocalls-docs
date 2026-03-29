@@ -1,87 +1,87 @@
 ---
-title: "List mid call tools"
+title: "Списък с инструменти по време на разговор"
 api: "GET /user/tools"
-description: "Retrieve all mid call tools"
+description: "Извличане на всички инструменти по време на разговор"
 ---
 
-This endpoint allows you to retrieve all mid call tools. Mid call tools enable your AI assistants to interact with external APIs during a call.
+Този endpoint ви позволява да извлечете всички инструменти по време на разговор. Инструментите по време на разговор позволяват на вашите AI асистенти да взаимодействат с външни API-та по време на разговор.
 
-### Headers
+### Заглавки
 
 <ParamField header="Authorization" type="string" required>
-  Bearer token for authentication
+  Bearer token за удостоверяване
 </ParamField>
 
 <ParamField header="Content-Type" type="string" required>
-  Must be `application/json`
+  Трябва да бъде `application/json`
 </ParamField>
 
 <ParamField header="Accept" type="string" required>
-  Must be `application/json`
+  Трябва да бъде `application/json`
 </ParamField>
 
-### Response fields
+### Полета в отговора
 
 <ResponseField name="data" type="array">
-  Array of mid call tools
+  Масив от инструменти по време на разговор
   <Expandable title="properties">
     <ResponseField name="id" type="integer">
-      The unique identifier of the tool
+      Уникалният идентификатор на инструмента
     </ResponseField>
 
     <ResponseField name="name" type="string">
-      The name of the tool (lowercase with underscores)
+      Името на инструмента (малки букви с долни черти)
     </ResponseField>
 
     <ResponseField name="description" type="string">
-      Detailed explanation of when and how the AI should use this tool
+      Подробно обяснение кога и как AI трябва да използва този инструмент
     </ResponseField>
 
     <ResponseField name="endpoint" type="string">
-      The API endpoint URL that will be called
+      API endpoint URL, който ще бъде извикан
     </ResponseField>
 
     <ResponseField name="method" type="string">
-      HTTP method (GET, POST, PUT, PATCH, DELETE)
+      HTTP метод (GET, POST, PUT, PATCH, DELETE)
     </ResponseField>
 
     <ResponseField name="timeout" type="integer">
-      Request timeout in seconds (1-30)
+      Timeout на заявката в секунди (1-30)
     </ResponseField>
 
     <ResponseField name="headers" type="array">
-      HTTP headers to send with the request
+      HTTP заглавки за изпращане със заявката
       <Expandable title="header properties">
         <ResponseField name="name" type="string">
-          Header name
+          Име на заглавката
         </ResponseField>
         <ResponseField name="value" type="string">
-          Header value
+          Стойност на заглавката
         </ResponseField>
       </Expandable>
     </ResponseField>
 
     <ResponseField name="schema" type="array">
-      Parameters that the AI will extract and send to the endpoint
+      Параметри, които AI ще извлече и изпрати към endpoint-a
       <Expandable title="schema properties">
         <ResponseField name="name" type="string">
-          Parameter name
+          Име на параметъра
         </ResponseField>
         <ResponseField name="type" type="string">
-          Parameter type (string, number, boolean)
+          Тип на параметъра (string, number, boolean)
         </ResponseField>
         <ResponseField name="description" type="string">
-          Description to help AI understand how to extract this parameter
+          Описание, което помага на AI да разбере как да извлече този параметър
         </ResponseField>
       </Expandable>
     </ResponseField>
 
     <ResponseField name="created_at" type="string">
-      ISO 8601 timestamp when the tool was created
+      ISO 8601 timestamp кога е създаден инструментът
     </ResponseField>
 
     <ResponseField name="updated_at" type="string">
-      ISO 8601 timestamp when the tool was last updated
+      ISO 8601 timestamp кога е последно актуализиран инструментът
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -165,9 +165,11 @@ This endpoint allows you to retrieve all mid call tools. Mid call tools enable y
 
 </ResponseExample>
 
-### Assigning Tools to Assistants
+### Присвояване на инструменти на асистенти
 
-To use these tools with assistants, see:
+За да използвате тези инструменти с асистенти, вижте:
 
-- **[Create Assistant](/api-reference/assistants/create-assistant)** - Attach tools using the `tool_ids` parameter
-- **[Update Assistant](/api-reference/assistants/update-assistant)** - Manage tool assignments using the `tool_ids` parameter
+- **[Създаване на асистент](/api-reference/assistants/create-assistant)** - Прикачете инструменти използвайки параметъра `tool_ids`
+- **[Актуализиране на асистент](/api-reference/assistants/update-assistant)** - Управлявайте присвояванията на инструменти използвайки параметъра `tool_ids`
+
+---

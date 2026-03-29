@@ -1,133 +1,133 @@
 ---
-title: "SIP Integration Issues"
+title: "Проблеми с SIP интеграция"
 icon: "phone-volume"
-description: "Troubleshoot SIP trunk connection problems and configuration issues"
+description: "Отстраняване на неизправности при проблеми с връзката на SIP trunk и конфигурационни грешки"
 ---
 
-This guide helps resolve common SIP integration issues when connecting your SIP provider to Aiplocalls.
+Този ръководство помага за разрешаване на често срещани проблеми с SIP интеграцията при свързване на вашия SIP доставчик към Aiplocalls.
 
-## Testing Strategy
+## Стратегия за тестване
 
-1. **Test Outbound calls first** - easier to configure
-2. **Test Inbound calls second** - after outbound works
+1. **Първо тествайте изходящи обаждания** - по-лесни за конфигуриране
+2. **Второ тествайте входящи обаждания** - след като изходящите работят
 
-## Outbound SIP Issues
+## Проблеми с изходящи SIP обаждания
 
-### Connection Problems
+### Проблеми с връзката
 
-**SIP trunk not connecting for outbound calls:**
+**SIP trunk не се свързва за изходящи обаждания:**
 
-1. **Verify SIP Credentials** - username, password, server details
-2. **Phone Type Selection** - check with provider for correct type
-3. **Fixed IP Configuration** - usually enable and enter provider's IP address
-4. **Provider Settings** - verify codec, transport, port settings
+1. **Проверете SIP данните за достъп** - потребителско име, парола, детайли за сървъра
+2. **Избор на тип телефон** - проверете с доставчика за правилния тип
+3. **Конфигурация на фиксиран IP** - обикновено активирайте и въведете IP адреса на доставчика
+4. **Настройки на доставчика** - проверете codec, transport, port настройки
 
-### SIP Registration Issues
+### Проблеми с SIP регистрация
 
-**Important:** Aiplocalls platform:
-- **Does NOT send SIP REGISTER** messages to your provider
-- **Does NOT require receiving SIP REGISTER** from your provider
-- Uses **direct call authentication** instead
+**Важно:** Aiplocalls платформата:
+- **НЕ изпраща SIP REGISTER** съобщения към вашия доставчик
+- **НЕ изисква получаване на SIP REGISTER** от вашия доставчик
+- Използва **директна автентикация на обаждания** вместо това
 
-### Testing Outbound
+### Тестване на изходящи обаждания
 
-1. Configure SIP trunk settings
-2. **Make a direct test call** through platform
-3. Check call logs for errors
+1. Конфигурирайте настройките на SIP trunk
+2. **Направете директно тестово обаждане** през платформата
+3. Проверете записите на обажданията за грешки
 
-## Inbound SIP Issues
+## Проблеми с входящи SIP обаждания
 
-### Authentication Setup
+### Настройка на автентикация
 
-**For inbound calls:**
+**За входящи обаждания:**
 
-1. **Use IP Authentication** - instead of username/password
-2. **Whitelist Provider IPs** - add ALL provider IPs in our platform
-3. **Provider Configuration - IMPORTANT**
-   - **Use our FQDN domain** for routing (NOT the outbound IP)
-   - **Send to domain** - ensures correct routing
-   - **Do NOT send to IP** - causes routing issues
+1. **Използвайте IP автентикация** - вместо потребителско име/парола
+2. **Добавете в белия списък IP адресите на доставчика** - добавете ВСИЧКИ IP адреси на доставчика в нашата платформа
+3. **Конфигурация на доставчика - ВАЖНО**
+   - **Използвайте нашия FQDN домейн** за маршрутизиране (НЕ изходящия IP)
+   - **Изпращайте към домейна** - осигурява правилно маршрутизиране
+   - **НЕ изпращайте към IP** - причинява проблеми с маршрутизирането
 
-### Common Inbound Issues
+### Често срещани проблеми с входящи обаждания
 
-**Calls not reaching assistant:**
-- Verify all provider IPs whitelisted
-- Ensure provider sends to FQDN domain (not IP)
-- Check destination number format
+**Обажданията не достигат до асистента:**
+- Проверете дали всички IP адреси на доставчика са в белия списък
+- Уверете се, че доставчикът изпраща към FQDN домейна (не към IP)
+- Проверете формата на номера на дестинацията
 
-## General Issues
+## Общи проблеми
 
-**Network problems:**
-- Check internet connectivity
-- Verify no firewall blocking SIP traffic
+**Мрежови проблеми:**
+- Проверете интернет връзката
+- Проверете дали firewall не блокира SIP трафика
 
-**Provider compatibility:**
-- Verify provider supports direct calling (no registration)
-- Check IP authentication support
+**Съвместимост с доставчика:**
+- Проверете дали доставчикът поддържа директни обаждания (без регистрация)
+- Проверете поддръжката за IP автентикация
 
-## Testing Checklist
+## Контролен списък за тестване
 
-### Before Contacting Support
+### Преди да се свържете с поддръжката
 
-1. **Outbound Test:**
-   - [ ] Credentials verified
-   - [ ] Phone type selected correctly
-   - [ ] Fixed IP enabled with provider's IP address
-   - [ ] Direct test call attempted
+1. **Тест за изходящи обаждания:**
+   - [ ] Данните за достъп са проверени
+   - [ ] Типът телефон е избран правилно
+   - [ ] Фиксираният IP е активиран с IP адреса на доставчика
+   - [ ] Направен е опит за директно тестово обаждане
 
-2. **Inbound Test:**
-   - [ ] IP authentication configured
-   - [ ] All provider IPs whitelisted in our platform
-   - [ ] Provider configured to send to FQDN domain (not direct IP)
-   - [ ] Test call from external number
+2. **Тест за входящи обаждания:**
+   - [ ] IP автентикацията е конфигурирана
+   - [ ] Всички IP адреси на доставчика са в белия списък в нашата платформа
+   - [ ] Доставчикът е конфигуриран да изпраща към FQDN домейна (не директно към IP)
+   - [ ] Тестово обаждане от външен номер
 
-3. **General:**
-   - [ ] Network connectivity verified
+3. **Общо:**
+   - [ ] Мрежовата свързаност е проверена
 
-## FAQ
+## Често задавани въпроси
 
-### Transfer Phone Call Not Working
+### Трансферирането на телефонно обаждане не работи
 
-**Q: Why is the Transfer Phone Call function not working?**
+**В: Защо функцията за трансфериране на телефонно обаждане не работи?**
 
-**A:** If call transfers are failing, try these solutions:
+**О:** Ако трансферирането на обаждания се проваля, опитайте тези решения:
 
-1. **Check SIP Transfer Settings:**
-   - Set transfer call to "Advanced" mode
-   - Use SIP URI format: `sip:number@sip-server`
-   - Example: `sip:+1234567890@sip.provider.com:5060`
+1. **Проверете настройките за SIP трансфер:**
+   - Задайте трансфериране на обаждания на "Advanced" режим
+   - Използвайте SIP URI формат: `sip:number@sip-server`
+   - Пример: `sip:+1234567890@sip.provider.com:5060`
 
-2. **Verify Provider Support:**
-   - Confirm your SIP provider supports SIP REFER
-   - Check if transfer functionality is enabled on your account
-   - Some providers require specific configuration for transfers
+2. **Проверете поддръжката от доставчика:**
+   - Потвърдете, че вашият SIP доставчик поддържа SIP REFER
+   - Проверете дали функцията за трансфериране е активирана във вашия акаунт
+   - Някои доставчици изискват специфична конфигурация за трансфери
 
-3. **Test Different Formats:**
-   - Try with port: `sip:+1234567890@sip-server:5060`
-   - Try without port: `sip:+1234567890@sip-server`
-   - Try simple format: `sip:+1234567890`
+3. **Тествайте различни формати:**
+   - Опитайте с порт: `sip:+1234567890@sip-server:5060`
+   - Опитайте без порт: `sip:+1234567890@sip-server`
+   - Опитайте простия формат: `sip:+1234567890`
 
-4. **Verify Destination:**
-   - Ensure the target number is reachable
-   - Test if the number answers calls normally
-   - Check if the number is blocked or restricted
+4. **Проверете дестинацията:**
+   - Уверете се, че целевият номер е достъпен
+   - Тествайте дали номерът отговаря на обаждания нормално
+   - Проверете дали номерът е блокиран или ограничен
 
-5. **Common Issues:**
-   - Provider doesn't support SIP REFER
-   - Incorrect SIP URI format
-   - Network/firewall blocking transfer requests
-   - Destination number not answering
+5. **Често срещани проблеми:**
+   - Доставчикът не поддържа SIP REFER
+   - Неправилен SIP URI формат
+   - Мрежа/firewall блокира заявки за трансфериране
+   - Номерът на дестинацията не отговаря
 
-**Troubleshooting steps:**
-1. Test with a known working number first
-2. Try different SIP URI formats
-3. Contact your SIP provider to confirm transfer support
-4. Check call logs for specific error messages
+**Стъпки за отстраняване на неизправности:**
+1. Първо тествайте с известен работещ номер
+2. Опитайте различни SIP URI формати
+3. Свържете се с вашия SIP доставчик, за да потвърдите поддръжката за трансфериране
+4. Проверете записите на обажданията за специфични съобщения за грешки
 
-## Getting Help
+## Получаване на помощ
 
-**When contacting support, provide:**
-- Error messages from call logs
-- SIP trunk configuration
-- Test results (outbound and inbound)
-- Transfer attempt details and SIP URI format used
+**При контакт с поддръжката, предоставете:**
+- Съобщения за грешки от записите на обажданията
+- Конфигурация на SIP trunk
+- Резултати от тестовете (изходящи и входящи)
+- Детайли за опита за трансфериране и използвания SIP URI формат

@@ -1,29 +1,29 @@
 ---
-title: "Delete call"
+title: "Изтриване на обаждане"
 api: "DELETE /user/calls/{call}"
-description: "Delete a specific call record"
+description: "Изтриване на конкретен запис за обаждане"
 ---
 
-This endpoint allows you to delete a specific call record that belongs to the authenticated user.
+Този endpoint ви позволява да изтриете конкретен запис за обаждане, който принадлежи на удостоверения потребител.
 
 ### Path Parameters
 
 <ParamField path="call" type="integer" required>
-  The unique identifier of the call to delete
+  Уникалният идентификатор на обаждането за изтриване
 </ParamField>
 
 ### Response
 
 <ResponseField name="message" type="string">
-  Confirmation message indicating the call was deleted successfully
+  Потвърдително съобщение, указващо че обаждането е изтрито успешно
 </ResponseField>
 
 ### Error Responses
 
 <ResponseField name="404 Not Found">
-  <Expandable title="Error Response">
+  <Expandable title="Отговор при грешка">
     <ResponseField name="message" type="string">
-      Error message when the call is not found or doesn't belong to the authenticated user
+      Съобщение за грешка, когато обаждането не е намерено или не принадлежи на удостоверения потребител
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -44,9 +44,9 @@ This endpoint allows you to delete a specific call record that belongs to the au
 
 </ResponseExample>
 
-### Notes
+### Забележки
 
-- Only calls that belong to assistants owned by the authenticated user can be deleted
-- Once a call is deleted, it cannot be recovered
-- This action will permanently remove the call record, including any associated transcript, recording, and metadata
-- The call recording file (if exists) will also be deleted from storage
+- Могат да се изтриват само обаждания, които принадлежат на асистенти, собственост на удостоверения потребител
+- След като обаждането е изтрито, то не може да бъде възстановено
+- Това действие ще премахне окончателно записа за обаждането, включително всякакви свързани препис, запис и метаданни
+- Файлът със записа на обаждането (ако съществува) също ще бъде изтрит от хранилището

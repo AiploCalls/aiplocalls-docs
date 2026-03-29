@@ -1,181 +1,181 @@
 ---
-title: "Post-call Actions"
+title: "Действия След Повикване"
 icon: "webhook"
-description: "Extract data from the call and send it to an app/webhook for automation workflows."
+description: "Извлечете данни от разговора и ги изпратете към приложение/webhook за автоматизационни работни потоци."
 ---
 
-Configure what happens after calls end - extract specific information from conversations and send it to external systems for further processing.
+Конфигурирайте какво се случва след приключване на повикванията - извлечете специфична информация от разговорите и я изпратете към външни системи за допълнителна обработка.
 
-## Overview
+## Общ преглед
 
-Post-call actions automatically:
-- Extract structured data from conversations using AI
-- Send extracted variables to webhooks for automation
-- Trigger workflows in connected platforms
-- Update CRM records and databases
-- Enable complex automation scenarios
+Действията след повикване автоматично:
+- Извличат структурирани данни от разговорите с помощта на AI
+- Изпращат извлечените променливи към webhooks за автоматизация
+- Задействат работни потоци в свързани платформи
+- Актуализират записи в CRM и бази данни
+- Позволяват сложни сценарии за автоматизация
 
-## Post-call Variables
+## Променливи След Повикване
 
-Define the variables that the AI will extract from the call and send to a webhook.
+Дефинирайте променливите, които AI ще извлече от повикването и ще изпрати към webhook.
 
-### Variable Configuration
+### Конфигурация на Променливите
 
-Configure which information the AI should extract from each conversation:
+Конфигурирайте коя информация AI трябва да извлече от всеки разговор:
 
 <AccordionGroup>
-  <Accordion title="Variable Definition" icon="code">
-    Create variables that the AI will identify and extract from conversations.
+  <Accordion title="Дефиниране на Променливи" icon="code">
+    Създайте променливи, които AI ще идентифицира и извлече от разговорите.
     
-    **How extraction works:**
-    The AI analyzes the complete call transcript and considers your system prompt context to extract the requested variables. It understands what was discussed during the call and extracts relevant information based on your variable descriptions.
+    **Как работи извличането:**
+    AI анализира целия препис на разговора и взема предвид контекста на системната подкана за извличане на исканите променливи. То разбира какво е било обсъждано по време на разговора и извлича релевантна информация въз основа на вашите описания на променливите.
     
-    **Configuration:**
-    - **Name:** Variable identifier (3-16 characters, lowercase, alphanumeric)
-    - **Type:** Data type for the extracted value
-    - **Description:** Clear explanation so AI understands what to extract from the conversation
+    **Конфигурация:**
+    - **Име:** Идентификатор на променливата (3-16 знака, малки букви, алфачислено)
+    - **Тип:** Тип данни за извлечената стойност
+    - **Описание:** Ясно обяснение, за да разбере AI какво да извлече от разговора
     
-    **Variable Types:**
-    - **String:** Text values (names, addresses, comments)
-    - **Number:** Numeric values (quantities, prices, scores)
-    - **True/False:** Boolean values (yes/no answers, objectives achieved)
+    **Типове Променливи:**
+    - **String:** Текстови стойности (имена, адреси, коментари)
+    - **Number:** Числови стойности (количества, цени, оценки)
+    - **True/False:** Булеви стойности (отговори да/не, постигнати цели)
   </Accordion>
   
-  <Accordion title="Default Variables" icon="list">
-    Every assistant includes these essential variables by default:
+  <Accordion title="Стандартни Променливи" icon="list">
+    Всеки асистент включва тези основни променливи по подразбиране:
     
-    **Status (True/False):** Whether the call objective was achieved or not
+    **Status (True/False):** Дали целта на разговора е била постигната или не
     
-    **Summary (String):** Call summary in a few words
+    **Summary (String):** Резюме на разговора в няколко думи
     
-    You can add custom variables based on your specific use case.
+    Можете да добавите персонализирани променливи въз основа на вашия специфичен случай на употреба.
   </Accordion>
   
-  <Accordion title="Variable Examples" icon="lightbulb">
-    Common variables for different scenarios:
+  <Accordion title="Примери за Променливи" icon="lightbulb">
+    Обичайни променливи за различни сценарии:
     
-    **Sales qualification:**
-    - `budget` (Number): Customer's budget range
-    - `decision_maker` (True/False): Is caller the decision maker
-    - `timeline` (String): When they need the solution
-    - `pain_points` (String): Main challenges mentioned
+    **Квалификация за продажби:**
+    - `budget` (Number): Бюджетен диапазон на клиента
+    - `decision_maker` (True/False): Дали звънящият е лицето, което взема решения
+    - `timeline` (String): Кога имат нужда от решението
+    - `pain_points` (String): Основни споменати предизвикателства
     
-    **Appointment booking:**
-    - `appointment_date` (String): Preferred appointment date
-    - `service_type` (String): Type of service requested
-    - `contact_method` (String): Preferred contact method
+    **Запазване на час:**
+    - `appointment_date` (String): Предпочитана дата за среща
+    - `service_type` (String): Тип поискана услуга
+    - `contact_method` (String): Предпочитан метод за контакт
     
-    **Support calls:**
-    - `issue_type` (String): Category of the problem
-    - `urgency_level` (Number): Priority score (1-10)
-    - `resolution_status` (True/False): Was issue resolved
+    **Поддръжка:**
+    - `issue_type` (String): Категория на проблема
+    - `urgency_level` (Number): Оценка на приоритета (1-10)
+    - `resolution_status` (True/False): Беше ли решен проблемът
   </Accordion>
 </AccordionGroup>
 
-### Extraction Process
+### Процес на Извличане
 
 <AccordionGroup>
-  <Accordion title="How AI Extracts Variables" icon="brain">
-    The AI uses sophisticated analysis to extract variables from your calls:
+  <Accordion title="Как AI Извлича Променливи" icon="brain">
+    AI използва сложен анализ за извличане на променливи от вашите разговори:
     
-    **Data sources:**
-    - **Complete call transcript:** Everything said by both the AI and the customer
-    - **System prompt context:** Your assistant's objectives and instructions help guide extraction
-    - **Variable descriptions:** Clear descriptions you provide for each variable
+    **Източници на данни:**
+    - **Пълен препис на разговора:** Всичко казано от AI и клиента
+    - **Контекст на системната подкана:** Целите и инструкциите на вашия асистент помагат за насочване на извличането
+    - **Описания на променливите:** Ясни описания, които предоставяте за всяка променлива
     
-    **Analysis method:**
-    1. AI reviews the entire conversation transcript
-    2. Considers the system prompt and call objectives
-    3. Identifies relevant information based on variable descriptions
-    4. Extracts and formats data according to specified types
-    5. Validates extracted values before sending to webhook
+    **Метод на анализ:**
+    1. AI преглежда целия препис на разговора
+    2. Взема предвид системната подкана и целите на разговора
+    3. Идентифицира релевантна информация въз основа на описанията на променливите
+    4. Извлича и форматира данните според зададените типове
+    5. Валидира извлечените стойности преди изпращане към webhook
   </Accordion>
 </AccordionGroup>
 
-### Best Practices
+### Добри Практики
 
 <Warning>
-**Variable naming:** Use lowercase, alphanumeric characters only. No spaces or special characters except underscores.
+**Именуване на променливи:** Използвайте само малки букви, алфачислени знаци. Без интервали или специални знаци, освен долни черти.
 </Warning>
 
 <Tip>
-**Clear descriptions:** Write descriptions that clearly explain what the AI should look for in the conversation transcript. The more specific and context-aware, the better the extraction accuracy.
+**Ясни описания:** Напишете описания, които ясно обясняват какво AI трябва да търси в преписа на разговора. Колкото по-специфични и контекстно осведомени, толкова по-добра е точността на извличането.
 </Tip>
 
 <Note>
-**System prompt synergy:** Your variable descriptions work best when they align with your system prompt objectives. If your assistant is designed for lead qualification, your variables should reflect that purpose.
+**Синергия със системната подкана:** Вашите описания на променливи работят най-добре, когато са в съответствие с целите на системната подкана. Ако вашият асистент е проектиран за квалификация на потенциални клиенти, променливите ви трябва да отразяват тази цел.
 </Note>
 
-## Webhook Configuration
+## Конфигурация на Webhook
 
-Make a request to a URL that sends the extracted variables to external systems.
+Направете заявка към URL, който изпраща извлечените променливи към външни системи.
 
-### Webhook Settings
+### Настройки на Webhook
 
 <AccordionGroup>
-  <Accordion title="Webhook Status" icon="check">
-    **Enabled/Disabled:** Control whether webhooks are sent after calls
+  <Accordion title="Статус на Webhook" icon="check">
+    **Включен/Изключен:** Контролирайте дали webhooks се изпращат след разговори
     
-    **Default:** Disabled - Enable only when you have a webhook endpoint ready to receive data
+    **По подразбиране:** Изключен - Включете само когато имате готова webhook крайна точка за получаване на данни
   </Accordion>
   
-  <Accordion title="Webhook URL" icon="link">
-    **URL endpoint:** Where to send the extracted data
+  <Accordion title="URL на Webhook" icon="link">
+    **URL крайна точка:** Където да се изпратят извлечените данни
     
-    **Format:** Must be a valid URL
+    **Формат:** Трябва да е валиден URL
 
-    **Example:** `https://call.aiployees.com/automate/api/v1/webhooks/your-webhook-id`
+    **Пример:** `https://call.aiployees.com/automate/api/v1/webhooks/your-webhook-id`
     
-    **Test functionality:** Built-in test feature sends sample data to verify connectivity
+    **Функционалност за тестване:** Вградена функция за тест изпраща примерни данни за проверка на свързаността
   </Accordion>
   
-  <Accordion title="Delivery Options" icon="gear">
-    **Send webhook only on completed:** 
-    - **Yes (Default):** Only send data for completed calls
-    - **No:** Send data for all calls regardless of completion status
+  <Accordion title="Опции за Доставка" icon="gear">
+    **Изпрати webhook само при завършени:** 
+    - **Да (По подразбиране):** Изпращай данни само за завършени разговори
+    - **Не:** Изпращай данни за всички разговори независимо от статуса на завършване
     
-    **Include recording in webhook:**
-    - **Yes (Default):** Include recording URL in the webhook payload
-    - **No:** Send only extracted variables without recording link
+    **Включи записа в webhook:**
+    - **Да (По подразбиране):** Включи URL на записа в payload на webhook
+    - **Не:** Изпрати само извлечени променливи без връзка към записа
   </Accordion>
 </AccordionGroup>
 
-### Webhook Payload
+### Payload на Webhook
 
-The webhook will receive a comprehensive JSON payload containing call details, extracted variables, and transcript. For complete API documentation, see [Post-Call Webhook API](/api-reference/webhooks/post-call-webhook).
+Webhook ще получи цялостен JSON payload, съдържащ детайли за разговора, извлечени променливи и препис. За пълна API документация, вижте [Post-Call Webhook API](/api-reference/webhooks/post-call-webhook).
 
-**Key payload fields:**
+**Ключови полета в payload:**
 
 <AccordionGroup>
-  <Accordion title="Call Information" icon="phone">
-    - **id:** Unique call identifier
-    - **customer_phone:** Customer's phone number (E.164 format)
-    - **assistant_phone:** Assistant's phone number
-    - **duration:** Call duration in seconds
-    - **status:** Call status (initiated, ringing, busy, in-progress, ended, completed, ended_by_customer, ended_by_assistant, unanswered, failed)
-    - **created_at/finished_at:** ISO 8601 timestamps
+  <Accordion title="Информация за Разговора" icon="phone">
+    - **id:** Уникален идентификатор на разговора
+    - **customer_phone:** Телефонен номер на клиента (E.164 формат)
+    - **assistant_phone:** Телефонен номер на асистента
+    - **duration:** Продължителност на разговора в секунди
+    - **status:** Статус на разговора (initiated, ringing, busy, in-progress, ended, completed, ended_by_customer, ended_by_assistant, unanswered, failed)
+    - **created_at/finished_at:** ISO 8601 времеви печати
   </Accordion>
   
-  <Accordion title="Extracted Variables" icon="code">
-    - **extracted_variables:** AI-extracted data based on your post-call schema configuration (see [Post-call Variables](#post-call-variables) section above)
-    - **input_variables:** Variables passed before the call (see [Call Variables](/ai-assistants/settings/prompt-and-tools#call-variables))
-    - Includes default variables (status, summary) plus your custom variables
+  <Accordion title="Извлечени Променливи" icon="code">
+    - **extracted_variables:** AI-извлечени данни въз основа на конфигурацията на вашата схема след разговора (вижте секцията [Променливи След Повикване](#post-call-variables) по-горе)
+    - **input_variables:** Променливи, подадени преди разговора (вижте [Променливи на Разговора](/ai-assistants/settings/prompt-and-tools#call-variables))
+    - Включва стандартни променливи (status, summary) плюс вашите персонализирани променливи
   </Accordion>
   
-  <Accordion title="Conversation Data" icon="message">
-    - **transcript:** Detailed conversation transcript with timestamps
-    - **formatted_transcript:** Human-readable conversation format
-    - **recording_url:** Call recording URL (if enabled)
+  <Accordion title="Данни за Разговора" icon="message">
+    - **transcript:** Детайлен препис на разговора с времеви печати
+    - **formatted_transcript:** Четим от човека формат на разговора
+    - **recording_url:** URL на записа на разговора (ако е включен)
   </Accordion>
   
-  <Accordion title="Campaign & Lead Data" icon="users">
-    - **lead:** Lead information (for campaign calls)
-    - **campaign:** Campaign details and settings
-    - Only included for calls that are part of campaigns
+  <Accordion title="Данни за Кампания и Потенциален Клиент" icon="users">
+    - **lead:** Информация за потенциалния клиент (за разговори от кампания)
+    - **campaign:** Детайли и настройки на кампанията
+    - Включени само за разговори, които са част от кампании
   </Accordion>
 </AccordionGroup>
 
-**Example webhook payload:**
+**Пример webhook payload:**
 
 ```json
 {
@@ -215,153 +215,153 @@ The webhook will receive a comprehensive JSON payload containing call details, e
 }
 ```
 
-### Testing Webhooks
+### Тестване на Webhooks
 
 <Tip>
-**Test before going live:** Use the "Make test request" button to send sample data to your webhook endpoint and verify it's working correctly.
+**Тествайте преди пускане на живо:** Използвайте бутона "Направи тестова заявка" за изпращане на примерни данни към вашата webhook крайна точка и проверете дали работи правилно.
 </Tip>
 
-**Test process:**
-1. Configure your variables and webhook URL
-2. Save your assistant settings
-3. Click "Make test request" 
-4. Check your webhook endpoint receives the test data
-5. Verify the payload structure matches your expectations
+**Процес на тестване:**
+1. Конфигурирайте вашите променливи и webhook URL
+2. Запазете настройките на вашия асистент
+3. Кликнете "Направи тестова заявка" 
+4. Проверете дали вашата webhook крайна точка получава тестовите данни
+5. Проверете дали структурата на payload отговаря на очакванията ви
 
-## Integration Examples
+## Примери за Интеграция
 
-### Our Automation Platform
+### Нашата Платформа за Автоматизация
 
-**Primary integration:** Use our built-in no-code automation platform for seamless workflows:
+**Основна интеграция:** Използвайте нашата вградена платформа за автоматизация без код за безпроблемни работни потоци:
 
-- **Direct webhook processing:** No external setup required
-- **250+ app integrations:** Connect to CRM, email, calendars, and more
-- **Visual workflow builder:** Create complex automation without code
-- **Real-time data sync:** Instant processing of extracted variables
-- **Pre-built templates:** Ready-to-use workflows for common scenarios
+- **Директна webhook обработка:** Не се изисква външна настройка
+- **250+ интеграции на приложения:** Свържете се към CRM, имейл, календари и още
+- **Визуален конструктор на работни потоци:** Създавайте сложни автоматизации без код
+- **Синхронизация на данни в реално време:** Незабавна обработка на извлечените променливи
+- **Готови шаблони:** Готови за употреба работни потоци за общи сценарии
 
-**Common automation workflows:**
-- **CRM updates:** Automatically update contact records in HubSpot, Salesforce, Pipedrive
-- **Email follow-ups:** Send personalized emails based on call outcomes
-- **Lead scoring:** Update lead scores based on extracted variables
-- **Calendar booking:** Schedule follow-up meetings automatically
-- **Team notifications:** Alert team members about important calls
+**Обичайни автоматизационни работни потоци:**
+- **CRM актуализации:** Автоматично актуализиране на записи за контакти в HubSpot, Salesforce, Pipedrive
+- **Имейл проследяване:** Изпращане на персонализирани имейли въз основа на резултатите от разговора
+- **Оценяване на потенциални клиенти:** Актуализиране на оценки на потенциални клиенти въз основа на извлечени променливи
+- **Запазване в календар:** Автоматично планиране на проследяващи срещи
+- **Уведомления за екипа:** Предупреждаване на членовете на екипа за важни разговори
 
-### External Platforms
+### Външни Платформи
 
-**Any platform with webhook support:**
-- Receive webhook data from our platform
-- Process extracted variables in your own systems
-- Create custom automation workflows
-- Integrate with any API or service that accepts webhooks
+**Всяка платформа с поддръжка за webhook:**
+- Получавайте webhook данни от нашата платформа
+- Обработвайте извлечени променливи във вашите собствени системи
+- Създавайте персонализирани автоматизационни работни потоци
+- Интегрирайте с всеки API или услуга, която приема webhooks
 
-**Use cases:**
-- Connect to any CRM, email platform, or business tool
-- Send data to custom applications
-- Trigger workflows in third-party automation platforms
-- Store data in external databases or systems
+**Случаи на употреба:**
+- Свържете се към всякакъв CRM, имейл платформа или бизнес инструмент
+- Изпращайте данни към персонализирани приложения
+- Задействайте работни потоци в платформи за автоматизация от трети страни
+- Съхранявайте данни във външни бази данни или системи
 
-### Custom Development
+### Персонализирана Разработка
 
-**API endpoints:** Build custom receivers for webhook data
+**API крайни точки:** Създайте персонализирани приемници за webhook данни
 
-**Database integration:** Store call data in your own systems
+**Интеграция с база данни:** Съхранявайте данни за разговорите във вашите собствени системи
 
-**Business logic:** Trigger complex workflows based on extracted variables
+**Бизнес логика:** Задействайте сложни работни потоци въз основа на извлечени променливи
 
-## Testing Your Assistant
+## Тестване на Вашия Асистент
 
-After configuring your assistant settings, it's important to test thoroughly before deploying to production.
+След конфигуриране на настройките на вашия асистент, е важно да тествате щателно преди внедряване в производство.
 
-### Testing Methods
+### Методи за Тестване
 
 <AccordionGroup>
-  <Accordion title="Speak with Your Assistant" icon="microphone">
-    **Web-based testing:** Use the "Speak with your assistant" button to test directly from your browser
+  <Accordion title="Говорете с Вашия Асистент" icon="microphone">
+    **Уеб-базирано тестване:** Използвайте бутона "Говорете с вашия асистент" за тестване директно от вашия браузър
     
-    **Features:**
-    - Real-time voice conversation through your web browser
-    - Test all assistant capabilities including tools and knowledge base
-    - No phone required - perfect for quick iterations
-    - Immediate feedback on responses and behavior
+    **Функции:**
+    - Разговор с глас в реално време чрез вашия уеб браузър
+    - Тествайте всички възможности на асистента включително инструменти и база знания
+    - Не се изисква телефон - перфектно за бързи итерации
+    - Незабавна обратна връзка за отговори и поведение
     
-    **Best for:** Quick testing during development and configuration
+    **Най-добро за:** Бързо тестване по време на разработка и конфигурация
   </Accordion>
   
-  <Accordion title="Phone Call Testing" icon="phone">
-    **Real phone call testing:** Call your assistant from any phone number
+  <Accordion title="Тестване с Телефонно Обаждане" icon="phone">
+    **Тестване с истинско телефонно обаждане:** Обадете се на вашия асистент от всякакъв телефонен номер
     
-    **Outbound assistants:**
-    - If no specific number is set: Assistant calls from a random number
-    - If caller ID is configured: Assistant calls from your specified number
-    - Test the complete outbound flow including dialing and initial message
+    **Изходящи асистенти:**
+    - Ако не е зададен специфичен номер: Асистентът звъни от случаен номер
+    - Ако caller ID е конфигуриран: Асистентът звъни от вашия зададен номер
+    - Тествайте пълния изходящ поток включително набиране и първоначално съобщение
     
-    **Inbound assistants:**
-    - Call the assigned phone number directly
-    - Test how the assistant handles incoming calls
-    - Verify call routing and response quality
+    **Входящи асистенти:**
+    - Обадете се директно на зададения телефонен номер
+    - Тествайте как асистентът обработва входящи обаждания
+    - Проверете рутиране на разговори и качество на отговорите
     
-    **Best for:** Final testing with real phone conditions and audio quality
+    **Най-добро за:** Финално тестване с реални телефонни условия и качество на звука
   </Accordion>
 </AccordionGroup>
 
-### Testing Checklist
+### Списък за Тестване
 
 <Tip>
-**Comprehensive testing:** Test all configured features including tools, knowledge base queries, variable extraction, and webhook delivery.
+**Цялостно тестване:** Тествайте всички конфигурирани функции включително инструменти, заявки към базата знания, извличане на променливи и доставка на webhook.
 </Tip>
 
-**Essential tests:**
-- Voice clarity and response speed
-- Knowledge base integration (if configured)
-- Tool functionality (transfer, scheduling, etc.)
-- Variable extraction accuracy
-- Webhook delivery (check your endpoint receives data)
-- Edge cases and error handling
+**Основни тестове:**
+- Яснота на гласа и скорост на отговора
+- Интеграция с база знания (ако е конфигурирана)
+- Функционалност на инструментите (прехвърляне, планиране и т.н.)
+- Точност на извличане на променливи
+- Доставка на webhook (проверете дали вашата крайна точка получава данни)
+- Гранични случаи и обработка на грешки
 
-## Web Widget Integration
+## Интеграция на Уеб Джаджа
 
-Configure your assistant to work as a web widget on your website for seamless customer interactions.
+Конфигурирайте вашия асистент да работи като уеб джаджа на вашия уебсайт за безпроблемни клиентски взаимодействия.
 
-### Widget Configuration
+### Конфигурация на Джаджата
 
 <AccordionGroup>
-  <Accordion title="Widget Setup" icon="code">
-    **Easy integration:** Add your AI assistant to any website with a simple code snippet
+  <Accordion title="Настройка на Джаджата" icon="code">
+    **Лесна интеграция:** Добавете вашия AI асистент към всеки уебсайт с прост код фрагмент
     
-    **Features:**
-    - **Voice chat:** Customers can speak directly to your assistant
-    - **Text fallback:** Option for text-based conversations
-    - **Customizable appearance:** Match your brand colors and styling
-    - **Mobile responsive:** Works on all devices and screen sizes
+    **Функции:**
+    - **Гласов чат:** Клиентите могат да говорят директно с вашия асистент
+    - **Текстов резерв:** Опция за текстови разговори
+    - **Персонализируем външен вид:** Съвпадение с цветовете и стила на вашия бранд
+    - **Отзивчив за мобилни:** Работи на всички устройства и размери на екрани
   </Accordion>
   
-  <Accordion title="Widget Behavior" icon="gear">
-    **Smart interactions:** The widget adapts to your assistant configuration
+  <Accordion title="Поведение на Джаджата" icon="gear">
+    **Интелигентни взаимодействия:** Джаджата се адаптира към конфигурацията на вашия асистент
     
-    **Capabilities:**
-    - Uses same knowledge base and tools as phone assistant
-    - Supports all configured languages
-    - Extracts same post-call variables
-    - Sends webhooks for web conversations
-    - Respects same system prompt and personality
+    **Възможности:**
+    - Използва същата база знания и инструменти като телефонния асистент
+    - Поддържа всички конфигурирани езици
+    - Извлича същите променливи след разговора
+    - Изпраща webhooks за уеб разговори
+    - Спазва същата системна подкана и личност
   </Accordion>
   
-  <Accordion title="Use Cases" icon="lightbulb">
-    **Common applications:**
+  <Accordion title="Случаи на Употреба" icon="lightbulb">
+    **Обичайни приложения:**
     
-    **Customer support:** 24/7 automated support on your website
-    **Lead qualification:** Qualify visitors before they contact sales
-    **Appointment booking:** Allow visitors to schedule directly through the widget
-    **FAQ handling:** Answer common questions instantly
-    **Product demos:** Guide visitors through your product features
+    **Клиентска поддръжка:** 24/7 автоматизирана поддръжка на вашия уебсайт
+    **Квалификация на потенциални клиенти:** Квалифицирайте посетители преди да се свържат с продажбите
+    **Запазване на часове:** Позволете на посетителите да планират директно чрез джаджата
+    **Обработка на често задавани въпроси:** Отговаряйте на обичайни въпроси незабавно
+    **Демота на продукти:** Насочвайте посетителите през функциите на вашия продукт
   </Accordion>
 </AccordionGroup>
 
 <Note>
-For detailed testing guides and widget integration instructions, see our [Testing Your Assistant](/ai-assistants/testing) documentation.
+За подробни ръководства за тестване и инструкции за интеграция на джаджата, вижте нашата документация [Тестване на Вашия Асистент](/ai-assistants/testing).
 </Note>
 
 <Note>
-For detailed webhook integration guides and examples, see our [Automation documentation](/automation/overview).
+За подробни ръководства за webhook интеграция и примери, вижте нашата документация за [Автоматизация](/automation/overview).
 </Note>

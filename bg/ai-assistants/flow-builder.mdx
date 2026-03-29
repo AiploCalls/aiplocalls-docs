@@ -1,348 +1,350 @@
 ---
 title: "Flow Builder"
 icon: "share-nodes"
-description: "Design conversation flows visually with an intuitive drag-and-drop interface"
+description: "Дизайнирайте разговори визуално с интуитивен drag-and-drop интерфейс"
 ---
 
-Flow Builder is a visual, drag-and-drop conversation flow editor that lets you design AI assistant scripts without writing code. Create multi-step conversation flows by connecting nodes that represent different actions and decision points.
+Flow Builder е визуален drag-and-drop редактор за разговорни потоци, който ви позволява да дизайнирате скриптове за AI асистенти без писане на код. Създавайте многостъпкови разговорни потоци чрез свързване на възли, които представляват различни действия и точки за вземане на решения.
 
-## Overview
+## Общ преглед
 
-Flow Builder provides:
+Flow Builder предоставя:
 
-- **Visual design** - Drag-and-drop nodes on a canvas
-- **Multiple node types** - Messages, prompts, actions, and more
-- **Branching logic** - Create different paths based on responses
-- **Settings panel** - Configure agent personality and behavior
-- **Import/Export** - Save and share flows as JSON files
+- **Визуален дизайн** - Drag-and-drop възли на платно
+- **Множество типове възли** - Съобщения, подсказки, действия и други
+- **Разклонителна логика** - Създаване на различни пътища въз основа на отговори
+- **Панел с настройки** - Конфигуриране на личност и поведение на агента
+- **Import/Export** - Запазване и споделяне на потоци като JSON файлове
 
 <Frame>
   <img src="/resources/ai-assistants/flow-builder-overview.png" alt="Flow Builder Interface" />
 </Frame>
 
-## When to Use Flow Builder
+## Кога да използвате Flow Builder
 
 <CardGroup cols={2}>
-  <Card title="Use Flow Builder for" icon="check">
-    - Structured conversation scripts
-    - Multi-path decision trees
-    - Complex call flows with branches
-    - Visual thinkers who prefer diagrams
+  <Card title="Използвайте Flow Builder за" icon="check">
+    - Структурирани разговорни скриптове
+    - Многопътни дървета за решения
+    - Сложни потоци от разговори с разклонения
+    - Визуално мислещи хора, които предпочитат диаграми
   </Card>
-  <Card title="Use Classic Editor for" icon="pen">
-    - Simple, linear conversations
-    - Highly dynamic AI responses
-    - Quick prompt iterations
-    - Text-focused editing
+  <Card title="Използвайте Classic Editor за" icon="pen">
+    - Прости, линейни разговори
+    - Силно динамични AI отговори
+    - Бързи итерации на подсказки
+    - Редактиране фокусирано върху текст
   </Card>
 </CardGroup>
 
-## Getting Started
+## Първи стъпки
 
 <Steps>
-  <Step title="Open your assistant">
-    Navigate to **Assistants** and click on the assistant you want to edit.
+  <Step title="Отворете вашия асистент">
+    Отидете в **Assistants** и кликнете върху асистента, който искате да редактирате.
   </Step>
-  <Step title="Find Flow Builder">
-    In the edit form, scroll to the **System Prompt** section and click the **Flow Builder** tab.
+  <Step title="Намерете Flow Builder">
+    В формата за редактиране се спуснете до секцията **System Prompt** и кликнете върху таба **Flow Builder**.
   </Step>
-  <Step title="Launch Flow Builder">
-    Click **Launch Flow Builder**. A full-screen editor will open.
+  <Step title="Стартирайте Flow Builder">
+    Кликнете **Launch Flow Builder**. Ще се отвори редактор на цял екран.
   </Step>
-  <Step title="Choose how to start">
-    - **Continue with existing** - Edit your current flow
-    - **Start from scratch** - Begin with just a Start node
-    - **Start with template** - Load a pre-built flow template
+  <Step title="Изберете как да започнете">
+    - **Continue with existing** - Редактирайте вашия текущ поток
+    - **Start from scratch** - Започнете само със Start възел
+    - **Start with template** - Заредете предварително изграден шаблон за поток
   </Step>
 </Steps>
 
-## Interface Overview
+## Преглед на интерфейса
 
-### Canvas Area (Center)
+### Област на платното (център)
 
-The main workspace where you build your flow:
+Основното работно пространство, където изграждате вашия поток:
 
-- **Nodes** - Drag to reposition
-- **Connections** - Lines showing flow between nodes
-- **Grid background** - Helps with alignment
-- **Zoom controls** - Zoom in/out and fit to view
-- **Pan** - Click and drag on empty space to move around
+- **Възли** - Плъзнете за преместване
+- **Връзки** - Линии показващи потока между възлите
+- **Мрежа във фона** - Помага за подравняване
+- **Контроли за мащабиране** - Увеличаване/намаляване и напасване в изгледа
+- **Панорамиране** - Кликнете и плъзнете на празно пространство за придвижване
 
-### Bottom Toolbar
+### Долна лента с инструменти
 
-Quick actions for managing your flow:
+Бързи действия за управление на вашия поток:
 
-| Button | Action |
-|--------|--------|
-| ⚡ Auto Layout | Automatically arrange nodes neatly |
-| 📋 Duplicate | Copy selected node |
-| 🗑️ Delete | Remove selected node or connection |
-| **+ Add Node** | Add a new node to the canvas |
+| Бутон | Действие |
+|-------|----------|
+| ⚡ Auto Layout | Автоматично подреждане на възлите |
+| 📋 Duplicate | Копиране на избрания възел |
+| 🗑️ Delete | Премахване на избран възел или връзка |
+| **+ Add Node** | Добавяне на нов възел към платното |
 
-### Settings Panel (Right Side)
+### Панел с настройки (дясна страна)
 
-Configure your assistant's personality and behavior:
+Конфигурирайте личността и поведението на вашия асистент:
 
-- **Agent Name** - The name your AI will use
-- **Agent Type** - Sales, Support, Survey, etc.
-- **Language** - Spoken language for calls
-- **Assertiveness** - How pushy the AI should be
-- **Humor** - Level of humor in responses
-- **Variables** - Pre-call data fields
-- **Post-Call Fields** - Data to collect after calls
+- **Agent Name** - Името, което вашият AI ще използва
+- **Agent Type** - Sales, Support, Survey и др.
+- **Language** - Говорим език за разговорите
+- **Assertiveness** - Колко настойчив трябва да бъде AI-ят
+- **Humor** - Ниво на хумор в отговорите
+- **Variables** - Полета с данни преди разговора
+- **Post-Call Fields** - Данни за събиране след разговорите
 
-## Node Types
+## Типове възли
 
-Flow Builder has 5 node types, each with a specific purpose:
+Flow Builder има 5 типа възли, всеки със специфична цел:
 
 <Frame>
   <img src="/resources/ai-assistants/flow-builder-nodes.png" alt="Flow Builder Node Types" />
 </Frame>
 
-### Start Node (Green)
+### Start възел (зелен)
 
-<Card title="Start Node" icon="play" color="#22c55e">
-The entry point of every conversation. Every flow must have exactly one Start node.
+<Card title="Start възел" icon="play" color="#22c55e">
+Входната точка на всеки разговор. Всеки поток трябва да има точно един Start възел.
 
-**Properties:**
-- **Greeting** - The initial message when the call begins
+**Свойства:**
+- **Greeting** - Началното съобщение когато разговорът започне
 
-**Example:** "Hi, this is Sarah from Acme Insurance. How are you today?"
+**Пример:** "Здравейте, аз съм Сара от Acme Insurance. Как сте днес?"
 </Card>
 
-### Speak Node (Blue)
+### Speak възел (син)
 
-<Card title="Speak Node" icon="volume-high" color="#3b82f6">
-Delivers a pre-written message exactly as specified. Use when you need precise wording.
+<Card title="Speak възел" icon="volume-high" color="#3b82f6">
+Предава предварително написано съобщение точно както е зададено. Използвайте когато се нуждаете от точна формулировка.
 
-**Properties:**
-- **Text** - The exact message to speak
-- **Outcomes** - Different paths based on customer response
+**Свойства:**
+- **Text** - Точното съобщение за произнасяне
+- **Outcomes** - Различни пътища въз основа на отговора на клиента
 
-**Example:** "We're offering a limited-time 20% discount on all plans. Would you like to hear more?"
+**Пример:** "Предлагаме временна 20% отстъпка на всички планове. Искате ли да чуете повече?"
 </Card>
 
-### Prompt Node (Purple)
+### Prompt възел (лилав)
 
-<Card title="Prompt Node" icon="message" color="#a855f7">
-Gives the AI instructions on how to respond. More flexible than Speak nodes - the AI generates contextual responses.
+<Card title="Prompt възел" icon="message" color="#a855f7">
+Дава на AI-я инструкции как да отговори. По-гъвкав от Speak възлите - AI-ят генерира контекстуални отговори.
 
-**Properties:**
-- **Prompt** - Instructions for the AI
-- **Outcomes** - Different paths based on response categories
+**Свойства:**
+- **Prompt** - Инструкции за AI-я
+- **Outcomes** - Различни пътища въз основа на категориите отговори
 
-**Example prompt:** "Ask the customer about their current insurance coverage. Be conversational and empathetic. Listen for mentions of their family size, budget concerns, or timeline."
+**Пример за подсказка:** "Попитайте клиента за настоящата му застраховка. Бъдете разговорливи и емпатични. Слушайте за споменавания на размера на семейството, грижи за бюджета или времеви график."
 </Card>
 
-### Action Node (Orange)
+### Action възел (оранжев)
 
-<Card title="Action Node" icon="bolt" color="#f97316">
-Executes special actions during the call.
+<Card title="Action възел" icon="bolt" color="#f97316">
+Изпълнява специални действия по време на разговора.
 
-**Action Types:**
-- **Call Forward** - Transfer to another number
-- **Book Appointment** - Schedule using connected calendar
-- **Custom Action** - Trigger a custom mid-call tool
+**Типове действия:**
+- **Call Forward** - Пренасочване към друг номер
+- **Book Appointment** - Планиране с помощта на свързан календар
+- **Custom Action** - Задействане на персонализиран инструмент по време на разговора
 
-**Example:** Forward to sales team at +1-555-123-4567 when customer is ready to purchase.
+**Пример:** Пренасочване към отдела продажби на +1-555-123-4567 когато клиентът е готов за покупка.
 </Card>
 
-### End Node (Red)
+### End възел (червен)
 
-<Card title="End Node" icon="phone-slash" color="#ef4444">
-Terminates the call or transfers to another destination.
+<Card title="End възел" icon="phone-slash" color="#ef4444">
+Прекратява разговора или пренасочва към друга дестинация.
 
-**End Types:**
-- **End Call** - Hang up with a closing message
-- **Forward Call** - Transfer to a phone number
-- **Transfer Agent** - Hand off to another assistant
+**Типове завършване:**
+- **End Call** - Затваряне със заключително съобщение
+- **Forward Call** - Пренасочване към телефонен номер
+- **Transfer Agent** - Предаване на друг асистент
 
-**Example closing:** "Thank you for your time today. Have a great day!"
+**Пример за заключение:** "Благодаря ви за времето днес. Приятен ден!"
 </Card>
 
-## Working with Nodes
+## Работа с възли
 
-### Adding Nodes
+### Добавяне на възли
 
-1. Click **+ Add Node** in the bottom toolbar
-2. Select the node type from the dropdown
-3. The node appears on the canvas
-4. Drag it to your desired position
+1. Кликнете **+ Add Node** в долната лента с инструменти
+2. Изберете типа възел от падащото меню
+3. Възелът се появява на платното
+4. Плъзнете го до желаната позиция
 
-### Connecting Nodes
+### Свързване на възли
 
-1. Hover over a node's bottom edge to see the **output handle** (small circle)
-2. Click and drag from the output handle
-3. Connect to another node's **input handle** (top edge)
-4. Release to create the connection
+1. Задръжте над долния край на възела за да видите **output handle** (малка окръжност)
+2. Кликнете и плъзнете от output handle
+3. Свържете към **input handle** на друг възел (горен край)
+4. Отпуснете за създаване на връзката
 
-### Editing Nodes
+### Редактиране на възли
 
-1. Click on any node to select it
-2. The node's properties appear in a panel
-3. Edit the text, prompt, or settings
-4. Changes save automatically to the canvas
+1. Кликнете върху всеки възел за да го изберете
+2. Свойствата на възела се появяват в панел
+3. Редактирайте текста, подсказката или настройките
+4. Промените се запазват автоматично в платното
 
-### Deleting Nodes
+### Изтриване на възли
 
-- Select a node and press **Delete** key, or
-- Select a node and click the 🗑️ button in the toolbar
+- Изберете възел и натиснете клавиша **Delete**, или
+- Изберете възел и кликнете бутона 🗑️ в лентата с инструменти
 
 <Warning>
-The Start node cannot be deleted. Every flow must have one Start node.
+Start възелът не може да бъде изтрит. Всеки поток трябва да има един Start възел.
 </Warning>
 
-## Outcomes (Multiple Paths)
+## Резултати (множество пътища)
 
-Speak and Prompt nodes can have multiple **outcomes** - different paths based on how the customer responds.
+Speak и Prompt възлите могат да имат множество **резултати** - различни пътища въз основа на това как клиентът отговаря.
 
-### Adding Outcomes
+### Добавяне на резултати
 
-1. Select a Speak or Prompt node
-2. In the properties panel, find **Outcomes**
-3. Click **Add Outcome**
-4. Name the outcome (e.g., "Interested", "Not interested", "Wants callback")
+1. Изберете Speak или Prompt възел
+2. В панела със свойства намерете **Outcomes**
+3. Кликнете **Add Outcome**
+4. Именувайте резултата (напр. "Интересува се", "Не се интересува", "Иска обратно обаждане")
 
-### Connecting Outcomes
+### Свързване на резултати
 
-Each outcome appears as a colored dot at the bottom of the node. Connect each outcome to a different destination node to create branching logic.
+Всеки резултат се появява като цветна точка в долната част на възела. Свържете всеки резултат към различен възел-дестинация за създаване на разклонителна логика.
 
 <Frame>
   <img src="/resources/ai-assistants/flow-builder-branching.png" alt="Conversation Branching with Outcomes" />
 </Frame>
 
-**Example flow:**
+**Пример за поток:**
 
 ```
-[Start] → [Ask about interest]
+[Start] → [Попитай за интерес]
               ↓
-         [Prompt: "Ask if interested"]
+         [Prompt: "Попитай дали се интересува"]
               ↓
     ┌─────────┼─────────┐
     ↓         ↓         ↓
-[Interested] [Maybe] [Not Interested]
+[Интересува се] [Може би] [Не се интересува]
     ↓         ↓         ↓
-[Book Demo] [Send Info] [Thank & End]
+[Запиши демо] [Изпрати информация] [Благодари и завърши]
 ```
 
-## Settings Panel
+## Панел с настройки
 
 <Frame>
   <img src="/resources/ai-assistants/flow-builder-settings.png" alt="Flow Builder Settings Panel" />
 </Frame>
 
-### Agent Identity
+### Самоличност на агента
 
-| Setting | Description |
-|---------|-------------|
-| **Agent Name** | Name the AI uses to introduce itself |
-| **Agent Type** | Preset personality: Sales, Support, Survey, etc. |
-| **Language** | Primary language for the conversation |
+| Настройка | Описание |
+|-----------|----------|
+| **Agent Name** | Името, което AI използва за представяне |
+| **Agent Type** | Готова личност: Sales, Support, Survey и др. |
+| **Language** | Основен език за разговора |
 
-### Personality
+### Личност
 
-| Setting | Options | Description |
-|---------|---------|-------------|
-| **Assertiveness** | Low / Medium / High | How persistent the AI is |
-| **Humor** | Off / Low / Medium / High | Level of humor in responses |
+| Настройка | Опции | Описание |
+|-----------|-------|----------|
+| **Assertiveness** | Ниска / Средна / Висока | Колко упорит е AI-ят |
+| **Humor** | Изключен / Нисък / Среден / Висок | Ниво на хумор в отговорите |
 
-### Variables
+### Променливи
 
-Add pre-call data that can be used in your messages:
+Добавете данни преди разговора, които могат да бъдат използвани в съобщенията ви:
 
-1. Click **Add Variable**
-2. Enter a **Name** (e.g., `product_interest`)
-3. Set a **Default Value**
+1. Кликнете **Add Variable**
+2. Въведете **Name** (напр. `product_interest`)
+3. Задайте **Default Value**
 
-Use variables in messages with curly braces: `{variable_name}`
+Използвайте променливи в съобщения с къдрави скоби: `{variable_name}`
 
-**Example:** "Hi {customer_name}, I see you were interested in our {product_interest}."
+**Пример:** "Здравейте {customer_name}, виждам че се интересувахте от нашия {product_interest}."
 
-### Post-Call Fields
+### Полета след разговора
 
-Define data to extract from calls:
+Дефинирайте данни за извличане от разговорите:
 
-1. Click **Add Field**
-2. Enter **Name**, **Type**, and **Description**
-3. The AI will attempt to fill these based on the conversation
+1. Кликнете **Add Field**
+2. Въведете **Name**, **Type** и **Description**
+3. AI-ят ще се опита да попълни тези полета въз основа на разговора
 
-**Types:** `string`, `number`, `boolean`
+**Типове:** `string`, `number`, `boolean`
 
 ## Import/Export
 
-### Export Your Flow
+### Експортиране на вашия поток
 
-1. Open the Settings panel
-2. Scroll to the bottom
-3. Click **Export JSON**
-4. Save the `.json` file
+1. Отворете панела Settings
+2. Спуснете се до дъното
+3. Кликнете **Export JSON**
+4. Запазете `.json` файла
 
-### Import a Flow
+### Импортиране на поток
 
-1. Click **Import JSON** in settings
-2. Select your `.json` file
-3. The flow loads on the canvas
+1. Кликнете **Import JSON** в настройките
+2. Изберете вашия `.json` файл
+3. Потокът се зарежда на платното
 
 <Tip>
-Export your flows regularly as backups. You can also share flows with team members this way.
+Експортирайте потоците си редовно като резервни копия. По този начин можете също да споделяте потоци с членове на екипа.
 </Tip>
 
-## Voicemail Settings
+## Настройки за гласова поща
 
-Configure what happens when voicemail is detected:
+Конфигурирайте какво се случва когато се открие гласова поща:
 
-- **Voicemail Message** - Message to leave if voicemail answers
-- **End Call on Voicemail** - Toggle to automatically hang up on voicemail
+- **Voicemail Message** - Съобщение за оставяне ако гласовата поща отговори
+- **End Call on Voicemail** - Превключвател за автоматично затваряне при гласова поща
 
-## Saving Your Flow
+## Запазване на вашия поток
 
-Click the **Save** button in the top-right corner to save your flow to the assistant.
+Кликнете бутона **Save** в горния десен ъгъл за запазване на потока към асистента.
 
 <Note>
-The flow is stored as JSON in your assistant's system prompt field. If you switch to the Classic Editor, you'll see the raw JSON data.
+Потокът се съхранява като JSON в полето за system prompt на вашия асистент. Ако превключите към Classic Editor, ще видите суровите JSON данни.
 </Note>
 
-## Best Practices
+## Най-добри практики
 
 <CardGroup cols={2}>
-  <Card title="Start Simple" icon="seedling">
-    Begin with a basic flow and add complexity gradually. Test at each step.
+  <Card title="Започнете просто" icon="seedling">
+    Започнете с основен поток и добавяйте сложност постепенно. Тествайте на всяка стъпка.
   </Card>
-  <Card title="Use Prompt Nodes" icon="brain">
-    Prompt nodes give the AI flexibility. Use them for dynamic, context-aware responses.
+  <Card title="Използвайте Prompt възли" icon="brain">
+    Prompt възлите дават гъвкавост на AI-я. Използвайте ги за динамични, контекстуални отговори.
   </Card>
-  <Card title="Plan Your Outcomes" icon="diagram-project">
-    Before building, sketch the main paths: positive, negative, and neutral responses.
+  <Card title="Планирайте резултатите си" icon="diagram-project">
+    Преди изграждане скицирайте основните пътища: положителни, отрицателни и неутрални отговори.
   </Card>
-  <Card title="Test Thoroughly" icon="vial">
-    Make test calls covering all paths. Verify each outcome leads to the right destination.
+  <Card title="Тествайте основно" icon="vial">
+    Правете тестови обаждания покриващи всички пътища. Проверете дали всеки резултат води до правилната дестинация.
   </Card>
 </CardGroup>
 
-## Troubleshooting
+## Отстраняване на неизправности
 
 <AccordionGroup>
-  <Accordion title="Nodes won't connect">
-    - Ensure you're dragging from an **output handle** (bottom) to an **input handle** (top)
-    - Check that you're not creating a circular connection
-    - The Start node only has an output, End node only has an input
+  <Accordion title="Възлите не се свързват">
+    - Уверете се, че плъзгате от **output handle** (долу) към **input handle** (горе)
+    - Проверете дали не създавате кръгова връзка
+    - Start възелът има само изход, End възелът има само вход
   </Accordion>
 
-  <Accordion title="Flow not saving">
-    - Check your internet connection
-    - Ensure you have at least one node (besides Start)
-    - Look for any validation errors in the settings panel
+  <Accordion title="Потокът не се запазва">
+    - Проверете интернет връзката си
+    - Уверете се, че имате поне един възел (освен Start)
+    - Потърсете грешки за валидиране в панела с настройки
   </Accordion>
 
-  <Accordion title="AI not following the flow">
-    - Use Speak nodes for exact wording requirements
-    - Make Prompt node instructions more specific
-    - Check that outcomes are clearly defined and connected
+  <Accordion title="AI-ят не следва потока">
+    - Използвайте Speak възли за точни изисквания за формулировка
+    - Направете инструкциите на Prompt възела по-специфични
+    - Проверете дали резултатите са ясно дефинирани и свързани
   </Accordion>
 </AccordionGroup>
 
-## Related Resources
+## Свързани ресурси
 
-- [AI Prompt Editor](/ai-assistants/ai-prompt-editor) - Chat-based alternative for prompt editing
-- [System Prompts Guide](/ai-assistants/system-prompt) - Understanding prompt fundamentals
-- [Testing Your Assistant](/ai-assistants/testing) - How to test your flows
+- [AI Prompt Editor](/ai-assistants/ai-prompt-editor) - Чат-базирана алтернатива за редактиране на подсказки
+- [System Prompts Guide](/ai-assistants/system-prompt) - Разбиране на основите на подсказките
+- [Testing Your Assistant](/ai-assistants/testing) - Как да тествате вашите потоци
+
+---

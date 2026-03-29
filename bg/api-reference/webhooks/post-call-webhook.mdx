@@ -1,138 +1,139 @@
 ---
+---
 title: "Post-Call Webhook"
 icon: "webhook"
-description: "Webhook sent after a call is completed containing extracted variables and call data"
+description: "Webhook, изпратен след завършване на повикване, съдържащ извлечени променливи и данни за повикването"
 ---
 
-The Post-Call Webhook is automatically sent to your specified webhook URL after each call is completed. This webhook contains call details, extracted variables, transcript, and optionally the recording URL.
+Post-Call Webhook се изпраща автоматично към вашия указан webhook URL след завършване на всяко повикване. Този webhook съдържа подробности за повикването, извлечени променливи, транскрипт и по избор URL на записа.
 
-## Webhook Configuration
+## Конфигурация на Webhook
 
-To enable post-call webhooks:
-1. Configure your assistant's webhook URL in the [assistant settings](/ai-assistants/settings/post-call-actions#webhook-configuration)
-2. Enable "Post call webhook" in the [assistant configuration](/ai-assistants/settings/post-call-actions#webhook-configuration)
-3. Define post-call variables that the AI should extract
+За да активирате post-call webhooks:
+1. Конфигурирайте webhook URL на вашия асистент в [настройките на асистента](/ai-assistants/settings/post-call-actions#webhook-configuration)
+2. Активирайте "Post call webhook" в [конфигурацията на асистента](/ai-assistants/settings/post-call-actions#webhook-configuration)
+3. Дефинирайте post-call променливи, които AI трябва да извлече
 
-## Request Format
+## Формат на Заявката
 
-The webhook is sent as a POST request to your configured URL with the following JSON payload:
+Webhook се изпраща като POST заявка към вашия конфигуриран URL със следния JSON payload:
 
-### Payload Structure
+### Структура на Payload
 
 <ResponseField name="id" type="integer">
-  Unique identifier of the call
+  Уникален идентификатор на повикването
 </ResponseField>
 
 <ResponseField name="customer_phone" type="string">
-  Phone number of the customer in E.164 format (e.g., "+1234567890") or null if not available
+  Телефонен номер на клиента в E.164 формат (напр., "+1234567890") или null, ако не е наличен
 </ResponseField>
 
 <ResponseField name="assistant_phone" type="string">
-  Phone number used by the assistant in E.164 format or null if not available
+  Телефонен номер, използван от асистента в E.164 формат, или null, ако не е наличен
 </ResponseField>
 
 <ResponseField name="duration" type="integer">
-  Duration of the call in seconds
+  Продължителност на повикването в секунди
 </ResponseField>
 
 <ResponseField name="status" type="string">
-  Final status of the call (e.g., "completed", "busy", "failed")
+  Финален статус на повикването (напр., "completed", "busy", "failed")
 </ResponseField>
 
 <ResponseField name="extracted_variables" type="object">
-  Variables extracted by AI based on your post-call schema configuration
-  <Expandable title="Example extracted variables">
+  Променливи, извлечени от AI въз основа на конфигурацията на вашата post-call схема
+  <Expandable title="Примерни извлечени променливи">
     <ResponseField name="status" type="boolean">
-      Whether the call objective was achieved
+      Дали целта на повикването е постигната
     </ResponseField>
     <ResponseField name="summary" type="string">
-      Call summary in a few words
+      Резюме на повикването в няколко думи
     </ResponseField>
     <ResponseField name="custom_variable" type="string|number|boolean">
-      Any custom variables you defined in the assistant configuration
+      Всякакви персонализирани променливи, които сте дефинирали в конфигурацията на асистента
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="input_variables" type="object">
-  Variables that were passed to the assistant before the call started
+  Променливи, които са били предадени на асистента преди започване на повикването
 </ResponseField>
 
 <ResponseField name="transcript" type="string">
-  Full transcript of the conversation
+  Пълен транскрипт на разговора
 </ResponseField>
 
 <ResponseField name="recording_url" type="string">
-  URL to download the call recording (only included if "Include recording in webhook" is enabled in [assistant settings](/ai-assistants/settings/post-call-actions#webhook-configuration))
+  URL за изтегляне на записа на повикването (включен само ако "Include recording in webhook" е активирано в [настройките на асистента](/ai-assistants/settings/post-call-actions#webhook-configuration))
 </ResponseField>
 
 <ResponseField name="created_at" type="string">
-  ISO 8601 timestamp when the call was initiated
+  ISO 8601 timestamp кога е инициирано повикването
 </ResponseField>
 
 <ResponseField name="finished_at" type="string">
-  ISO 8601 timestamp when the call was completed (uses updated_at from the call record)
+  ISO 8601 timestamp кога е завършено повикването (използва updated_at от записа на повикването)
 </ResponseField>
 
 <ResponseField name="lead" type="object">
-  Lead information (only included for campaign calls)
-  <Expandable title="Lead properties">
+  Информация за потенциален клиент (включено само за повиквания от кампании)
+  <Expandable title="Свойства на потенциален клиент">
     <ResponseField name="id" type="integer">
-      Unique identifier of the lead
+      Уникален идентификатор на потенциалния клиент
     </ResponseField>
     <ResponseField name="phone_number" type="string">
-      Lead's phone number
+      Телефонен номер на потенциалния клиент
     </ResponseField>
     <ResponseField name="variables" type="object">
-      Variables associated with the lead
+      Променливи, свързани с потенциалния клиент
     </ResponseField>
     <ResponseField name="status" type="string">
-      Current status of the lead
+      Текущ статус на потенциалния клиент
     </ResponseField>
     <ResponseField name="call_tries" type="integer">
-      The number of call attempts made to this lead
+      Броят опити за обаждане към този потенциален клиент
     </ResponseField>
     <ResponseField name="created_at" type="string">
-      When the lead was created
+      Кога е създаден потенциалният клиент
     </ResponseField>
     <ResponseField name="updated_at" type="string">
-      When the lead was last updated
+      Кога е последно актуализиран потенциалният клиент
     </ResponseField>
     <ResponseField name="campaign" type="object">
-      Campaign information (if available)
-      <Expandable title="Campaign properties">
+      Информация за кампанията (ако е налична)
+      <Expandable title="Свойства на кампанията">
         <ResponseField name="id" type="integer">
-          Campaign ID
+          ID на кампанията
         </ResponseField>
         <ResponseField name="name" type="string">
-          Campaign name
+          Име на кампанията
         </ResponseField>
         <ResponseField name="status" type="string">
-          Campaign status
+          Статус на кампанията
         </ResponseField>
         <ResponseField name="allowed_hours_start_time" type="string">
-          Campaign allowed start time
+          Разрешено начално време на кампанията
         </ResponseField>
         <ResponseField name="allowed_hours_end_time" type="string">
-          Campaign allowed end time
+          Разрешено крайно време на кампанията
         </ResponseField>
         <ResponseField name="allowed_days" type="array">
-          Campaign allowed days
+          Разрешени дни на кампанията
         </ResponseField>
         <ResponseField name="max_calls_in_parallel" type="integer">
-          Maximum concurrent calls for campaign
+          Максимум едновременни повиквания за кампанията
         </ResponseField>
         <ResponseField name="max_retries" type="integer">
-          Maximum retry attempts for leads
+          Максимум опити за повторно обаждане
         </ResponseField>
         <ResponseField name="retry_interval" type="integer">
-          Retry interval in minutes
+          Интервал за повторен опит в минути
         </ResponseField>
         <ResponseField name="created_at" type="string">
-          When the campaign was created
+          Кога е създадена кампанията
         </ResponseField>
         <ResponseField name="updated_at" type="string">
-          When the campaign was last updated
+          Кога е последно актуализирана кампанията
         </ResponseField>
       </Expandable>
     </ResponseField>
@@ -140,37 +141,37 @@ The webhook is sent as a POST request to your configured URL with the following 
 </ResponseField>
 
 <ResponseField name="transfers" type="array">
-  List of transfer calls made during this call (only included if the call has transfers)
-  <Expandable title="Transfer properties">
+  Списък с трансферни повиквания, направени по време на това повикване (включено само ако повикването има трансфери)
+  <Expandable title="Свойства на трансфер">
     <ResponseField name="id" type="integer">
-      Unique identifier of the transfer call
+      Уникален идентификатор на трансферното повикване
     </ResponseField>
     <ResponseField name="status" type="string">
-      Final status of the transfer call (e.g., "completed", "busy", "failed")
+      Финален статус на трансферното повикване (напр., "completed", "busy", "failed")
     </ResponseField>
     <ResponseField name="transfer_to" type="string">
-      Phone number the call was transferred to in E.164 format
+      Телефонен номер, към който е трансферирано повикването в E.164 формат
     </ResponseField>
     <ResponseField name="duration" type="integer">
-      Duration of the transfer call in seconds
+      Продължителност на трансферното повикване в секунди
     </ResponseField>
     <ResponseField name="carrier_cost" type="number">
-      Carrier cost of the transfer call in USD
+      Цена на оператора за трансферното повикване в USD
     </ResponseField>
     <ResponseField name="transcript" type="array">
-      Raw transcript of the transfer call (null if not available)
+      Необработен транскрипт на трансферното повикване (null, ако не е наличен)
     </ResponseField>
     <ResponseField name="formatted_transcript" type="string">
-      Human-readable formatted transcript of the transfer call
+      Форматиран, четим транскрипт на трансферното повикване
     </ResponseField>
     <ResponseField name="recording_url" type="string">
-      URL to download the transfer call recording (only included if "Include recording in webhook" is enabled and a recording exists)
+      URL за изтегляне на записа на трансферното повикване (включено само ако "Include recording in webhook" е активирано и съществува запис)
     </ResponseField>
     <ResponseField name="created_at" type="string">
-      ISO 8601 timestamp when the transfer was initiated
+      ISO 8601 timestamp кога е иницииран трансферът
     </ResponseField>
     <ResponseField name="finished_at" type="string">
-      ISO 8601 timestamp when the transfer was completed
+      ISO 8601 timestamp кога е завършен трансферът
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -265,18 +266,18 @@ The webhook is sent as a POST request to your configured URL with the following 
 ```
 </ResponseExample>
 
-## Webhook Settings
+## Настройки на Webhook
 
-You can configure the following options for your post-call webhook:
+Можете да конфигурирате следните опции за вашия post-call webhook:
 
-- **Send webhook only on completed**: Only send the webhook for successfully completed calls
-- **Include recording in webhook**: Include the `recording_url` field in the payload
-- **Custom variables**: Define custom variables that the AI should extract from the conversation
+- **Send webhook only on completed**: Изпращане на webhook само за успешно завършени повиквания
+- **Include recording in webhook**: Включване на полето `recording_url` в payload
+- **Custom variables**: Дефиниране на персонализирани променливи, които AI трябва да извлече от разговора
 
-## Important Notes
+## Важни Забележки
 
-- The `customer_phone` and `assistant_phone` fields can be `null` if the information is not available
-- The `recording_url` field is only included if you have enabled "Include recording in webhook" in your [assistant settings](/ai-assistants/settings/post-call-actions#webhook-configuration)
-- The `lead` object is only included for calls that are part of a campaign
-- The `transfers` array is only included for calls that have transfer calls associated with them
-- The `extracted_variables` object will contain the variables you defined in your assistant's post-call schema configuration
+- Полетата `customer_phone` и `assistant_phone` могат да бъдат `null`, ако информацията не е налична
+- Полето `recording_url` се включва само ако сте активирали "Include recording in webhook" в [настройките на асистента](/ai-assistants/settings/post-call-actions#webhook-configuration)
+- Обектът `lead` се включва само за повиквания, които са част от кампания
+- Масивът `transfers` се включва само за повиквания, които имат свързани трансферни повиквания
+- Обектът `extracted_variables` ще съдържа променливите, които сте дефинирали в конфигурацията на post-call схемата на вашия асистент

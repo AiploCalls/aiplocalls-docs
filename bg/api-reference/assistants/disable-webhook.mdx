@@ -1,44 +1,44 @@
 ---
-title: "Disable assistant webhook"
+title: "Деактивиране на webhook за асистент"
 api: "POST /user/assistants/disable-webhook"
-description: "Disable webhook notifications for a specific assistant"
+description: "Деактивиране на webhook известия за конкретен асистент"
 ---
 
-This endpoint disables webhook notifications for an assistant, stopping all real-time updates about call completions and data.
+Този endpoint деактивира webhook известията за асистент, спирайки всички актуализации в реално време за завършени обаждания и данни.
 
-### Request Body
+### Тяло на заявката
 
 <ParamField body="assistant_id" type="integer" required>
-  The ID of the assistant to disable webhook for
+  ID на асистента, за който да се деактивира webhook
 </ParamField>
 
-### Response
+### Отговор
 
 <ResponseField name="message" type="string">
-  Success message confirming webhook was disabled
+  Съобщение за успех, потвърждаващо че webhook е деактивиран
 </ResponseField>
 
 <ResponseField name="data" type="array">
-  Empty array (reserved for future use)
+  Празен масив (резервиран за бъдеща употреба)
 </ResponseField>
 
-### Error Responses
+### Отговори при грешка
 
 <ResponseField name="404 Not Found">
-  <Expandable title="Error Response">
+  <Expandable title="Отговор при грешка">
     <ResponseField name="message" type="string">
-      Error message when the assistant is not found or doesn't belong to the authenticated user
+      Съобщение за грешка, когато асистентът не е намерен или не принадлежи на удостоверения потребител
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="422 Validation Error">
-  <Expandable title="Error Response">
+  <Expandable title="Отговор при грешка">
     <ResponseField name="message" type="string">
-      Error message indicating validation failure
+      Съобщение за грешка, указващо провал при валидация
     </ResponseField>
     <ResponseField name="errors" type="object">
-      Detailed validation errors for each field
+      Подробни грешки при валидация за всяко поле
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -71,18 +71,18 @@ This endpoint disables webhook notifications for an assistant, stopping all real
 
 </ResponseExample>
 
-### Webhook Behavior
+### Поведение на Webhook
 
-When webhook is disabled:
+Когато webhook е деактивиран:
 
-- The assistant will stop sending HTTP POST requests to your webhook URL
-- Both `is_webhook_active` is set to `false` and `webhook_url` is set to `null`
-- Any ongoing calls will complete normally, but no webhook notifications will be sent
-- Call data will still be available through the API calls endpoints
+- Асистентът ще спре да изпраща HTTP POST заявки към вашия webhook URL
+- И двете `is_webhook_active` се задава на `false` и `webhook_url` се задава на `null`
+- Всички текущи обаждания ще завършат нормално, но няма да се изпращат webhook известия
+- Данните за обажданията все още ще бъдат достъпни чрез API endpoints за обаждания
 
-### Notes
+### Забележки
 
-- The assistant must belong to the authenticated user
-- This completely removes the webhook configuration from the assistant
-- You can later re-enable webhooks using the enable webhook endpoint with a new URL
-- Disabling webhooks does not affect call recording or data collection
+- Асистентът трябва да принадлежи на удостоверения потребител
+- Това напълно премахва webhook конфигурацията от асистента
+- Можете по-късно да активирате отново webhook-овете, като използвате endpoint за активиране на webhook с нов URL
+- Деактивирането на webhook-ове не засяга записването на обаждания или събирането на данни

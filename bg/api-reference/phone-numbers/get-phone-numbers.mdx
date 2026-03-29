@@ -1,51 +1,52 @@
 ---
-title: "Get all phone numbers"
+---
+title: "Получаване на всички телефонни номера"
 api: "GET /user/phone-numbers/all"
-description: "Get all phone numbers owned by the authenticated user"
+description: "Получаване на всички телефонни номера, притежавани от автентифицирания потребител"
 ---
 
-This endpoint returns a list of all phone numbers associated with your account, including their subscription status and capabilities.
+Този endpoint връща списък от всички телефонни номера, свързани с вашия акаунт, включително техния статус на абонамент и възможности.
 
-### Response
+### Отговор
 
 <ResponseField name="data" type="array">
-  Array of phone number objects
+  Масив от обекти с телефонни номера
   
-  <Expandable title="phone number properties">
+  <Expandable title="свойства на телефонния номер">
     <ResponseField name="id" type="integer">
-      The unique identifier of the phone number
+      Уникалният идентификатор на телефонния номер
     </ResponseField>
     
     <ResponseField name="phone_number" type="string">
-      The phone number in E.164 format (e.g., +14155551234)
+      Телефонният номер в E.164 формат (напр., +14155551234)
     </ResponseField>
     
     <ResponseField name="country_code" type="string">
-      The ISO 3166-1 alpha-2 country code (e.g., US, GB, AU)
+      ISO 3166-1 alpha-2 кодът на държавата (напр., US, GB, AU)
     </ResponseField>
     
     <ResponseField name="type" type="string">
-      The type of phone number: `normal`, `sip`, or `caller_id`
+      Типът на телефонния номер: `normal`, `sip`, или `caller_id`
     </ResponseField>
     
     <ResponseField name="type_label" type="string">
-      Human-readable label for the phone number type
+      Четим етикет за типа на телефонния номер
     </ResponseField>
     
     <ResponseField name="sms_capable" type="boolean">
-      Whether the phone number can send and receive SMS
+      Дали телефонният номер може да изпраща и получава SMS
     </ResponseField>
     
     <ResponseField name="region" type="string">
-      The region where the phone number is provisioned
+      Регионът, където телефонният номер е предоставен
     </ResponseField>
     
     <ResponseField name="has_active_subscription" type="boolean">
-      Whether the phone number has an active subscription
+      Дали телефонният номер има активен абонамент
     </ResponseField>
     
     <ResponseField name="created_at" type="string">
-      ISO 8601 timestamp of when the phone number was purchased
+      ISO 8601 времева отметка на закупуване на телефонния номер
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -84,5 +85,7 @@ This endpoint returns a list of all phone numbers associated with your account, 
 </ResponseExample>
 
 <Note>
-There is also a legacy endpoint `GET /user/phone-numbers` that returns only SMS-capable phone numbers with active subscriptions. Use this `/all` endpoint if you need all phone numbers regardless of SMS capability or subscription status.
+Съществува също наследен endpoint `GET /user/phone-numbers`, който връща само SMS-способни телефонни номера с активни абонаменти. Използвайте този `/all` endpoint, ако имате нужда от всички телефонни номера независимо от SMS възможността или статуса на абонамента.
 </Note>
+
+---

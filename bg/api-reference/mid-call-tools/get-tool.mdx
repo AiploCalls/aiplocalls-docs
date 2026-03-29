@@ -1,90 +1,90 @@
 ---
-title: "Get mid call tool"
+title: "Вземи инструмент за средата на обаждане"
 api: "GET /user/tools/{id}"
-description: "Retrieve a specific mid call tool by ID"
+description: "Извличане на конкретен инструмент за средата на обаждане по ID"
 ---
 
-This endpoint allows you to retrieve detailed information about a specific mid call tool.
+Този endpoint ви позволява да извлечете подробна информация за конкретен инструмент за средата на обаждане.
 
 ### Headers
 
 <ParamField header="Authorization" type="string" required>
-  Bearer token for authentication
+  Bearer token за автентикация
 </ParamField>
 
 <ParamField header="Content-Type" type="string" required>
-  Must be `application/json`
+  Трябва да бъде `application/json`
 </ParamField>
 
 <ParamField header="Accept" type="string" required>
-  Must be `application/json`
+  Трябва да бъде `application/json`
 </ParamField>
 
 ### Path Parameters
 
 <ParamField path="id" type="integer" required>
-  The unique identifier of the tool
+  Уникалният идентификатор на инструмента
 </ParamField>
 
 ### Response fields
 
 <ResponseField name="id" type="integer">
-  The unique identifier of the tool
+  Уникалният идентификатор на инструмента
 </ResponseField>
 
 <ResponseField name="name" type="string">
-  The name of the tool (lowercase with underscores)
+  Името на инструмента (с малки букви и долни черти)
 </ResponseField>
 
 <ResponseField name="description" type="string">
-  Detailed explanation of when and how the AI should use this tool
+  Подробно обяснение на кога и как AI трябва да използва този инструмент
 </ResponseField>
 
 <ResponseField name="endpoint" type="string">
-  The API endpoint URL that will be called
+  URL адресът на API endpoint-а, който ще бъде извикан
 </ResponseField>
 
 <ResponseField name="method" type="string">
-  HTTP method (GET, POST, PUT, PATCH, DELETE)
+  HTTP метод (GET, POST, PUT, PATCH, DELETE)
 </ResponseField>
 
 <ResponseField name="timeout" type="integer">
-  Request timeout in seconds (1-30)
+  Таймаут на заявката в секунди (1-30)
 </ResponseField>
 
 <ResponseField name="headers" type="array">
-  HTTP headers to send with the request
+  HTTP headers за изпращане със заявката
   <Expandable title="header properties">
     <ResponseField name="name" type="string">
-      Header name
+      Име на header
     </ResponseField>
     <ResponseField name="value" type="string">
-      Header value
+      Стойност на header
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="schema" type="array">
-  Parameters that the AI will extract and send to the endpoint
+  Параметри, които AI ще извлече и изпрати към endpoint-а
   <Expandable title="schema properties">
     <ResponseField name="name" type="string">
-      Parameter name
+      Име на параметъра
     </ResponseField>
     <ResponseField name="type" type="string">
-      Parameter type (string, number, boolean)
+      Тип на параметъра (string, number, boolean)
     </ResponseField>
     <ResponseField name="description" type="string">
-      Description to help AI understand how to extract this parameter
+      Описание, което помага на AI да разбере как да извлече този параметър
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <ResponseField name="created_at" type="string">
-  ISO 8601 timestamp when the tool was created
+  ISO 8601 timestamp кога е създаден инструментът
 </ResponseField>
 
 <ResponseField name="updated_at" type="string">
-  ISO 8601 timestamp when the tool was last updated
+  ISO 8601 timestamp кога е последно обновен инструментът
 </ResponseField>
 
 <ResponseExample>
@@ -137,9 +137,9 @@ This endpoint allows you to retrieve detailed information about a specific mid c
 
 </ResponseExample>
 
-### Assigning Tools to Assistants
+### Присвояване на инструменти към асистенти
 
-To use this tool with an assistant, see:
+За да използвате този инструмент с асистент, вижте:
 
-- **[Create Assistant](/api-reference/assistants/create-assistant)** - Attach tools using the `tool_ids` parameter
-- **[Update Assistant](/api-reference/assistants/update-assistant)** - Manage tool assignments using the `tool_ids` parameter
+- **[Създай асистент](/api-reference/assistants/create-assistant)** - Прикачете инструменти използвайки параметъра `tool_ids`
+- **[Обнови асистент](/api-reference/assistants/update-assistant)** - Управлявайте присвоявания на инструменти използвайки параметъра `tool_ids`

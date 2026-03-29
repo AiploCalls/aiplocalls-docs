@@ -1,31 +1,31 @@
 ---
-title: "List API keys"
+title: "Списък на API ключовете"
 api: "GET /user/api-keys"
-description: "Get all API keys for the authenticated user"
+description: "Получаване на всички API ключове за автентикирания потребител"
 ---
 
-This endpoint returns a list of all API keys associated with the authenticated user's account.
+Този endpoint връща списък с всички API ключове, свързани с акаунта на автентикирания потребител.
 
-### Response
+### Отговор
 
 <ResponseField name="api_keys" type="array">
-  Array of API key objects
+  Масив от API ключ обекти
   
-  <Expandable title="api_key properties">
+  <Expandable title="api_key свойства">
     <ResponseField name="id" type="integer">
-      The unique identifier of the API key
+      Уникалният идентификатор на API ключа
     </ResponseField>
     
     <ResponseField name="name" type="string">
-      The name/label of the API key
+      Името/етикетът на API ключа
     </ResponseField>
     
     <ResponseField name="last_used_at" type="string">
-      ISO 8601 timestamp of when the API key was last used (null if never used)
+      ISO 8601 времева отметка на последното използване на API ключа (null ако никога не е използван)
     </ResponseField>
     
     <ResponseField name="created_at" type="string">
-      ISO 8601 timestamp of when the API key was created
+      ISO 8601 времева отметка на създаването на API ключа
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -60,5 +60,5 @@ This endpoint returns a list of all API keys associated with the authenticated u
 </ResponseExample>
 
 <Note>
-For security reasons, the actual API key tokens are not returned. Only metadata about the keys is shown.
+От съображения за сигурност действителните API ключ токени не се връщат. Показват се само метаданните за ключовете.
 </Note>

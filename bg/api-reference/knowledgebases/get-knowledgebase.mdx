@@ -1,57 +1,57 @@
 ---
-title: "Get knowledgebase"
+title: "Получи знаниева база"
 api: "GET /user/knowledgebases/{id}"
-description: "Get a single knowledgebase by ID"
+description: "Получи единична знаниева база по ID"
 ---
 
-This endpoint returns the details of a specific knowledgebase.
+Този endpoint връща подробностите на конкретна знаниева база.
 
 ### Path Parameters
 
 <ParamField path="id" type="integer" required>
-  The unique identifier of the knowledgebase
+  Уникалният идентификатор на знаниевата база
 </ParamField>
 
 ### Response
 
 <ResponseField name="data" type="object">
-  The knowledgebase object
+  Обектът знаниева база
   
-  <Expandable title="knowledgebase properties">
+  <Expandable title="свойства на знаниевата база">
     <ResponseField name="id" type="integer">
-      The unique identifier of the knowledgebase
+      Уникалният идентификатор на знаниевата база
     </ResponseField>
     
     <ResponseField name="name" type="string">
-      The name of the knowledgebase
+      Името на знаниевата база
     </ResponseField>
     
     <ResponseField name="description" type="string">
-      Optional description of the knowledgebase
+      Незадължително описание на знаниевата база
     </ResponseField>
     
     <ResponseField name="status" type="string">
-      Current status: `empty`, `processing`, `active`, or `failed`
+      Текущ статус: `empty`, `processing`, `active`, или `failed`
     </ResponseField>
     
     <ResponseField name="status_label" type="string">
-      Human-readable status label
+      Етикет на статуса, четим за хората
     </ResponseField>
     
     <ResponseField name="documents_count" type="integer">
-      Number of documents in this knowledgebase
+      Брой документи в тази знаниева база
     </ResponseField>
     
     <ResponseField name="assistants_count" type="integer">
-      Number of assistants using this knowledgebase
+      Брой асистенти, които използват тази знаниева база
     </ResponseField>
     
     <ResponseField name="created_at" type="string">
-      ISO 8601 timestamp of creation
+      ISO 8601 времеви печат на създаване
     </ResponseField>
     
     <ResponseField name="updated_at" type="string">
-      ISO 8601 timestamp of last update
+      ISO 8601 времеви печат на последна актуализация
     </ResponseField>
   </Expandable>
 </ResponseField>

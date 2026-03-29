@@ -1,31 +1,31 @@
 ---
-title: "Make a phone call"
+title: "Направи телефонно обаждане"
 api: "POST /user/make_call"
-description: "Make a phone call"
+description: "Направи телефонно обаждане"
 ---
 
-This endpoint allows you to make a phone call.
+Този endpoint ви позволява да направите телефонно обаждане.
 
 ### Request body
 
 <ParamField body="phone_number" type="string" required>
-  The phone number of the customer in E.164 format (e.g. +1234567890)
+  Телефонният номер на клиента в E.164 формат (напр. +1234567890)
 </ParamField>
 
 <ParamField body="assistant_id" type="integer" required>
-  The ID of the assistant to make the call with
+  ID-то на асистента, с който да се направи обаждането
 </ParamField>
 
 <ParamField body="variables" type="object">
-  Custom variables to pass to the call. You can include **any variables that are defined on your assistant** (see [Call variables](/ai-assistants/settings/prompt-and-tools#call-variables)). The examples below are just for illustration — use your own variable names as configured in the assistant settings.
+  Персонализирани променливи за предаване към обаждането. Можете да включите **всички променливи, които са дефинирани във вашия асистент** (вижте [Променливи на обаждането](/ai-assistants/settings/prompt-and-tools#call-variables)). Примерите по-долу са само за илюстрация — използвайте вашите собствени имена на променливи, както са конфигурирани в настройките на асистента.
 
-  <Expandable title="Example variables (add your own)">
+  <Expandable title="Примерни променливи (добавете свои собствени)">
     <ParamField body="customer_name" type="string">
-      e.g. the name of the customer
+      напр. името на клиента
     </ParamField>
 
     <ParamField body="email" type="string">
-      e.g. the email of the customer
+      напр. имейлът на клиента
     </ParamField>
   </Expandable>
 </ParamField>
@@ -33,7 +33,7 @@ This endpoint allows you to make a phone call.
 ### Response
 
 <ResponseField name="message" type="string" default="Call initiated successfully">
-  The message of the response
+  Съобщението от отговора
 </ResponseField>
 
 <ResponseExample>

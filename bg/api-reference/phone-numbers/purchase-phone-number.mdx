@@ -1,49 +1,49 @@
 ---
-title: "Purchase phone number"
+title: "Закупуване на телефонен номер"
 api: "POST /user/phone-numbers/purchase"
-description: "Purchase a dedicated phone number"
+description: "Закупуване на специализиран телефонен номер"
 ---
 
-This endpoint allows you to purchase a phone number that was found using the [search endpoint](/api-reference/phone-numbers/search-phone-numbers). The platform automatically handles pricing, billing, and provisioning.
+Този endpoint ви позволява да закупите телефонен номер, който е намерен чрез [search endpoint](/api-reference/phone-numbers/search-phone-numbers). Платформата автоматично управлява ценообразуването, фактурирането и предоставянето.
 
 <Note>
-You must have a valid payment method on file before purchasing a phone number. The purchase creates a monthly subscription that will auto-renew.
+Трябва да имате валиден начин на плащане в профила си преди закупуване на телефонен номер. Покупката създава месечен абонамент, който ще се подновява автоматично.
 </Note>
 
 ### Request Body
 
 <ParamField body="phone_number" type="string" required>
-  The phone number to purchase in E.164 format (e.g., +14155551234). Must be a number returned from the search endpoint.
+  Телефонният номер за закупуване в E.164 формат (напр., +14155551234). Трябва да е номер, върнат от search endpoint.
 </ParamField>
 
 ### Response
 
 <ResponseField name="message" type="string">
-  Success message
+  Съобщение за успех
 </ResponseField>
 
 <ResponseField name="data" type="object">
-  The purchased phone number details
+  Детайли за закупения телефонен номер
   
   <Expandable title="data properties">
     <ResponseField name="id" type="integer">
-      The unique identifier of the phone number
+      Уникалният идентификатор на телефонния номер
     </ResponseField>
     
     <ResponseField name="phone_number" type="string">
-      The phone number in E.164 format
+      Телефонният номер в E.164 формат
     </ResponseField>
     
     <ResponseField name="country_code" type="string">
-      The ISO country code
+      ISO кодът на страната
     </ResponseField>
     
     <ResponseField name="type" type="string">
-      The phone number type (always `normal` for purchased numbers)
+      Типът на телефонния номер (винаги `normal` за закупени номера)
     </ResponseField>
     
     <ResponseField name="sms_capable" type="boolean">
-      Whether the number supports SMS
+      Дали номерът поддържа SMS
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -101,17 +101,17 @@ You must have a valid payment method on file before purchasing a phone number. T
 
 </ResponseExample>
 
-### How It Works
+### Как работи
 
-1. **Search** - First use the [search endpoint](/api-reference/phone-numbers/search-phone-numbers) to find available numbers
-2. **Purchase** - Submit the phone number you want to this endpoint
-3. **Automatic Processing** - The platform:
-   - Validates the number is still available
-   - Determines the correct pricing based on country
-   - Creates a monthly subscription on your payment method
-   - Provisions the number with our telephony provider
-   - Creates the phone number record in your account
+1. **Търсене** - Първо използвайте [search endpoint](/api-reference/phone-numbers/search-phone-numbers) за да намерите налични номера
+2. **Закупуване** - Изпратете желания телефонен номер до този endpoint
+3. **Автоматична обработка** - Платформата:
+   - Валидира че номерът все още е наличен
+   - Определя правилната цена въз основа на страната
+   - Създава месечен абонамент към вашия метод на плащане
+   - Предоставя номера чрез нашия телефонен доставчик
+   - Създава записа за телефонния номер във вашия акаунт
 
 <Warning>
-Phone number purchases are non-refundable. The subscription will continue until you [release the number](/api-reference/phone-numbers/release-phone-number).
+Покупките на телефонни номера не подлежат на връщане. Абонаментът ще продължи докато не [освободите номера](/api-reference/phone-numbers/release-phone-number).
 </Warning>

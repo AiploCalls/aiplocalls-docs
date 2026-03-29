@@ -1,41 +1,41 @@
 ---
-title: "Managing Leads"
-icon: "user-gear"
-description: "Create, edit, and organize leads with custom variables and secondary contacts"
+title: "Управление на потенциални клиенти"
+icon: "user-gear"  
+description: "Създавайте, редактирайте и организирайте потенциални клиенти с персонализирани променливи и вторични контакти"
 ---
 
-Learn how to create, edit, and manage leads effectively for your campaigns with proper variable setup and secondary contact management.
+Научете как да създавате, редактирате и управлявате ефективно потенциални клиенти за вашите кампании с правилна настройка на променливи и управление на вторични контакти.
 
-## Creating a New Lead
+## Създаване на нов потенциален клиент
 
-### Basic Information
-1. **Phone Number:** Enter the primary contact number in international format
-2. **Campaign Assignment:** Select which campaign this lead belongs to
-3. **Status:** Automatically set to "Created" for new leads
+### Основна информация
+1. **Телефонен номер:** Въведете основния контактен номер в международен формат
+2. **Присвояване към кампания:** Изберете към коя кампания принадлежи този потенциален клиент
+3. **Статус:** Автоматично се задава като "Създаден" за нови потенциални клиенти
 
 <Note>
-**Phone number format:** Use international format without spaces or parentheses (+1234567890) for automation imports and file uploads.
+**Формат на телефонен номер:** Използвайте международен формат без интервали или скоби (+1234567890) за автоматизирани импорти и качване на файлове.
 </Note>
 
-### Variable Setup
+### Настройка на променливи
 
-#### Assistant Default Variables
-When you select a campaign, the lead automatically inherits variables from the [assistant configuration](/ai-assistants/settings/prompt-and-tools#call-variables):
-- **Pre-filled values:** Assistant's default variables appear in the form
-- **Customization:** Modify values specific to this lead
-- **Required fields:** Some variables may be required for campaign functionality
+#### Стандартни променливи на асистента
+Когато изберете кампания, потенциалният клиент автоматично наследява променливи от [конфигурацията на асистента](/ai-assistants/settings/prompt-and-tools#call-variables):
+- **Предварително попълнени стойности:** Стандартните променливи на асистента се появяват във формата
+- **Персонализация:** Променете стойности, специфични за този потенциален клиент
+- **Задължителни полета:** Някои променливи може да са задължителни за функционалността на кампанията
 
-#### Custom Variables
-Add personalized information for your AI assistant to use:
+#### Персонализирани променливи
+Добавете персонализирана информация за използване от вашия AI асистент:
 
-**Common variable types:**
-- **customer_name:** Person's name for personalized greetings
-- **company:** Business name for B2B conversations  
-- **last_interaction:** Previous conversation context
-- **preferences:** Customer preferences or requirements
-- **budget_range:** Financial information for sales calls
+**Често срещани типове променливи:**
+- **customer_name:** Име на лицето за персонализирани поздрави
+- **company:** Име на фирмата за B2B разговори  
+- **last_interaction:** Контекст от предишен разговор
+- **preferences:** Предпочитания или изисквания на клиента
+- **budget_range:** Финансова информация за продажбени обаждания
 
-**Variable format example:**
+**Пример за формат на променливи:**
 ```json
 {
   "customer_name": "Sarah Johnson",
@@ -46,42 +46,42 @@ Add personalized information for your AI assistant to use:
 }
 ```
 
-### Secondary Contacts
+### Вторични контакти
 
-Add additional phone numbers for the same lead when you have multiple ways to reach them.
+Добавете допълнителни телефонни номера за същия потенциален клиент, когато имате множество начини да се свържете с него.
 
-#### When to Use Secondary Contacts
-- **Decision makers:** Multiple people involved in the decision
-- **Backup numbers:** Mobile, office, home numbers for same person
-- **Department contacts:** Different departments in same company
-- **Time-based contacts:** Different numbers for different times
+#### Кога да използвате вторични контакти
+- **Лица, вземащи решения:** Множество хора, участващи в решението
+- **Резервни номера:** Мобилни, служебни, домашни номера за същото лице
+- **Контакти на отдели:** Различни отдели в същата компания
+- **Времеви контакти:** Различни номера за различни времена
 
-#### Secondary Contact Setup
-1. **Add Secondary Contact:** Click "Add Secondary Contact" in the form
-2. **Phone Number:** Enter additional phone number
-3. **Variables:** Set specific variables for this contact (optional)
-4. **Order:** Contacts are tried in the order you add them
+#### Настройка на вторичен контакт
+1. **Добави вторичен контакт:** Кликнете "Добави вторичен контакт" във формата
+2. **Телефонен номер:** Въведете допълнителен телефонен номер
+3. **Променливи:** Задайте специфични променливи за този контакт (по избор)
+4. **Ред:** Контактите се опитват в реда, в който ги добавяте
 
 <Tip>
-**Contact order matters:** Campaign will try contacts in sequence. Put the most likely to answer first.
+**Редът на контактите има значение:** Кампанията ще опита контактите последователно. Поставете първо този, който най-вероятно ще отговори.
 </Tip>
 
-#### Secondary Contact Variables
-Each secondary contact can have unique variables:
-- **Different person:** Use different name and role variables
-- **Same person:** Use same personal info but different contact preferences
-- **Department-specific:** Customize for specific department needs
+#### Променливи на вторичните контакти
+Всеки вторичен контакт може да има уникални променливи:
+- **Различно лице:** Използвайте различни променливи за име и роля
+- **Същото лице:** Използвайте същата лична информация, но различни контактни предпочитания
+- **Специфично за отдел:** Персонализирайте за специфичните нужди на отдела
 
-**Example - Multiple decision makers:**
+**Пример - Множество лица, вземащи решения:**
 ```json
-// Primary: CEO
+// Основен: CEO
 {
   "contact_name": "John Smith",
   "role": "CEO", 
   "decision_authority": "Final approval"
 }
 
-// Secondary: CTO  
+// Вторичен: CTO  
 {
   "contact_name": "Jane Doe",
   "role": "CTO",
@@ -89,99 +89,99 @@ Each secondary contact can have unique variables:
 }
 ```
 
-## Editing Existing Leads
+## Редактиране на съществуващи потенциални клиенти
 
-### Modifying Lead Information
-- **Phone number:** Update if contact information changes
-- **Campaign:** Move lead to different campaign if needed
-- **Status:** Manually change status for campaign control
+### Променяне на информацията за потенциален клиент
+- **Телефонен номер:** Актуализирайте ако контактната информация се промени
+- **Кампания:** Преместете потенциален клиент към различна кампания при нужда
+- **Статус:** Ръчно променете статуса за контрол на кампанията
 
-### Variable Management
-- **Update values:** Modify existing variable values
-- **Add variables:** Include new information for better AI context
-- **Remove variables:** Delete outdated or irrelevant data
+### Управление на променливи
+- **Актуализирайте стойности:** Променете съществуващи стойности на променливи
+- **Добавете променливи:** Включете нова информация за по-добър AI контекст
+- **Премахнете променливи:** Изтрийте остарела или нерелевантна информация
 
 <Warning>
-**Campaign compatibility:** When changing campaigns, ensure variables match the new assistant's configuration.
+**Съвместимост с кампанията:** При смяна на кампании, уверете се че променливите отговарят на конфигурацията на новия асистент.
 </Warning>
 
-### Secondary Contact Management
-- **Add contacts:** Include additional phone numbers
-- **Remove contacts:** Delete invalid or unnecessary numbers  
-- **Reorder contacts:** Change calling sequence priority
-- **Update variables:** Modify contact-specific information
+### Управление на вторични контакти
+- **Добавете контакти:** Включете допълнителни телефонни номера
+- **Премахнете контакти:** Изтрийте невалидни или ненужни номера  
+- **Пренаредете контакти:** Променете приоритета на последователността на обаждания
+- **Актуализирайте променливи:** Променете информацията, специфична за контакта
 
-## Lead Status Management
+## Управление на статуса на потенциални клиенти
 
-### Understanding Status Changes
-Lead status automatically updates based on campaign activity:
-- **Created → Processing:** When campaign starts calling
-- **Processing → Completed:** When call succeeds or goal achieved  
-- **Processing → Rescheduled:** When call needs retry
-- **Rescheduled → Max Retries:** When retry limit reached
+### Разбиране на промените в статуса
+Статусът на потенциалния клиент се актуализира автоматично въз основа на активността на кампанията:
+- **Създаден → Обработва се:** Когато кампанията започне да звъни
+- **Обработва се → Завършен:** Когато обаждането е успешно или целта е постигната  
+- **Обработва се → Пренасрочен:** Когато обаждането се нуждае от повторен опит
+- **Пренасрочен → Максимални опити:** Когато се достигне лимитът за опити
 
-### Manual Status Control
-You can manually change lead status when needed:
+### Ръчно контролиране на статуса
+Можете ръчно да променяте статуса на потенциален клиент при нужда:
 
-#### Reset for Re-calling
-**Set to "Created":** Resets lead to be called again
-- **Use case:** Lead requested callback at specific time
-- **Effect:** Lead rejoins campaign queue
-- **Considerations:** Respects campaign retry limits
+#### Нулиране за повторно обаждане
+**Задай на "Създаден":** Нулира потенциален клиент за повторно обаждане
+- **Случай на употреба:** Потенциален клиент поиска обратно обаждане в определено време
+- **Ефект:** Потенциалният клиент се присъединява отново към опашката на кампанията
+- **Съображения:** Спазва лимитите за опити на кампанията
 
-#### Mark as Complete
-**Set to "Completed":** Stops campaign from calling this lead
-- **Use case:** Goal achieved through other channels
-- **Effect:** Lead excluded from future campaign calls
-- **Considerations:** Cannot be automatically reset by campaign
+#### Маркирай като завършен
+**Задай на "Завършен":** Спира кампанията да звъни на този потенциален клиент
+- **Случай на употреба:** Целта е постигната чрез други канали
+- **Ефект:** Потенциалният клиент е изключен от бъдещи обаждания на кампанията
+- **Съображения:** Не може да бъде автоматично нулиран от кампанията
 
-#### Other Status Changes
-- **"Scheduled":** Queue for next retry attempt
-- **"Max Retries":** Manually mark as exhausted
-- **"Rescheduled":** Reset retry timer
+#### Други промени в статуса
+- **"Планиран":** Постави в опашка за следващ опит
+- **"Максимални опити":** Ръчно маркирай като изчерпан
+- **"Пренасрочен":** Нулирай таймера за опити
 
 <Tip>
-**Status strategy:** Use manual status changes sparingly. Let campaign automation handle most status updates for consistent behavior.
+**Стратегия за статуса:** Използвайте ръчни промени в статуса внимателно. Оставете автоматизацията на кампанията да управлява повечето актуализации на статуса за последователно поведение.
 </Tip>
 
-## Bulk Operations
+## Групови операции
 
-### Bulk Delete
-Select multiple leads and delete them:
-1. **Filter leads:** Use table filters to select specific leads
-2. **Select leads:** Check boxes for leads to delete
-3. **Bulk delete:** Choose delete action from bulk actions menu
-4. **Confirm:** Review changes before applying
+### Групово изтриване
+Изберете множество потенциални клиенти и ги изтрийте:
+1. **Филтрирайте потенциални клиенти:** Използвайте филтрите на таблицата за избор на специфични потенциални клиенти
+2. **Изберете потенциални клиенти:** Отбележете кутийките за потенциални клиенти за изтриване
+3. **Групово изтриване:** Изберете действието за изтриване от менюто за групови действия
+4. **Потвърдете:** Прегледайте промените преди прилагане
 
-### Bulk Export
-Export filtered lead data for external processing:
-- **Apply filters:** Filter by campaign, status, date range
-- **Select columns:** Choose which data to export
-- **Include secondary:** Option to include secondary contacts
-- **Download:** CSV format for spreadsheet compatibility
+### Групов експорт
+Експортирайте филтрирани данни за потенциални клиенти за външна обработка:
+- **Приложете филтри:** Филтрирайте по кампания, статус, период от време
+- **Изберете колони:** Изберете кои данни да експортирате
+- **Включете вторични:** Опция за включване на вторични контакти
+- **Изтеглете:** CSV формат за съвместимост със електронни таблици
 
-## Lead Organization
+## Организация на потенциални клиенти
 
-Use table filters, sorting, and search to organize leads by campaign, status, date range, or variable content.
+Използвайте филтрите на таблицата, сортирането и търсенето за организиране на потенциални клиенти по кампания, статус, период от време или съдържание на променливи.
 
-## Campaign Integration
+## Интеграция с кампания
 
-- **Single campaign** assignment per lead
-- **Variable inheritance** from assistant configuration
-- **Automatic coordination** with campaign schedule and retry logic
+- **Единично присвояване** към кампания за потенциален клиент
+- **Наследяване на променливи** от конфигурацията на асистента
+- **Автоматична координация** с графика на кампанията и логиката за опити
 
-## Best Practices
+## Най-добри практики
 
-### Key Points
-- **Phone format:** International format without spaces (+1234567890)
-- **Variables:** Use consistent naming and relevant information
-- **Secondary contacts:** Order by priority, avoid duplicates
-- **Privacy:** Follow data protection requirements
+### Ключови точки
+- **Формат на телефона:** Международен формат без интервали (+1234567890)
+- **Променливи:** Използвайте последователно именуване и релевантна информация
+- **Вторични контакти:** Подредете по приоритет, избягвайте дублирания
+- **Поверителност:** Следвайте изискванията за защита на данните
 
 <Note>
-For troubleshooting common lead issues, see [Leads Troubleshooting](/troubleshooting/leads).
+За отстраняване на често срещани проблеми с потенциални клиенти, вижте [Отстраняване на проблеми с потенциални клиенти](/troubleshooting/leads).
 </Note>
 
 <Note>
-For information about importing leads in bulk, see [Importing Leads](/leads/importing-leads).
+За информация относно групово импортиране на потенциални клиенти, вижте [Импортиране на потенциални клиенти](/leads/importing-leads).
 </Note>

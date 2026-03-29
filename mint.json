@@ -16,745 +16,746 @@
     }
   },
   "topAnchor": {
-    "name": "Platform Guide",
+    "name": "Ръководство за платформата",
     "icon": "book"
   },
   "sidebar": {
     "items": "card"
   },
-  "topbarLinks": [{
-    "name": "Home",
-    "url": "https://aiplocalls.com"
-  }, {
-    "name": "Support",
-    "url": "support@aiployees.com"
-  }],
+  "topbarLinks": [
+    {
+      "name": "Начало",
+      "url": "https://aiplocalls.com"
+    },
+    {
+      "name": "Поддръжка",
+      "url": "support@aiployees.com"
+    }
+  ],
   "topbarCtaButton": {
-    "name": "Dashboard",
+    "name": "Табло",
     "url": "https://call.aiployees.com"
   },
-  "anchors": [{
-    "name": "No-Code Automation",
-    "icon": "wand-magic-sparkles",
-    "color": "#6c63ff",
-    "url": "automation-platform"
-  }, {
-    "name": "API Reference",
-    "icon": "code",
-    "color": "#1c51fc",
-    "url": "api-reference"
-  }, {
-    "name": "Platform updates",
-    "icon": "scroll",
-    "color": "#ffbb00",
-    "url": "releases"
-  }],
-  "navigation": {
-    "languages": [
-      {
-        "language": "bg",
-        "groups": [
-          {
-            "group": "Въведение",
-            "pages": [
-              "bg/introduction/what-is-platform",
-              "bg/introduction/how-it-works",
-              "bg/introduction/key-terminology"
-            ]
-          },
-          {
-            "group": "Начало",
-            "pages": [
-              "bg/getting-started/core-concepts",
-              "bg/getting-started/understanding-billing"
-            ]
-          },
-          {
-            "group": "Преглед на AI асистенти",
-            "pages": [
-              "bg/ai-assistants/what-is-ai-assistant",
-              {
-                "group": "Създаване и редактиране на AI асистент",
-                "icon": "robot",
-                "pages": [
-                  "bg/ai-assistants/settings/general",
-                  "bg/ai-assistants/settings/prompt-and-tools",
-                  "bg/ai-assistants/settings/post-call-actions"
-                ]
-              },
-              "bg/ai-assistants/assistant-modes",
-              "bg/ai-assistants/assistant-configuration",
-              "bg/ai-assistants/system-prompt",
-              "bg/ai-assistants/ai-prompt-editor",
-              "bg/ai-assistants/flow-builder",
-              "bg/ai-assistants/initial-message",
-              "bg/ai-assistants/tools-and-functions",
-              "bg/ai-assistants/custom-tools",
-              "bg/ai-assistants/voice-selection",
-              "bg/ai-assistants/filler-audio",
-              "bg/ai-assistants/cal-com-scheduling",
-              "bg/ai-assistants/calendly-scheduling",
-              "bg/ai-assistants/gohighlevel-scheduling",
-              "bg/ai-assistants/testing",
-              "bg/ai-assistants/test-chat",
-              "bg/ai-assistants/web-widget"
-            ]
-          },
-          {
-            "group": "Кампании",
-            "icon": "bullhorn",
-            "pages": [
-              "bg/campaigns/index",
-              "bg/campaigns/creating-campaigns"
-            ]
-          },
-          {
-            "group": "Потенциални клиенти",
-            "icon": "users",
-            "pages": [
-              "bg/leads/index",
-              "bg/leads/managing-leads",
-              "bg/leads/importing-leads"
-            ]
-          },
-          {
-            "group": "Персонализирани табла",
-            "icon": "chart-line",
-            "pages": [
-              "bg/custom-dashboards/overview",
-              "bg/custom-dashboards/widget-types"
-            ]
-          },
-          {
-            "group": "Разговори",
-            "icon": "messages",
-            "pages": [
-              "bg/conversations/overview",
-              "bg/conversations/viewing-and-managing"
-            ]
-          },
-          {
-            "group": "WhatsApp Business",
-            "icon": "whatsapp",
-            "pages": [
-              "bg/whatsapp/overview",
-              "bg/whatsapp/senders",
-              "bg/whatsapp/templates",
-              "bg/whatsapp/conversations",
-              "bg/whatsapp/automation"
-            ]
-          },
-          {
-            "group": "Телефонни номера",
-            "pages": [
-              "bg/phone-numbers/types",
-              "bg/phone-numbers/purchasing-and-managing",
-              "bg/phone-numbers/pricing-and-regions",
-              "bg/phone-numbers/sms-capabilities",
-              "bg/phone-numbers/assigning-to-assistants"
-            ]
-          },
-          {
-            "group": "Входящи обаждания",
-            "pages": [
-              "bg/inbound-calls/overview",
-              "bg/inbound-calls/provisioning",
-              "bg/inbound-calls/configuring",
-              "bg/inbound-calls/insights"
-            ]
-          },
-          {
-            "group": "Изходящи обаждания",
-            "pages": [
-              "bg/outbound-calls/overview",
-              "bg/outbound-calls/campaigns",
-              "bg/outbound-calls/caller-id",
-              "bg/outbound-calls/voicemail-handling",
-              "bg/outbound-calls/scripts-and-prompts",
-              "bg/outbound-calls/mass-dialing"
-            ]
-          },
-          {
-            "group": "AI промптинг и дизайн на разговори",
-            "pages": [
-              "bg/conversation-design/prompt-basics",
-              "bg/conversation-design/knowledge-bases",
-              "bg/conversation-design/interruptions",
-              "bg/conversation-design/language-support"
-            ]
-          },
-          {
-            "group": "Автоматизация и интеграции",
-            "pages": [
-              "bg/automation/overview",
-              "bg/automation/webhook-api",
-              "bg/provisioning/phone-system-integrations"
-            ]
-          },
-          {
-            "group": "Разходи и ценообразуване",
-            "pages": [
-              "bg/pricing/overview",
-              "bg/pricing/usage-based",
-              "bg/pricing/number-rentals"
-            ]
-          },
-          {
-            "group": "Осигуряване на номера",
-            "pages": [
-              "bg/provisioning/supported-countries",
-              "bg/provisioning/managing-numbers",
-              {
-                "group": "SIP тръкинг",
-                "icon": "phone-volume",
-                "pages": [
-                  "bg/provisioning/sip-trunking/sip-integration",
-                  "bg/provisioning/sip-trunking/twilio",
-                  "bg/provisioning/sip-trunking/zadarma",
-                  "bg/provisioning/sip-trunking/didlogic"
-                ]
-              }
-            ]
-          },
-          {
-            "group": "Настройки",
-            "pages": [
-              "bg/settings/data-retention"
-            ]
-          },
-          {
-            "group": "Отстраняване на проблеми и ЧЗВ",
-            "pages": [
-              "bg/troubleshooting/ai-behavior",
-              "bg/troubleshooting/billing",
-              "bg/troubleshooting/cal-com",
-              "bg/troubleshooting/calendly",
-              "bg/troubleshooting/call-quality",
-              "bg/troubleshooting/campaigns",
-              "bg/troubleshooting/gohighlevel",
-              "bg/troubleshooting/leads",
-              "bg/troubleshooting/sip-integration",
-              "bg/troubleshooting/voice-problems",
-              "bg/troubleshooting/web-widget",
-              "bg/troubleshooting/whatsapp"
-            ]
-          },
-          {
-            "group": "API справочник",
-            "pages": [
-              "bg/api-reference/introduction",
-              "bg/api-reference/authentication",
-              "bg/api-reference/user/me"
-            ]
-          },
-          {
-            "group": "Асистенти",
-            "pages": [
-              "bg/api-reference/assistants/get-assistants",
-              "bg/api-reference/assistants/get-outbound-assistants",
-              "bg/api-reference/assistants/create-assistant",
-              "bg/api-reference/assistants/update-assistant",
-              "bg/api-reference/assistants/delete-assistant",
-              "bg/api-reference/assistants/enable-inbound-webhook",
-              "bg/api-reference/assistants/disable-inbound-webhook",
-              "bg/api-reference/assistants/enable-conversation-ended-webhook",
-              "bg/api-reference/assistants/disable-conversation-ended-webhook",
-              "bg/api-reference/assistants/disable-webhook",
-              "bg/api-reference/assistants/get-languages",
-              "bg/api-reference/assistants/get-voices",
-              "bg/api-reference/assistants/get-models",
-              "bg/api-reference/assistants/get-synthesizer-providers",
-              "bg/api-reference/assistants/get-transcriber-providers",
-              "bg/api-reference/assistants/get-phone-numbers"
-            ]
-          },
-          {
-            "group": "Обаждания",
-            "pages": [
-              "bg/api-reference/calls/get-calls",
-              "bg/api-reference/calls/get-call",
-              "bg/api-reference/calls/make-phone-call",
-              "bg/api-reference/calls/delete-call"
-            ]
-          },
-          {
-            "group": "Разговори",
-            "pages": [
-              "bg/api-reference/conversations/list-conversations",
-              "bg/api-reference/conversations/create-conversation",
-              "bg/api-reference/conversations/get-conversation",
-              "bg/api-reference/conversations/send-message"
-            ]
-          },
-          {
-            "group": "AI",
-            "pages": [
-              "bg/api-reference/ai/generate-reply"
-            ]
-          },
-          {
-            "group": "Инструменти по време на обаждане",
-            "pages": [
-              "bg/api-reference/mid-call-tools/get-tools",
-              "bg/api-reference/mid-call-tools/get-tool",
-              "bg/api-reference/mid-call-tools/create-tool",
-              "bg/api-reference/mid-call-tools/update-tool",
-              "bg/api-reference/mid-call-tools/delete-tool"
-            ]
-          },
-          {
-            "group": "Потенциални клиенти",
-            "pages": [
-              "bg/api-reference/leads/get-lead",
-              "bg/api-reference/leads/create",
-              "bg/api-reference/leads/update-lead",
-              "bg/api-reference/leads/delete"
-            ]
-          },
-          {
-            "group": "Кампании",
-            "pages": [
-              "bg/api-reference/campaigns/get-campaigns",
-              "bg/api-reference/campaigns/create-campaign",
-              "bg/api-reference/campaigns/update-status"
-            ]
-          },
-          {
-            "group": "Телефонни номера",
-            "pages": [
-              "bg/api-reference/phone-numbers/get-phone-numbers",
-              "bg/api-reference/phone-numbers/search-phone-numbers",
-              "bg/api-reference/phone-numbers/purchase-phone-number",
-              "bg/api-reference/phone-numbers/release-phone-number"
-            ]
-          },
-          {
-            "group": "Бази от знания",
-            "pages": [
-              "bg/api-reference/knowledgebases/get-knowledgebases",
-              "bg/api-reference/knowledgebases/get-knowledgebase",
-              "bg/api-reference/knowledgebases/create-knowledgebase",
-              "bg/api-reference/knowledgebases/update-knowledgebase",
-              "bg/api-reference/knowledgebases/delete-knowledgebase",
-              "bg/api-reference/knowledgebases/get-documents",
-              "bg/api-reference/knowledgebases/get-document",
-              "bg/api-reference/knowledgebases/create-document",
-              "bg/api-reference/knowledgebases/update-document",
-              "bg/api-reference/knowledgebases/delete-document"
-            ]
-          },
-          {
-            "group": "SMS",
-            "pages": [
-              "bg/api-reference/sms/send-sms"
-            ]
-          },
-          {
-            "group": "WhatsApp",
-            "pages": [
-              "bg/api-reference/whatsapp/get-senders",
-              "bg/api-reference/whatsapp/get-templates",
-              "bg/api-reference/whatsapp/send-template",
-              "bg/api-reference/whatsapp/send-freeform",
-              "bg/api-reference/whatsapp/session-status"
-            ]
-          },
-          {
-            "group": "Webhooks",
-            "pages": [
-              "bg/api-reference/webhooks/post-call-webhook",
-              "bg/api-reference/webhooks/conversation-ended-webhook"
-            ]
-          },
-          {
-            "group": "API ключове",
-            "pages": [
-              "bg/api-reference/authentication/create-api-key",
-              "bg/api-reference/authentication/list-api-keys",
-              "bg/api-reference/authentication/delete-api-key"
-            ]
-          },
-          {
-            "group": "Платформа за автоматизация без код",
-            "pages": [
-              "bg/automation-platform/introduction",
-              "bg/automation-platform/building-flows",
-              "bg/automation-platform/passing-data",
-              "bg/automation-platform/publishing-flows",
-              "bg/automation-platform/debugging-runs",
-              "bg/automation-platform/versioning",
-              "bg/automation-platform/known-limits"
-            ]
-          },
-          {
-            "group": "Свързани с обаждания",
-            "pages": [
-              "bg/automation-platform/calls-related/platform-tool",
-              "bg/automation-platform/calls-related/common-integrations",
-              "bg/automation-platform/calls-related/sms-capabilities"
-            ]
-          },
-          {
-            "group": "Актуализации на платформата",
-            "pages": [
-              "bg/releases/index"
-            ]
-          }
-        ]
-      },
-      {
-        "language": "en",
-        "groups": [
-          {
-            "group": "Introduction",
-            "pages": [
-              "introduction/what-is-platform",
-              "introduction/how-it-works",
-              "introduction/key-terminology"
-            ]
-          },
-          {
-            "group": "Getting Started",
-            "pages": [
-              "getting-started/core-concepts",
-              "getting-started/understanding-billing"
-            ]
-          },
-          {
-            "group": "AI Assistants Overview",
-            "pages": [
-              "ai-assistants/what-is-ai-assistant",
-              {
-                "group": "Creating and Editing an AI Assistant",
-                "icon": "robot",
-                "pages": [
-                  "ai-assistants/settings/general",
-                  "ai-assistants/settings/prompt-and-tools",
-                  "ai-assistants/settings/post-call-actions"
-                ]
-              },
-              "ai-assistants/assistant-modes",
-              "ai-assistants/assistant-configuration",
-              "ai-assistants/system-prompt",
-              "ai-assistants/ai-prompt-editor",
-              "ai-assistants/flow-builder",
-              "ai-assistants/initial-message",
-              "ai-assistants/tools-and-functions",
-              "ai-assistants/custom-tools",
-              "ai-assistants/voice-selection",
-              "ai-assistants/filler-audio",
-              "ai-assistants/cal-com-scheduling",
-              "ai-assistants/calendly-scheduling",
-              "ai-assistants/gohighlevel-scheduling",
-              "ai-assistants/testing",
-              "ai-assistants/test-chat",
-              "ai-assistants/web-widget"
-            ]
-          },
-          {
-            "group": "Campaigns",
-            "icon": "bullhorn",
-            "pages": [
-              "campaigns/index",
-              "campaigns/creating-campaigns"
-            ]
-          },
-          {
-            "group": "Leads",
-            "icon": "users",
-            "pages": [
-              "leads/index",
-              "leads/managing-leads",
-              "leads/importing-leads"
-            ]
-          },
-          {
-            "group": "Custom Dashboards",
-            "icon": "chart-line",
-            "pages": [
-              "custom-dashboards/overview",
-              "custom-dashboards/widget-types"
-            ]
-          },
-          {
-            "group": "Conversations",
-            "icon": "messages",
-            "pages": [
-              "conversations/overview",
-              "conversations/viewing-and-managing"
-            ]
-          },
-          {
-            "group": "WhatsApp Business",
-            "icon": "whatsapp",
-            "pages": [
-              "whatsapp/overview",
-              "whatsapp/senders",
-              "whatsapp/templates",
-              "whatsapp/conversations",
-              "whatsapp/automation"
-            ]
-          },
-          {
-            "group": "Phone Numbers",
-            "pages": [
-              "phone-numbers/types",
-              "phone-numbers/purchasing-and-managing",
-              "phone-numbers/pricing-and-regions",
-              "phone-numbers/sms-capabilities",
-              "phone-numbers/assigning-to-assistants"
-            ]
-          },
-          {
-            "group": "Inbound Calls",
-            "pages": [
-              "inbound-calls/overview",
-              "inbound-calls/provisioning",
-              "inbound-calls/configuring",
-              "inbound-calls/insights"
-            ]
-          },
-          {
-            "group": "Outbound Calls",
-            "pages": [
-              "outbound-calls/overview",
-              "outbound-calls/campaigns",
-              "outbound-calls/caller-id",
-              "outbound-calls/voicemail-handling",
-              "outbound-calls/scripts-and-prompts",
-              "outbound-calls/mass-dialing"
-            ]
-          },
-          {
-            "group": "AI Prompting & Conversation Design",
-            "pages": [
-              "conversation-design/prompt-basics",
-              "conversation-design/knowledge-bases",
-              "conversation-design/interruptions",
-              "conversation-design/language-support"
-            ]
-          },
-          {
-            "group": "Automation & Integrations",
-            "pages": [
-              "automation/overview",
-              "automation/webhook-api",
-              "provisioning/phone-system-integrations"
-            ]
-          },
-          {
-            "group": "Costs & Pricing",
-            "pages": [
-              "pricing/overview",
-              "pricing/usage-based",
-              "pricing/number-rentals"
-            ]
-          },
-          {
-            "group": "Number Provisioning",
-            "pages": [
-              "provisioning/supported-countries",
-              "provisioning/managing-numbers",
-              {
-                "group": "SIP trunking",
-                "icon": "phone-volume",
-                "pages": [
-                  "provisioning/sip-trunking/sip-integration",
-                  "provisioning/sip-trunking/twilio",
-                  "provisioning/sip-trunking/zadarma",
-                  "provisioning/sip-trunking/didlogic"
-                ]
-              }
-            ]
-          },
-          {
-            "group": "Settings",
-            "pages": [
-              "settings/data-retention"
-            ]
-          },
-          {
-            "group": "Troubleshooting & FAQs",
-            "pages": [
-              "troubleshooting/ai-behavior",
-              "troubleshooting/billing",
-              "troubleshooting/cal-com",
-              "troubleshooting/calendly",
-              "troubleshooting/call-quality",
-              "troubleshooting/campaigns",
-              "troubleshooting/gohighlevel",
-              "troubleshooting/leads",
-              "troubleshooting/sip-integration",
-              "troubleshooting/voice-problems",
-              "troubleshooting/web-widget",
-              "troubleshooting/whatsapp"
-            ]
-          },
-          {
-            "group": "API Reference",
-            "pages": [
-              "api-reference/introduction",
-              "api-reference/authentication",
-              "api-reference/user/me"
-            ]
-          },
-          {
-            "group": "Assistants",
-            "pages": [
-              "api-reference/assistants/get-assistants",
-              "api-reference/assistants/get-outbound-assistants",
-              "api-reference/assistants/create-assistant",
-              "api-reference/assistants/update-assistant",
-              "api-reference/assistants/delete-assistant",
-              "api-reference/assistants/enable-inbound-webhook",
-              "api-reference/assistants/disable-inbound-webhook",
-              "api-reference/assistants/enable-conversation-ended-webhook",
-              "api-reference/assistants/disable-conversation-ended-webhook",
-              "api-reference/assistants/disable-webhook",
-              "api-reference/assistants/get-languages",
-              "api-reference/assistants/get-voices",
-              "api-reference/assistants/get-models",
-              "api-reference/assistants/get-synthesizer-providers",
-              "api-reference/assistants/get-transcriber-providers",
-              "api-reference/assistants/get-phone-numbers"
-            ]
-          },
-          {
-            "group": "Calls",
-            "pages": [
-              "api-reference/calls/get-calls",
-              "api-reference/calls/get-call",
-              "api-reference/calls/make-phone-call",
-              "api-reference/calls/delete-call"
-            ]
-          },
-          {
-            "group": "Conversations",
-            "pages": [
-              "api-reference/conversations/list-conversations",
-              "api-reference/conversations/create-conversation",
-              "api-reference/conversations/get-conversation",
-              "api-reference/conversations/send-message"
-            ]
-          },
-          {
-            "group": "AI",
-            "pages": [
-              "api-reference/ai/generate-reply"
-            ]
-          },
-          {
-            "group": "Mid Call Tools",
-            "pages": [
-              "api-reference/mid-call-tools/get-tools",
-              "api-reference/mid-call-tools/get-tool",
-              "api-reference/mid-call-tools/create-tool",
-              "api-reference/mid-call-tools/update-tool",
-              "api-reference/mid-call-tools/delete-tool"
-            ]
-          },
-          {
-            "group": "Leads",
-            "pages": [
-              "api-reference/leads/get-lead",
-              "api-reference/leads/create",
-              "api-reference/leads/update-lead",
-              "api-reference/leads/delete"
-            ]
-          },
-          {
-            "group": "Campaigns",
-            "pages": [
-              "api-reference/campaigns/get-campaigns",
-              "api-reference/campaigns/create-campaign",
-              "api-reference/campaigns/update-status"
-            ]
-          },
-          {
-            "group": "Phone Numbers",
-            "pages": [
-              "api-reference/phone-numbers/get-phone-numbers",
-              "api-reference/phone-numbers/search-phone-numbers",
-              "api-reference/phone-numbers/purchase-phone-number",
-              "api-reference/phone-numbers/release-phone-number"
-            ]
-          },
-          {
-            "group": "Knowledgebases",
-            "pages": [
-              "api-reference/knowledgebases/get-knowledgebases",
-              "api-reference/knowledgebases/get-knowledgebase",
-              "api-reference/knowledgebases/create-knowledgebase",
-              "api-reference/knowledgebases/update-knowledgebase",
-              "api-reference/knowledgebases/delete-knowledgebase",
-              "api-reference/knowledgebases/get-documents",
-              "api-reference/knowledgebases/get-document",
-              "api-reference/knowledgebases/create-document",
-              "api-reference/knowledgebases/update-document",
-              "api-reference/knowledgebases/delete-document"
-            ]
-          },
-          {
-            "group": "SMS",
-            "pages": [
-              "api-reference/sms/send-sms"
-            ]
-          },
-          {
-            "group": "WhatsApp",
-            "pages": [
-              "api-reference/whatsapp/get-senders",
-              "api-reference/whatsapp/get-templates",
-              "api-reference/whatsapp/send-template",
-              "api-reference/whatsapp/send-freeform",
-              "api-reference/whatsapp/session-status"
-            ]
-          },
-          {
-            "group": "Webhooks",
-            "pages": [
-              "api-reference/webhooks/post-call-webhook",
-              "api-reference/webhooks/conversation-ended-webhook"
-            ]
-          },
-          {
-            "group": "API Keys",
-            "pages": [
-              "api-reference/authentication/create-api-key",
-              "api-reference/authentication/list-api-keys",
-              "api-reference/authentication/delete-api-key"
-            ]
-          },
-          {
-            "group": "No-Code Automation platform",
-            "pages": [
-              "automation-platform/introduction",
-              "automation-platform/building-flows",
-              "automation-platform/passing-data",
-              "automation-platform/publishing-flows",
-              "automation-platform/debugging-runs",
-              "automation-platform/versioning",
-              "automation-platform/known-limits"
-            ]
-          },
-          {
-            "group": "Calls Related",
-            "pages": [
-              "automation-platform/calls-related/platform-tool",
-              "automation-platform/calls-related/common-integrations",
-              "automation-platform/calls-related/sms-capabilities"
-            ]
-          },
-          {
-            "group": "Platform updates",
-            "pages": [
-              "releases/index"
-            ]
-          }
-        ]
-      }
-    ]
-  },
+  "anchors": [
+    {
+      "name": "Автоматизация без код",
+      "icon": "wand-magic-sparkles",
+      "color": "#6c63ff",
+      "url": "bg/automation-platform"
+    },
+    {
+      "name": "API справочник",
+      "icon": "code",
+      "color": "#1c51fc",
+      "url": "bg/api-reference"
+    },
+    {
+      "name": "Актуализации",
+      "icon": "scroll",
+      "color": "#ffbb00",
+      "url": "bg/releases"
+    },
+    {
+      "name": "English",
+      "icon": "globe",
+      "color": "#888888",
+      "url": "introduction"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Въведение",
+      "pages": [
+        "bg/introduction/what-is-platform",
+        "bg/introduction/how-it-works",
+        "bg/introduction/key-terminology"
+      ]
+    },
+    {
+      "group": "Начало",
+      "pages": [
+        "bg/getting-started/core-concepts",
+        "bg/getting-started/understanding-billing"
+      ]
+    },
+    {
+      "group": "Преглед на AI асистенти",
+      "pages": [
+        "bg/ai-assistants/what-is-ai-assistant",
+        {
+          "group": "Създаване и редактиране на AI асистент",
+          "icon": "robot",
+          "pages": [
+            "bg/ai-assistants/settings/general",
+            "bg/ai-assistants/settings/prompt-and-tools",
+            "bg/ai-assistants/settings/post-call-actions"
+          ]
+        },
+        "bg/ai-assistants/assistant-modes",
+        "bg/ai-assistants/assistant-configuration",
+        "bg/ai-assistants/system-prompt",
+        "bg/ai-assistants/ai-prompt-editor",
+        "bg/ai-assistants/flow-builder",
+        "bg/ai-assistants/initial-message",
+        "bg/ai-assistants/tools-and-functions",
+        "bg/ai-assistants/custom-tools",
+        "bg/ai-assistants/voice-selection",
+        "bg/ai-assistants/filler-audio",
+        "bg/ai-assistants/cal-com-scheduling",
+        "bg/ai-assistants/calendly-scheduling",
+        "bg/ai-assistants/gohighlevel-scheduling",
+        "bg/ai-assistants/testing",
+        "bg/ai-assistants/test-chat",
+        "bg/ai-assistants/web-widget"
+      ]
+    },
+    {
+      "group": "Кампании",
+      "icon": "bullhorn",
+      "pages": [
+        "bg/campaigns/index",
+        "bg/campaigns/creating-campaigns"
+      ]
+    },
+    {
+      "group": "Потенциални клиенти",
+      "icon": "users",
+      "pages": [
+        "bg/leads/index",
+        "bg/leads/managing-leads",
+        "bg/leads/importing-leads"
+      ]
+    },
+    {
+      "group": "Персонализирани табла",
+      "icon": "chart-line",
+      "pages": [
+        "bg/custom-dashboards/overview",
+        "bg/custom-dashboards/widget-types"
+      ]
+    },
+    {
+      "group": "Разговори",
+      "icon": "messages",
+      "pages": [
+        "bg/conversations/overview",
+        "bg/conversations/viewing-and-managing"
+      ]
+    },
+    {
+      "group": "WhatsApp Business",
+      "icon": "whatsapp",
+      "pages": [
+        "bg/whatsapp/overview",
+        "bg/whatsapp/senders",
+        "bg/whatsapp/templates",
+        "bg/whatsapp/conversations",
+        "bg/whatsapp/automation"
+      ]
+    },
+    {
+      "group": "Телефонни номера",
+      "pages": [
+        "bg/phone-numbers/types",
+        "bg/phone-numbers/purchasing-and-managing",
+        "bg/phone-numbers/pricing-and-regions",
+        "bg/phone-numbers/sms-capabilities",
+        "bg/phone-numbers/assigning-to-assistants"
+      ]
+    },
+    {
+      "group": "Входящи обаждания",
+      "pages": [
+        "bg/inbound-calls/overview",
+        "bg/inbound-calls/provisioning",
+        "bg/inbound-calls/configuring",
+        "bg/inbound-calls/insights"
+      ]
+    },
+    {
+      "group": "Изходящи обаждания",
+      "pages": [
+        "bg/outbound-calls/overview",
+        "bg/outbound-calls/campaigns",
+        "bg/outbound-calls/caller-id",
+        "bg/outbound-calls/voicemail-handling",
+        "bg/outbound-calls/scripts-and-prompts",
+        "bg/outbound-calls/mass-dialing"
+      ]
+    },
+    {
+      "group": "AI промптинг и дизайн на разговори",
+      "pages": [
+        "bg/conversation-design/prompt-basics",
+        "bg/conversation-design/knowledge-bases",
+        "bg/conversation-design/interruptions",
+        "bg/conversation-design/language-support"
+      ]
+    },
+    {
+      "group": "Автоматизация и интеграции",
+      "pages": [
+        "bg/automation/overview",
+        "bg/automation/webhook-api",
+        "bg/provisioning/phone-system-integrations"
+      ]
+    },
+    {
+      "group": "Разходи и ценообразуване",
+      "pages": [
+        "bg/pricing/overview",
+        "bg/pricing/usage-based",
+        "bg/pricing/number-rentals"
+      ]
+    },
+    {
+      "group": "Осигуряване на номера",
+      "pages": [
+        "bg/provisioning/supported-countries",
+        "bg/provisioning/managing-numbers",
+        {
+          "group": "SIP тръкинг",
+          "icon": "phone-volume",
+          "pages": [
+            "bg/provisioning/sip-trunking/sip-integration",
+            "bg/provisioning/sip-trunking/twilio",
+            "bg/provisioning/sip-trunking/zadarma",
+            "bg/provisioning/sip-trunking/didlogic"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Настройки",
+      "pages": [
+        "bg/settings/data-retention"
+      ]
+    },
+    {
+      "group": "Отстраняване на проблеми и ЧЗВ",
+      "pages": [
+        "bg/troubleshooting/ai-behavior",
+        "bg/troubleshooting/billing",
+        "bg/troubleshooting/cal-com",
+        "bg/troubleshooting/calendly",
+        "bg/troubleshooting/call-quality",
+        "bg/troubleshooting/campaigns",
+        "bg/troubleshooting/gohighlevel",
+        "bg/troubleshooting/leads",
+        "bg/troubleshooting/sip-integration",
+        "bg/troubleshooting/voice-problems",
+        "bg/troubleshooting/web-widget",
+        "bg/troubleshooting/whatsapp"
+      ]
+    },
+    {
+      "group": "API справочник",
+      "pages": [
+        "bg/api-reference/introduction",
+        "bg/api-reference/authentication",
+        "bg/api-reference/user/me"
+      ]
+    },
+    {
+      "group": "Асистенти",
+      "pages": [
+        "bg/api-reference/assistants/get-assistants",
+        "bg/api-reference/assistants/get-outbound-assistants",
+        "bg/api-reference/assistants/create-assistant",
+        "bg/api-reference/assistants/update-assistant",
+        "bg/api-reference/assistants/delete-assistant",
+        "bg/api-reference/assistants/enable-inbound-webhook",
+        "bg/api-reference/assistants/disable-inbound-webhook",
+        "bg/api-reference/assistants/enable-conversation-ended-webhook",
+        "bg/api-reference/assistants/disable-conversation-ended-webhook",
+        "bg/api-reference/assistants/disable-webhook",
+        "bg/api-reference/assistants/get-languages",
+        "bg/api-reference/assistants/get-voices",
+        "bg/api-reference/assistants/get-models",
+        "bg/api-reference/assistants/get-synthesizer-providers",
+        "bg/api-reference/assistants/get-transcriber-providers",
+        "bg/api-reference/assistants/get-phone-numbers"
+      ]
+    },
+    {
+      "group": "Обаждания",
+      "pages": [
+        "bg/api-reference/calls/get-calls",
+        "bg/api-reference/calls/get-call",
+        "bg/api-reference/calls/make-phone-call",
+        "bg/api-reference/calls/delete-call"
+      ]
+    },
+    {
+      "group": "Разговори",
+      "pages": [
+        "bg/api-reference/conversations/list-conversations",
+        "bg/api-reference/conversations/create-conversation",
+        "bg/api-reference/conversations/get-conversation",
+        "bg/api-reference/conversations/send-message"
+      ]
+    },
+    {
+      "group": "AI",
+      "pages": [
+        "bg/api-reference/ai/generate-reply"
+      ]
+    },
+    {
+      "group": "Инструменти по време на обаждане",
+      "pages": [
+        "bg/api-reference/mid-call-tools/get-tools",
+        "bg/api-reference/mid-call-tools/get-tool",
+        "bg/api-reference/mid-call-tools/create-tool",
+        "bg/api-reference/mid-call-tools/update-tool",
+        "bg/api-reference/mid-call-tools/delete-tool"
+      ]
+    },
+    {
+      "group": "Потенциални клиенти",
+      "pages": [
+        "bg/api-reference/leads/get-lead",
+        "bg/api-reference/leads/create",
+        "bg/api-reference/leads/update-lead",
+        "bg/api-reference/leads/delete"
+      ]
+    },
+    {
+      "group": "Кампании",
+      "pages": [
+        "bg/api-reference/campaigns/get-campaigns",
+        "bg/api-reference/campaigns/create-campaign",
+        "bg/api-reference/campaigns/update-status"
+      ]
+    },
+    {
+      "group": "Телефонни номера",
+      "pages": [
+        "bg/api-reference/phone-numbers/get-phone-numbers",
+        "bg/api-reference/phone-numbers/search-phone-numbers",
+        "bg/api-reference/phone-numbers/purchase-phone-number",
+        "bg/api-reference/phone-numbers/release-phone-number"
+      ]
+    },
+    {
+      "group": "Бази от знания",
+      "pages": [
+        "bg/api-reference/knowledgebases/get-knowledgebases",
+        "bg/api-reference/knowledgebases/get-knowledgebase",
+        "bg/api-reference/knowledgebases/create-knowledgebase",
+        "bg/api-reference/knowledgebases/update-knowledgebase",
+        "bg/api-reference/knowledgebases/delete-knowledgebase",
+        "bg/api-reference/knowledgebases/get-documents",
+        "bg/api-reference/knowledgebases/get-document",
+        "bg/api-reference/knowledgebases/create-document",
+        "bg/api-reference/knowledgebases/update-document",
+        "bg/api-reference/knowledgebases/delete-document"
+      ]
+    },
+    {
+      "group": "SMS",
+      "pages": [
+        "bg/api-reference/sms/send-sms"
+      ]
+    },
+    {
+      "group": "WhatsApp",
+      "pages": [
+        "bg/api-reference/whatsapp/get-senders",
+        "bg/api-reference/whatsapp/get-templates",
+        "bg/api-reference/whatsapp/send-template",
+        "bg/api-reference/whatsapp/send-freeform",
+        "bg/api-reference/whatsapp/session-status"
+      ]
+    },
+    {
+      "group": "Webhooks",
+      "pages": [
+        "bg/api-reference/webhooks/post-call-webhook",
+        "bg/api-reference/webhooks/conversation-ended-webhook"
+      ]
+    },
+    {
+      "group": "API ключове",
+      "pages": [
+        "bg/api-reference/authentication/create-api-key",
+        "bg/api-reference/authentication/list-api-keys",
+        "bg/api-reference/authentication/delete-api-key"
+      ]
+    },
+    {
+      "group": "Платформа за автоматизация без код",
+      "pages": [
+        "bg/automation-platform/introduction",
+        "bg/automation-platform/building-flows",
+        "bg/automation-platform/passing-data",
+        "bg/automation-platform/publishing-flows",
+        "bg/automation-platform/debugging-runs",
+        "bg/automation-platform/versioning",
+        "bg/automation-platform/known-limits"
+      ]
+    },
+    {
+      "group": "Свързани с обаждания",
+      "pages": [
+        "bg/automation-platform/calls-related/platform-tool",
+        "bg/automation-platform/calls-related/common-integrations",
+        "bg/automation-platform/calls-related/sms-capabilities"
+      ]
+    },
+    {
+      "group": "Актуализации на платформата",
+      "pages": [
+        "bg/releases/index"
+      ]
+    },
+    {
+      "group": "Introduction",
+      "pages": [
+        "introduction/what-is-platform",
+        "introduction/how-it-works",
+        "introduction/key-terminology"
+      ]
+    },
+    {
+      "group": "Getting Started",
+      "pages": [
+        "getting-started/core-concepts",
+        "getting-started/understanding-billing"
+      ]
+    },
+    {
+      "group": "AI Assistants Overview",
+      "pages": [
+        "ai-assistants/what-is-ai-assistant",
+        {
+          "group": "Creating and Editing an AI Assistant",
+          "icon": "robot",
+          "pages": [
+            "ai-assistants/settings/general",
+            "ai-assistants/settings/prompt-and-tools",
+            "ai-assistants/settings/post-call-actions"
+          ]
+        },
+        "ai-assistants/assistant-modes",
+        "ai-assistants/assistant-configuration",
+        "ai-assistants/system-prompt",
+        "ai-assistants/ai-prompt-editor",
+        "ai-assistants/flow-builder",
+        "ai-assistants/initial-message",
+        "ai-assistants/tools-and-functions",
+        "ai-assistants/custom-tools",
+        "ai-assistants/voice-selection",
+        "ai-assistants/filler-audio",
+        "ai-assistants/cal-com-scheduling",
+        "ai-assistants/calendly-scheduling",
+        "ai-assistants/gohighlevel-scheduling",
+        "ai-assistants/testing",
+        "ai-assistants/test-chat",
+        "ai-assistants/web-widget"
+      ]
+    },
+    {
+      "group": "Campaigns",
+      "icon": "bullhorn",
+      "pages": [
+        "campaigns/index",
+        "campaigns/creating-campaigns"
+      ]
+    },
+    {
+      "group": "Leads",
+      "icon": "users",
+      "pages": [
+        "leads/index",
+        "leads/managing-leads",
+        "leads/importing-leads"
+      ]
+    },
+    {
+      "group": "Custom Dashboards",
+      "icon": "chart-line",
+      "pages": [
+        "custom-dashboards/overview",
+        "custom-dashboards/widget-types"
+      ]
+    },
+    {
+      "group": "Conversations",
+      "icon": "messages",
+      "pages": [
+        "conversations/overview",
+        "conversations/viewing-and-managing"
+      ]
+    },
+    {
+      "group": "WhatsApp Business",
+      "icon": "whatsapp",
+      "pages": [
+        "whatsapp/overview",
+        "whatsapp/senders",
+        "whatsapp/templates",
+        "whatsapp/conversations",
+        "whatsapp/automation"
+      ]
+    },
+    {
+      "group": "Phone Numbers",
+      "pages": [
+        "phone-numbers/types",
+        "phone-numbers/purchasing-and-managing",
+        "phone-numbers/pricing-and-regions",
+        "phone-numbers/sms-capabilities",
+        "phone-numbers/assigning-to-assistants"
+      ]
+    },
+    {
+      "group": "Inbound Calls",
+      "pages": [
+        "inbound-calls/overview",
+        "inbound-calls/provisioning",
+        "inbound-calls/configuring",
+        "inbound-calls/insights"
+      ]
+    },
+    {
+      "group": "Outbound Calls",
+      "pages": [
+        "outbound-calls/overview",
+        "outbound-calls/campaigns",
+        "outbound-calls/caller-id",
+        "outbound-calls/voicemail-handling",
+        "outbound-calls/scripts-and-prompts",
+        "outbound-calls/mass-dialing"
+      ]
+    },
+    {
+      "group": "AI Prompting & Conversation Design",
+      "pages": [
+        "conversation-design/prompt-basics",
+        "conversation-design/knowledge-bases",
+        "conversation-design/interruptions",
+        "conversation-design/language-support"
+      ]
+    },
+    {
+      "group": "Automation & Integrations",
+      "pages": [
+        "automation/overview",
+        "automation/webhook-api",
+        "provisioning/phone-system-integrations"
+      ]
+    },
+    {
+      "group": "Costs & Pricing",
+      "pages": [
+        "pricing/overview",
+        "pricing/usage-based",
+        "pricing/number-rentals"
+      ]
+    },
+    {
+      "group": "Number Provisioning",
+      "pages": [
+        "provisioning/supported-countries",
+        "provisioning/managing-numbers",
+        {
+          "group": "SIP trunking",
+          "icon": "phone-volume",
+          "pages": [
+            "provisioning/sip-trunking/sip-integration",
+            "provisioning/sip-trunking/twilio",
+            "provisioning/sip-trunking/zadarma",
+            "provisioning/sip-trunking/didlogic"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Settings",
+      "pages": [
+        "settings/data-retention"
+      ]
+    },
+    {
+      "group": "Troubleshooting & FAQs",
+      "pages": [
+        "troubleshooting/ai-behavior",
+        "troubleshooting/billing",
+        "troubleshooting/cal-com",
+        "troubleshooting/calendly",
+        "troubleshooting/call-quality",
+        "troubleshooting/campaigns",
+        "troubleshooting/gohighlevel",
+        "troubleshooting/leads",
+        "troubleshooting/sip-integration",
+        "troubleshooting/voice-problems",
+        "troubleshooting/web-widget",
+        "troubleshooting/whatsapp"
+      ]
+    },
+    {
+      "group": "API Reference",
+      "pages": [
+        "api-reference/introduction",
+        "api-reference/authentication",
+        "api-reference/user/me"
+      ]
+    },
+    {
+      "group": "Assistants",
+      "pages": [
+        "api-reference/assistants/get-assistants",
+        "api-reference/assistants/get-outbound-assistants",
+        "api-reference/assistants/create-assistant",
+        "api-reference/assistants/update-assistant",
+        "api-reference/assistants/delete-assistant",
+        "api-reference/assistants/enable-inbound-webhook",
+        "api-reference/assistants/disable-inbound-webhook",
+        "api-reference/assistants/enable-conversation-ended-webhook",
+        "api-reference/assistants/disable-conversation-ended-webhook",
+        "api-reference/assistants/disable-webhook",
+        "api-reference/assistants/get-languages",
+        "api-reference/assistants/get-voices",
+        "api-reference/assistants/get-models",
+        "api-reference/assistants/get-synthesizer-providers",
+        "api-reference/assistants/get-transcriber-providers",
+        "api-reference/assistants/get-phone-numbers"
+      ]
+    },
+    {
+      "group": "Calls",
+      "pages": [
+        "api-reference/calls/get-calls",
+        "api-reference/calls/get-call",
+        "api-reference/calls/make-phone-call",
+        "api-reference/calls/delete-call"
+      ]
+    },
+    {
+      "group": "Conversations",
+      "pages": [
+        "api-reference/conversations/list-conversations",
+        "api-reference/conversations/create-conversation",
+        "api-reference/conversations/get-conversation",
+        "api-reference/conversations/send-message"
+      ]
+    },
+    {
+      "group": "AI",
+      "pages": [
+        "api-reference/ai/generate-reply"
+      ]
+    },
+    {
+      "group": "Mid Call Tools",
+      "pages": [
+        "api-reference/mid-call-tools/get-tools",
+        "api-reference/mid-call-tools/get-tool",
+        "api-reference/mid-call-tools/create-tool",
+        "api-reference/mid-call-tools/update-tool",
+        "api-reference/mid-call-tools/delete-tool"
+      ]
+    },
+    {
+      "group": "Leads",
+      "pages": [
+        "api-reference/leads/get-lead",
+        "api-reference/leads/create",
+        "api-reference/leads/update-lead",
+        "api-reference/leads/delete"
+      ]
+    },
+    {
+      "group": "Campaigns",
+      "pages": [
+        "api-reference/campaigns/get-campaigns",
+        "api-reference/campaigns/create-campaign",
+        "api-reference/campaigns/update-status"
+      ]
+    },
+    {
+      "group": "Phone Numbers",
+      "pages": [
+        "api-reference/phone-numbers/get-phone-numbers",
+        "api-reference/phone-numbers/search-phone-numbers",
+        "api-reference/phone-numbers/purchase-phone-number",
+        "api-reference/phone-numbers/release-phone-number"
+      ]
+    },
+    {
+      "group": "Knowledgebases",
+      "pages": [
+        "api-reference/knowledgebases/get-knowledgebases",
+        "api-reference/knowledgebases/get-knowledgebase",
+        "api-reference/knowledgebases/create-knowledgebase",
+        "api-reference/knowledgebases/update-knowledgebase",
+        "api-reference/knowledgebases/delete-knowledgebase",
+        "api-reference/knowledgebases/get-documents",
+        "api-reference/knowledgebases/get-document",
+        "api-reference/knowledgebases/create-document",
+        "api-reference/knowledgebases/update-document",
+        "api-reference/knowledgebases/delete-document"
+      ]
+    },
+    {
+      "group": "SMS",
+      "pages": [
+        "api-reference/sms/send-sms"
+      ]
+    },
+    {
+      "group": "WhatsApp",
+      "pages": [
+        "api-reference/whatsapp/get-senders",
+        "api-reference/whatsapp/get-templates",
+        "api-reference/whatsapp/send-template",
+        "api-reference/whatsapp/send-freeform",
+        "api-reference/whatsapp/session-status"
+      ]
+    },
+    {
+      "group": "Webhooks",
+      "pages": [
+        "api-reference/webhooks/post-call-webhook",
+        "api-reference/webhooks/conversation-ended-webhook"
+      ]
+    },
+    {
+      "group": "API Keys",
+      "pages": [
+        "api-reference/authentication/create-api-key",
+        "api-reference/authentication/list-api-keys",
+        "api-reference/authentication/delete-api-key"
+      ]
+    },
+    {
+      "group": "No-Code Automation platform",
+      "pages": [
+        "automation-platform/introduction",
+        "automation-platform/building-flows",
+        "automation-platform/passing-data",
+        "automation-platform/publishing-flows",
+        "automation-platform/debugging-runs",
+        "automation-platform/versioning",
+        "automation-platform/known-limits"
+      ]
+    },
+    {
+      "group": "Calls Related",
+      "pages": [
+        "automation-platform/calls-related/platform-tool",
+        "automation-platform/calls-related/common-integrations",
+        "automation-platform/calls-related/sms-capabilities"
+      ]
+    },
+    {
+      "group": "Platform updates",
+      "pages": [
+        "releases/index"
+      ]
+    }
+  ],
   "footerSocials": {
     "linkedin": "https://www.linkedin.com/company/aiployees"
   },

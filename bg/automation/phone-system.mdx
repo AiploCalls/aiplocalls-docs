@@ -1,0 +1,30 @@
+---
+title: "Phone System Integrations"
+icon: "phone-office"
+description: "Learn how to integrate Aiplocalls with your existing PBX or VOIP infrastructure through SIP trunks"
+---
+
+For businesses with existing PBX or VOIP infrastructure, Aiplocalls can integrate through SIP trunks or direct connections:
+
+## 1. SIP Trunk
+
+- **How It Works**: Configure your SIP credentials (server, username, password) directly in the dashboard. See our [detailed SIP Integration Guide](/provisioning/sip-trunking/sip-integration) for step-by-step setup instructions.
+- **Inbound/Outbound**: AI can pick up inbound calls from your PBX or place outbound calls using your existing number ranges.
+
+## 2. Caller ID Forwarding
+
+- If your PBX already handles call routing, pass the call to Aiplocalls only when certain conditions are met (like after IVR selection).
+
+## 3. Hybrid Model
+
+- Some advanced setups keep human agents on your PBX but leverage the AI for high-volume or after-hours calls.
+- Example: _During business hours, normal agents handle calls. After hours, calls route to the AI assistant via SIP trunk._
+
+## 4. Things to Note
+
+- SIP sometimes requires opening firewall ports or whitelisting IPs.
+- Carrier charges from your PBX provider still apply, plus any Aiplocalls usage fees.
+
+---
+
+For detailed setup instructions and best practices, visit our [SIP Integration Guide](/provisioning/sip-trunking/sip-integration).

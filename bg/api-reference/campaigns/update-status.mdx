@@ -1,0 +1,41 @@
+---
+title: "Update campaign status"
+api: "POST /user/campaigns/update-status"
+description: "Start or stop a campaign in the Aiplocalls system"
+---
+
+This endpoint allows you to start or stop a campaign in the Aiplocalls system.
+
+### Request body
+
+<ParamField body="campaign_id" type="integer" required>
+  The ID of the campaign to update
+</ParamField>
+
+<ParamField body="action" type="string" required>
+  The action to perform on the campaign. Must be either "start" or "stop"
+</ParamField>
+
+### Response
+
+<ResponseField name="message" type="string" default="Campaign started successfully.">
+  The message of the response
+</ResponseField>
+
+<ResponseField name="success" type="boolean" default="true">
+  Whether the operation was successful
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  The data of the response
+  
+  <Expandable title="data properties">
+    <ResponseField name="campaign_id" type="integer">
+      The ID of the updated campaign
+    </ResponseField>
+    
+    <ResponseField name="status" type="string" default="in-progress">
+      The new status of the campaign (e.g., "in-progress" for started campaigns, "stopped" for stopped campaigns)
+    </ResponseField>
+  </Expandable>
+</ResponseField>

@@ -1,0 +1,67 @@
+---
+title: "Calendly Appointment Scheduling"
+icon: "calendar-days"
+description: "Enable your AI assistant to schedule appointments using Calendly"
+---
+
+Enable your AI assistant to schedule meetings using Calendly integration. The AI will check availability and book appointments directly during calls.
+
+## Prerequisites
+
+- An active Calendly account
+- At least one active event type configured in Calendly
+
+## Setup
+
+### 1. Connect Calendly
+
+1. In your assistant settings, go to **Tools** tab → **Appointment Scheduling**
+2. Select **Calendly** as the calendar type
+3. Click **Connect to Calendly**
+4. Authorize the application on the Calendly OAuth page
+5. You'll be redirected back to your assistant settings
+
+<Note>
+If you have issues connecting, try using an **incognito/private browser window** to resolve authentication conflicts.
+</Note>
+
+### 2. Select Event Type
+
+1. Once connected, click **"Load Events"** to fetch your Calendly event types
+2. Select the event type you want the AI to use for bookings
+3. Save your assistant
+
+### 3. Configure Location in Calendly
+
+Your Calendly event type's location setting must be compatible with the voice agent.
+
+1. Go to [calendly.com](https://calendly.com) → **Event Types**
+2. Edit the event type linked to your assistant
+3. In the **Location** section, set it to one of:
+   - **"Custom"** — recommended, works in all cases
+   - **"Phone Call" → "Inbound call"** — also works for voice AI
+
+<Warning>
+If your event type uses only video conferencing (Google Meet, Zoom, Teams), bookings will fail. The voice agent cannot generate meeting links. Either switch to "Custom" or add it as an additional location option.
+</Warning>
+
+## Multiple Calendars
+
+Click **"+"** next to Appointment Scheduling to add more calendar tools (e.g., different event types for different purposes). Use the "When to schedule" description to help the AI pick the right calendar.
+
+## Organization Accounts
+
+If your Calendly account is part of an organization:
+
+- **Admin/Owner accounts** can see all event types across team members, including Round Robin and Collective events
+- **Regular members** can only see their own event types
+
+## Testing
+
+1. Make a test call and request to schedule a meeting
+2. Verify the booking appears in your Calendly dashboard
+3. Check that the calendar invitation was sent
+
+<Note>
+For troubleshooting, see [Calendly Issues](/troubleshooting/calendly).
+</Note>

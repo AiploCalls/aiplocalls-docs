@@ -1,0 +1,88 @@
+---
+title: "Get all phone numbers"
+api: "GET /user/phone-numbers/all"
+description: "Get all phone numbers owned by the authenticated user"
+---
+
+This endpoint returns a list of all phone numbers associated with your account, including their subscription status and capabilities.
+
+### Response
+
+<ResponseField name="data" type="array">
+  Array of phone number objects
+  
+  <Expandable title="phone number properties">
+    <ResponseField name="id" type="integer">
+      The unique identifier of the phone number
+    </ResponseField>
+    
+    <ResponseField name="phone_number" type="string">
+      The phone number in E.164 format (e.g., +14155551234)
+    </ResponseField>
+    
+    <ResponseField name="country_code" type="string">
+      The ISO 3166-1 alpha-2 country code (e.g., US, GB, AU)
+    </ResponseField>
+    
+    <ResponseField name="type" type="string">
+      The type of phone number: `normal`, `sip`, or `caller_id`
+    </ResponseField>
+    
+    <ResponseField name="type_label" type="string">
+      Human-readable label for the phone number type
+    </ResponseField>
+    
+    <ResponseField name="sms_capable" type="boolean">
+      Whether the phone number can send and receive SMS
+    </ResponseField>
+    
+    <ResponseField name="region" type="string">
+      The region where the phone number is provisioned
+    </ResponseField>
+    
+    <ResponseField name="has_active_subscription" type="boolean">
+      Whether the phone number has an active subscription
+    </ResponseField>
+    
+    <ResponseField name="created_at" type="string">
+      ISO 8601 timestamp of when the phone number was purchased
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Response
+{
+  "data": [
+    {
+      "id": 1,
+      "phone_number": "+14155551234",
+      "country_code": "US",
+      "type": "normal",
+      "type_label": "Dedicated Number",
+      "sms_capable": true,
+      "region": "us1",
+      "has_active_subscription": true,
+      "created_at": "2025-01-08T10:30:00.000000Z"
+    },
+    {
+      "id": 2,
+      "phone_number": "+442071234567",
+      "country_code": "GB",
+      "type": "normal",
+      "type_label": "Dedicated Number",
+      "sms_capable": false,
+      "region": "us1",
+      "has_active_subscription": true,
+      "created_at": "2025-01-05T14:20:00.000000Z"
+    }
+  ]
+}
+```
+
+</ResponseExample>
+
+<Note>
+There is also a legacy endpoint `GET /user/phone-numbers` that returns only SMS-capable phone numbers with active subscriptions. Use this `/all` endpoint if you need all phone numbers regardless of SMS capability or subscription status.
+</Note>

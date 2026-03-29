@@ -1,0 +1,531 @@
+---
+title: "General Settings"
+icon: "gear"
+description: "Basic configuration settings for your AI assistant including call direction, phone numbers, voice, and advanced settings."
+---
+
+Configure the fundamental settings for your AI assistant including call direction, phone numbers, voice selection, and technical parameters.
+
+## Quick Start Guide
+
+Ready to set up your first AI assistant? Here's the essential flow:
+
+1. **Choose Call Direction:** Inbound (answers calls) or Outbound (makes calls)
+2. **Set Assistant Name:** Internal label like "Support Bot" or "Sales Bot"
+3. **Configure Phone Numbers:** Assign platform numbers, SIP, or Caller ID
+4. **Select Voice & Language:** Choose from built-in voices or clone custom ones
+5. **Adjust Advanced Settings:** Fine-tune models, timing, and audio parameters
+
+<Tip>
+**Always test your changes** by calling the assistant or running a small campaign to confirm it behaves as expected.
+</Tip>
+
+<Note>
+Follow this page section by section to configure your assistant. Each setting includes detailed explanations and best practices to help you make the right choices.
+</Note>
+
+## Call Direction & Basic Setup
+
+### Assistant Type
+Choose whether your assistant handles **inbound** or **outbound** calls. This fundamental choice affects which other options become available.
+
+**Inbound (Receive calls):** Handles incoming calls from customers. See [Inbound calls overview](/inbound-calls/overview).
+
+**Outbound (Make calls):** Initiates calls to leads or customers. See [Outbound calls overview](/outbound-calls/overview).
+
+### Assistant Name
+A descriptive name to identify your assistant in the dashboard. Use something memorable that describes the assistant's purpose (e.g. "Sales Qualifier", "Support Bot", "Appointment Scheduler").
+
+## Phone Number Configuration
+
+Your assistant needs a phone number to operate. The available options depend on your call direction choice.
+
+### For Outbound Assistants
+You can use:
+- **Platform numbers:** Numbers rented directly from our platform
+- **SIP numbers:** Connect your existing VOIP/PBX system
+- **Caller ID only:** Verify ownership of an existing number to display it on outbound calls
+
+### For Inbound Assistants  
+You can use:
+- **Platform numbers:** Numbers rented directly from our platform
+- **SIP numbers:** Connect your existing VOIP/PBX system
+
+**Note:** Caller ID only numbers cannot handle inbound calls - they only display on outbound calls.
+
+### Pricing & Costs
+- **Platform numbers:** Monthly rental fees starting from $3.99/month. See [renting a dedicated number](/pricing/number-rentals#1-renting-a-dedicated-number) for detailed pricing.
+- **SIP integration:** No monthly fee, only $0.00045/min for AI bridging. See [SIP integration pricing](/pricing/number-rentals#2-sip-integration-no-monthly-fee).
+- **Caller ID:** No monthly fee, region-based per-minute rates (e.g., $0.01/min in the US). See [Caller ID pricing](/pricing/number-rentals#3-caller-id-no-monthly-fee).
+
+See [Phone number types](/phone-numbers/types) for detailed explanations and [SIP integration guide](/provisioning/sip-trunking/sip-integration) for VOIP setup.
+
+## Engine Type (Voice Processing Mode)
+
+Choose how your AI processes speech and generates responses. Each mode is optimized for different use cases. See [Assistant modes](/ai-assistants/assistant-modes) for detailed comparisons.
+
+### Pipeline Mode
+Traditional Speech-to-Text → LLM → Text-to-Speech pipeline. Offers maximum control over voice selection and response generation.
+
+**Best for:** Complex reasoning, function calling, custom voice requirements
+
+### Speech-to-Speech Mode  
+Direct speech-to-speech generation without intermediate text processing. Provides the most natural conversational flow.
+
+**Best for:** Quick conversations, natural back-and-forth dialogue
+
+### Dualplex Mode (Beta)
+Combines fast multimodal processing with premium ElevenLabs voice output.
+
+**Best for:** Most use cases - recommended default
+
+## Language Configuration
+
+### Primary Language
+The main language your assistant will use for speech recognition and synthesis. This affects:
+- Speech recognition accuracy
+- Available voice options  
+- Filler audio phrases
+- Voice model selection
+
+See [Language support](/conversation-design/language-support) for all available languages and accents.
+
+### Secondary Languages
+Additional languages your assistant can understand and speak. Useful for:
+- Multilingual customer support
+- International businesses
+- Code-switching conversations
+
+**Note:** The AI can detect which language the customer is speaking and respond appropriately.
+
+## TTS Provider & Voice Selection
+
+### TTS Provider
+Select your Text-to-Speech provider. Available in **Pipeline** and **Dualplex** modes.
+
+**Available Providers:**
+- **ElevenLabs** - High-quality voices
+- **Cartesia** - Fast, low-latency synthesis
+
+Your assistant can choose from existing voices, clone custom voices, or request voices from the ElevenLabs library.
+
+### Voice Options
+You have three ways to get the perfect voice for your assistant:
+
+**1. Choose from existing voices:**
+- **Professional voices:** Pre-trained, high-quality options from ElevenLabs
+- **Multiple accents:** Available for most languages
+- **Gender options:** Male and female voices for each language
+- **Tone variety:** From formal business to casual conversational
+
+**2. Clone a custom voice:**
+Create a custom voice by uploading audio samples. Available in **Pipeline** and **Dualplex** modes.
+
+**Requirements by provider:**
+- **Cartesia** - Single audio file, at least 10 seconds, 1 speaker, no background noise
+- **ElevenLabs** - Samples over 1 minute, 1 speaker, no background noise. Max 5 minutes total.
+
+**Process:**
+1. Click "Clone voice" next to voice selector
+2. Select provider (Cartesia or ElevenLabs)
+3. Choose the voice language
+4. Enter a name for your voice
+5. Record or upload audio
+6. Wait for processing
+7. Select your new voice from dropdown
+
+**Use cases:**
+- Brand consistency with company spokesperson
+- Personal touch for customer relationships
+- Matching voice to specific business persona
+
+**3. Request from ElevenLabs library:**
+You can request specific voices from the ElevenLabs public library - contact support to add them to your account. Browse the [ElevenLabs Voice Library](https://elevenlabs.io/docs/product-guides/voices/voice-library) to discover thousands of professional voices across different languages, accents, and use cases.
+
+See [Voice selection guide](/ai-assistants/voice-selection) for detailed setup instructions.
+
+## Timezone Configuration
+
+### Timezone
+Set the timezone your assistant operates in. This affects:
+- Time-based variables in conversations
+- Appointment scheduling functions
+- "Current time" references in system prompts
+- Timestamps in call logs and data extraction
+
+**Important:** Choose the timezone where your business operates or where most customers are located. The assistant will use this for any time-related calculations or scheduling.
+
+## Audio Enhancement Settings
+
+### Ambient Sound
+Optional background sound mixed under your assistant's voice to mask processing delays and create a more natural audio experience.
+
+**Options:**
+- **None:** No background sound (default)
+- **Office:** Subtle office environment sounds
+
+**Volume control:** Adjust the level of ambient sound relative to the voice. Lower values are usually better - too much background sound can interfere with speech recognition.
+
+<Tip>
+Turn off or lower volume if the assistant isn't hearing the customer clearly.
+</Tip>
+
+### Filler Audio
+Short conversational phrases like "mhm", "okay", "I understand" that play during AI processing time. See [Filler audio guide](/ai-assistants/filler-audio) for full details.
+
+<Card title="Benefits" icon="star">
+- Eliminates awkward silences during processing
+- Keeps callers engaged  
+- Creates more natural conversation flow
+- Reduces hang-up rates
+</Card>
+
+**Language-aware configuration:** Filler phrases are automatically set for your selected language:
+
+<AccordionGroup>
+  <Accordion title="Positive responses" icon="thumbs-up">
+    "Great!", "Perfect!", "Super!"
+  </Accordion>
+  
+  <Accordion title="Negative responses" icon="thumbs-down">
+    "Hmm.", "I see.", "Okay."
+  </Accordion>
+  
+  <Accordion title="Question responses" icon="circle-question">
+    "Right?", "Really?", "How so?"
+  </Accordion>
+  
+  <Accordion title="Neutral responses" icon="circle">
+    "Okay.", "I understand.", "Got it."
+  </Accordion>
+</AccordionGroup>
+
+**Customization:** You can edit the default phrases for each category to match your brand voice or regional preferences.
+
+<Note>
+Enable by default - most conversations benefit from fillers. Test with your target audience and adjust phrases to match your assistant's personality.
+</Note>
+
+## Advanced Settings
+
+### LLM Model Selection
+Choose the best language model for your assistant's mode. See [LLM model selection guide](/ai-assistants/assistant-configuration#3-select-an-llm-model) for detailed recommendations.
+
+**Recommended models by mode:**
+
+| Model | Strengths | Best for |
+| --- | --- | --- |
+| **GPT-5 Mini** | Balanced reasoning with low latency | **Pipeline** mode for complex reasoning |
+| **GPT-5 Realtime** | Ultra-low-latency voice turns | **Speech-to-Speech** and **Dualplex** |
+| **GPT-4o** | Strong reasoning and multimodal understanding | Complex tasks (higher latency) |
+| **Gemini Flash 2.0/2.5** | Ultra-fast for voice turns | **Dualplex/Multimodal** for minimal latency |
+
+**Quick selection guide:**
+- **Speed is critical:** Use GPT-5 Realtime or Gemini Flash 2.0/2.5
+- **Rich reasoning needed:** Use GPT-4o or GPT-5 Mini with filler audios to offset latency
+
+### LLM Temperature
+
+**Range:** 0.0 - 1.0 | **Default:** 0.1
+
+Adjust the level of creativity of the AI when generating responses. Lower value yields better function call results.
+
+<CardGroup cols={2}>
+  <Card title="Lower (0.0-0.3)" icon="snowflake">
+    **More stable:** Predictable responses, better for function calling and business use cases
+  </Card>
+  
+  <Card title="Higher (0.7-1.0)" icon="fire">
+    **More random:** Creative and varied responses, good for casual conversations
+  </Card>
+</CardGroup>
+
+<Note>
+**Special behavior:** For GPT-5 Mini and GPT-5 Nano models in Pipeline mode, temperature is automatically set to 1.0 for optimal performance.
+</Note>
+
+### Duration Settings
+
+Control timing and call limits to optimize user experience and costs:
+
+<AccordionGroup>
+  <Accordion title="Re-engagement Interval" icon="clock">
+    **Range:** 7 - 600 seconds | **Default:** 30 seconds
+
+    AI will try to re-engage the user if no reply is detected within this time.
+
+    **Recommended:** 30-60 seconds for professional calls.
+  </Accordion>
+
+  <Accordion title="Re-engagement Prompt" icon="message">
+    Custom prompt used when the AI tries to re-engage the user after silence.
+
+    **Default:** Uses a standard re-engagement phrase like "Are you still there?"
+
+    **Customization:** Write a prompt that instructs the AI how to re-engage.
+
+    **Examples:**
+    - "Gently ask if they are still there and if they need more time."
+    - "Politely check if they have any questions."
+
+    <Warning>
+    Variables like `{customer_name}` cannot be injected directly in this prompt. The AI has access to the conversation history and main system prompt, so it can reference information from there.
+    </Warning>
+
+    <Tip>
+    Leave empty to use the default re-engagement behavior.
+    </Tip>
+  </Accordion>
+  
+  <Accordion title="Max Call Duration" icon="timer">
+    **Range:** 20 - 1200 seconds | **Default:** 600 seconds (10 minutes)
+    
+    Call will automatically end if this value is reached.
+    
+    **Recommended:** 5-10 minutes for lead qualification to control costs.
+  </Accordion>
+  
+  <Accordion title="Max Silence Duration" icon="volume-off">
+    **Range:** 1 - 120 seconds | **Default:** 40 seconds
+    
+    Call will end if user doesn't reply within this time.
+    
+    **Recommended:** 30-45 seconds to balance patience with efficiency.
+  </Accordion>
+  
+  <Accordion title="Ringing Time" icon="phone">
+    **Range:** 1 - 60 seconds | **Default:** 30 seconds
+    
+    For how long the call will ring before marking as unanswered. **Good when you want to avoid voicemail by setting a lower value.**
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+**Cost optimization:** Lower duration limits help control per-minute costs, especially important for high-volume campaigns.
+</Tip>
+
+### Call Protection Settings
+
+<AccordionGroup>
+  <Accordion title="Noise Cancellation" icon="shield">
+    **Default:** Enabled
+    
+    Filters caller background noise for clearer speech recognition. Turn OFF if experiencing audio clipping.
+  </Accordion>
+  
+  <Accordion title="End Call on Voicemail" icon="voicemail">
+    **Default:** Enabled
+
+    Immediately ends call if voicemail is detected during outbound calls (saves costs).
+  </Accordion>
+
+  <Accordion title="Voicemail Message" icon="voicemail">
+    Prompt for the message the AI will say when voicemail is detected before ending the call.
+
+    **Default:** Empty (hangs up immediately without leaving a message)
+
+    **Use case:** Leave a brief message before hanging up so the recipient knows who called.
+
+    **Example:** "Leave a brief voicemail message saying you called and ask them to call back."
+
+    <Warning>
+    Variables like `{company_name}` cannot be injected directly in this prompt. The AI has access to the conversation history and main system prompt, so it can reference information from there.
+    </Warning>
+
+    <Note>
+    Only applies when "End Call on Voicemail" is enabled. Leave empty to hang up without a message.
+    </Note>
+  </Accordion>
+  
+  <Accordion title="Record Calls" icon="record-vinyl">
+    **Default:** Enabled
+    
+    Records call audio for review and analysis. **Ensure compliance with local recording laws.**
+  </Accordion>
+  
+  <Accordion title="Max Initial Silence" icon="timer">
+    **Range:** 1 - 120 seconds | **Default:** 20 seconds (when enabled)
+    
+    If enabled, end the call if no first user response within this time. Counts only from call start to first user response.
+    
+    **Use case:** Detect if anyone actually answered the phone.
+  </Accordion>
+</AccordionGroup>
+
+## Synthesizer Settings
+
+Configure text-to-speech voice parameters for natural-sounding conversations.
+
+**Available for:** Pipeline and Dualplex modes only. Speech-to-Speech mode uses native voice generation.
+
+### Voice Tuning Parameters
+
+Fine-tune your assistant's voice characteristics for optimal performance:
+
+<AccordionGroup>
+  <Accordion title="TTS Emotion" icon="face-smile">
+    **Default:** Enabled
+
+    When enabled, the AI will add emotional cues to the synthesized speech based on the context of the conversation. This makes the voice sound more natural and expressive.
+
+    **Effects:**
+    - Adjusts tone based on conversation context (happy, concerned, empathetic)
+    - Adds natural inflections and emphasis
+    - Makes the assistant sound more human-like
+
+    <Note>
+    Disable if you prefer a more neutral, consistent tone across all conversations.
+    </Note>
+  </Accordion>
+
+  <Accordion title="Voice Stability" icon="wave-square">
+    **Range:** 0.0 - 1.0 | **Default:** 0.7
+    
+    Lower settings make the voice more expressive but less predictable, while higher settings make it steadier but less emotional.
+    
+    <CardGroup cols={2}>
+      <Card title="More Expressive (0.0-0.3)" icon="sparkles">
+        Dynamic and varied delivery but less predictable
+      </Card>
+      <Card title="More Stable (0.7-1.0)" icon="shield-check">
+        Consistent and steady but less emotional range
+      </Card>
+    </CardGroup>
+  </Accordion>
+  
+  <Accordion title="Voice Similarity" icon="fingerprint">
+    **Range:** 0.0 - 1.0 | **Default:** 0.5
+    
+    Determines how closely the AI matches the original voice. Higher settings potentially include unwanted noise from the original recording.
+    
+    <CardGroup cols={2}>
+      <Card title="More Stable (0.0-0.4)" icon="filter">
+        Cleaner audio but less accurate to original voice
+      </Card>
+      <Card title="More Similar (0.6-1.0)" icon="copy">
+        Accurate to original but may include background noise
+      </Card>
+    </CardGroup>
+    
+    <Warning>
+    **For cloned voices:** Start at 0.5 and increase gradually. Higher similarity can introduce unwanted artifacts from the original recording.
+    </Warning>
+  </Accordion>
+  
+  <Accordion title="Speech Speed" icon="gauge">
+    **Range:** 0.7 - 1.2 | **Default:** 1.0
+    
+    Adjust the speed of the AI's speech for optimal comprehension and user experience.
+    
+    <CardGroup cols={3}>
+      <Card title="Slower (0.7-0.85)" icon="turtle">
+        Better for complex information or older demographics
+      </Card>
+      <Card title="Normal (0.9-1.1)" icon="clock">
+        Standard conversational pace for most use cases
+      </Card>
+      <Card title="Faster (1.15-1.2)" icon="rabbit">
+        Quick conversations or time-sensitive scenarios
+      </Card>
+    </CardGroup>
+  </Accordion>
+</AccordionGroup>
+
+## Transcriber Settings
+
+Configure speech-to-text recognition for optimal accuracy and speed.
+
+**Available for:** Pipeline mode only. Speech-to-Speech and Dualplex modes use integrated transcription.
+
+### Provider Selection
+
+Choose the best transcriber for your language and use case. The provider that will be used to transcribe the user speech.
+
+<CardGroup cols={3}>
+  <Card title="Azure" icon="cloud">
+    **Accuracy:** ⭐⭐⭐⭐
+    **Latency:** Slower
+    
+    Best for highest transcription fidelity when accuracy is critical.
+  </Card>
+  
+  <Card title="Gladia" icon="bolt">
+    **Accuracy:** ⭐⭐⭐
+    **Latency:** Faster
+    
+    Good all-rounder for most languages. Supports multilingual configurations.
+  </Card>
+  
+  <Card title="Deepgram" icon="waveform">
+    **Accuracy:** ⭐⭐⭐
+    **Latency:** Faster
+    
+    Solid choice for English and major languages.
+  </Card>
+</CardGroup>
+
+<Note>
+Different languages, accents, or background noise can impact each provider differently. Test which performs better for your specific language and audio setup.
+</Note>
+
+### Endpoint Configuration
+
+<CardGroup cols={2}>
+  <Card title="AI Turn Detection" icon="brain">
+    Uses AI to intelligently detect when the caller has finished speaking
+  </Card>
+  
+  <Card title="Voice Activity Detection (VAD)" icon="microphone">
+    **Default:** Traditional voice activity detection
+    
+    Choose how the AI will detect the end of the user phrase
+  </Card>
+</CardGroup>
+
+### Voice Activity Detection (VAD)
+
+Control when your assistant starts and stops talking. See [Handling interruptions guide](/conversation-design/interruptions) for detailed VAD configuration.
+
+<Warning>
+Fine-tune these settings if experiencing interruption issues or sluggish responses.
+</Warning>
+
+<AccordionGroup>
+  <Accordion title="Endpoint Sensitivity" icon="microphone">
+    **Range:** 0 - 5 seconds | **Default:** 0.5
+
+    Adjust the time the AI will wait for the user to speak after the last word. Lower values make the AI faster, higher values are better for long user phrases.
+
+    - **0 (Faster):** Quick responses but may cut off callers
+    - **5 (Slower):** Waits longer, reduces interruptions
+  </Accordion>
+
+  <Accordion title="Interrupt Sensitivity" icon="volume-off">
+    How easily the assistant stops when caller talks over it. Controls the sensitivity for detecting when a caller is trying to interrupt.
+  </Accordion>
+
+  <Accordion title="Minimum Interrupt Words" icon="list-ol">
+    Require at least N caller words before interrupting assistant.
+    **Use:** Prevents false triggers from background noise or brief sounds.
+  </Accordion>
+
+  <Accordion title="Turn Detection Threshold" icon="sliders">
+    **Available for:** Speech-to-Speech and Dualplex modes only
+
+    **Range:** 0 - 1 | **Default:** Auto (model decides)
+
+    Controls how sensitive the multimodal model is to detecting when the caller has finished speaking. Lower values make the assistant respond faster, higher values wait longer for the caller to finish.
+
+    - **Lower (0.3-0.5):** Faster responses, good for quick conversations
+    - **Higher (0.7-0.9):** Waits longer, better for detailed responses
+    - **Auto:** Let the model decide based on conversation context
+
+    <Note>
+    Only visible when using Speech-to-Speech or Dualplex modes.
+    </Note>
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+**Pro tip:** Start with default VAD settings and adjust based on real call testing. Increase endpoint sensitivity if callers get cut off, decrease if responses feel slow.
+</Tip>

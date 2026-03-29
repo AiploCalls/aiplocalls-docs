@@ -1,0 +1,282 @@
+---
+title: "Post-Call Webhook"
+icon: "webhook"
+description: "Webhook sent after a call is completed containing extracted variables and call data"
+---
+
+The Post-Call Webhook is automatically sent to your specified webhook URL after each call is completed. This webhook contains call details, extracted variables, transcript, and optionally the recording URL.
+
+## Webhook Configuration
+
+To enable post-call webhooks:
+1. Configure your assistant's webhook URL in the [assistant settings](/ai-assistants/settings/post-call-actions#webhook-configuration)
+2. Enable "Post call webhook" in the [assistant configuration](/ai-assistants/settings/post-call-actions#webhook-configuration)
+3. Define post-call variables that the AI should extract
+
+## Request Format
+
+The webhook is sent as a POST request to your configured URL with the following JSON payload:
+
+### Payload Structure
+
+<ResponseField name="id" type="integer">
+  Unique identifier of the call
+</ResponseField>
+
+<ResponseField name="customer_phone" type="string">
+  Phone number of the customer in E.164 format (e.g., "+1234567890") or null if not available
+</ResponseField>
+
+<ResponseField name="assistant_phone" type="string">
+  Phone number used by the assistant in E.164 format or null if not available
+</ResponseField>
+
+<ResponseField name="duration" type="integer">
+  Duration of the call in seconds
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Final status of the call (e.g., "completed", "busy", "failed")
+</ResponseField>
+
+<ResponseField name="extracted_variables" type="object">
+  Variables extracted by AI based on your post-call schema configuration
+  <Expandable title="Example extracted variables">
+    <ResponseField name="status" type="boolean">
+      Whether the call objective was achieved
+    </ResponseField>
+    <ResponseField name="summary" type="string">
+      Call summary in a few words
+    </ResponseField>
+    <ResponseField name="custom_variable" type="string|number|boolean">
+      Any custom variables you defined in the assistant configuration
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="input_variables" type="object">
+  Variables that were passed to the assistant before the call started
+</ResponseField>
+
+<ResponseField name="transcript" type="string">
+  Full transcript of the conversation
+</ResponseField>
+
+<ResponseField name="recording_url" type="string">
+  URL to download the call recording (only included if "Include recording in webhook" is enabled in [assistant settings](/ai-assistants/settings/post-call-actions#webhook-configuration))
+</ResponseField>
+
+<ResponseField name="created_at" type="string">
+  ISO 8601 timestamp when the call was initiated
+</ResponseField>
+
+<ResponseField name="finished_at" type="string">
+  ISO 8601 timestamp when the call was completed (uses updated_at from the call record)
+</ResponseField>
+
+<ResponseField name="lead" type="object">
+  Lead information (only included for campaign calls)
+  <Expandable title="Lead properties">
+    <ResponseField name="id" type="integer">
+      Unique identifier of the lead
+    </ResponseField>
+    <ResponseField name="phone_number" type="string">
+      Lead's phone number
+    </ResponseField>
+    <ResponseField name="variables" type="object">
+      Variables associated with the lead
+    </ResponseField>
+    <ResponseField name="status" type="string">
+      Current status of the lead
+    </ResponseField>
+    <ResponseField name="call_tries" type="integer">
+      The number of call attempts made to this lead
+    </ResponseField>
+    <ResponseField name="created_at" type="string">
+      When the lead was created
+    </ResponseField>
+    <ResponseField name="updated_at" type="string">
+      When the lead was last updated
+    </ResponseField>
+    <ResponseField name="campaign" type="object">
+      Campaign information (if available)
+      <Expandable title="Campaign properties">
+        <ResponseField name="id" type="integer">
+          Campaign ID
+        </ResponseField>
+        <ResponseField name="name" type="string">
+          Campaign name
+        </ResponseField>
+        <ResponseField name="status" type="string">
+          Campaign status
+        </ResponseField>
+        <ResponseField name="allowed_hours_start_time" type="string">
+          Campaign allowed start time
+        </ResponseField>
+        <ResponseField name="allowed_hours_end_time" type="string">
+          Campaign allowed end time
+        </ResponseField>
+        <ResponseField name="allowed_days" type="array">
+          Campaign allowed days
+        </ResponseField>
+        <ResponseField name="max_calls_in_parallel" type="integer">
+          Maximum concurrent calls for campaign
+        </ResponseField>
+        <ResponseField name="max_retries" type="integer">
+          Maximum retry attempts for leads
+        </ResponseField>
+        <ResponseField name="retry_interval" type="integer">
+          Retry interval in minutes
+        </ResponseField>
+        <ResponseField name="created_at" type="string">
+          When the campaign was created
+        </ResponseField>
+        <ResponseField name="updated_at" type="string">
+          When the campaign was last updated
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="transfers" type="array">
+  List of transfer calls made during this call (only included if the call has transfers)
+  <Expandable title="Transfer properties">
+    <ResponseField name="id" type="integer">
+      Unique identifier of the transfer call
+    </ResponseField>
+    <ResponseField name="status" type="string">
+      Final status of the transfer call (e.g., "completed", "busy", "failed")
+    </ResponseField>
+    <ResponseField name="transfer_to" type="string">
+      Phone number the call was transferred to in E.164 format
+    </ResponseField>
+    <ResponseField name="duration" type="integer">
+      Duration of the transfer call in seconds
+    </ResponseField>
+    <ResponseField name="carrier_cost" type="number">
+      Carrier cost of the transfer call in USD
+    </ResponseField>
+    <ResponseField name="transcript" type="array">
+      Raw transcript of the transfer call (null if not available)
+    </ResponseField>
+    <ResponseField name="formatted_transcript" type="string">
+      Human-readable formatted transcript of the transfer call
+    </ResponseField>
+    <ResponseField name="recording_url" type="string">
+      URL to download the transfer call recording (only included if "Include recording in webhook" is enabled and a recording exists)
+    </ResponseField>
+    <ResponseField name="created_at" type="string">
+      ISO 8601 timestamp when the transfer was initiated
+    </ResponseField>
+    <ResponseField name="finished_at" type="string">
+      ISO 8601 timestamp when the transfer was completed
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+```json 200 Post-Call Webhook Request
+{
+  "id": 12345,
+  "customer_phone": "+1234567890",
+  "assistant_phone": "+1987654321",
+  "duration": 125,
+  "status": "completed",
+  "extracted_variables": {
+    "status": true,
+    "summary": "Customer interested in product demo",
+    "lead_quality": "high",
+    "next_action": "schedule_demo"
+  },
+  "input_variables": {
+    "customer_name": "John Doe",
+    "product_interest": "Pro Plan"
+  },
+  "transcript": [
+    {
+      "text": "Hello! This is Sarah from Aiplocalls. How are you today?",
+      "type": "transcript",
+      "sender": "bot",
+      "timestamp": 1756812511.315143
+    },
+    {
+      "text": "Hi, I'm doing well, thanks for calling.",
+      "type": "transcript",
+      "sender": "human",
+      "timestamp": 1756812514.104436
+    },
+    {
+      "text": "I'm calling to tell you about our new product features.",
+      "type": "transcript",
+      "sender": "bot",
+      "timestamp": 1756812522.918859
+    },
+    {
+      "text": "That sounds interesting, tell me more.",
+      "type": "transcript",
+      "sender": "human",
+      "timestamp": 1756812525.234567
+    }
+  ],
+  "formatted_transcript": "AI: Hello! This is Sarah from Aiplocalls. How are you today?\nCustomer: Hi, I'm doing well, thanks for calling.\nAI: I'm calling to tell you about our new product features.\nCustomer: That sounds interesting, tell me more.",
+  "recording_url": "https://call.aiployees.com/storage/recordings/call-12345.mp4",
+  "created_at": "2025-01-15T10:30:00.000000Z",
+  "finished_at": "2025-01-15T10:32:05.000000Z",
+  "transfers": [
+    {
+      "id": 12346,
+      "status": "completed",
+      "transfer_to": "+1555123456",
+      "duration": 85,
+      "carrier_cost": 0.0156,
+      "transcript": null,
+      "formatted_transcript": "",
+      "created_at": "2025-01-15T10:31:00.000000Z",
+      "finished_at": "2025-01-15T10:32:25.000000Z"
+    }
+  ],
+  "lead": {
+    "id": 789,
+    "phone_number": "+1234567890",
+    "variables": {
+      "source": "website",
+      "interest_level": "high"
+    },
+    "status": "contacted",
+    "call_tries": 2,
+    "created_at": "2025-01-15T09:00:00.000000Z",
+    "updated_at": "2025-01-15T10:32:05.000000Z",
+    "campaign": {
+      "id": 456,
+      "name": "Product Demo Campaign",
+      "status": "active",
+      "allowed_hours_start_time": "09:00",
+      "allowed_hours_end_time": "17:00",
+      "allowed_days": ["monday", "tuesday", "wednesday", "thursday", "friday"],
+      "max_calls_in_parallel": 5,
+      "max_retries": 3,
+      "retry_interval": 60,
+      "created_at": "2025-01-15T08:00:00.000000Z",
+      "updated_at": "2025-01-15T08:00:00.000000Z"
+    }
+  }
+}
+```
+</ResponseExample>
+
+## Webhook Settings
+
+You can configure the following options for your post-call webhook:
+
+- **Send webhook only on completed**: Only send the webhook for successfully completed calls
+- **Include recording in webhook**: Include the `recording_url` field in the payload
+- **Custom variables**: Define custom variables that the AI should extract from the conversation
+
+## Important Notes
+
+- The `customer_phone` and `assistant_phone` fields can be `null` if the information is not available
+- The `recording_url` field is only included if you have enabled "Include recording in webhook" in your [assistant settings](/ai-assistants/settings/post-call-actions#webhook-configuration)
+- The `lead` object is only included for calls that are part of a campaign
+- The `transfers` array is only included for calls that have transfer calls associated with them
+- The `extracted_variables` object will contain the variables you defined in your assistant's post-call schema configuration

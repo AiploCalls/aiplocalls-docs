@@ -1,0 +1,178 @@
+---
+title: "Create mid call tool"
+api: "POST /user/tools"
+description: "Create a new mid call tool"
+---
+
+This endpoint allows you to create a new mid call tool that can be used by your AI assistants to interact with external APIs during calls.
+
+### Body Parameters
+
+<ParamField body="name" type="string" required>
+  Tool name - must contain only lowercase letters and underscores, and start with a letter (e.g., `get_weather`, `book_appointment`)
+</ParamField>
+
+<ParamField body="description" type="string" required>
+  Detailed explanation of when and how the AI should use this tool (max 255 characters)
+</ParamField>
+
+<ParamField body="endpoint" type="string" required>
+  Valid URL of the API endpoint to call
+</ParamField>
+
+<ParamField body="method" type="string" required>
+  HTTP method: `GET`, `POST`, `PUT`, `PATCH`, or `DELETE`
+</ParamField>
+
+<ParamField body="timeout" type="integer" optional>
+  Request timeout in seconds (1-30, default: 10)
+</ParamField>
+
+<ParamField body="headers" type="array" optional>
+  HTTP headers to send with the request
+  <Expandable title="headers properties">
+    <ParamField body="name" type="string" required>
+      Header name
+    </ParamField>
+    <ParamField body="value" type="string" required>
+      Header value
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField body="schema" type="array" optional>
+  Parameters that the AI will extract from conversation and send to the endpoint
+  <Expandable title="schema properties">
+    <ParamField body="name" type="string" required>
+      Parameter name (2-32 chars, must start with letter, can contain letters and underscores)
+    </ParamField>
+    <ParamField body="type" type="string" required>
+      Parameter type: `string`, `number`, or `boolean`
+    </ParamField>
+    <ParamField body="description" type="string" required>
+      Description to help AI understand how to extract this parameter (3-255 chars)
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+### Response fields
+
+<ResponseField name="message" type="string">
+  Success message
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  The created tool object
+  <Expandable title="data properties">
+    <ResponseField name="id" type="integer">
+      The unique identifier of the tool
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      The name of the tool
+    </ResponseField>
+
+    <ResponseField name="description" type="string">
+      Tool description
+    </ResponseField>
+
+    <ResponseField name="endpoint" type="string">
+      API endpoint URL
+    </ResponseField>
+
+    <ResponseField name="method" type="string">
+      HTTP method
+    </ResponseField>
+
+    <ResponseField name="timeout" type="integer">
+      Request timeout in seconds
+    </ResponseField>
+
+    <ResponseField name="headers" type="array">
+      HTTP headers
+    </ResponseField>
+
+    <ResponseField name="schema" type="array">
+      Parameter schema
+    </ResponseField>
+
+    <ResponseField name="created_at" type="string">
+      ISO 8601 timestamp
+    </ResponseField>
+
+    <ResponseField name="updated_at" type="string">
+      ISO 8601 timestamp
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 201 Created
+{
+  "message": "Tool created successfully",
+  "data": {
+    "id": 1,
+    "name": "check_order_status",
+    "description": "Use this tool to check the status of a customer's order.",
+    "endpoint": "https://api.yourstore.com/orders/status",
+    "method": "GET",
+    "timeout": 10,
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json"
+      },
+      {
+        "name": "Authorization",
+        "value": "Bearer sk_..."
+      }
+    ],
+    "schema": [
+      {
+        "name": "order_id",
+        "type": "string",
+        "description": "The customer's order ID"
+      },
+      {
+        "name": "order_number",
+        "type": "number",
+        "description": "The numeric order number"
+      },
+      {
+        "name": "priority_order",
+        "type": "boolean",
+        "description": "Whether this is a priority order"
+      }
+    ],
+    "created_at": "2025-10-10T12:00:00.000000Z",
+    "updated_at": "2025-10-10T12:00:00.000000Z"
+  }
+}
+```
+
+```json 422 Validation Error
+{
+  "message": "The name field must contain only lowercase letters and underscores, and start with a letter.",
+  "errors": {
+    "name": [
+      "Tool name must contain only lowercase letters and underscores, and start with a letter."
+    ]
+  }
+}
+```
+
+```json 422 Plan Limit Reached
+{
+  "message": "You have reached your plan limit of 5 mid call tools. Please upgrade your plan to create more tools."
+}
+```
+
+</ResponseExample>
+
+### Attaching Tools to Assistants
+
+After creating a tool, you need to attach it to an assistant to use it during calls. Tools are managed through the Assistant API:
+
+- **[Create Assistant](/api-reference/assistants/create-assistant)** - Use the `tool_ids` parameter to attach tools when creating an assistant
+- **[Update Assistant](/api-reference/assistants/update-assistant)** - Use the `tool_ids` parameter to add, remove, or replace tools on an existing assistant

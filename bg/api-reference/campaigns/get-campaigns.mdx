@@ -1,0 +1,93 @@
+---
+title: "List campaigns"
+api: "GET /user/campaigns"
+description: "List all campaigns"
+---
+
+This endpoint allows you to list all campaigns.
+
+### Response fields
+
+<ResponseField name="campaigns" type="array">
+  <Expandable title="properties">
+    <ResponseField name="id" type="integer">
+      The id of the campaign
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      The name of the campaign
+    </ResponseField>
+
+    <ResponseField name="status" type="string">
+      The status of the campaign
+    </ResponseField>
+
+    <ResponseField name="max_calls_in_parallel" type="integer">
+      Maximum number of calls that can be made in parallel
+    </ResponseField>
+
+    <ResponseField name="mark_complete_when_no_leads" type="boolean">
+      Whether to mark the campaign as complete when there are no leads
+    </ResponseField>
+
+    <ResponseField name="allowed_hours_start_time" type="string">
+      The start time for allowed calling hours
+    </ResponseField>
+
+    <ResponseField name="allowed_hours_end_time" type="string">
+      The end time for allowed calling hours
+    </ResponseField>
+
+    <ResponseField name="allowed_days" type="array">
+      The days of the week when calls are allowed
+    </ResponseField>
+
+    <ResponseField name="max_retries" type="integer">
+      Maximum number of retry attempts for failed calls
+    </ResponseField>
+
+    <ResponseField name="retry_interval" type="integer">
+      Interval in seconds between retry attempts
+    </ResponseField>
+
+    <ResponseField name="created_at" type="string">
+      The timestamp when the campaign was created
+    </ResponseField>
+
+    <ResponseField name="updated_at" type="string">
+      The timestamp when the campaign was last updated
+    </ResponseField>
+
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Response
+[
+  {
+    "id": 1,
+    "name": "Test campaing",
+    "status": "draft",
+    "max_calls_in_parallel": 3,
+    "mark_complete_when_no_leads": true,
+    "allowed_hours_start_time": "00:00:00",
+    "allowed_hours_end_time": "23:59:00",
+    "allowed_days": [
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday",
+      "saturday",
+      "sunday"
+    ],
+    "max_retries": 3,
+    "retry_interval": 60,
+    "created_at": "2025-05-29T07:18:34.000000Z",
+    "updated_at": "2025-05-29T07:18:34.000000Z"
+  }
+]
+```
+
+</ResponseExample>

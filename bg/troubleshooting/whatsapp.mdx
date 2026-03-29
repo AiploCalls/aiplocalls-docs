@@ -1,0 +1,317 @@
+---
+title: "WhatsApp Troubleshooting"
+icon: "circle-question"
+description: "Common issues and solutions for WhatsApp Business integration"
+---
+
+## Sender Issues
+
+### Sender Stuck in "Creating" or "Pending" Status
+
+**Symptoms:**
+- Sender status shows "Creating" for more than a few minutes
+- Sender stuck on "Pending" after completing Meta signup
+
+**Solutions:**
+
+1. **Complete the Meta signup flow**
+   - Make sure you finished all steps in the Facebook popup
+   - You should have seen a confirmation before being redirected back
+
+2. **Check that you created a NEW account**
+   - You must create a new WhatsApp Business Account during signup
+   - Selecting an existing account will cause the integration to fail
+
+3. **Verify phone number selection**
+   - Did you click "Add new number" in the Meta popup?
+   - Did you select the correct pre-verified number?
+
+4. **Wait and refresh**
+   - Sometimes setup takes a few minutes to complete
+   - Refresh the page after 5 minutes
+
+5. **Contact support**
+   - If the issue persists for more than 30 minutes, contact support
+
+### Verification Failed
+
+**Symptoms:**
+- Verification process fails
+- Error message about verification timeout
+
+**Solutions:**
+
+1. **Wait before retrying**
+   - Meta may temporarily rate-limit verification requests
+   - Wait 5-10 minutes before trying again
+
+2. **Try a different number**
+   - Some numbers may have issues with Meta's verification
+   - Try using a different phone number
+
+3. **Check number type**
+   - Only "normal" type numbers can be used for WhatsApp
+   - SIP or special numbers are not supported
+
+### Sender Shows "Offline"
+
+**Symptoms:**
+- Sender was working but now shows "Offline"
+- Cannot send or receive messages
+
+**Solutions:**
+
+1. **Check for policy violations**
+   - Review any emails from Meta about policy issues
+   - High block rates or spam reports can cause offline status
+
+2. **Check quality rating**
+   - Low quality rating can trigger offline status
+   - Review your messaging practices
+
+3. **Re-authenticate**
+   - Sometimes the connection needs to be refreshed
+   - Contact support for assistance
+
+### Sender Suspended
+
+**Symptoms:**
+- Sender status shows "Suspended"
+- Error mentions policy violation
+
+**Solutions:**
+
+1. **Review suspension reason**
+   - Check the error message for specific details
+   - Common reasons: spam reports, prohibited content, high block rates
+
+2. **Address the issue**
+   - Stop any problematic messaging campaigns
+   - Review Meta's commerce policies
+
+3. **Appeal the suspension**
+   - Contact Meta support through Facebook Business Manager
+   - Provide evidence of compliance
+
+## Template Issues
+
+### Template Rejected
+
+**Symptoms:**
+- Template status shows "Rejected"
+- Rejection reason displayed
+
+**Common Rejection Reasons & Solutions:**
+
+| Reason | Solution |
+|--------|----------|
+| Promotional content in Utility | Change category to Marketing |
+| Missing variable samples | Add clear, realistic sample values |
+| URL shorteners | Use full, branded URLs |
+| Aggressive language | Soften tone, remove threats |
+| Wrong category | Select correct category for content |
+
+### Template Stuck in "Pending"
+
+**Symptoms:**
+- Template has been pending for more than 24 hours
+
+**Solutions:**
+
+1. **Wait for review**
+   - Marketing templates can take up to 48 hours
+   - Complex templates may take longer
+
+2. **Check for issues**
+   - Review template content for potential policy issues
+   - Ensure sample values are clear and appropriate
+
+3. **Create an alternative**
+   - If urgent, create a new template with different name
+   - Use simpler content that's more likely to be approved
+
+### Template Disabled
+
+**Symptoms:**
+- Previously approved template now shows "Disabled"
+
+**Causes:**
+- Low quality score from customer feedback
+- Template received too many blocks or reports
+
+**Solutions:**
+
+1. **Review usage patterns**
+   - Were you sending to customers who didn't expect messages?
+   - Was the content relevant to recipients?
+
+2. **Create a new version**
+   - Create a new template with improved content
+   - Consider more targeted audience selection
+
+## Messaging Issues
+
+### Messages Not Delivering
+
+**Symptoms:**
+- Template messages not reaching recipients
+- No delivery confirmation
+
+**Solutions:**
+
+1. **Check phone number format**
+   - Must be E.164 format: +[country code][number]
+   - Examples: +14155551234, +442071234567
+
+2. **Verify recipient has WhatsApp**
+   - The recipient must have WhatsApp installed
+   - Number must be registered with WhatsApp
+
+3. **Check sender status**
+   - Sender must be "Online" to send messages
+   - Verify in WhatsApp Senders page
+
+4. **Review messaging limits**
+   - New senders have limited daily capacity
+   - Check your current tier and limits
+
+### Free-form Messages Failing
+
+**Symptoms:**
+- Can't send free-form message
+- Error about 24-hour window
+
+**Solutions:**
+
+1. **Check the 24-hour window**
+   - Free-form messages only work within 24 hours of customer's last message
+   - Use a template message instead
+
+2. **Verify conversation exists**
+   - The customer must have messaged you first
+   - Check conversation history
+
+### AI Not Responding to Messages
+
+**Symptoms:**
+- Customer messages arrive but no AI response
+- Messages appear in conversation but no reply sent
+
+**Solutions:**
+
+1. **Check assistant connection**
+   - Verify an assistant is connected to the sender
+   - Ensure "AI Enabled" is turned on
+
+2. **Review assistant status**
+   - Assistant must be active and properly configured
+   - Test the assistant in the test chat interface
+
+3. **Check for errors**
+   - Review conversation for any error messages
+   - Check system logs for issues
+
+## Quality & Limits
+
+### Quality Rating Dropped
+
+**Symptoms:**
+- Quality rating changed from High to Medium or Low
+- Messaging limits reduced
+
+**Causes:**
+- High block rates
+- Spam reports from recipients
+- Low response rates
+
+**Solutions:**
+
+1. **Review recent campaigns**
+   - Check which messages triggered blocks or reports
+   - Identify problematic content or audiences
+
+2. **Improve targeting**
+   - Only message customers who expect to hear from you
+   - Remove unengaged contacts from lists
+
+3. **Review message content**
+   - Ensure content is valuable and relevant
+   - Avoid aggressive or spammy language
+
+4. **Wait for recovery**
+   - Quality rating can improve over time with good practices
+   - Focus on quality over quantity
+
+### Hitting Message Limits
+
+**Symptoms:**
+- Can't send more messages
+- Error about daily limit reached
+
+**Solutions:**
+
+1. **Wait for reset**
+   - Limits reset daily (24-hour rolling window)
+   - Plan campaigns within your current limits
+
+2. **Improve quality**
+   - Higher quality ratings unlock higher limits
+   - Focus on engagement and avoid blocks
+
+3. **Spread out sends**
+   - Don't send all messages at once
+   - Implement delays in automation flows
+
+## Connection Issues
+
+### Meta Signup Popup Doesn't Appear
+
+**Symptoms:**
+- Clicking "Login with Facebook" does nothing
+- Popup blocked or not loading
+
+**Solutions:**
+
+1. **Allow popups**
+   - Check browser popup blocker settings
+   - Allow popups from the domain
+
+2. **Clear cache**
+   - Clear browser cache and cookies
+   - Try in incognito/private mode
+
+3. **Try different browser**
+   - Some browsers have stricter popup policies
+   - Chrome or Firefox typically work best
+
+### Redirected Back Without Completing Setup
+
+**Symptoms:**
+- Popup closes but sender not created
+- Stuck on step 3
+
+**Solutions:**
+
+1. **Complete all steps**
+   - The Meta flow has multiple steps
+   - Ensure you completed all of them
+
+2. **Check for errors**
+   - Look for error messages in the popup
+   - Meta may have rejected the request
+
+3. **Retry the process**
+   - Go back to step 2 and select your number again
+   - Complete the Meta signup flow carefully
+
+## Getting Help
+
+If you're still experiencing issues:
+
+1. **Check our status page** for any ongoing platform issues
+2. **Review Meta's documentation** for WhatsApp-specific policies
+3. **Contact support** with:
+   - Your sender ID
+   - Error messages (exact text)
+   - Steps you've already tried
+   - Screenshots if applicable

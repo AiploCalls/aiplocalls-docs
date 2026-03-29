@@ -1,0 +1,150 @@
+---
+title: "GoHighLevel Appointment Scheduling"
+icon: "calendar-plus"
+description: "Learn how to enable your AI assistant to schedule appointments using GoHighLevel integration"
+---
+
+Enable your AI assistant to seamlessly schedule meetings and appointments using GoHighLevel integration. This powerful feature allows your AI to check availability and book meetings directly during calls with your existing GoHighLevel calendar system.
+
+## Prerequisites
+
+Before setting up GoHighLevel integration, you'll need:
+* An active GoHighLevel account
+* Calendar(s) configured in your GoHighLevel location
+* Admin or appropriate permissions to authorize app connections
+
+## Setup Process
+
+### 1. GoHighLevel Account Requirements
+
+**Account Setup:**
+- Ensure you have an active GoHighLevel account
+- Verify that your calendars are properly set up in your account
+- Confirm you have the necessary permissions to connect external applications
+
+**Calendar Configuration:**
+- Create or verify existing calendars in your GoHighLevel location
+- Set appropriate availability times and booking settings
+- Configure any required custom fields for appointments
+
+### 2. Connecting GoHighLevel to Your Assistant
+
+1. In your [AI assistant settings](/ai-assistants/settings/prompt-and-tools#default-tools), navigate to the **Tools** section
+2. Select **Appointment Scheduling** from the available tools
+3. Choose **GoHighLevel** as your calendar integration type
+4. Click **Connect to GoHighLevel**
+
+**OAuth Authorization Process:**
+1. You'll be redirected to GoHighLevel's authorization page
+2. **Choose your account** from the available options
+3. **Authorize the application** to access your calendar data
+4. You'll be redirected back to your assistant settings
+
+<Note>
+If you have issues connecting to GoHighLevel, try using an **Incognito/Private browsing window** as this can resolve authentication conflicts.
+</Note>
+
+### 3. Calendar Selection
+
+After successful connection:
+1. Select the specific **calendar** from your GoHighLevel location
+2. Your available calendars will be automatically fetched and displayed
+3. Choose the calendar where appointments should be booked
+
+### 4. Testing the Integration
+
+**Essential testing steps:**
+1. Make a test call to your AI assistant
+2. Request to schedule an appointment during the conversation
+3. Verify the booking appears in your GoHighLevel calendar
+4. Check that confirmation details are sent appropriately
+5. Test different scenarios (available/unavailable times)
+
+## Required Information from GoHighLevel
+
+To complete the integration, the system needs access to:
+
+### From Your GoHighLevel Account:
+- **Location ID:** Automatically obtained during OAuth authorization
+- **Calendar IDs:** Retrieved from your location's available calendars
+- **Access Tokens:** Managed automatically through OAuth flow
+
+### Calendar Permissions:
+- **Read calendar availability:** To check open time slots
+- **Create appointments:** To book new meetings
+- **Access calendar details:** To retrieve calendar names and settings
+
+## Integration Features
+
+### Automatic Appointment Booking
+- **Real-time availability checking:** AI verifies open time slots
+- **Instant booking confirmation:** Appointments created immediately in GoHighLevel
+- **Conflict prevention:** System prevents double-booking
+- **Time zone handling:** Respects calendar and customer time zones
+
+### Email Requirement for Appointments
+
+**Important:** To book appointments, your AI assistant needs an email address from the customer.
+
+**Setup options:**
+1. **Define email in input variables:** Add `email` as an input variable in your [assistant settings](/ai-assistants/settings/prompt-and-tools#call-variables)
+2. **Import leads with email:** When importing leads, ensure email addresses are included
+3. **AI collection during call:** Configure your assistant to ask for email during the conversation if not available
+
+**Example prompt instruction:**
+```
+"If the customer wants to book an appointment and I don't have their email address, 
+ask them to provide their email address for the booking confirmation."
+```
+
+## Best Practices
+
+### Calendar Management
+- **Keep calendars updated:** Ensure availability is current in GoHighLevel
+- **Set buffer times:** Configure appropriate gaps between appointments
+- **Use clear calendar names:** Makes selection easier during setup
+
+### Assistant Configuration
+- **Include calendar context in system prompt:** Help AI understand booking scenarios
+- **Define appointment variables:** Extract relevant information for GoHighLevel
+- **Configure appointment duration:** Specify how long appointments should be
+
+**Appointment Duration Setup:**
+Tell your AI assistant about appointment lengths in the system prompt:
+
+```
+"When booking appointments, use 45-minute slots. If a customer says they want 
+to meet at 8:00 AM, set the end_time to 8:45 AM. Always calculate the end_time 
+based on the start time plus 45 minutes."
+```
+
+**Example scenarios:**
+- Customer says: "Can we meet at 2:00 PM?"
+- AI books: 2:00 PM - 2:45 PM (45-minute slot)
+
+- **Test various scenarios:** Different time requests, conflicts, rescheduling
+
+### Security & Compliance
+- **Token management:** OAuth tokens are refreshed automatically
+- **Data privacy:** Only necessary calendar data is accessed
+- **Permission scope:** Integration uses minimal required permissions
+
+## Troubleshooting
+
+### Quick Fixes:
+
+**Missing API Key Error:**
+- **Solution:** Disconnect and reconnect your GoHighLevel account, then select an assistant and save
+- **Steps:** Go to [assistant settings](/ai-assistants/settings/prompt-and-tools#default-tools) → Appointment Scheduling → Disconnect → Connect again → Select assistant → Save
+
+**Connection Issues:**
+- **Try incognito mode** for OAuth authorization
+- **Verify account permissions** and calendar setup
+
+**Calendar Problems:**
+- **Refresh connection** if calendars don't appear
+- **Check time zones** and availability settings
+
+<Note>
+For comprehensive GoHighLevel troubleshooting, including detailed solutions and additional issues, see [GoHighLevel Issues](/troubleshooting/gohighlevel).
+</Note>

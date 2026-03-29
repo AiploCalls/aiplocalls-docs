@@ -1,0 +1,781 @@
+---
+title: "Widget Configuration"
+icon: "sliders"
+description: "Complete guide for configuring Stat, Chart, and Table widgets with all available options"
+---
+
+Learn how to configure each widget type with detailed explanations of every option.
+
+## Creating Widgets
+
+1. Navigate to custom dashboard
+2. Click **"Manage Widgets"** then **"Create New Widget"**
+3. Select widget type
+4. Follow 2-3 step wizard
+5. Save and add to dashboard
+
+## Stat Widgets
+
+Single metric display with optional comparison and trend chart.
+
+### Step 1: Basics
+
+**Widget Name**
+- Internal identifier for widget list
+- Not displayed on dashboard
+- Example: "Total Calls This Month"
+
+**Data Table**
+- Choose data source: calls, leads, campaigns, assistants, phone_numbers, sms
+- Determines available columns
+
+**Aggregation**
+- `COUNT` - Total number of records (no column needed)
+- `SUM` - Sum of values (requires column selection)
+- `AVG` - Average of values (requires column selection)
+- `MAX` - Maximum value (requires column selection)
+- `MIN` - Minimum value (requires column selection)
+
+**Column** (if SUM/AVG/MAX/MIN selected)
+- Select numeric column to aggregate
+- Example: `duration` for average call length
+- Not needed for COUNT
+
+### Step 2: Display & Filters
+
+**Label** (required)
+- Main heading shown on widget
+- Example: "Total Calls"
+
+**Description**
+- Optional text below the value
+- Hidden if comparison enabled
+- Example: "Calls made this month"
+
+**Color**
+- primary (blue), success (green), warning (yellow), danger (red), info (cyan), gray
+- Choose based on metric type (green for positive, red for negative)
+
+**Show Mini Chart**
+- Displays small line chart showing daily trend
+- Uses same date range as stat
+
+**Compare with Previous Period**
+- Shows percentage change from previous period
+- Example: Last 7 days vs previous 7 days
+- Displays "+15%" or "-8%" with up/down arrow
+- Overrides description field
+
+**Date Range**
+- Filter by creation date
+- Options: Today, 1, 7, 14, 30, 60, 90, 180, 365 days
+
+**Conditions** (optional)
+- Add filters to narrow data
+- Multiple conditions combined with AND
+- See [Filtering Data](#filtering-data) section
+
+### Examples
+
+**Total Calls**
+```
+Aggregation: COUNT
+Table: calls
+Label: "Total Calls"
+Description: "Last 30 days"
+Color: primary
+Date Range: 30 days
+```
+
+**Average Call Duration**
+```
+Aggregation: AVG
+Table: calls
+Column: duration
+Label: "Avg Duration"
+Color: info
+Show Mini Chart: Yes
+Date Range: 30 days
+```
+
+**Successful Appointments**
+```
+Aggregation: COUNT
+Table: calls
+Label: "Appointments Booked"
+Color: success
+Compare: Yes
+Date Range: 7 days
+Conditions:
+  - status = completed
+  - evaluation.appointment_booked = true
+```
+
+## Chart Widgets
+
+Visualize trends with 8 chart types.
+
+### Step 1: Basics
+
+Same as Stat widgets, plus:
+
+**Chart Type**
+- `line` - Trends over time
+- `bar` - Compare categories or time periods
+- `area` - Filled trend chart
+- `pie` - Proportions (requires Group By)
+- `donut` - Pie with center hole (requires Group By)
+- `polarArea` - Circular with varying radius (requires Group By)
+- `radar` - Multi-axis comparison
+- `radialBar` - Single progress indicator
+
+### Step 2: Display & Filters
+
+**Label** (required)
+- Chart title
+
+**Description**
+- Optional subheading text below the chart
+- Example: "Last 30 days performance"
+
+**Color**
+- Chart primary color
+- For pie/donut, uses multi-color palette (blue, green, orange, red, purple, pink)
+
+**Date Range**
+- Same as stats
+
+**Group By** OR **Group By Period** (mutually exclusive)
+
+**Group By** - Categorical grouping
+- Group data by column values
+- Examples: Status, Campaign Id, Assistant Name
+- **Required** for pie/donut/polarArea charts
+- Optional for bar/radar charts
+- **Cannot use** with Group By Period
+
+**Group By Period** - Time-based grouping
+- Group by time buckets
+- Options: hour, day, week, month
+- Used for line/bar/area charts
+- **Cannot use** with Group By
+
+**Conditions**
+- Same as stats
+
+### Step 3: Advanced (Charts Only)
+
+**Show Grid Lines** (line/bar/area only)
+- Background horizontal/vertical lines
+- Helps read exact values
+- Default: Yes
+
+**Show Legend**
+- Color-coded labels
+- Default: Yes for pie/donut/polarArea, No for others
+- Position: Bottom of chart
+
+**Show Tooltips**
+- Hover popups with exact values
+- Default: Yes (recommended)
+
+**Show Data Labels**
+- Values displayed directly on chart elements
+- Default: Yes for pie/donut/polarArea, No for others
+- Can clutter line/bar charts
+
+**Show Toolbar** (line/bar/area only)
+- Zoom and download controls
+- Default: No
+
+**Line Curve** (line/area only)
+- `smooth` - Rounded curves (default, visually appealing)
+- `straight` - Direct lines (precise)
+- `stepline` - Step-wise (good for discrete events)
+
+**Line Width** (line/bar/area only)
+- Thickness in pixels (1-10)
+- Default: 2px
+
+**Chart Height**
+- Vertical space in pixels (200-800)
+- Default: 300px
+- Taller charts better for more data points
+
+**Enable Gradient** (radialBar only)
+- Color gradient effect
+- Default: No
+
+**Gradient Color** (if gradient enabled)
+- End color for gradient
+- Default: Green (#10b981)
+
+**Calculate as Percentage** (radialBar only)
+- Automatically calculates percentage from conditions
+- Formula: (conditions met / total) × 100
+- **Requires:** At least one condition must be added first
+- Example: Condition "status = completed" calculates completed leads / total leads × 100
+- Appears after adding conditions in Step 2
+
+**Show Footer with Numbers** (radialBar only)
+- Displays "X achieved / Y total" below the radialBar chart
+- Only visible when "Calculate as Percentage" is enabled
+- Shows exact numbers alongside the percentage
+- Example footer: "150 achieved / 1,000 total"
+
+**Start Angle** (radialBar only)
+- Where the arc begins in degrees (-360° to 360°)
+- Default: -140°
+- Common values: -140° (default), -90° (left semicircle), 0° (bottom)
+
+**End Angle** (radialBar only)
+- Where the arc ends in degrees (-360° to 360°)
+- Default: 130°
+- **Validation:** Total arc (end - start) cannot exceed 360°
+- Common values: 130° (default), 90° (right semicircle), 180° (half circle), 270° (three-quarters)
+
+**Hollow Size** (radialBar only)
+- Inner circle size as percentage (0-100%)
+- Default: 60%
+- Higher value = thinner ring, lower value = thicker ring
+
+**Dash Array** (radialBar only)
+- Spacing for dashed ring pattern (0-50)
+- Default: 10
+- 0 = solid line, higher numbers = more spacing between dashes
+
+### Chart Type Guide
+
+**Line Chart**
+- **Use for:** Daily/weekly trends, continuous data
+- **Requires:** Group By Period
+- **Example:** Calls per day last 30 days
+
+**Bar Chart**
+- **Use for:** Category comparison, time periods
+- **Can use:** Group By (categories) OR Group By Period (time)
+- **Example:** Calls per campaign, hourly distribution
+
+**Area Chart**
+- **Use for:** Same as line, emphasizes volume
+- **Requires:** Group By Period
+- **Example:** Call volume trend
+
+**Pie/Donut Chart**
+- **Use for:** Proportions, percentages
+- **Requires:** Group By (NOT Group By Period)
+- **Example:** Call status breakdown
+
+**Polar Area**
+- **Use for:** Like pie but shows magnitude via radius
+- **Requires:** Group By
+- **Example:** Campaign contribution
+
+**Radar Chart**
+- **Use for:** Multi-variable comparison
+- **Requires:** Group By
+- **Example:** Performance across metrics
+
+**Radial Bar**
+- **Use for:** Circular progress indicators showing percentages (0-100%)
+- **Does not use:** Group By or Group By Period
+- **Percentage Calculation:** Add conditions, then enable "Calculate as Percentage" to automatically compute (conditions met / total) × 100
+- **Example:** Lead conversion rate (15%), SMS delivery success (82.8%), goal completion
+
+### Examples
+
+**Daily Call Volume (Line)**
+```
+Table: calls
+Aggregation: COUNT
+Chart Type: line
+Label: "Daily Calls"
+Group By Period: day
+Show Grid: Yes
+Stroke Curve: smooth
+Date Range: 30 days
+```
+
+**Status Breakdown (Pie)**
+```
+Table: calls
+Aggregation: COUNT
+Chart Type: pie
+Label: "Call Status"
+Group By: status
+Show Legend: Yes
+Show Data Labels: Yes
+Date Range: 7 days
+```
+
+**Hourly Pattern (Bar)**
+```
+Table: calls
+Aggregation: COUNT
+Chart Type: bar
+Label: "Calls By Hour"
+Group By Period: hour
+Date Range: 7 days
+```
+
+**Campaign Comparison (Bar)**
+```
+Table: calls
+Aggregation: COUNT
+Chart Type: bar
+Label: "Calls Per Campaign"
+Group By: campaign.name
+Date Range: 30 days
+```
+
+**Lead Conversion Rate (Radial Bar with Percentage)**
+```
+Table: leads
+Aggregation: COUNT
+Chart Type: radialBar
+Label: "Conversion Rate"
+Description: "Completed leads"
+Color: success
+Date Range: 30 days
+
+Step 2 - Conditions:
+  Field: status
+  Operator: =
+  Value: completed
+
+Step 2 - Percentage (appears after adding condition):
+  Calculate as Percentage: Yes
+  Show Footer with Numbers: Yes
+
+Step 3 - Advanced (optional):
+  Start Angle: -140°
+  End Angle: 130°
+  Hollow Size: 60%
+  Dash Array: 10
+
+How it works:
+  - Counts leads where status = completed (e.g., 150)
+  - Counts total leads (e.g., 1,000)
+  - Calculates: 150 / 1,000 × 100 = 15%
+  - Displays: "15%" with footer "150 achieved / 1,000 total"
+```
+
+**SMS Delivery Success (Radial Bar with Gradient)**
+```
+Table: sms
+Aggregation: COUNT
+Chart Type: radialBar
+Label: "SMS Delivered"
+Description: "Delivery success rate"
+Color: info
+Date Range: 7 days
+
+Step 2 - Conditions:
+  Field: status
+  Operator: =
+  Value: delivered
+
+Step 2 - Percentage:
+  Calculate as Percentage: Yes
+  Show Footer with Numbers: Yes
+
+Step 3 - Advanced:
+  Enable Gradient: Yes
+  Gradient To Color: #10b981 (green)
+  Start Angle: -90°
+  End Angle: 270° (creates three-quarter circle)
+  Hollow Size: 55%
+  Dash Array: 12
+
+Result: "82.8%" with footer "120 achieved / 145 total"
+Visual: Blue to green gradient, three-quarter circle
+```
+
+**Quality Calls (Multiple Conditions)**
+```
+Table: calls
+Aggregation: COUNT
+Chart Type: radialBar
+Label: "Quality Calls"
+Description: "Long completed outbound calls"
+Color: success
+Date Range: 30 days
+
+Step 2 - Conditions (all must be true):
+  Condition 1:
+    Field: status
+    Operator: =
+    Value: completed
+
+  Condition 2:
+    Field: duration
+    Operator: >
+    Value: 180
+
+  Condition 3:
+    Field: type
+    Operator: =
+    Value: outbound
+
+Step 2 - Percentage:
+  Calculate as Percentage: Yes
+  Show Footer with Numbers: Yes
+
+Step 3 - Advanced:
+  Enable Gradient: Yes
+  Gradient To Color: #3b82f6
+  Dash Array: 8
+
+How it works:
+  - Counts calls meeting ALL three conditions (e.g., 45)
+  - Counts total calls (e.g., 100)
+  - Calculates: 45 / 100 × 100 = 45%
+  - Displays: "45%" with footer "45 achieved / 100 total"
+```
+
+**Qualified Leads (Semicircle Style)**
+```
+Table: leads
+Aggregation: COUNT
+Chart Type: radialBar
+Label: "Qualified Leads"
+Color: info
+Date Range: 30 days
+
+Step 2 - Conditions:
+  Field: status
+  Operator: =
+  Value: scheduled
+
+Step 2 - Percentage:
+  Calculate as Percentage: Yes
+  Show Footer with Numbers: Yes
+
+Step 3 - Advanced (semicircle design):
+  Enable Gradient: Yes
+  Gradient To Color: #10b981
+  Start Angle: -90°
+  End Angle: 90° (creates perfect semicircle)
+  Hollow Size: 70% (thinner ring)
+  Dash Array: 0 (solid line)
+
+Result: "2.2%" with footer "4,841 achieved / 220,073 total"
+Visual: Clean semicircle from left to right, blue to green gradient
+```
+
+## Table Widgets
+
+Display detailed records with custom columns.
+
+### Step 1: Basics
+
+**Data Table**
+- Choose source: calls, leads, campaigns, assistants, phone_numbers, sms
+
+**Campaign Filter** (leads table only)
+- Select campaign to:
+  - Filter table to that campaign
+  - Enable custom variable columns
+- Optional
+
+**Assistant Filter** (calls table only)
+- Select assistant to:
+  - Filter table to that assistant
+  - Enable evaluation field columns
+- Optional
+
+**Column Selection**
+- Basic columns: Id, Status, Created At, etc.
+- Relationship columns: Assistant Name, Campaign Name
+- Evaluation fields: evaluation.{field_name} (if assistant selected)
+- Lead variables: variables.{variable_name} (if campaign selected)
+- Default if none selected: Id, Status, Created At
+
+### Step 2: Display & Filters
+
+**Label** (required)
+- Table heading
+
+**Description**
+- Optional subheading
+
+**Date Range**
+- Same as stats/charts
+
+**Sort By**
+- Default sort column
+- Only simple columns (not relationships)
+- Default: created_at
+
+**Sort Direction**
+- desc (newest first) - default
+- asc (oldest first)
+
+**Rows Per Page**
+- Number of rows to display (1-100)
+- Default: 10
+
+**Conditions**
+- Same as stats/charts
+
+### Interactive Features
+
+**Clickable Rows**
+- Table rows are clickable
+- Automatically links to detail/edit page for the record
+- Works for: Calls, Leads, Campaigns, Assistants
+
+**Live Date Filter**
+- Change date range directly on the widget
+- Overrides the configured default date range
+- Useful for exploring different time periods
+
+**Status Filter**
+- Multi-select dropdown to filter by status
+- Available for: Calls, Leads, Campaigns, Assistants, SMS
+- Select multiple statuses at once
+
+**Text Display**
+- Long text automatically truncates at 50 characters
+- Hover over truncated text shows full content in tooltip
+
+### Column Types
+
+**Phone Number Columns**
+- International format (+1 555 123 4567)
+- Country flag prefix
+- Examples: client_phone_number, phone_number
+
+**Status Columns**
+- Colored badges
+- Examples: status field on any table
+
+**Date Columns**
+- "3 hours ago" format
+- Hover shows full datetime
+- Examples: created_at, updated_at
+
+**Evaluation Columns** (calls table with assistant)
+- Boolean fields: checkmark or X with green/red badge
+- Non-boolean fields: value with gray badge
+- Hover shows field description
+- Format: evaluation.{field_name}
+
+**Variable Columns** (leads table with campaign)
+- Custom lead data
+- Format: variables.{variable_name}
+- Examples: customer_name, company
+
+**Relationship Columns**
+- Access related data
+- Examples: Assistant Name, Campaign Name
+- Cannot sort by these
+
+### Examples
+
+**Recent Calls**
+```
+Table: calls
+Columns:
+  - Client Phone Number
+  - Assistant Name
+  - Duration
+  - Status
+  - Created At
+Sort: Created At desc
+Rows: 25
+Date Range: 7 days
+```
+
+**Successful Appointments**
+```
+Table: calls
+Assistant: [Select to load fields]
+Columns:
+  - Client Phone Number
+  - Assistant Name
+  - evaluation.appointment_booked
+  - Created At
+Sort: Created At desc
+Rows: 50
+Date Range: 30 days
+Conditions:
+  - Status = completed
+  - Column: Extracted Variables
+    Extracted Variable Name: Custom variable
+    Custom Variable Name: appointment_booked
+    Operator: =
+    Variable Value: true
+```
+
+## Filtering Data
+
+All widgets support conditions to filter data.
+
+### Operators
+
+- `=` - Equals
+- `!=` - Not equals
+- `>` - Greater than
+- `>=` - Greater or equal
+- `<` - Less than
+- `<=` - Less or equal
+- `like` - Contains text
+- `in` - One of (comma-separated)
+- `not in` - Not one of
+- `is null` - No value
+- `is not null` - Has value
+
+### Basic Filtering
+
+**Status Filter**
+```
+Column: Status
+Operator: =
+Value: completed
+```
+
+**Duration Filter**
+```
+Column: Duration
+Operator: >
+Value: 60
+```
+
+**Multiple Values**
+```
+Column: Status
+Operator: in
+Value: completed,in-progress
+```
+
+### Evaluation Field Filtering
+
+Filter by post-call evaluation values.
+
+**Setup:**
+1. Column: Extracted Variables
+2. Extracted Variable Name: Status or Custom variable
+3. If Custom variable: Enter field name in Custom Variable Name
+4. Variable Value: true/false for booleans, or any + custom value
+
+**Boolean Example - Appointment Booked**
+```
+Column: Extracted Variables
+Extracted Variable Name: Custom variable
+Custom Variable Name: appointment_booked
+Operator: =
+Variable Value: true
+```
+
+**Non-Boolean Example - Sentiment**
+```
+Column: Extracted Variables
+Extracted Variable Name: Custom variable
+Custom Variable Name: sentiment
+Operator: =
+Variable Value: any
+Custom Value: positive
+```
+
+**Check Field Exists**
+```
+Column: Extracted Variables
+Extracted Variable Name: Custom variable
+Custom Variable Name: interested
+Operator: =
+Variable Value: any
+```
+
+### Multiple Conditions
+
+Conditions combined with AND:
+
+```
+Filter for successful long calls:
+Condition 1:
+  - Column: Status
+  - Operator: =
+  - Value: completed
+
+Condition 2:
+  - Column: Duration
+  - Operator: >
+  - Value: 120
+
+Condition 3:
+  - Column: Extracted Variables
+  - Extracted Variable Name: Custom variable
+  - Custom Variable Name: appointment_booked
+  - Operator: =
+  - Variable Value: true
+```
+
+## Best Practices
+
+### Widget Naming
+
+Use descriptive internal names:
+- ✅ "Sales Calls - Last 30 Days"
+- ✅ "Support Duration Average"
+- ❌ "Widget 1"
+
+### Date Ranges
+
+Match range to use case:
+- **Today:** Real-time monitoring
+- **7 days:** Weekly performance
+- **30 days:** Monthly trends
+- **90+ days:** Long-term analysis
+
+### Colors
+
+Strategic color usage:
+- **Green (success):** Positive metrics
+- **Red (danger):** Alert metrics
+- **Blue (primary):** Neutral metrics
+- **Yellow (warning):** Attention needed
+- **Gray (info):** Secondary info
+
+### Performance
+
+Keep dashboards fast:
+- Use date range filters
+- Limit widgets per dashboard to under 20
+- Use COUNT when possible (faster)
+- Avoid very long date ranges
+
+## Troubleshooting
+
+**Widget shows "No data"**
+- Expand date range
+- Remove/adjust filters
+- Verify table has records
+
+**Evaluation fields not showing**
+- Select assistant in widget config
+- Ensure assistant has post-call schema
+- Check field names match
+
+**Chart shows empty**
+- Pie/donut: Must use Group By (not Period)
+- Line/area: Must use Group By Period (not Category)
+- Check date range includes data
+
+**Table missing columns**
+- Relationship columns need related records
+- Evaluation columns need assistant selection
+- Variable columns need campaign selection
+
+**"Group By required" error**
+- Pie/donut/polarArea charts MUST have Group By
+- Cannot use Group By Period with these chart types
+
+**Cannot sort by column**
+- Relationship columns (with .) not sortable
+- Evaluation fields not sortable
+- Use basic columns for sorting
+
+<Note>
+For dashboard creation and layout management, see [Custom Dashboards Overview](/custom-dashboards/overview).
+</Note>

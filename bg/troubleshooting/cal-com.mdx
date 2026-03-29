@@ -1,0 +1,110 @@
+---
+title: "Cal.com Issues"
+icon: "calendar-days"
+description: "Troubleshoot common Cal.com integration issues"
+---
+
+Solutions for common Cal.com integration problems.
+
+## Connection Issues
+
+### Invalid API Key
+
+**Problem:** Events not loading or sync fails
+
+**Solution:**
+- Verify API key is active in Cal.com → Settings → Developer → API Keys
+- Ensure key includes `cal_live_` prefix
+- Generate a new API key if needed
+
+### Events Not Loading
+
+**Problem:** Event dropdown is empty after entering API key
+
+**Solution:**
+- Check API key is correct
+- Click outside the API key field to trigger event loading
+- Refresh the page if events still don't appear
+- Verify you have events created in Cal.com
+
+## Sync Issues
+
+### Sync Event Failed
+
+**Problem:** "Sync Event" button fails or shows error
+
+**Solution:**
+1. Click **"Troubleshoot"** button instead
+2. This resets all booking fields to correct configuration
+3. Verify changes in Cal.com event settings
+
+### Field Configuration Errors
+
+**Problem:** Getting errors about required fields or missing fields
+
+**Solution:**
+- Click **"Troubleshoot"** to reset fields
+- Only name, email, phone should be required
+- All other fields (location, guests, etc.) should be optional
+
+## Booking Failures
+
+### No Calendar Invites Sent
+
+**Problem:** Bookings succeed but customer doesn't receive invite
+
+**Solution:**
+- Define `email` variable in [assistant settings](/ai-assistants/settings/prompt-and-tools#call-variables)
+- Pass customer email when creating leads
+- Verify email format is valid
+
+### Phone Number Missing
+
+**Problem:** Phone number doesn't appear in calendar events
+
+**Solution:**
+- Click **"Sync Event"** or **"Troubleshoot"** button
+- This automatically adds the phone field to the event
+- Phone number is included after sync
+
+### Booking Time Zone Issues
+
+**Problem:** Appointments scheduled at wrong time
+
+**Solution:**
+- Check time zone in Cal.com event settings
+- Verify assistant is getting correct time from customer
+- Test with specific time mentions during call
+
+## Testing Issues
+
+### Web Call Bookings Fail
+
+**Problem:** Bookings work inconsistently with web calls
+
+**Solution:**
+- Use real phone calls for testing (not web calls)
+- Web calls may not pass phone variable correctly
+- When using web calls, provide phone in international format with + prefix (e.g., "+1 555-123-4567")
+- Phone calls ensure all variables are transmitted correctly
+
+### Multiple Calendars Not Working
+
+**Problem:** Only one calendar works or events conflict
+
+**Solution:**
+- Each calendar should have different event selected
+- Use distinct event names (e.g., "15min", "30min")
+- Sync each event separately after adding
+
+## Getting Help
+
+If issues persist:
+
+1. Check call transcripts for booking attempts
+2. Verify Cal.com event shows in Cal.com dashboard
+3. Test with simple phone call booking
+4. Contact support with:
+   - Error message screenshot
+   - Cal.com event settings screenshot
+   - Call transcript showing booking attempt

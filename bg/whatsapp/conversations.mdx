@@ -1,0 +1,202 @@
+---
+title: "WhatsApp Conversations"
+icon: "messages"
+description: "Track and manage AI-powered WhatsApp conversations with customers"
+---
+
+WhatsApp conversations are tracked alongside your other conversations, allowing you to review message history, monitor AI performance, and manage customer interactions.
+
+## Viewing WhatsApp Conversations
+
+WhatsApp conversations appear in your **Conversations** section with a "WhatsApp" type badge.
+
+Each conversation includes:
+- Complete message history
+- Customer phone number
+- Connected AI assistant
+- Timestamps for all messages
+- Cost and usage metrics
+
+## Conversation Types
+
+| Type | Description |
+|------|-------------|
+| <span style={{color: '#22c55e'}}>**WhatsApp**</span> | Customer conversations via WhatsApp |
+| <span style={{color: '#8b5cf6'}}>**Web Widget**</span> | Customer conversations via website widget |
+| <span style={{color: '#f97316'}}>**Test**</span> | Test conversations from the dashboard |
+
+## How WhatsApp Conversations Work
+
+### Customer Initiates Contact
+
+1. Customer sends a message to your WhatsApp number
+2. System creates or finds existing conversation
+3. Message is routed to your AI assistant
+4. AI generates and sends response
+5. 24-hour messaging window opens
+
+### Within the 24-Hour Window
+
+- AI responds automatically to each message
+- Free-form replies are allowed
+- Conversation continues naturally
+
+### After 24 Hours
+
+- Customer must message again to reopen window
+- You can send template messages to re-engage
+- AI remains ready to respond when customer replies
+
+## Conversation Features
+
+### Message History
+
+View the complete back-and-forth between customer and AI:
+
+- Customer messages (incoming)
+- AI responses (outgoing)
+- Timestamps for each message
+- Function calls made during conversation
+
+### Conversation Variables
+
+Variables collected or set during the conversation:
+
+- Customer identifier
+- Data extracted by AI
+- Context passed from automation flows
+
+### Cost Tracking
+
+Each conversation tracks:
+
+- Total message count
+- Cost per message
+- Overall conversation cost
+
+## Managing Conversations
+
+### Filtering Conversations
+
+Filter your conversation list by:
+
+- Type (WhatsApp, Web Widget, Test)
+- Assistant
+- Date range
+- Customer identifier
+
+### Exporting Conversation Data
+
+Export conversation data for analysis:
+
+1. Navigate to Conversations
+2. Apply filters as needed
+3. Use export options to download data
+
+## AI Assistant Behavior
+
+Your AI assistant handles WhatsApp conversations based on its configuration:
+
+### System Prompt
+
+The same system prompt used for voice calls and web widgets applies to WhatsApp. Ensure your prompt works well for text-based communication.
+
+<Tip>
+**Text-Friendly Prompts** — For assistants that handle both voice and WhatsApp, consider including instructions for text formatting like using bullet points and shorter paragraphs.
+</Tip>
+
+### Tools and Functions
+
+AI can call tools during WhatsApp conversations:
+
+- Lookup information in databases
+- Schedule appointments
+- Transfer to human agents
+- Collect and validate data
+
+### Knowledge Bases
+
+Your assistant's knowledge bases are available for WhatsApp conversations, allowing the AI to answer questions using your uploaded content.
+
+## Media in Conversations
+
+### Attachments Gallery
+
+All media files received in WhatsApp conversations (images, audio, video, documents) are stored as attachments. Browse received files in the conversation detail view.
+
+### Image Analysis (Vision)
+
+When a customer sends an image, your AI assistant can analyze it using vision-capable LLMs (OpenAI, Claude, Gemini). The AI's analysis and response are shown in the conversation alongside the original image.
+
+### Voice Note Transcription
+
+Incoming voice messages are automatically transcribed based on your assistant's language settings. The transcribed text appears in the conversation alongside the audio, and the AI responds to the transcribed content.
+
+### Sending Files to Customers
+
+Operators can send files back to customers directly from the conversation UI. This is useful for sharing documents, images, or other resources during a conversation.
+
+## Best Practices
+
+### 1. Review Conversations Regularly
+
+Monitor AI responses to ensure quality. Look for:
+
+- Accurate information
+- Appropriate tone
+- Successful goal completion
+- Customer satisfaction signals
+
+### 2. Train Your AI
+
+Use conversation insights to improve your assistant:
+
+- Identify common questions
+- Update knowledge bases
+- Refine system prompts
+- Add missing tools or functions
+
+### 3. Monitor Response Times
+
+WhatsApp users expect quick responses. Monitor:
+
+- AI response latency
+- Any delays or timeouts
+- Failed message deliveries
+
+### 4. Handle Escalations
+
+Configure escalation paths for complex issues:
+
+- Transfer to human agent tool
+- Collect callback information
+- Schedule follow-up calls
+
+## Conversation Metrics
+
+Track key metrics for your WhatsApp conversations:
+
+| Metric | Description |
+|--------|-------------|
+| **Total Conversations** | Number of unique customer conversations |
+| **Messages per Conversation** | Average message count |
+| **Response Rate** | Percentage of messages with AI responses |
+| **Average Response Time** | Time between customer message and AI response |
+| **Cost per Conversation** | Average cost including AI usage |
+
+## Integration with Other Channels
+
+WhatsApp conversations exist alongside your other communication channels:
+
+- **Phone Calls**: Voice conversations tracked separately
+- **Web Widget**: Text conversations from your website
+- **API Conversations**: Programmatic chat sessions
+
+All conversation types use the same AI assistant, providing consistent experiences across channels.
+
+## Next Steps
+
+- Learn about [WhatsApp senders](/whatsapp/senders) and sender configuration
+- Set up [message templates](/whatsapp/templates) for outbound messaging
+- Configure [automation](/whatsapp/automation) for WhatsApp workflows
+- Review [AI assistant settings](/ai-assistants/settings/prompt-and-tools) for optimal responses

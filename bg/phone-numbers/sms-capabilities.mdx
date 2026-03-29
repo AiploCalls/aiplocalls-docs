@@ -1,0 +1,79 @@
+---
+title: "SMS Capabilities"
+icon: "message-sms"
+description: "Learn about SMS features, requirements, and pricing for your phone numbers"
+---
+
+<Card
+  title="Detailed SMS Documentation"
+  icon="book-open"
+  href="/automation-platform/calls-related/sms-capabilities">
+  This is an overview of SMS features. For detailed instructions on sending SMS
+  through automation flows, check our [Automation Platform
+  Documentation](/automation-platform/calls-related/sms-capabilities).
+</Card>
+
+## Requirements
+
+To send SMS messages, you need:
+
+- An SMS-capable phone number
+- Sufficient credits in your account
+- Proper automation flow setup
+
+## SMS Segments
+
+SMS messages are split into segments:
+
+- Each segment is 160 characters for standard ASCII text
+- Or 70 characters for Unicode (special characters, emojis)
+- Longer messages are automatically split into multiple segments
+- You are charged per segment sent
+
+For example:
+
+- "Hello! How are you?" (16 chars) = 1 segment
+- A message with 200 ASCII chars = 2 segments
+- A message with emojis and 100 chars = 2 segments
+
+## Costs
+
+SMS pricing varies by:
+
+- Destination country
+- Number of segments
+- Type of content (standard/unicode)
+
+## Monitoring & History
+
+Track your SMS activity in the dashboard:
+
+- Delivery status
+- Timestamp
+- Number of segments
+- Cost per message
+- Recipient details
+- Content preview
+
+## Best Practices
+
+1. **Message Length**
+
+   - Keep messages concise
+   - Monitor segment count
+   - Use standard characters when possible
+
+2. **Compliance**
+
+   - Include opt-out instructions
+   - Follow local regulations
+   - Respect quiet hours
+
+3. **Testing**
+   - Verify number capabilities
+   - Test delivery to different carriers
+   - Monitor delivery rates
+
+---
+
+**Want to start sending SMS?** Check out our [automation platform documentation](/automation-platform/calls-related/sms-capabilities) to learn how to set up SMS workflows.

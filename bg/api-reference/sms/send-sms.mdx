@@ -1,0 +1,166 @@
+---
+title: "Send SMS"
+api: "POST /user/sms"
+description: "Send an SMS message using your phone number"
+---
+
+This endpoint allows you to send SMS messages using your purchased phone numbers. The SMS will be sent via Twilio and costs will be automatically deducted from your account balance.
+
+### Request Body
+
+<ParamField body="from" type="integer" required>
+  The ID of your phone number to send the SMS from (must be SMS-capable)
+</ParamField>
+
+<ParamField body="to" type="string" required>
+  The recipient's phone number in international format (e.g., "+1234567890")
+</ParamField>
+
+<ParamField body="body" type="string" required>
+  The SMS message content (max 300 characters)
+</ParamField>
+
+### Response
+
+<ResponseField name="message" type="string">
+  Success message confirming SMS was sent
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  <Expandable title="properties">
+    <ResponseField name="id" type="integer">
+      The unique identifier of the SMS record
+    </ResponseField>
+
+    <ResponseField name="phone_number_id" type="integer">
+      The ID of the phone number used to send the SMS
+    </ResponseField>
+
+    <ResponseField name="to" type="string">
+      The recipient's phone number in E.164 format
+    </ResponseField>
+
+    <ResponseField name="body" type="string">
+      The SMS message content
+    </ResponseField>
+
+    <ResponseField name="user_id" type="integer">
+      The ID of the user who sent the SMS
+    </ResponseField>
+
+    <ResponseField name="segments" type="integer">
+      Number of SMS segments (for billing purposes)
+    </ResponseField>
+
+    <ResponseField name="segment_price" type="number">
+      Cost per SMS segment
+    </ResponseField>
+
+    <ResponseField name="total_cost" type="number">
+      Total cost of the SMS (segment_price * segments)
+    </ResponseField>
+
+    <ResponseField name="status" type="string">
+      The current status of the SMS
+    </ResponseField>
+
+    <ResponseField name="sms_sid" type="string">
+      Twilio SMS SID for tracking
+    </ResponseField>
+
+    <ResponseField name="created_at" type="string">
+      The date and time when the SMS was created
+    </ResponseField>
+
+    <ResponseField name="updated_at" type="string">
+      The date and time when the SMS was last updated
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+### Error Responses
+
+<ResponseField name="400 Bad Request">
+  <Expandable title="Error Response">
+    <ResponseField name="message" type="string">
+      Error message describing the issue (invalid phone number, insufficient balance, etc.)
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="500 Internal Server Error">
+  <Expandable title="Error Response">
+    <ResponseField name="message" type="string">
+      Error message indicating SMS sending failure
+    </ResponseField>
+    <ResponseField name="error" type="string">
+      Detailed error information
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 201 Success Response
+{
+  "message": "SMS sent successfully",
+  "data": {
+    "id": 456,
+    "phone_number_id": 78,
+    "to": "+1234567890",
+    "body": "Hello! This is a test message from Your Company. How can we help you today?",
+    "user_id": 1,
+    "segments": 1,
+    "segment_price": 0.0075,
+    "total_cost": 0.0075,
+    "status": "sent",
+    "sms_sid": "SM1234567890abcdef1234567890abcdef",
+    "created_at": "2025-08-04 15:30:00",
+    "updated_at": "2025-08-04 15:30:02"
+  }
+}
+```
+
+```json 400 Bad Request
+{
+  "message": "From number not found"
+}
+```
+
+```json 400 Bad Request
+{
+  "message": "Invalid to phone number"
+}
+```
+
+```json 400 Bad Request
+{
+  "message": "Insufficient balance"
+}
+```
+
+```json 400 Bad Request
+{
+  "message": "From number is not SMS capable"
+}
+```
+
+```json 500 Internal Server Error
+{
+  "message": "Failed to send SMS",
+  "error": "Twilio API error details"
+}
+```
+
+</ResponseExample>
+
+### Notes
+
+- The sender phone number must belong to the authenticated user
+- The sender phone number must be SMS-capable
+- The phone number subscription must be active (not expired)
+- Sufficient account balance is required to cover SMS costs
+- Phone numbers are automatically formatted to E.164 format
+- SMS costs vary by destination country and are charged per segment
+- Long messages may be split into multiple segments, increasing the cost
+- The recipient phone number must be valid according to international standards

@@ -1,0 +1,66 @@
+---
+title: "Get available languages"
+api: "GET /user/assistants/languages"
+description: "Retrieve all available languages for assistant configuration"
+---
+
+This endpoint returns a list of all available languages that can be used when creating or updating assistants.
+
+### Response fields
+
+<ResponseField name="data" type="array">
+  <Expandable title="properties">
+    <ResponseField name="id" type="integer">
+      The unique identifier of the language
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      The display name of the language
+    </ResponseField>
+
+    <ResponseField name="iso_2" type="string">
+      The ISO 639-1 two-letter language code
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Response
+[
+  {
+    "id": 1,
+    "name": "English",
+    "iso_2": "en"
+  },
+  {
+    "id": 2,
+    "name": "Romanian",
+    "iso_2": "ro"
+  },
+  {
+    "id": 3,
+    "name": "French",
+    "iso_2": "fr"
+  },
+  {
+    "id": 4,
+    "name": "Spanish",
+    "iso_2": "es"
+  },
+  {
+    "id": 5,
+    "name": "German",
+    "iso_2": "de"
+  }
+]
+```
+
+</ResponseExample>
+
+### Notes
+
+- Use the `id` field as `language_id` when creating or updating assistants
+- Use the `id` field in `secondary_language_ids` array for multi-language assistants
+- The `iso_2` code can be useful for language-specific functionality
+- All available languages are returned in a single request

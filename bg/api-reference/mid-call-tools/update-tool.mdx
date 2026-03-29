@@ -1,0 +1,137 @@
+---
+title: "Update mid call tool"
+api: "PUT /user/tools/{id}"
+description: "Update an existing mid call tool"
+---
+
+This endpoint allows you to update an existing mid call tool. All fields are optional - only provide the fields you want to update.
+
+### Path Parameters
+
+<ParamField path="id" type="integer" required>
+  The unique identifier of the tool to update
+</ParamField>
+
+### Body Parameters
+
+<ParamField body="name" type="string" optional>
+  Tool name - must contain only lowercase letters and underscores, and start with a letter
+</ParamField>
+
+<ParamField body="description" type="string" optional>
+  Detailed explanation of when and how the AI should use this tool (max 255 characters)
+</ParamField>
+
+<ParamField body="endpoint" type="string" optional>
+  Valid URL of the API endpoint to call
+</ParamField>
+
+<ParamField body="method" type="string" optional>
+  HTTP method: `GET`, `POST`, `PUT`, `PATCH`, or `DELETE`
+</ParamField>
+
+<ParamField body="timeout" type="integer" optional>
+  Request timeout in seconds (1-30)
+</ParamField>
+
+<ParamField body="headers" type="array" optional>
+  HTTP headers to send with the request (replaces existing headers)
+  <Expandable title="headers properties">
+    <ParamField body="name" type="string" required>
+      Header name
+    </ParamField>
+    <ParamField body="value" type="string" required>
+      Header value
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField body="schema" type="array" optional>
+  Parameters schema (replaces existing schema)
+  <Expandable title="schema properties">
+    <ParamField body="name" type="string" required>
+      Parameter name (2-32 chars)
+    </ParamField>
+    <ParamField body="type" type="string" required>
+      Parameter type: `string`, `number`, or `boolean`
+    </ParamField>
+    <ParamField body="description" type="string" required>
+      Parameter description (3-255 chars)
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+### Response fields
+
+<ResponseField name="message" type="string">
+  Success message
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  The updated tool object with all current values
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 OK
+{
+  "message": "Tool updated successfully",
+  "data": {
+    "id": 1,
+    "name": "update_customer_info",
+    "description": "Use this tool to update customer information in the system.",
+    "endpoint": "https://api.yourcompany.com/customers/update",
+    "method": "POST",
+    "timeout": 15,
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json"
+      }
+    ],
+    "schema": [
+      {
+        "name": "customer_name",
+        "type": "string",
+        "description": "Full name of the customer"
+      },
+      {
+        "name": "customer_age",
+        "type": "number",
+        "description": "Age of the customer"
+      },
+      {
+        "name": "newsletter_subscription",
+        "type": "boolean",
+        "description": "Whether customer wants to subscribe to newsletter"
+      }
+    ],
+    "created_at": "2025-10-10T12:00:00.000000Z",
+    "updated_at": "2025-10-10T14:30:00.000000Z"
+  }
+}
+```
+
+```json 404 Not Found
+{
+  "message": "Tool not found"
+}
+```
+
+```json 422 Validation Error
+{
+  "message": "Validation failed",
+  "errors": {
+    "name": ["Tool name must contain only lowercase letters and underscores, and start with a letter."]
+  }
+}
+```
+
+</ResponseExample>
+
+### Managing Tool Assignments
+
+To attach or detach this tool from assistants, use the Assistant API:
+
+- **[Create Assistant](/api-reference/assistants/create-assistant)** - Use the `tool_ids` parameter to attach tools when creating an assistant
+- **[Update Assistant](/api-reference/assistants/update-assistant)** - Use the `tool_ids` parameter to manage which tools are assigned to an assistant

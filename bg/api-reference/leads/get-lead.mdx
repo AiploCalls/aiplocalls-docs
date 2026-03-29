@@ -1,0 +1,191 @@
+---
+title: "List leads"
+api: "GET /user/leads"
+description: "List all leads for the authenticated user with filtering and pagination options"
+---
+
+This endpoint allows you to list all leads belonging to the authenticated user with various filtering and pagination options.
+
+### Query Parameters
+
+<ParamField query="status" type="string" optional>
+  Filter leads by status. Possible values: `created`, `scheduled`, `processing`, `completed`, `rescheduled`, `reached-max-retries`, `blacklisted`
+</ParamField>
+
+<ParamField query="campaign_id" type="integer" optional>
+  Filter leads by campaign ID
+</ParamField>
+
+<ParamField query="phone_number" type="string" optional>
+  Filter leads by phone number (partial match supported)
+</ParamField>
+
+<ParamField query="date_from" type="string" optional>
+  Filter leads created from this date (YYYY-MM-DD format)
+</ParamField>
+
+<ParamField query="date_to" type="string" optional>
+  Filter leads created until this date (YYYY-MM-DD format)
+</ParamField>
+
+<ParamField query="per_page" type="integer" optional>
+  Number of leads per page (1-100, default: 15)
+</ParamField>
+
+<ParamField query="page" type="integer" optional>
+  Page number (default: 1)
+</ParamField>
+
+### Response fields
+
+<ResponseField name="data" type="array">
+  <Expandable title="properties">
+    <ResponseField name="id" type="integer">
+      The id of the lead
+    </ResponseField>
+
+    <ResponseField name="campaign_id" type="integer">
+      The ID of the campaign this lead belongs to
+    </ResponseField>
+
+    <ResponseField name="phone_number" type="string">
+      The phone number of the lead in E.164 format
+    </ResponseField>
+
+    <ResponseField name="variables" type="object">
+      The variables associated with the lead
+    </ResponseField>
+
+    <ResponseField name="status" type="string">
+      The status of the lead
+    </ResponseField>
+
+    <ResponseField name="created_at" type="string">
+      The created at date of the lead
+    </ResponseField>
+
+    <ResponseField name="updated_at" type="string">
+      The updated at date of the lead
+    </ResponseField>
+
+    <ResponseField name="campaign" type="object">
+      The campaign information
+      <Expandable title="campaign properties">
+        <ResponseField name="id" type="integer">
+          The id of the campaign
+        </ResponseField>
+        <ResponseField name="name" type="string">
+          The name of the campaign
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="secondary_contacts" type="array">
+      Array of secondary contact leads associated with this lead
+      <Expandable title="secondary_contacts properties">
+        <ResponseField name="id" type="integer">
+          The id of the secondary contact lead
+        </ResponseField>
+        <ResponseField name="phone_number" type="string">
+          The phone number of the secondary contact in E.164 format
+        </ResponseField>
+        <ResponseField name="variables" type="object">
+          The variables associated with the secondary contact
+        </ResponseField>
+        <ResponseField name="status" type="string">
+          The status of the secondary contact
+        </ResponseField>
+        <ResponseField name="created_at" type="string">
+          The created at date of the secondary contact
+        </ResponseField>
+        <ResponseField name="updated_at" type="string">
+          The updated at date of the secondary contact
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="current_page" type="integer">
+  The current page number
+</ResponseField>
+
+<ResponseField name="per_page" type="integer">
+  Number of items per page
+</ResponseField>
+
+<ResponseField name="total" type="integer">
+  Total number of leads matching the criteria
+</ResponseField>
+
+<ResponseField name="last_page" type="integer">
+  The last page number
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Response
+{
+  "current_page": 1,
+  "data": [
+    {
+      "id": 1,
+      "campaign_id": 1,
+      "phone_number": "+1234567890",
+      "variables": {
+        "customer_name": "John Doe",
+        "email": "john.doe@example.com"
+      },
+      "status": "created",
+      "created_at": "2025-06-30 11:18:04",
+      "updated_at": "2025-06-30 11:18:04",
+      "campaign": {
+        "id": 1,
+        "name": "My new campaign"
+      },
+      "secondary_contacts": [
+        {
+          "id": 2,
+          "phone_number": "+1234567899",
+          "variables": {
+            "customer_name": "Jane Doe Secondary",
+            "email": "jane.doe.secondary@example.com"
+          },
+          "status": "created",
+          "created_at": "2025-06-30 11:18:04",
+          "updated_at": "2025-06-30 11:18:04"
+        }
+      ]
+    }
+  ],
+  "first_page_url": "https://call.aiployees.com/api/user/leads?page=1",
+  "from": 1,
+  "last_page": 10,
+  "last_page_url": "https://call.aiployees.com/api/user/leads?page=10",
+  "links": [
+    {
+      "url": null,
+      "label": "&laquo; Previous",
+      "active": false
+    },
+    {
+      "url": "https://call.aiployees.com/api/user/leads?page=1",
+      "label": "1",
+      "active": true
+    },
+    {
+      "url": "https://call.aiployees.com/api/user/leads?page=2",
+      "label": "2",
+      "active": false
+    }
+  ],
+  "next_page_url": "https://call.aiployees.com/api/user/leads?page=2",
+  "path": "https://call.aiployees.com/api/user/leads",
+  "per_page": 15,
+  "prev_page_url": null,
+  "to": 15,
+  "total": 150
+}
+```
+
+</ResponseExample>

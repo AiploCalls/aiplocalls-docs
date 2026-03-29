@@ -1,0 +1,55 @@
+---
+title: "Delete mid call tool"
+api: "DELETE /user/tools/{id}"
+description: "Delete a mid call tool"
+---
+
+This endpoint allows you to permanently delete a mid call tool. This will also remove the tool from all assistants it was assigned to.
+
+### Headers
+
+<ParamField header="Authorization" type="string" required>
+  Bearer token for authentication
+</ParamField>
+
+<ParamField header="Content-Type" type="string" required>
+  Must be `application/json`
+</ParamField>
+
+<ParamField header="Accept" type="string" required>
+  Must be `application/json`
+</ParamField>
+
+### Path Parameters
+
+<ParamField path="id" type="integer" required>
+  The unique identifier of the tool to delete
+</ParamField>
+
+### Response fields
+
+<ResponseField name="message" type="string">
+  Success message confirming deletion
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 OK
+{
+  "message": "Tool deleted successfully"
+}
+```
+
+```json 404 Not Found
+{
+  "message": "Tool not found"
+}
+```
+
+</ResponseExample>
+
+### Note
+
+When a tool is deleted, it is automatically removed from all assistants. To manage tool assignments without deleting the tool, use:
+
+- **[Update Assistant](/api-reference/assistants/update-assistant)** - Use the `tool_ids` parameter to remove tools from specific assistants

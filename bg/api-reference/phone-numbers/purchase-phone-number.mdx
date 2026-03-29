@@ -1,0 +1,117 @@
+---
+title: "Purchase phone number"
+api: "POST /user/phone-numbers/purchase"
+description: "Purchase a dedicated phone number"
+---
+
+This endpoint allows you to purchase a phone number that was found using the [search endpoint](/api-reference/phone-numbers/search-phone-numbers). The platform automatically handles pricing, billing, and provisioning.
+
+<Note>
+You must have a valid payment method on file before purchasing a phone number. The purchase creates a monthly subscription that will auto-renew.
+</Note>
+
+### Request Body
+
+<ParamField body="phone_number" type="string" required>
+  The phone number to purchase in E.164 format (e.g., +14155551234). Must be a number returned from the search endpoint.
+</ParamField>
+
+### Response
+
+<ResponseField name="message" type="string">
+  Success message
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  The purchased phone number details
+  
+  <Expandable title="data properties">
+    <ResponseField name="id" type="integer">
+      The unique identifier of the phone number
+    </ResponseField>
+    
+    <ResponseField name="phone_number" type="string">
+      The phone number in E.164 format
+    </ResponseField>
+    
+    <ResponseField name="country_code" type="string">
+      The ISO country code
+    </ResponseField>
+    
+    <ResponseField name="type" type="string">
+      The phone number type (always `normal` for purchased numbers)
+    </ResponseField>
+    
+    <ResponseField name="sms_capable" type="boolean">
+      Whether the number supports SMS
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 201 Created
+{
+  "message": "Phone number purchased successfully.",
+  "data": {
+    "id": 123,
+    "phone_number": "+14155551234",
+    "country_code": "US",
+    "type": "normal",
+    "sms_capable": true
+  }
+}
+```
+
+```json 400 Already In Use
+{
+  "error": "This phone number is already in use."
+}
+```
+
+```json 400 Not Available
+{
+  "error": "This phone number is not available for purchase. Please search for available numbers first."
+}
+```
+
+```json 402 No Payment Method
+{
+  "error": "No payment method found. Please add a payment method to your account."
+}
+```
+
+```json 402 Payment Failed
+{
+  "error": "Payment failed. Please update your payment method."
+}
+```
+
+```json 422 Invalid Format
+{
+  "error": "Unable to parse phone number. Please provide a valid E.164 format number."
+}
+```
+
+```json 500 Provider Error
+{
+  "error": "Failed to purchase phone number from provider. Please contact support."
+}
+```
+
+</ResponseExample>
+
+### How It Works
+
+1. **Search** - First use the [search endpoint](/api-reference/phone-numbers/search-phone-numbers) to find available numbers
+2. **Purchase** - Submit the phone number you want to this endpoint
+3. **Automatic Processing** - The platform:
+   - Validates the number is still available
+   - Determines the correct pricing based on country
+   - Creates a monthly subscription on your payment method
+   - Provisions the number with our telephony provider
+   - Creates the phone number record in your account
+
+<Warning>
+Phone number purchases are non-refundable. The subscription will continue until you [release the number](/api-reference/phone-numbers/release-phone-number).
+</Warning>

@@ -1,0 +1,31 @@
+---
+title: "Webhook & API"
+icon: "code"
+description: "Learn how to use webhooks and the REST API for custom integrations and automation"
+---
+
+If you want deeper customization beyond no-code blocks, Aiplocalls supports **webhooks** and a **REST API**.
+
+## 1. Webhooks
+
+- **When to Use**: Trigger events in external systems the moment something happens in Aiplocalls (e.g., "Call Ended,").
+- **Configuration**: Set a webhook URL in your assistant/campaign settings or the automation platform.
+- **Payload**: Typically includes call ID, transcript, call outcome, or any user data collected.
+
+## 2. REST API
+
+- **Key Functions**:
+
+  1. **Create/Update Leads**
+  2. **Manage Campaigns**
+
+- **Auth & Rate Limits**: Usually uses API tokens. Check [API docs](/api-reference/introduction) for details on endpoints and usage quotas.
+
+## 3. Example Use Cases
+
+- **Real-Time CRM Sync**: For each new call, post data to your CRM's endpoint.
+- **Custom Dashboards**: Pull call data into your own analytics dashboard.
+
+---
+
+**Note:** You'll find the official API reference in a dedicated docs section or via your Aiplocalls dashboard. Always secure your tokens and test endpoints in a dev environment.

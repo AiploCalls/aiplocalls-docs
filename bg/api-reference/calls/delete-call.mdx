@@ -1,0 +1,52 @@
+---
+title: "Delete call"
+api: "DELETE /user/calls/{call}"
+description: "Delete a specific call record"
+---
+
+This endpoint allows you to delete a specific call record that belongs to the authenticated user.
+
+### Path Parameters
+
+<ParamField path="call" type="integer" required>
+  The unique identifier of the call to delete
+</ParamField>
+
+### Response
+
+<ResponseField name="message" type="string">
+  Confirmation message indicating the call was deleted successfully
+</ResponseField>
+
+### Error Responses
+
+<ResponseField name="404 Not Found">
+  <Expandable title="Error Response">
+    <ResponseField name="message" type="string">
+      Error message when the call is not found or doesn't belong to the authenticated user
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Success Response
+{
+  "message": "Call deleted successfully"
+}
+```
+
+```json 404 Not Found
+{
+  "message": "Call not found"
+}
+```
+
+</ResponseExample>
+
+### Notes
+
+- Only calls that belong to assistants owned by the authenticated user can be deleted
+- Once a call is deleted, it cannot be recovered
+- This action will permanently remove the call record, including any associated transcript, recording, and metadata
+- The call recording file (if exists) will also be deleted from storage

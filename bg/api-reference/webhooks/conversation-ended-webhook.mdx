@@ -1,0 +1,203 @@
+---
+title: "Conversation Ended Webhook"
+icon: "webhook"
+description: "Webhook sent after a chat conversation ends containing transcript, extracted variables, and customer data"
+---
+
+The Conversation Ended Webhook is automatically sent to your specified webhook URL after a chat conversation (WhatsApp or Web Widget) ends. This webhook contains the full transcript, extracted variables, customer information, and sender details.
+
+## Webhook Configuration
+
+To enable conversation ended webhooks:
+1. Use the [Enable Conversation Ended Webhook](/api-reference/assistants/enable-conversation-ended-webhook) API endpoint
+2. Provide your webhook URL where notifications will be sent
+3. Optionally configure post-call variables on your assistant to extract structured data from conversations
+
+## Request Format
+
+The webhook is sent as a POST request to your configured URL with the following JSON payload:
+
+### Payload Structure
+
+<ResponseField name="conversation_id" type="string">
+  Unique identifier (UUID) of the conversation
+</ResponseField>
+
+<ResponseField name="assistant_id" type="string">
+  Unique identifier (UUID) of the assistant that handled the conversation
+</ResponseField>
+
+<ResponseField name="type" type="string">
+  The type of conversation. Possible values: `widget`, `whatsapp`
+</ResponseField>
+
+<ResponseField name="message_count" type="integer">
+  Total number of messages exchanged in the conversation
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Status of the conversation. Value: `ended`
+</ResponseField>
+
+<ResponseField name="extracted_variables" type="object">
+  Variables extracted by AI based on your assistant's post-call schema configuration
+  <Expandable title="Example extracted variables">
+    <ResponseField name="status" type="boolean">
+      Whether the conversation objective was achieved
+    </ResponseField>
+    <ResponseField name="summary" type="string">
+      Conversation summary
+    </ResponseField>
+    <ResponseField name="custom_variable" type="string|number|boolean">
+      Any custom variables you defined in the assistant configuration
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="input_variables" type="object">
+  Variables that were passed to the assistant at the start of the conversation (e.g., from pre-chat form fields or automation flows)
+</ResponseField>
+
+<ResponseField name="transcript" type="array">
+  Array of message objects representing the full conversation
+  <Expandable title="Message properties">
+    <ResponseField name="role" type="string">
+      The sender role: `assistant` or `user`
+    </ResponseField>
+    <ResponseField name="content" type="string">
+      The message content
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="formatted_transcript" type="string">
+  Human-readable formatted transcript with `AI:` and `Customer:` prefixes
+</ResponseField>
+
+<ResponseField name="customer_phone" type="string">
+  Customer phone number (available for WhatsApp conversations, `null` for widget conversations)
+</ResponseField>
+
+<ResponseField name="customer_name" type="string">
+  Customer name if provided (e.g., from pre-chat form), or `null`
+</ResponseField>
+
+<ResponseField name="sender" type="object">
+  WhatsApp sender information (only present for WhatsApp conversations, `null` for widget)
+  <Expandable title="Sender properties">
+    <ResponseField name="phone_number" type="string">
+      The WhatsApp sender phone number
+    </ResponseField>
+    <ResponseField name="display_name" type="string">
+      The WhatsApp sender display name
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="created_at" type="string">
+  ISO 8601 timestamp when the conversation started (in the user's configured timezone)
+</ResponseField>
+
+<ResponseField name="ended_at" type="string">
+  ISO 8601 timestamp when the conversation ended (in the user's configured timezone)
+</ResponseField>
+
+<ResponseExample>
+```json Conversation Ended Webhook Payload
+{
+  "conversation_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "assistant_id": "f9e8d7c6-b5a4-3210-fedc-ba9876543210",
+  "type": "widget",
+  "message_count": 8,
+  "status": "ended",
+  "extracted_variables": {
+    "status": true,
+    "summary": "Customer asked about pricing plans and was interested in the Pro plan"
+  },
+  "input_variables": {
+    "name": "John Doe",
+    "email": "john@example.com"
+  },
+  "transcript": [
+    {
+      "role": "assistant",
+      "content": "Hi! How can I help you today?"
+    },
+    {
+      "role": "user",
+      "content": "I have a question about your service."
+    },
+    {
+      "role": "assistant",
+      "content": "Of course! I'd be happy to help. What would you like to know?"
+    },
+    {
+      "role": "user",
+      "content": "What are your pricing plans?"
+    }
+  ],
+  "formatted_transcript": "AI: Hi! How can I help you today?\nCustomer: I have a question about your service.\nAI: Of course! I'd be happy to help. What would you like to know?\nCustomer: What are your pricing plans?",
+  "customer_phone": null,
+  "customer_name": "John Doe",
+  "sender": null,
+  "created_at": "2026-02-23T09:30:00+01:00",
+  "ended_at": "2026-02-23T10:00:00+01:00"
+}
+```
+
+```json WhatsApp Conversation Ended Webhook
+{
+  "conversation_id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+  "assistant_id": "f9e8d7c6-b5a4-3210-fedc-ba9876543210",
+  "type": "whatsapp",
+  "message_count": 12,
+  "status": "ended",
+  "extracted_variables": {
+    "status": true,
+    "summary": "Customer scheduled an appointment for next week"
+  },
+  "input_variables": {},
+  "transcript": [
+    {
+      "role": "user",
+      "content": "Hello, I'd like to book an appointment"
+    },
+    {
+      "role": "assistant",
+      "content": "Hi! I'd be happy to help you book an appointment. What date works best for you?"
+    }
+  ],
+  "formatted_transcript": "Customer: Hello, I'd like to book an appointment\nAI: Hi! I'd be happy to help you book an appointment. What date works best for you?",
+  "customer_phone": "+1234567890",
+  "customer_name": null,
+  "sender": {
+    "phone_number": "+19876543210",
+    "display_name": "My Business"
+  },
+  "created_at": "2026-02-23T14:00:00+01:00",
+  "ended_at": "2026-02-23T14:25:00+01:00"
+}
+```
+</ResponseExample>
+
+## Retry Behavior
+
+If your webhook endpoint returns a non-2xx status code or the request fails, the system will retry:
+
+| Attempt | Delay |
+|---------|-------|
+| 1st retry | 30 seconds |
+| 2nd retry | 60 seconds |
+| 3rd retry | 120 seconds |
+
+After 3 failed attempts, the webhook delivery is marked as failed and no further retries are attempted.
+
+## Important Notes
+
+- The `conversation_id` and `assistant_id` are UUIDs, not integer IDs
+- The `sender` field is only populated for WhatsApp conversations — it will be `null` for web widget conversations
+- The `customer_phone` is only available for WhatsApp conversations
+- The `customer_name` comes from pre-chat form data or conversation context
+- Timestamps use the user's configured timezone (ISO 8601 format)
+- The `extracted_variables` are populated from your assistant's post-call schema evaluation
+- The `input_variables` contain data from pre-chat forms (web widget) or automation flows

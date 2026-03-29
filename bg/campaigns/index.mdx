@@ -1,0 +1,152 @@
+---
+title: "Campaigns Overview"
+icon: "bullhorn"
+description: "Learn how to create and manage automated calling campaigns to reach multiple leads efficiently"
+---
+
+Campaigns enable you to automate calls to multiple leads using your AI assistant. Set up scheduling, retry logic, and lead management to run efficient outbound calling operations.
+
+## What is a Campaign?
+
+A campaign is an automated system that calls multiple leads on your behalf using a configured AI assistant. Each campaign includes:
+
+<CardGroup cols={2}>
+  <Card title="Lead Management" icon="users">
+    **Primary and secondary contacts** for comprehensive outreach
+    
+    Import leads from CSV, integrations, or add manually
+  </Card>
+  
+  <Card title="Scheduling Control" icon="calendar">
+    **Time and day restrictions** to respect customer preferences
+    
+    Set allowed calling hours and days of the week
+  </Card>
+  
+  <Card title="Retry Logic" icon="repeat">
+    **Intelligent retry system** for unanswered calls
+    
+    Configure retry attempts, intervals, and conditions
+  </Card>
+  
+  <Card title="Goal Tracking" icon="bullseye">
+    **Success measurement** with completion variables
+    
+    Track campaign objectives and lead conversion
+  </Card>
+</CardGroup>
+
+## Campaign Status
+
+<AccordionGroup>
+  <Accordion title="Draft" icon="file">
+    Campaign is being configured but not yet active. Add leads and configure settings.
+  </Accordion>
+  
+  <Accordion title="In Progress" icon="play">
+    Campaign is actively making calls according to your schedule and retry settings.
+  </Accordion>
+  
+  <Accordion title="Paused" icon="pause">
+    Campaign is temporarily stopped. Can be resumed without losing progress.
+  </Accordion>
+  
+  <Accordion title="Completed" icon="check">
+    All leads have been successfully contacted or marked complete.
+  </Accordion>
+</AccordionGroup>
+
+## Key Features
+
+### Scheduling & Timing
+- **Allowed calling hours:** Set start and end times (e.g., 9:00 AM - 6:00 PM)
+- **Allowed days:** Choose specific days of the week for calling
+- **Timezone support:** Uses assistant's configured timezone
+- **Call window validation:** System automatically respects time restrictions
+
+### Retry System
+- **Max retries:** 1-5 attempts for unanswered calls (default: 3)
+- **Retry interval:** 10-4320 minutes between attempts (default: 60 minutes)
+- **Retry on voicemail:** Continue calling until human answers
+- **Goal-based retry:** Keep calling until objective is achieved (requires [post-call variables](/ai-assistants/settings/post-call-actions#post-call-variables) with boolean type)
+
+### Lead Types
+- **Primary leads:** Main contacts imported or added to campaign
+- **Secondary contacts:** Additional contacts linked to primary leads
+- **Lead status tracking:** Monitor call progress and outcomes
+
+## Requirements
+
+Before starting a campaign:
+
+<Warning>
+**Phone Number Required:** Your assistant must have a [phone number configured](/ai-assistants/settings/general#phone-number-configuration) for outbound calls.
+</Warning>
+
+- **Configured AI assistant** with outbound calling capability
+- **Sufficient account balance** for call costs
+- **Leads added** to the campaign (manual, import, or integration)
+- **Valid phone numbers** for all leads
+
+## Quick Start
+
+1. **Create Campaign:** Choose a name and select your AI assistant
+2. **Set Schedule:** Define allowed calling hours and days
+3. **Configure Retries:** Set retry attempts and intervals
+4. **Add Leads:** Import from CSV or add manually
+5. **Start Campaign:** Click start when ready to begin calling
+
+<Note>
+For detailed setup instructions, see [Creating a Campaign](/campaigns/creating-campaigns).
+</Note>
+
+## Campaign Monitoring
+
+### Lead Status Tracking
+Monitor individual lead progress through the campaign:
+- **Created:** Ready to be called
+- **Scheduled:** Queued for next call attempt
+- **Processing:** Currently being called
+- **Completed:** Successfully contacted or goal achieved
+- **Rescheduled:** Scheduled for retry attempt
+- **Max Retries:** Reached maximum retry attempts
+
+**Manual lead management:** You can change lead status in the leads table:
+- **Set to "Created":** Reset lead to be called again
+- **Set to "Completed":** Mark lead as finished to stop calling
+
+### Call Results
+Individual call outcomes with detailed status:
+- **Initiated:** Call started
+- **Ringing:** Phone is ringing
+- **In Progress:** Call connected and active
+- **Completed:** Call finished successfully
+- **Busy:** Line was busy
+- **Unanswered:** No one answered
+- **Failed:** Technical issue prevented call
+
+## Troubleshooting
+
+**Campaign won't start:**
+- Check if assistant has phone number configured
+- Verify sufficient account balance
+- Ensure leads are added to campaign
+
+**No calls being made:**
+- Wait 10-15 minutes after starting - campaigns take time to initialize
+- Check if current time is within allowed calling hours
+- Verify allowed days include current day
+- Confirm leads have valid phone numbers
+
+**Too many/few retries:**
+- Adjust max retries setting (1-5 attempts)
+- Modify retry interval (10-4320 minutes)
+- Review retry conditions (voicemail, goal completion)
+
+<Tip>
+**Best Practice:** Start with conservative retry settings and adjust based on campaign performance and customer feedback.
+</Tip>
+
+<Note>
+For detailed troubleshooting guidance, see [Campaign Troubleshooting](/troubleshooting/campaigns).
+</Note>

@@ -1,0 +1,192 @@
+---
+title: "Send Message"
+api: "POST /conversations/{uuid}/messages"
+description: "Send a message in an existing conversation and receive the assistant's response"
+---
+
+This endpoint sends a user message to an existing conversation and returns the assistant's response. The assistant processes the message using the configured AI model and any available tools.
+
+### Path Parameters
+
+<ParamField path="uuid" type="string" required>
+  The unique UUID identifier of the conversation
+</ParamField>
+
+### Request Body
+
+<ParamField body="message" type="string" required>
+  The user's message to send to the assistant. Maximum length: 2000 characters.
+</ParamField>
+
+### Response Fields
+
+<ResponseField name="status" type="boolean">
+  Indicates whether the request was successful
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  The assistant's response to the user's message
+</ResponseField>
+
+<ResponseField name="function_calls" type="array">
+  Array of function calls made by the assistant while processing the message. Empty array if no functions were called.
+
+  <Expandable title="Function call object properties">
+    <ResponseField name="name" type="string">
+      The name of the function that was called
+    </ResponseField>
+    <ResponseField name="arguments" type="object">
+      The arguments passed to the function
+    </ResponseField>
+    <ResponseField name="result" type="object">
+      The result returned by the function
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+### Error Responses
+
+<ResponseField name="status" type="boolean">
+  Will be `false` when an error occurs
+</ResponseField>
+
+<ResponseField name="error" type="string">
+  Error message. Possible values:
+  - `Conversation not found` - The provided UUID does not match any conversation
+  - `Insufficient balance. Please top up your account.` - The assistant owner's account balance is too low
+  - `Failed to process message: [details]` - An error occurred while processing the message
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X POST "https://call.aiployees.com/api/conversations/7c9e6679-7425-40de-944b-e07fc1f90ae7/messages" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "message": "I would like to schedule a demo for next week"
+  }'
+```
+
+```javascript JavaScript
+const conversationId = '7c9e6679-7425-40de-944b-e07fc1f90ae7';
+
+const response = await fetch(
+  `https://call.aiployees.com/api/conversations/${conversationId}/messages`,
+  {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      message: 'I would like to schedule a demo for next week'
+    })
+  }
+);
+
+const data = await response.json();
+console.log(data.message);
+```
+
+```python Python
+import requests
+
+conversation_id = '7c9e6679-7425-40de-944b-e07fc1f90ae7'
+
+response = requests.post(
+    f'https://call.aiployees.com/api/conversations/{conversation_id}/messages',
+    json={
+        'message': 'I would like to schedule a demo for next week'
+    }
+)
+
+data = response.json()
+print(data['message'])
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json 200 Success
+{
+  "status": true,
+  "message": "I'd be happy to help you schedule a demo! I have availability on Monday at 2 PM, Wednesday at 10 AM, or Friday at 3 PM. Which time works best for you?",
+  "function_calls": []
+}
+```
+
+```json 200 Success (With Function Calls)
+{
+  "status": true,
+  "message": "I've checked our calendar and found several available slots for next week. I can offer you Monday at 2 PM, Wednesday at 10 AM, or Friday at 3 PM. Which would you prefer?",
+  "function_calls": [
+    {
+      "name": "check_calendar_availability",
+      "arguments": {
+        "start_date": "2025-01-13",
+        "end_date": "2025-01-17"
+      },
+      "result": {
+        "available_slots": [
+          "2025-01-13 14:00",
+          "2025-01-15 10:00",
+          "2025-01-17 15:00"
+        ]
+      }
+    }
+  ]
+}
+```
+
+```json 404 Not Found
+{
+  "status": false,
+  "error": "Conversation not found"
+}
+```
+
+```json 400 Insufficient Balance
+{
+  "status": false,
+  "error": "Insufficient balance. Please top up your account."
+}
+```
+
+```json 400 Processing Error
+{
+  "status": false,
+  "error": "Failed to process message: Connection timeout"
+}
+```
+
+```json 422 Validation Error
+{
+  "message": "The message field is required.",
+  "errors": {
+    "message": ["The message field is required."]
+  }
+}
+```
+
+</ResponseExample>
+
+## Pricing
+
+Each user message in a **widget** conversation costs **$0.01**. Test conversations are free.
+
+## Function Calls
+
+The assistant may execute functions during message processing, such as:
+
+- **Calendar operations**: Checking availability, booking appointments
+- **Knowledge base queries**: Searching documentation or FAQs
+- **Custom integrations**: Calling your configured webhook endpoints
+
+Function call results are included in the response so you can display relevant information to the user or track actions taken.
+
+## Best Practices
+
+1. **Handle errors gracefully**: Display user-friendly messages when errors occur
+2. **Show loading states**: The assistant may take a few seconds to respond, especially when executing functions
+3. **Preserve conversation ID**: Store the conversation UUID to allow users to resume conversations
+4. **Respect rate limits**: Implement appropriate delays between messages if needed

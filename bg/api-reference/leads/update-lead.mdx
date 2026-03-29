@@ -1,0 +1,109 @@
+---
+title: "Update Lead"
+api: "PUT /user/leads/{id}"
+description: "Update an existing lead in your campaigns"
+---
+
+Update a lead by providing the lead ID and the fields you want to modify. Only the fields provided in the request will be updated.
+
+## Path Parameters
+
+<ParamField path="id" type="integer" required>
+  The ID of the lead to update
+</ParamField>
+
+## Body Parameters
+
+<ParamField body="campaign_id" type="integer" optional>
+  The ID of the campaign to assign the lead to
+</ParamField>
+
+<ParamField body="phone_number" type="string" optional>
+  The phone number of the lead (will be formatted to E164)
+</ParamField>
+
+<ParamField body="status" type="string" optional>
+  The status of the lead. Must be one of: `created`, `completed`, `reached-max-retries`
+</ParamField>
+
+<ParamField body="variables" type="object" optional>
+  Custom variables to merge with existing lead variables
+</ParamField>
+
+## Response
+
+<ResponseField name="message" type="string">
+  Success message indicating the lead was updated
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X PUT "https://call.aiployees.com/api/user/leads/123" \
+  -H "Authorization: Bearer YOUR_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "campaign_id": 456,
+    "phone_number": "+1234567890",
+    "variables": {
+      "name": "John Doe",
+      "company": "Acme Corp"
+    }
+  }'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success Response
+{
+  "message": "Lead updated successfully"
+}
+```
+
+```json Error Response - Lead Not Found
+{
+  "message": "Lead not found"
+}
+```
+
+```json Error Response - Campaign Not Found
+{
+  "message": "Campaign not found"
+}
+```
+
+```json Error Response - Invalid Phone Number
+{
+  "message": "Invalid phone number"
+}
+```
+
+```json Error Response - Validation Failed
+{
+  "message": "Validation failed",
+  "errors": {
+    "campaign_id": ["The selected campaign does not exist"],
+    "status": ["This status is assigned automatically and cannot be set manually"],
+    "variables": ["Variables must be an array"]
+  }
+}
+```
+
+```json Error Response - Invalid Fields
+{
+  "message": "Invalid fields: invalid_field, another_invalid_field"
+}
+```
+
+</ResponseExample>
+
+## Notes
+
+- The lead must belong to the authenticated user
+- If updating the campaign, the new campaign must also belong to the authenticated user
+- Phone numbers are automatically formatted and validated
+- Variables are merged with existing variables (not replaced)
+- Only allowed fields can be updated: `campaign_id`, `phone_number`, `status`, `variables`
+- The `status` field has restricted values for data integrity

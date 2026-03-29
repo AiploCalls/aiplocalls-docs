@@ -1,0 +1,25 @@
+---
+title: "Technical limits"
+icon: "ban"
+description: "Technical limits for flows execution"
+---
+
+### Overview
+
+### Flow Limits
+
+- **Execution Time**: Each flow has a maximum execution time of **600 seconds (10 minutes)**. Flows exceeding this limit will be marked as a timeout.
+- **Memory Usage**: During execution, a flow should not use more than **128 MB of RAM**.
+
+### File Storage Limits
+
+- **Maximum File Size**: 10 MB
+
+### Data Storage Limits
+
+Some pieces utilize the built-in key store, such as the Store Piece and Queue Piece.
+
+The storage limits are as follows:
+
+- **Maximum Key Length**: 128 characters
+- **Maximum Value Size**: 512 KB

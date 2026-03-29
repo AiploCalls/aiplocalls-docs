@@ -1,0 +1,111 @@
+---
+title: "Assistant best practices"
+icon: "sliders"
+description: "Quick guide to fine-tune mode, transcriber, model, and other settings for the best call experience."
+---
+
+> **Last updated:** September 1, 2025
+
+Getting great results often comes down to **picking the right engine settings**. Use this checklist when configuring an assistant:
+
+## 1. Pick a Mode
+
+| Mode | Why choose it? | Notes |
+| --- | --- | --- |
+| **Dualplex (Beta)** | Fast turn-taking + premium/cloned voices | Recommended default. Pair with **Gemini Flash 2.0/2.5** or **GPT‑5 Realtime**. |
+| **Speech-to-Speech (Multimodal)** | Fastest turn-taking & most natural flow | Recommended model: **GPT‑5 Realtime**. |
+| **Pipeline** | Maximum control over voice & long-form replies | Recommended model: **GPT‑5 Mini**. If you select Pipeline, continue to the **Transcriber** step below. |
+
+Want to know more about the differences between the modes? Read the <a href="/ai-assistants/assistant-modes">Assistant modes</a> guide.
+
+<Note>
+Experiment with all three modes: record the same scenario in each and compare response time and caller satisfaction.<br/>
+</Note>
+
+## 2. Choose a Transcriber (Pipeline only)
+
+| Transcriber | Accuracy | Latency | Best for |
+| --- | --- | --- | --- |
+| **Azure** | ⭐⭐⭐⭐ | ⏱️⏱️⏱️ (slower) | When you need the highest transcription fidelity. |
+| **Gladia** | ⭐⭐⭐ | ⏱️ (faster) | Good all-rounder for most languages. |
+| **Deepgram** | ⭐⭐⭐ | ⏱️ (faster) | Another solid choice—test which performs better for your language & audio setup. |
+
+> **Tip:** Different languages, accents, or background noise can impact each engine differently. Run a quick A/B test and keep the best performer.
+
+## 3. Select an LLM Model
+
+| Model | Strengths | Trade-offs |
+| --- | --- | --- |
+| **GPT-5 Mini** | Balanced reasoning with low latency | May be slower than realtime models for rapid turn-taking. |
+| **GPT-5 Realtime** | Designed for ultra-low-latency voice turns | Best for **Speech-to-Speech** and **Dualplex**. |
+| **GPT-4o** | Strong reasoning and multimodal understanding | Higher latency. |
+| **Gemini Flash 2.0 / 2.5** | Ultra-fast for voice turns in Dualplex/Multimodal | Excellent for minimizing perceived latency. |
+
+If speed is critical, use **GPT‑5 Realtime** (great for **Speech-to-Speech**) or **Gemini Flash 2.0/2.5** (great with **Dualplex**). For richer reasoning, use **GPT-4o** or **GPT-5 Mini** and offset latency by using filler audios.
+
+## 4. Noise Cancellation
+
+If callers are on speaker phone or in a quiet environment, keep **noise cancellation ON**. If your call volume is low or some words are "clipped," **turn it OFF** so the transcriber gets the full waveform.
+
+<Note>
+If your assistant is not hearing you well, you can try to turn off noise cancellation.
+</Note>
+
+## 5. Conversation Timers
+
+Parameter | Recommended | Why
+--- | --- | ---
+**Re-engagement** | `≈ 30 s` | Gives callers enough time to think. Lower values can feel pushy.
+**Max silence duration** | `≈ 60 s` | Prevents premature hang-ups while still ending truly silent calls.
+
+Test different values in real calls—too low can interrupt, too high leaves awkward gaps.
+
+## 6. Initial Message
+
+Mode | How it's used | Best practice
+--- | --- | ---
+**Pipeline** | Read **exactly** as written (converted by TTS). | Write the greeting verbatim: "Hello, this is Alex from …".
+**Dualplex** | Read **exactly** as written (rendered via ElevenLabs TTS). | Write the greeting verbatim, then select your cloned voice.
+**Speech-to-Speech** | Interpreted as a **prompt** by the model. | Include instructions like "Greet the customer and say …" _or_ prepend `say exactly: ` to ensure literal output.
+
+## 7. Ambient sound
+
+Enabled by default, ambient sound is a feature that adds background noise to the assistant's voice.
+
+<Note>
+If the assistant is not hearing you well, you can try to turn off ambient sound or turn the volume lower.
+</Note>
+
+## 8. Endpointing sliders
+
+**Control when your assistant starts talking** with the endpointing sensitivity slider at the bottom of assistant settings.
+
+| Setting | Effect | Use when |
+| --- | --- | --- |
+| **Lower sensitivity** | Assistant responds **faster** after caller stops speaking | You want snappy, quick-turn conversations |
+| **Higher sensitivity** | Assistant waits **longer** before responding | Callers give longer, more detailed replies |
+
+<Tip>
+**Pro tip:** If your assistant cuts off callers mid-sentence, **increase** the sensitivity. If responses feel sluggish, **decrease** it.
+</Tip>
+
+## 9. Debug using call transcript
+
+If you are having issues with your assistant, you can use the call transcript to debug the issue.
+
+1. Go to the Call history page.
+2. Click on the last call you tested
+3. The call transcript will be shown including function calls and its parameters.
+
+## 10. Still have questions?
+
+If you have any questions, please contact our support team via the chat widget inside the app.
+
+<Note>
+Test different settings with real calls—the right balance depends on your conversation flow and caller behavior patterns.
+</Note>
+
+---
+
+Need a complete list of every toggle and slider? See the full
+<a href="/ai-assistants/settings/general">Assistant settings reference</a>.

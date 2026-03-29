@@ -1,0 +1,133 @@
+---
+title: "SIP Integration Issues"
+icon: "phone-volume"
+description: "Troubleshoot SIP trunk connection problems and configuration issues"
+---
+
+This guide helps resolve common SIP integration issues when connecting your SIP provider to Aiplocalls.
+
+## Testing Strategy
+
+1. **Test Outbound calls first** - easier to configure
+2. **Test Inbound calls second** - after outbound works
+
+## Outbound SIP Issues
+
+### Connection Problems
+
+**SIP trunk not connecting for outbound calls:**
+
+1. **Verify SIP Credentials** - username, password, server details
+2. **Phone Type Selection** - check with provider for correct type
+3. **Fixed IP Configuration** - usually enable and enter provider's IP address
+4. **Provider Settings** - verify codec, transport, port settings
+
+### SIP Registration Issues
+
+**Important:** Aiplocalls platform:
+- **Does NOT send SIP REGISTER** messages to your provider
+- **Does NOT require receiving SIP REGISTER** from your provider
+- Uses **direct call authentication** instead
+
+### Testing Outbound
+
+1. Configure SIP trunk settings
+2. **Make a direct test call** through platform
+3. Check call logs for errors
+
+## Inbound SIP Issues
+
+### Authentication Setup
+
+**For inbound calls:**
+
+1. **Use IP Authentication** - instead of username/password
+2. **Whitelist Provider IPs** - add ALL provider IPs in our platform
+3. **Provider Configuration - IMPORTANT**
+   - **Use our FQDN domain** for routing (NOT the outbound IP)
+   - **Send to domain** - ensures correct routing
+   - **Do NOT send to IP** - causes routing issues
+
+### Common Inbound Issues
+
+**Calls not reaching assistant:**
+- Verify all provider IPs whitelisted
+- Ensure provider sends to FQDN domain (not IP)
+- Check destination number format
+
+## General Issues
+
+**Network problems:**
+- Check internet connectivity
+- Verify no firewall blocking SIP traffic
+
+**Provider compatibility:**
+- Verify provider supports direct calling (no registration)
+- Check IP authentication support
+
+## Testing Checklist
+
+### Before Contacting Support
+
+1. **Outbound Test:**
+   - [ ] Credentials verified
+   - [ ] Phone type selected correctly
+   - [ ] Fixed IP enabled with provider's IP address
+   - [ ] Direct test call attempted
+
+2. **Inbound Test:**
+   - [ ] IP authentication configured
+   - [ ] All provider IPs whitelisted in our platform
+   - [ ] Provider configured to send to FQDN domain (not direct IP)
+   - [ ] Test call from external number
+
+3. **General:**
+   - [ ] Network connectivity verified
+
+## FAQ
+
+### Transfer Phone Call Not Working
+
+**Q: Why is the Transfer Phone Call function not working?**
+
+**A:** If call transfers are failing, try these solutions:
+
+1. **Check SIP Transfer Settings:**
+   - Set transfer call to "Advanced" mode
+   - Use SIP URI format: `sip:number@sip-server`
+   - Example: `sip:+1234567890@sip.provider.com:5060`
+
+2. **Verify Provider Support:**
+   - Confirm your SIP provider supports SIP REFER
+   - Check if transfer functionality is enabled on your account
+   - Some providers require specific configuration for transfers
+
+3. **Test Different Formats:**
+   - Try with port: `sip:+1234567890@sip-server:5060`
+   - Try without port: `sip:+1234567890@sip-server`
+   - Try simple format: `sip:+1234567890`
+
+4. **Verify Destination:**
+   - Ensure the target number is reachable
+   - Test if the number answers calls normally
+   - Check if the number is blocked or restricted
+
+5. **Common Issues:**
+   - Provider doesn't support SIP REFER
+   - Incorrect SIP URI format
+   - Network/firewall blocking transfer requests
+   - Destination number not answering
+
+**Troubleshooting steps:**
+1. Test with a known working number first
+2. Try different SIP URI formats
+3. Contact your SIP provider to confirm transfer support
+4. Check call logs for specific error messages
+
+## Getting Help
+
+**When contacting support, provide:**
+- Error messages from call logs
+- SIP trunk configuration
+- Test results (outbound and inbound)
+- Transfer attempt details and SIP URI format used

@@ -1,0 +1,110 @@
+---
+title: "Cal.com Appointment Scheduling"
+icon: "calendar-days"
+description: "Enable your AI assistant to schedule appointments using Cal.com"
+---
+
+Enable your AI assistant to schedule meetings using Cal.com integration. The system automatically configures booking fields for you.
+
+## Setup
+
+### 1. Get API Key
+
+1. Log in to [Cal.com](https://cal.com/)
+2. Go to **Settings** → **Developer** → **API Keys**
+3. Create a new API key and copy it
+
+<img height="200" src="/resources/calcom-api-key.png" />
+
+### 2. Select Your Region
+
+Cal.com offers different API regions. Choose the one that matches your Cal.com account:
+
+| Region | API Endpoint |
+|--------|-------------|
+| **US** (default) | `api.cal.com` |
+| **EU** | `api.cal.eu` |
+| **Custom** | Your self-hosted Cal.com endpoint |
+
+Select your region in the Cal.com configuration panel before connecting. If you're unsure, the US endpoint is the default.
+
+### 3. Connect Cal.com
+
+1. In your assistant settings → **Tools** tab → **Appointment Scheduling**
+2. Select **Cal.com** from calendar type
+3. Choose your API region
+4. Paste your API key
+5. Select an event from the dropdown
+
+<img height="200" src="/resources/calcom-connect.png" />
+
+### 4. Sync Event
+
+Click the **"Sync Event"** button to automatically configure booking fields.
+
+<img height="200" src="/resources/calcom-sync.png" />
+
+<Check>
+The sync automatically reads your event type's custom fields and configures them for the AI assistant. Name, email, and phone are set as required. All other custom booking fields are imported automatically.
+</Check>
+
+## Event Types
+
+### Personal Events
+
+Select from your personal event types (e.g., 15-minute intro call, 30-minute consultation).
+
+### Team Events
+
+You can also book into **team event types**. When your API key has access to team calendars, team events appear in the event dropdown grouped separately from personal events.
+
+<Tip>
+Team events are useful when you want the AI to book meetings that get distributed across your team members based on their availability.
+</Tip>
+
+## Dynamic Booking Fields
+
+When you sync an event, the system automatically reads all custom booking fields configured on that event type in Cal.com. This means:
+
+- **No manual field configuration** — fields are fetched directly from your Cal.com event type
+- **Custom fields supported** — any custom fields you add to your Cal.com event type are automatically available
+- **Auto-refresh on sync** — click "Sync Event" again if you change your Cal.com event's booking fields
+
+## Multiple Calendars
+
+Click **"+"** next to Appointment Scheduling to add more calendars (e.g., 15min, 30min meetings).
+
+## Email Setup
+
+For calendar invites to work:
+
+1. Define `email` in assistant [input variables](/ai-assistants/settings/prompt-and-tools#call-variables)
+2. Pass customer email when creating leads
+
+The phone number is automatically included after sync.
+
+## Backward Compatibility
+
+If you already have a Cal.com integration configured, your existing settings continue to work without changes. The region defaults to US, and existing field configurations are preserved. You can optionally re-sync to take advantage of dynamic booking fields.
+
+## Troubleshooting
+
+**Invalid API Key:** Verify it's active in Cal.com settings and includes `cal_live_` prefix
+
+**Sync Failed:** Click **"Troubleshoot"** button to reset fields
+
+**No Invites Sent:** Ensure `email` variable is defined and passed with leads
+
+**Field Errors:** Use "Troubleshoot" to reset. Only name, email, phone should be required.
+
+**Wrong Region:** If you get authentication errors, check that you selected the correct region (EU accounts must use the EU endpoint).
+
+<Note>
+For detailed troubleshooting, see [Cal.com Issues](/troubleshooting/cal-com).
+</Note>
+
+## Testing
+
+1. Make a test call and request a meeting
+2. Verify booking appears in Cal.com
+3. Check calendar invitation email was received

@@ -1,0 +1,72 @@
+---
+title: "Get available models"
+api: "GET /user/assistants/models"
+description: "Retrieve available AI models for assistant configuration"
+---
+
+This endpoint returns a list of available AI models that can be used when creating or updating assistants.
+
+### Query Parameters
+
+<ParamField query="type" type="string" default="llm">
+  The type of models to retrieve based on engine mode:
+  - `llm` - LLM models for **pipeline** mode (default)
+  - `multimodal` - Multimodal models for **multimodal** mode
+  - `dualplex` - Multimodal models for **dualplex** mode
+</ParamField>
+
+### Response fields
+
+<ResponseField name="data" type="array">
+  <Expandable title="properties">
+    <ResponseField name="id" type="integer">
+      The unique identifier of the model
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      The display name of the model
+    </ResponseField>
+
+    <ResponseField name="code" type="string">
+      The internal code (only for multimodal/dualplex models)
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json LLM Models (type=llm)
+[
+  {
+    "id": 1,
+    "name": "GPT-4o-mini"
+  },
+  {
+    "id": 2,
+    "name": "GPT-4.1-mini"
+  }
+]
+```
+
+```json Multimodal/Dualplex Models (type=multimodal or type=dualplex)
+[
+  {
+    "id": 1,
+    "name": "GPT-4o",
+    "code": "gpt-4o-realtime"
+  },
+  {
+    "id": 4,
+    "name": "GPT Realtime",
+    "code": "gpt-realtime"
+  }
+]
+```
+
+</ResponseExample>
+
+### Notes
+
+- If no `type` parameter is provided, LLM models are returned by default
+- Use `llm_model_id` field when creating **pipeline** assistants
+- Use `multimodal_model_id` field when creating **multimodal** or **dualplex** assistants

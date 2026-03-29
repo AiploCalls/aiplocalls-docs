@@ -1,0 +1,39 @@
+---
+title: "Delete API key"
+api: "DELETE /user/api-keys/{id}"
+description: "Delete an API key"
+---
+
+This endpoint permanently deletes an API key. Any applications using this key will immediately lose access.
+
+### Path Parameters
+
+<ParamField path="id" type="integer" required>
+  The unique identifier of the API key to delete
+</ParamField>
+
+### Response
+
+<ResponseField name="message" type="string">
+  Success message
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Response
+{
+  "message": "API key deleted successfully."
+}
+```
+
+```json 404 Not Found
+{
+  "message": "API key not found."
+}
+```
+
+</ResponseExample>
+
+<Warning>
+This action is immediate and cannot be undone. Any applications using this API key will stop working immediately.
+</Warning>

@@ -1,0 +1,143 @@
+---
+title: "Creating a Campaign"
+icon: "plus"
+description: "Step-by-step guide to setting up your first automated calling campaign"
+---
+
+Create and configure automated calling campaigns to efficiently reach multiple leads with your AI assistant.
+
+## Prerequisites
+
+Before creating a campaign, ensure you have:
+- **AI assistant** configured for outbound calls
+- **Phone number** assigned to your assistant  
+- **Account balance** sufficient for call costs
+- **Leads ready** to import or add manually
+
+## Campaign Setup
+
+### 1. Basic Information
+
+**Campaign Name:** Choose a descriptive name for easy identification
+**Assistant Selection:** Select which AI assistant will make the calls
+
+<Note>
+The assistant's configuration (voice, prompt, tools) will be used for all campaign calls.
+</Note>
+
+### 2. Scheduling Configuration
+
+#### Allowed Calling Hours
+Set when your campaign can make calls:
+- **Start time:** Earliest time to begin calling (default: 00:00)
+- **End time:** Latest time to stop calling (default: 23:59)
+- **Timezone:** Uses assistant's configured timezone
+
+#### Allowed Days
+Select which days of the week to make calls:
+- **Default:** Monday through Sunday
+- **Business only:** Monday through Friday
+- **Custom:** Choose specific days
+
+<Tip>
+**Recommendation:** For business calls, use Monday-Friday 9:00 AM - 6:00 PM in the prospect's timezone.
+</Tip>
+
+### 3. Retry Settings
+
+#### Basic Retry Options
+- **Max retries:** 1-5 attempts for unanswered calls (default: 3)
+- **Retry interval:** 10-4320 minutes between attempts (default: 60 minutes)
+
+#### Advanced Retry Conditions
+
+**Retry on Voicemail:**
+- **Enabled:** Continue calling until human answers
+- **Disabled:** Count voicemail as attempted contact
+
+**Retry Until Goal Completed:**
+- **Enabled:** Keep calling until objective is achieved
+- **Goal variable:** Select boolean variable from assistant's post-call schema
+- **Use case:** Sales calls, appointment booking, lead qualification
+
+<Warning>
+**Goal-based retry** requires your assistant to have post-call variables configured with boolean fields (true/false).
+</Warning>
+
+### 4. Lead Management
+
+#### Adding Leads
+
+**Manual Entry:**
+- Add individual leads with phone numbers
+- Include names and additional contact information
+
+**CSV Import:**
+- Upload spreadsheet with lead information
+- Required: Phone number column
+- Optional: Name, email, additional fields
+
+**Integration Import:**
+- Import from GoHighLevel, Google Sheets, or other connected platforms
+- Automatic sync with external lead sources
+
+#### Secondary Contacts
+Add additional phone numbers for the same lead:
+- **Use case:** Multiple decision-makers, backup contacts
+- **Logic:** Campaign will try all numbers for each lead
+- **Status:** Independent tracking for each contact
+
+## Starting Your Campaign
+
+### Pre-launch Checklist
+- [ ] Assistant has phone number configured
+- [ ] Sufficient account balance
+- [ ] Leads added with valid phone numbers
+- [ ] Schedule configured appropriately
+- [ ] Retry logic matches campaign goals
+
+### Launch Process
+1. **Review settings** one final time
+2. **Click "Start Campaign"** to begin
+3. **Monitor progress** in campaign dashboard
+4. **Adjust settings** if needed (pause campaign first)
+
+## Campaign Monitoring
+
+### Real-time Status
+- **Calls in progress:** Currently active calls
+- **Calls completed:** Finished calls with outcomes
+- **Leads remaining:** Contacts still to be called
+- **Next call time:** When next call will be made
+
+### Monitoring Progress
+Track lead status and call results in the campaign dashboard. See [Campaign Overview](/campaigns/index#campaign-monitoring) for detailed status explanations.
+
+## Managing Active Campaigns
+
+### Pausing a Campaign
+- **Immediate stop:** Current call completes, no new calls start
+- **Resume capability:** Can restart without losing progress
+- **Use cases:** Adjust settings, review results, temporary pause
+
+### Modifying Settings
+1. **Pause the campaign** first
+2. **Edit configuration** as needed
+3. **Save changes**
+4. **Resume campaign** to continue with new settings
+
+### Adding More Leads
+- **Add to active campaign:** New leads join existing retry queue
+- **Import additional contacts:** CSV or integration import
+- **Secondary contacts:** Add backup numbers for existing leads
+
+## Best Practices
+
+- **Conservative scheduling:** Business hours, respect time zones
+- **Start with 2-3 retries:** Monitor and adjust based on feedback
+- **Clean lead data:** Valid numbers, remove duplicates
+- **Compliance:** Follow local regulations and opt-out requests
+
+<Note>
+For troubleshooting common issues, see [Campaign Troubleshooting](/troubleshooting/campaigns).
+</Note>

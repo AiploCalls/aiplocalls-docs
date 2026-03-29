@@ -1,0 +1,124 @@
+---
+title: "Knowledge Bases"
+icon: "database"
+description: "Learn how to provide your AI assistant with access to FAQs, documents, and other knowledge sources"
+---
+
+Knowledge bases enable your AI assistant to access and reference custom information from various sources like websites, documents, and files. This powerful feature allows your assistant to provide accurate, context-specific responses based on your own content.
+
+## Approaches for Knowledge Integration
+
+### 1. Copy-Paste into Prompt
+
+- **Pros**: Quick to set up, immediate availability.
+- **Cons**: Large texts can slow down responses or risk partial "hallucination."
+- **Usage**: Useful for short references, like top 10 FAQs.
+
+### 2. Knowledge Base Feature
+
+Our dedicated Knowledge Base feature allows you to store and manage documents that the AI can query on demand:
+
+<CardGroup cols={2}>
+  <Card title="Website Content" icon="globe">
+    **Scrape entire websites** to capture all available information
+    - Company websites
+    - Product documentation
+    - FAQ pages
+    - Blog content
+  </Card>
+  
+  <Card title="Document Files" icon="file">
+    **Upload various file formats** with your information
+    - **PDF files:** Manuals, guides, reports
+    - **Word documents (.docx):** Policies, procedures
+    - **Text files (.txt):** Simple content, notes
+  </Card>
+</CardGroup>
+
+#### Processing Status
+
+Every knowledge base goes through different processing stages:
+
+<AccordionGroup>
+  <Accordion title="Empty" icon="folder-open">
+    No documents added yet. Add content to activate the knowledge base.
+  </Accordion>
+  
+  <Accordion title="Processing" icon="clock">
+    Documents are being analyzed and indexed. Processing time varies by content size.
+  </Accordion>
+  
+  <Accordion title="Active" icon="check">
+    Knowledge base is ready. Your AI assistant can now search and reference this information.
+  </Accordion>
+  
+  <Accordion title="Failed" icon="x">
+    Processing failed. Common causes: protected websites, inaccessible content, corrupted files.
+  </Accordion>
+</AccordionGroup>
+
+#### Integration Modes
+
+Choose how your AI assistant accesses knowledge base information:
+
+<CardGroup cols={2}>
+  <Card title="Function Call" icon="function">
+    **Recommended:** Searches only when needed. More efficient and faster.
+    
+    **Best for:** General conversations
+  </Card>
+  
+  <Card title="Prompt Injection" icon="syringe">
+    **Comprehensive:** Searches after every customer message. More accurate but slower.
+    
+    **Best for:** Support-focused assistants. Use with [filler audio](/ai-assistants/filler-audio)
+  </Card>
+</CardGroup>
+
+## Best Practices
+
+- Keep info concise, use bullet points.
+- Separate topics with clear headings so the AI can parse more effectively.
+- Monitor call transcripts to confirm the AI references your data correctly.
+- Use publicly accessible URLs for website scraping
+- Consider file size and processing time for large documents
+
+## Website Scraping Considerations
+
+<Warning>
+**Website Protection:** Some websites have anti-scraping protection that can cause processing to fail. If you own the website, temporarily disable protection during scraping.
+</Warning>
+
+**Common issues:**
+- Cloudflare protection, rate limiting, login requirements
+- JavaScript-heavy sites, protected content
+
+**Solutions:**
+- Use publicly accessible URLs
+- Export content manually and upload as documents
+- Contact support for protected content assistance
+
+## Setup Process
+
+1. Navigate to Knowledge Bases in your dashboard
+2. Click "Create Knowledge Base"
+3. Add name and description
+4. Upload documents (PDF, DOCX, TXT) or add website URLs
+5. Wait for processing to complete
+6. Assign to your assistant in [Assistant Settings](/ai-assistants/settings/prompt-and-tools#knowledge-base)
+
+## Usage
+
+Once connected, your assistant automatically searches the knowledge base during conversations to provide accurate, informed responses based on your content.
+
+**Search functionality:** The AI searches through all documents in your knowledge base to find relevant information based on the customer's question and provides context-aware responses.
+
+## Troubleshooting
+
+**Processing fails:** Check if URLs are publicly accessible, disable website protection if you own it
+**No search results:** Verify content relevance, ensure processing is complete (Active status)
+**Slow responses:** Switch from Prompt Injection to Function Call mode
+
+---
+
+**Note:** For detailed configuration and advanced settings, see the [Assistant Settings Guide](/ai-assistants/settings/prompt-and-tools#knowledge-base).

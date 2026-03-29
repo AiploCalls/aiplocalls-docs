@@ -1,0 +1,280 @@
+---
+title: "Custom Mid-Call Tools"
+icon: "code-branch"
+description: "Learn how to create and configure custom API integrations that your AI assistant can use during calls"
+---
+
+<Note>
+  Custom Mid-Call Tools let your AI assistant interact with external systems
+  during calls. Whether checking inventory, verifying customer data, or fetching
+  real-time information, these tools make your AI more powerful and connected.
+</Note>
+
+## Overview
+
+Custom Mid-Call Tools enable your AI assistant to:
+
+- Make real-time API calls during conversations
+- Fetch or submit data to your systems
+- Make informed decisions based on live data
+- Provide accurate, up-to-date information to callers
+
+<Card title="Key Benefits" icon="star">
+  - No coding required - just configure the API endpoint and parameters - AI
+  automatically knows when and how to use the tools - Real-time data access
+  during calls - Seamless integration with your existing systems
+</Card>
+
+## Setting Up Your Tool
+
+### 1. Basic Configuration
+
+<Frame>
+  <img src="/resources/mid-call.png" alt="Main Tool Configuration" />
+</Frame>
+
+<Steps>
+  <Step title="Access Tool Creation">
+    Navigate to **Mid call tools** and click **Create Mid-Call Tool**
+  </Step>
+
+  <Step title="Configure Main Settings">
+    Fill in the essential details:
+
+    - **Name**: Use lowercase and underscores (e.g., `check_order_status`)
+    - **Description**: Explain when and how the AI should use this tool
+    - **Endpoint**: Your API URL (e.g., `https://api.yourcompany.com/orders`)
+    - **Timeout**: How long to wait for responses (in seconds)
+    - **Method**: Choose GET, POST, PUT, PATCH, or DELETE
+
+  </Step>
+
+  <Step title="Add Headers">
+    Common headers you might need:
+    ```yaml
+    Content-Type: application/json
+    Authorization: Bearer your_token
+    ```
+  </Step>
+</Steps>
+
+### 2. Variable Configuration
+
+<Frame>
+  <img src="/resources/mid-call-param.png" alt="Variable Configuration" />
+</Frame>
+
+<Steps>
+  <Step title="Define Parameters">
+    These are the pieces of information your AI will collect during the call:
+    
+    ```yaml
+    Name: order_number
+    Type: string
+    Description: "10-digit order number from the customer"
+    ```
+  </Step>
+
+  <Step title="Set Validation Rules">
+    Add format requirements in the description:
+    
+    ```yaml
+    "Date in dd/mm/yyyy format"
+    "Phone number without spaces"
+    "Email address for confirmation"
+    ```
+  </Step>
+</Steps>
+
+## Understanding Parameter Types
+
+<CardGroup cols={2}>
+  <Card title="String" icon="font">
+    Text values like names, addresses, or reference numbers
+
+    ```yaml
+    Type: string
+    Examples: "John Doe", "123 Main St"
+    ```
+
+  </Card>
+
+  <Card title="Number" icon="calculator">
+    Numeric values like amounts, quantities, or IDs
+
+    ```yaml
+    Type: number
+    Examples: 42, 99.99
+    ```
+
+  </Card>
+
+  <Card title="true_false" icon="toggle-on">
+    Boolean values for yes/no situations
+
+    ```yaml
+    Type: true_false
+    Examples: true, false
+    ```
+
+  </Card>
+
+  <Card title="Formatting Help" icon="wand-magic-sparkles">
+    Add format instructions in descriptions
+
+    ```yaml
+    "Date in dd/mm/yyyy"
+    "Phone without spaces"
+    ```
+
+  </Card>
+</CardGroup>
+
+## Dynamic Endpoints
+
+<Warning>
+  When using variables in your endpoint URL, make sure to enclose them in curly
+  braces and use the exact parameter name.
+</Warning>
+
+You can make your endpoints dynamic using variables:
+
+```yaml
+Basic URL:
+https://api.example.com/orders/status
+
+With Variables:
+https://api.example.com/orders/{order_id}/status
+```
+
+The AI will automatically replace `{order_id}` with the actual value collected during the conversation.
+
+## Testing Made Easy
+
+<Card title="Automatic Testing" icon="vial">
+Click "Test Tool" to run a test with dummy data:
+- String parameters: "test"
+- Number parameters: 1
+- Boolean parameters: true
+
+You'll see the response code and body, helping you verify everything works.
+
+</Card>
+
+## Power User Feature: Automation Platform Integration
+
+<Note>
+  Need more complex logic? Connect your tool to the automation platform for
+  advanced workflows.
+</Note>
+
+For advanced integrations and complex workflows, you can combine custom tools with our [Automation Platform](/automation-platform/introduction).
+
+Here's how to create powerful integrations:
+
+1. In the automation platform:
+
+   - Create a new flow
+   - Add a webhook trigger
+   - Build your logic (API calls, data transformation, etc.)
+   - End with "Return Response"
+
+2. In your custom tool:
+   - Use the webhook URL as your endpoint
+   - Add `/sync` at the end
+   - Example: `https://call.aiployees.com/automation/webhook/abc123/sync`
+
+This lets you:
+
+- Transform data before/after API calls
+- Make multiple API calls in sequence
+- Apply complex business logic
+- Handle errors gracefully
+
+## Real-World Examples
+
+<AccordionGroup>
+  <Accordion title="Order Lookup System" icon="magnifying-glass">
+    ```yaml
+    Name: check_order
+    Endpoint: https://api.yourshop.com/orders/{order_number}
+    Parameters:
+      - Name: order_number
+        Type: string
+        Description: "Order reference (format: ORD-XXXXX)"
+    ```
+
+    The AI will:
+    1. Ask for the order number
+    2. Fetch the status
+    3. Explain delivery dates and status to the customer
+
+  </Accordion>
+
+  <Accordion title="Appointment Availability" icon="calendar">
+    ```yaml
+    Name: check_slots
+    Endpoint: https://api.calendar.com/availability
+    Parameters:
+      - Name: service
+        Type: string
+        Description: "Service type (haircut, massage, consultation)"
+      - Name: date
+        Type: string
+        Description: "Preferred date (dd/mm/yyyy)"
+    ```
+
+    The AI will:
+    1. Ask about the desired service
+    2. Get preferred date
+    3. Show available time slots
+
+  </Accordion>
+
+  <Accordion title="Customer Verification" icon="shield-check">
+    ```yaml
+    Name: verify_customer
+    Endpoint: https://api.crm.com/verify
+    Parameters:
+      - Name: phone
+        Type: string
+        Description: "10-digit phone number"
+      - Name: email
+        Type: string
+        Description: "Email address for verification"
+    ```
+
+    The AI will:
+    1. Collect contact details
+    2. Verify against your CRM
+    3. Proceed based on verification status
+
+  </Accordion>
+</AccordionGroup>
+
+## Configuring Your AI
+
+<Info>
+  The AI needs clear instructions in its system prompt to effectively use your
+  custom tools.
+</Info>
+
+Example prompt section:
+
+```yaml
+When to use check_order tool:
+1. Customer asks about order status
+2. Mentions tracking or delivery
+3. Wants to know where their package is
+
+How to use it:
+1. Ask for order number if not provided
+2. Verify format (ORD-XXXXX)
+3. Use tool to fetch status
+4. Explain results in simple terms
+```
+
+<Tip>
+  Test your tools with various conversation flows to ensure the AI handles all
+  scenarios smoothly. Start with simple test calls before going live.
+</Tip>

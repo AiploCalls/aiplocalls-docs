@@ -1,0 +1,48 @@
+---
+title: "Make a phone call"
+api: "POST /user/make_call"
+description: "Make a phone call"
+---
+
+This endpoint allows you to make a phone call.
+
+### Request body
+
+<ParamField body="phone_number" type="string" required>
+  The phone number of the customer in E.164 format (e.g. +1234567890)
+</ParamField>
+
+<ParamField body="assistant_id" type="integer" required>
+  The ID of the assistant to make the call with
+</ParamField>
+
+<ParamField body="variables" type="object">
+  Custom variables to pass to the call. You can include **any variables that are defined on your assistant** (see [Call variables](/ai-assistants/settings/prompt-and-tools#call-variables)). The examples below are just for illustration — use your own variable names as configured in the assistant settings.
+
+  <Expandable title="Example variables (add your own)">
+    <ParamField body="customer_name" type="string">
+      e.g. the name of the customer
+    </ParamField>
+
+    <ParamField body="email" type="string">
+      e.g. the email of the customer
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+### Response
+
+<ResponseField name="message" type="string" default="Call initiated successfully">
+  The message of the response
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Response
+{
+  "message": "Call initiated successfully",
+  "data": {}
+}
+```
+
+</ResponseExample>

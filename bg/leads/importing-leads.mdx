@@ -1,0 +1,185 @@
+---
+title: "Importing Leads"
+icon: "file-import"
+description: "Import leads from CSV and Excel files with validation and error handling"
+---
+
+Import large numbers of leads from CSV or Excel files with automatic validation, background processing, and comprehensive error reporting.
+
+## Import Process Overview
+
+The lead import system supports:
+- **CSV and Excel files** (.csv, .xlsx, .xls)
+- **Background processing** for large files
+- **Automatic validation** with error reporting
+- **Secondary contacts** in same import
+- **Variable mapping** from assistant configuration
+
+## Preparing Your Import File
+
+### Required Columns
+Your import file must include:
+- **phone_number:** Primary contact phone number (required)
+- **Variables:** Columns matching your [assistant's configured variables](/ai-assistants/settings/prompt-and-tools#call-variables)
+
+### Optional Columns
+- **Secondary contact columns:** Additional phone numbers
+- **Variable overrides:** Custom values for specific leads
+
+### File Format Example
+```csv
+phone_number,customer_name,company,budget_range,secondary_phone_1,secondary_phone_2
++14155551234,John Smith,ABC Corp,10k-50k,+14155551235,+14155551236
++14155557890,Jane Doe,XYZ Inc,50k-100k,+14155557891,
++14155554567,Bob Johnson,Tech Start,5k-10k,,
+```
+
+## Import Configuration
+
+### 1. Select Campaign
+Choose the target campaign from the dropdown. The assistant's variables will determine what columns are expected during mapping.
+
+### 2. Secondary Contacts
+Select how many secondary phone numbers per lead (0-10). If your file contains additional phone numbers beyond the primary contact, specify the count here.
+
+### 3. Phone Number Format
+Choose the format of your phone numbers:
+
+**International Format (Recommended)**
+- Numbers already include country code with + prefix
+- Example: `+40741234567`, `+14155551234`
+- No country selection needed
+- Can mix multiple countries in same file
+
+**National Format**
+- Numbers without country code prefix
+- Example: `0741234567`, `7775551234`
+- **Must select country code** during import
+- **Important:** Separate your file by country - all numbers must be from the same country per file
+- System will add the selected country code to all numbers
+
+<Warning>
+When using national format, you must import one file per country. Do not mix numbers from different countries in the same file.
+</Warning>
+
+### 4. Country Code Selection
+Only appears when "National Format" is selected. Choose the country that matches all phone numbers in your file. The system will automatically prepend the country code to all numbers.
+
+## Import Steps
+
+### 1. Start Import Process
+1. **Navigate to Leads** section or Campaign leads tab
+2. **Click "Import Leads"** button  
+3. **Select campaign** for lead assignment
+4. **Download sample** file to see expected format
+
+### 2. Upload and Map Columns
+1. **Choose file:** Select your CSV or Excel file
+2. **Column mapping:** Map your file columns to system fields:
+   - **Phone Number (required):** Select the column containing phone numbers
+   - **Assistant variables:** Map each variable to its corresponding column
+   - **Secondary contacts:** If configured, map secondary phone numbers and variables
+3. **Auto-detection:** System auto-detects mappings based on common header names
+4. **Review and import:** Confirm mappings and click "Import" to begin
+
+### 3. Background Processing
+- **Queue processing:** Large files processed in background
+- **Progress tracking:** Import status updates automatically
+- **Notification:** Email notification when import completes
+- **Error reporting:** Download report of any failed rows
+
+## Validation Rules
+
+### Phone Number Validation
+- **Format checking:** International format preferred (+1234567890)
+- **Duplicate detection:** Prevents duplicate phone numbers
+- **Invalid numbers:** Automatically flagged and skipped
+
+### Variable Validation
+- **Required fields:** Variables marked as required must have values
+- **Data types:** Text, number, boolean validation where applicable
+- **Length limits:** Maximum character limits enforced
+
+### Secondary Contact Validation
+- **Phone format:** Same validation as primary numbers
+- **Unique numbers:** Secondary contacts must differ from primary
+- **Variable consistency:** Secondary contact variables validated independently
+
+## Error Handling
+
+### Automatic Error Handling
+The import system automatically handles validation errors:
+- **Valid rows imported:** Successfully validated leads are added to the campaign
+- **Invalid rows skipped:** Rows that fail validation are automatically excluded
+- **Error report generated:** Detailed report of all failed rows is created
+- **Partial success:** Import completes successfully with all valid leads, failed rows are recorded
+
+### Common Validation Errors
+- **Invalid phone numbers:** Incorrect format or impossible numbers
+- **Missing required fields:** Empty values for required variables
+- **Duplicate phone numbers:** Phone number already exists in system
+- **File format issues:** Corrupted or unsupported file format
+
+### Error Report Download
+After import completion:
+- **Download link** provided in notification
+- **Detailed error descriptions** for each failed row
+- **Correction guidance** for fixing issues
+- **Re-import capability** with corrected data
+
+## Secondary Contacts Import
+
+### Multiple Phone Numbers per Lead
+Include additional columns for secondary contacts:
+```csv
+phone_number,customer_name,secondary_phone_1,secondary_phone_2,secondary_phone_3
++14155551234,John Smith,+14155551235,+14155551236,+14155551237
+```
+
+### Secondary Contact Variables
+Add variables specific to secondary contacts:
+```csv
+phone_number,customer_name,secondary_phone_1,secondary_1_name,secondary_1_role
++14155551234,John Smith,+14155551235,Jane Smith,Decision Maker
+```
+
+### Contact Ordering
+- **Primary contact:** Always called first
+- **Secondary order:** Called in column order (secondary_phone_1, then secondary_phone_2, etc.)
+- **Campaign coordination:** Respects campaign retry settings between contacts
+
+## Large File Handling
+
+### Background Processing
+- **Automatic queuing:** Files over 1000 rows processed in background
+- **Memory efficiency:** Streaming processing prevents timeouts
+- **Progress tracking:** Real-time status updates
+- **System performance:** No impact on platform performance during import
+
+### Notification System
+- **Email notifications:** Sent when import completes
+- **Success summary:** Number of leads imported successfully
+- **Error summary:** Count and details of failed rows
+- **Download links:** Access to error reports and imported data
+
+### Processing Time
+- **Small files (< 100 rows):** Usually complete within 1 minute
+- **Medium files (100-1000 rows):** 2-5 minutes typical
+- **Large files (1000+ rows):** 10-30 minutes depending on complexity
+- **Very large files (10k+ rows):** May take several hours
+
+## Best Practices
+
+- **Use sample file:** Download provided template for correct format
+- **Phone format:** International format without separators (+1234567890)
+- **Clean data:** Remove empty rows and validate content
+- **Test first:** Start with small batch to verify format
+- **Match variables:** Ensure columns align with assistant configuration
+
+<Note>
+For detailed troubleshooting and common import issues, see [Leads Troubleshooting](/troubleshooting/leads).
+</Note>
+
+<Note>
+For information about managing imported leads, see [Managing Leads](/leads/managing-leads).
+</Note>

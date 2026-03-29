@@ -1,0 +1,87 @@
+---
+title: "Web Widget Issues"
+icon: "code"
+description: "Troubleshoot common web widget problems and integration issues"
+---
+
+Solutions for common web widget issues.
+
+## Widget Not Appearing
+
+**Check these:**
+- Embed code placed before closing `</body>` tag
+- Clear browser cache (Ctrl+Shift+R or Cmd+Shift+R)
+- Test in incognito window
+- Verify plan includes web widget access
+- Check browser console (F12) for JavaScript errors
+- Re-copy embed code from widget configuration
+
+## Voice Not Working
+
+**HTTPS Required:**
+Voice functionality requires HTTPS. HTTP sites can only use chat mode.
+
+**Check these:**
+- Website uses HTTPS (SSL certificate)
+- Browser has microphone permission
+- Microphone works in other applications
+- Using modern browser (Chrome, Firefox, Safari, Edge)
+- No VPN or firewall blocking WebRTC
+
+## Chat Not Working
+
+**Check these:**
+- Browser console (F12) for errors
+- Assistant is properly configured
+- Test assistant with [Test Chat](/ai-assistants/test-chat)
+- Review conversation in [Conversations](/conversations/overview) page
+- Reload page to reset widget state
+
+## Pre-Chat Form Issues
+
+**Check these:**
+- Form fields configured in widget settings
+- Form fields have both name and label
+- Widget settings were saved
+- Field names match assistant variables exactly
+- Clear browser cache and test in incognito
+
+## Display & Styling Issues
+
+**Check these:**
+- Widget position setting in configuration
+- Website CSS might override widget styles
+- Change primary color for better visibility
+- Check if page elements cover the widget (z-index)
+- Test on actual mobile devices
+
+## Configuration Not Updating
+
+**Check these:**
+- Click "Save widget settings" button
+- Copy fresh embed code after saving
+- Replace old embed code on your website
+- Clear browser cache (Ctrl+Shift+R)
+- Test in incognito window
+
+## WordPress/CMS Issues
+
+**Check these:**
+- Use Custom HTML block/widget (not visual editor)
+- Add embed code before closing `</body>` tag
+- Clear caching plugin cache
+- Temporarily disable security plugins if needed
+
+## Still Having Issues?
+
+1. Check browser console (F12) for errors
+2. Test in incognito mode
+3. Try different browser
+4. Test assistant with [Test Chat](/ai-assistants/test-chat)
+5. Contact support with browser console screenshot
+
+## Related Documentation
+
+- [Web Widget Setup](/ai-assistants/web-widget)
+- [Test Chat Interface](/ai-assistants/test-chat)
+- [Viewing Conversations](/conversations/viewing-and-managing)

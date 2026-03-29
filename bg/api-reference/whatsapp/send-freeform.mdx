@@ -1,0 +1,254 @@
+---
+title: "Send Freeform Message"
+api: "POST /user/whatsapp/send-freeform"
+description: "Send a free-text WhatsApp message within an active 24-hour session"
+---
+
+This endpoint sends a freeform (free-text) WhatsApp message to a recipient. Unlike template messages, freeform messages can contain any text but **require an active 24-hour messaging window** — meaning the recipient must have sent a message to your WhatsApp sender within the last 24 hours.
+
+<Warning>
+  Freeform messages can only be sent during an active 24-hour messaging window. If the session has expired, you must send a [template message](/api-reference/whatsapp/send-template) first to re-initiate the conversation. Use the [Session Status](/api-reference/whatsapp/session-status) endpoint to check if a session is active.
+</Warning>
+
+<Note>
+  This endpoint is rate-limited to **5 requests per second** per user.
+</Note>
+
+### Request Body
+
+<ParamField body="sender_id" type="integer" required>
+  The ID of the WhatsApp sender to send from (obtained from the [Get Senders](/api-reference/whatsapp/get-senders) endpoint)
+</ParamField>
+
+<ParamField body="recipient_phone" type="string" required>
+  The recipient's phone number in international format (e.g., `+1234567890`)
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  The message content to send (max 4096 characters)
+</ParamField>
+
+### Response Fields
+
+<ResponseField name="success" type="boolean">
+  Whether the message was sent successfully
+</ResponseField>
+
+<ResponseField name="conversation_id" type="integer">
+  The ID of the conversation associated with this message
+</ResponseField>
+
+<ResponseField name="message_id" type="integer">
+  The ID of the conversation message record
+</ResponseField>
+
+<ResponseField name="whatsapp_message_id" type="integer">
+  The ID of the WhatsApp message record
+</ResponseField>
+
+<ResponseField name="message_sid" type="string">
+  The Twilio message SID for tracking delivery
+</ResponseField>
+
+<ResponseField name="session_status" type="object">
+  Updated session status after sending the message
+  <Expandable title="Session status properties">
+    <ResponseField name="is_open" type="boolean">
+      Whether the 24-hour messaging window is currently open
+    </ResponseField>
+    <ResponseField name="can_send_freeform" type="boolean">
+      Whether freeform messages can be sent right now
+    </ResponseField>
+    <ResponseField name="requires_template" type="boolean">
+      Whether a template message is required
+    </ResponseField>
+    <ResponseField name="message" type="string">
+      Human-readable description of the session state
+    </ResponseField>
+    <ResponseField name="minutes_remaining" type="integer">
+      Minutes remaining in the 24-hour window
+    </ResponseField>
+    <ResponseField name="expires_at" type="string">
+      ISO 8601 timestamp when the session expires
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+### Error Responses
+
+<ResponseField name="402 Insufficient Balance">
+  <Expandable title="Error Response">
+    <ResponseField name="success" type="boolean">`false`</ResponseField>
+    <ResponseField name="error" type="string">`Insufficient balance. Please top up your account.`</ResponseField>
+    <ResponseField name="error_code" type="string">`INSUFFICIENT_BALANCE`</ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="403 Session Expired">
+  <Expandable title="Error Response">
+    <ResponseField name="success" type="boolean">`false`</ResponseField>
+    <ResponseField name="error" type="string">Message indicating the 24-hour messaging window has expired</ResponseField>
+    <ResponseField name="error_code" type="string">`SESSION_EXPIRED`</ResponseField>
+    <ResponseField name="session_status" type="object">
+      Current session status with `is_open`, `can_send_freeform`, `requires_template`, and `message` fields
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="404 Not Found">
+  <Expandable title="Error Response">
+    <ResponseField name="success" type="boolean">`false`</ResponseField>
+    <ResponseField name="error" type="string">`Sender not found or does not belong to you`</ResponseField>
+    <ResponseField name="error_code" type="string">`SENDER_NOT_FOUND`</ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="503 Sender Offline">
+  <Expandable title="Error Response">
+    <ResponseField name="success" type="boolean">`false`</ResponseField>
+    <ResponseField name="error" type="string">Message indicating the sender is currently offline</ResponseField>
+    <ResponseField name="error_code" type="string">`SENDER_OFFLINE`</ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X POST "https://call.aiployees.com/api/user/whatsapp/send-freeform" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "sender_id": 12,
+    "recipient_phone": "+1234567890",
+    "message": "Thank you for your inquiry! Our team will review your request and get back to you within 2 hours."
+  }'
+```
+
+```javascript JavaScript
+const response = await fetch(
+  'https://call.aiployees.com/api/user/whatsapp/send-freeform',
+  {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer YOUR_API_KEY',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      sender_id: 12,
+      recipient_phone: '+1234567890',
+      message: 'Thank you for your inquiry! Our team will review your request and get back to you within 2 hours.'
+    })
+  }
+);
+
+const data = await response.json();
+console.log(data);
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://call.aiployees.com/api/user/whatsapp/send-freeform',
+    headers={
+        'Authorization': 'Bearer YOUR_API_KEY',
+        'Content-Type': 'application/json'
+    },
+    json={
+        'sender_id': 12,
+        'recipient_phone': '+1234567890',
+        'message': 'Thank you for your inquiry! Our team will review your request and get back to you within 2 hours.'
+    }
+)
+
+print(response.json())
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json 200 Success
+{
+  "success": true,
+  "conversation_id": 1234,
+  "message_id": 567,
+  "whatsapp_message_id": 890,
+  "message_sid": "SMxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "session_status": {
+    "is_open": true,
+    "can_send_freeform": true,
+    "requires_template": false,
+    "message": "Session open (23 hr 45 min remaining). Unlimited free-form messages allowed.",
+    "minutes_remaining": 1425,
+    "expires_at": "2026-02-25T10:30:00+00:00"
+  }
+}
+```
+
+```json 402 Insufficient Balance
+{
+  "success": false,
+  "error": "Insufficient balance. Please top up your account.",
+  "error_code": "INSUFFICIENT_BALANCE"
+}
+```
+
+```json 403 Session Expired
+{
+  "success": false,
+  "error": "The 24-hour messaging window is closed. Customer must reply first, or use a template message.",
+  "error_code": "SESSION_EXPIRED",
+  "session_status": {
+    "is_open": false,
+    "can_send_freeform": false,
+    "requires_template": true,
+    "message": "Session expired. Send a template or wait for customer to reply.",
+    "expired_at": "2026-02-23T10:30:00+00:00"
+  }
+}
+```
+
+```json 404 Sender Not Found
+{
+  "success": false,
+  "error": "Sender not found or does not belong to you",
+  "error_code": "SENDER_NOT_FOUND"
+}
+```
+
+```json 422 Invalid Phone
+{
+  "success": false,
+  "error": "Invalid phone number format. Use E.164 format (e.g., +14155551234).",
+  "error_code": "INVALID_PHONE"
+}
+```
+
+```json 503 Sender Offline
+{
+  "success": false,
+  "error": "Sender is not online. Current status: Offline",
+  "error_code": "SENDER_OFFLINE"
+}
+```
+
+</ResponseExample>
+
+### 24-Hour Messaging Window
+
+WhatsApp enforces a **24-hour messaging window** policy:
+
+1. When a customer sends a message to your WhatsApp Business number, a 24-hour window opens.
+2. During this window, you can send freeform messages without restrictions.
+3. After the window expires, you must use a [template message](/api-reference/whatsapp/send-template) to re-initiate the conversation.
+4. Each new customer message resets the 24-hour timer.
+
+Use the [Session Status](/api-reference/whatsapp/session-status) endpoint to check whether a session is active before attempting to send a freeform message.
+
+### Notes
+
+- Maximum message length is **4,096 characters** (WhatsApp limit).
+- The sender must be `online`. Offline senders return a `503` error.
+- Message costs are automatically deducted from your account balance.
+- Rate limit: 5 requests per second per user.

@@ -1,0 +1,77 @@
+---
+title: "Get synthesizer providers"
+api: "GET /user/assistants/synthesizer-providers"
+description: "Retrieve available TTS (text-to-speech) synthesizer providers"
+---
+
+This endpoint returns a list of available synthesizer providers that can be used when creating or updating assistants. Use the returned `id` as `synthesizer_provider_id` when configuring an assistant.
+
+### Query Parameters
+
+<ParamField query="language_id" type="integer">
+  Filter providers by language support. Only returns providers that support the given language. Use the [Get Languages](/api-reference/assistants/get-languages) endpoint to get available language IDs.
+</ParamField>
+
+### Response fields
+
+<ResponseField name="data" type="array">
+  <Expandable title="properties">
+    <ResponseField name="id" type="integer">
+      The unique identifier of the provider. Use this as `synthesizer_provider_id` when creating or updating assistants.
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      The display name of the provider (e.g., "ElevenLabs", "Azure", "Cartesia")
+    </ResponseField>
+
+    <ResponseField name="code" type="string">
+      The internal code of the provider
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Response
+[
+  {
+    "id": 1,
+    "name": "ElevenLabs",
+    "code": "elevenlabs"
+  },
+  {
+    "id": 2,
+    "name": "Azure",
+    "code": "azure"
+  },
+  {
+    "id": 3,
+    "name": "Cartesia",
+    "code": "cartesia"
+  }
+]
+```
+
+```json 200 Filtered by language
+[
+  {
+    "id": 1,
+    "name": "ElevenLabs",
+    "code": "elevenlabs"
+  },
+  {
+    "id": 3,
+    "name": "Cartesia",
+    "code": "cartesia"
+  }
+]
+```
+
+</ResponseExample>
+
+### Notes
+
+- If no `language_id` filter is provided, all providers are returned
+- Not all providers support all languages — use the `language_id` filter to get compatible providers
+- Synthesizer providers are only relevant for `pipeline` and `dualplex` modes (multimodal mode handles TTS internally)
+- If you don't set `synthesizer_provider_id` when creating an assistant, the language's default provider is used

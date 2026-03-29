@@ -1,0 +1,88 @@
+---
+title: "Disable assistant webhook"
+api: "POST /user/assistants/disable-webhook"
+description: "Disable webhook notifications for a specific assistant"
+---
+
+This endpoint disables webhook notifications for an assistant, stopping all real-time updates about call completions and data.
+
+### Request Body
+
+<ParamField body="assistant_id" type="integer" required>
+  The ID of the assistant to disable webhook for
+</ParamField>
+
+### Response
+
+<ResponseField name="message" type="string">
+  Success message confirming webhook was disabled
+</ResponseField>
+
+<ResponseField name="data" type="array">
+  Empty array (reserved for future use)
+</ResponseField>
+
+### Error Responses
+
+<ResponseField name="404 Not Found">
+  <Expandable title="Error Response">
+    <ResponseField name="message" type="string">
+      Error message when the assistant is not found or doesn't belong to the authenticated user
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="422 Validation Error">
+  <Expandable title="Error Response">
+    <ResponseField name="message" type="string">
+      Error message indicating validation failure
+    </ResponseField>
+    <ResponseField name="errors" type="object">
+      Detailed validation errors for each field
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Success Response
+{
+  "message": "Webhook disabled successfully",
+  "data": []
+}
+```
+
+```json 404 Not Found
+{
+  "message": "Assistant not found"
+}
+```
+
+```json 422 Validation Error
+{
+  "message": "The given data was invalid.",
+  "errors": {
+    "assistant_id": [
+      "The assistant id field is required."
+    ]
+  }
+}
+```
+
+</ResponseExample>
+
+### Webhook Behavior
+
+When webhook is disabled:
+
+- The assistant will stop sending HTTP POST requests to your webhook URL
+- Both `is_webhook_active` is set to `false` and `webhook_url` is set to `null`
+- Any ongoing calls will complete normally, but no webhook notifications will be sent
+- Call data will still be available through the API calls endpoints
+
+### Notes
+
+- The assistant must belong to the authenticated user
+- This completely removes the webhook configuration from the assistant
+- You can later re-enable webhooks using the enable webhook endpoint with a new URL
+- Disabling webhooks does not affect call recording or data collection

@@ -1,0 +1,197 @@
+---
+title: "Custom Dashboards"
+icon: "chart-line"
+description: "Create personalized dashboards with widgets to track your call metrics and performance"
+---
+
+Custom Dashboards let you build tailored analytics views with drag-and-drop widgets. Track the metrics that matter most to your business with stats, charts, and tables.
+
+## What are Custom Dashboards?
+
+Personalized analytics pages you create with widgets displaying your call data. Each dashboard contains multiple widgets showing different data views.
+
+<CardGroup cols={3}>
+  <Card title="Stat Widgets" icon="chart-simple">
+    Single metrics like total calls, averages, or success rates
+  </Card>
+
+  <Card title="Chart Widgets" icon="chart-line">
+    Visual trends with 8 chart types (line, bar, pie, etc.)
+  </Card>
+
+  <Card title="Table Widgets" icon="table">
+    Detailed records with custom columns and filters
+  </Card>
+</CardGroup>
+
+## Quick Start
+
+### Create a Dashboard
+
+1. Click **"Create Custom Dashboard"** in sidebar
+2. Enter name (e.g., "Sales Performance")
+3. Choose icon
+4. Click **"Create Dashboard"**
+
+### Add Widgets
+
+**Option 1: Use Presets** (21 ready-made widgets)
+1. Click **"Unlock to customize"**
+2. Click **"Add"** button
+3. Select preset widget (marked with emoji 📊📈📋)
+4. Click **"Save"**
+
+**Option 2: Create Custom Widget**
+1. Click **"Manage Widgets"** → **"Create New Widget"**
+2. Choose type: Statistic, Chart, or Table
+3. Configure data source and options
+4. Save widget
+5. Add to dashboard
+
+## Widget Types
+
+### Stat Widget 📊
+
+Single number with optional comparison and mini-chart.
+
+**Example uses:**
+- Total calls this month
+- Average call duration
+- Success rate percentage
+
+**Key options:**
+- Data source: calls, leads, campaigns, assistants, phone_numbers, sms
+- Aggregation: COUNT, SUM, AVG, MAX, MIN
+- Color: Primary (Blue), Success (Green), Warning (Orange), Danger (Red), Info (Cyan), Gray
+- Label and description text
+- Show mini chart (daily trend)
+- Compare with previous period (percentage change)
+- Date range: Today, Yesterday, Last 7/14/30/60/90 days, Last 6 months, Last year
+- Conditions (filters)
+
+### Chart Widget 📈
+
+Visualize trends and distributions.
+
+**Chart types:**
+- **Line** - Trends over time
+- **Bar** - Compare categories or time periods
+- **Area** - Filled trend chart
+- **Pie** - Proportions (requires Group By)
+- **Donut** - Pie with center hole (requires Group By)
+- **Polar Area** - Circular with varying radius (requires Group By)
+- **Radar** - Multi-axis comparison
+- **Radial Bar** - Single progress/percentage indicator
+
+**Key options:**
+- Data source: calls, leads, campaigns, assistants, phone_numbers, sms
+- Aggregation: COUNT, SUM, AVG, MAX, MIN
+- Chart type: Line Chart, Bar Chart, Area Chart, Pie Chart, Donut Chart, Polar Area, Radar, Radial Bar
+- Color: Primary (Blue), Success (Green), Warning (Orange), Danger (Red), Info (Cyan), Gray
+- Group by period: Hourly, Daily, Weekly, Monthly (for time-series)
+- Group by field: status, campaign, assistant, any column (for categories)
+- Chart height: 200-800px
+- Show grid lines, legend, tooltips, data labels, toolbar
+- Line curve: smooth, straight, stepline
+- Line width: 1-10px
+- Gradient (radialBar only)
+- Date range: Today, Yesterday, Last 7/14/30/60/90 days, Last 6 months, Last year
+- Conditions (filters)
+
+### Table Widget 📋
+
+Detailed records with sortable columns.
+
+**Example uses:**
+- Recent calls with details
+- Failed calls for review
+- Lead contact history
+
+**Key options:**
+- Data source: calls, leads, campaigns, assistants, phone_numbers, sms
+- Campaign filter (for leads - enables variable columns)
+- Assistant filter (for calls - enables evaluation field columns)
+- Column selection: basic, relationships, evaluation fields, lead variables
+- Sort by: any basic column
+- Sort direction: desc (newest first), asc (oldest first)
+- Rows per page: 1-100
+- Date range: Today, Yesterday, Last 7/14/30/60/90 days, Last 6 months, Last year
+- Conditions (filters)
+
+## Filtering Data
+
+All widgets support powerful filters:
+
+**Date ranges:** Today, Yesterday, Last 7/14/30/60/90 days, Last 6 months, Last year
+
+**Conditions:** Multiple AND filters
+- Status equals "completed"
+- Duration greater than 60 seconds
+- Assistant name equals "Sales Bot"
+
+**Evaluation fields:** Filter by post-call evaluation values
+- Column: Extracted Variables
+- Extracted Variable Name: Custom variable
+- Custom Variable Name: appointment_booked
+- Operator: =
+- Variable Value: true
+
+## Layout Management
+
+### Edit Mode
+
+1. Click **"Unlock to customize"**
+2. Drag widgets to reorder
+3. Resize widgets (1-12 columns wide)
+4. Remove widgets with X button
+5. Click **"Save"** to persist
+6. Click **"Lock"** to exit edit mode
+
+### Best Practices
+
+**Widget sizing:**
+- Stats: 3-4 columns (fit 3-4 per row)
+- Charts: 6-12 columns
+- Tables: 12 columns (full width)
+
+**Layout tips:**
+- Put KPIs at top
+- Group related metrics
+- Place tables at bottom
+
+## Common Use Cases
+
+### Sales Dashboard
+- Stat: Successful calls (filter by evaluation field "appointment_booked")
+- Chart: Daily trend of successful calls
+- Table: Recent successful calls with appointment details
+
+### Support Quality
+- Stat: Average call duration
+- Chart: Call status breakdown (pie chart)
+- Table: Recent calls with evaluation scores
+
+### Campaign Performance
+- Stat: Total campaign calls
+- Chart: Calls per campaign (bar chart)
+- Table: Top performing campaigns
+
+## Troubleshooting
+
+**Widget shows "No data":**
+- Expand date range
+- Check filters aren't too restrictive
+- Verify you have records
+
+**Slow loading:**
+- Reduce widget count (keep under 20)
+- Use date range filters
+- Clear browser cache
+
+**Dashboard not in sidebar:**
+- Refresh page
+- Check plan includes feature
+
+<Note>
+For detailed configuration, see individual widget type guides.
+</Note>

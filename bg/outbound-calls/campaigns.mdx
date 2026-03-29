@@ -1,0 +1,48 @@
+---
+title: "Creating & Managing Campaigns"
+icon: "bullhorn"
+description: "Step-by-step guide to creating and managing outbound call campaigns, including lead imports and monitoring"
+---
+
+An outbound "campaign" determines when, how, and to whom calls are made. Campaigns automate calls to multiple leads using your AI assistant with intelligent scheduling and retry logic.
+
+## Quick Setup
+
+1. **Go to Outbound / Campaigns** in your dashboard
+2. **Click "Create New Campaign"**:
+   - **Name**: e.g. "January Promo," "Payment Reminder," etc.
+   - **Assistant**: which AI assistant will handle these calls?
+   - **Schedule**: choose time windows and allowed days
+
+## Lead Import Options
+
+- **CSV File**: Upload phone numbers (plus any extra columns, like name or account number)
+- **Google Sheets**: Connect via the no-code platform or direct integration to pull leads
+- **CRM Integration**: HubSpot, GoHighLevel, etc. can send leads directly via API or automation
+
+## Key Settings
+
+**Call Retries & Scheduling:**
+- **Max Retries**: e.g., attempt each lead up to 2 times if they don't answer
+- **Retry Interval**: minutes/hours between retries
+- **Time Window**: e.g., only call between 9 AM and 6 PM local time to avoid inconveniencing leads
+
+**Monitoring & Control:**
+- Once live, calls happen automatically during allowed hours
+- You can **pause** or **stop** the campaign anytime to revise your script or leads list
+- **Campaign Reports** show call results, answer rates, and duration analytics
+
+## Best Practices
+
+- **Conservative scheduling**: Business hours, respect time zones
+- **Start with 2-3 retries**: Monitor and adjust based on feedback
+- **Clean lead data**: Valid numbers, remove duplicates
+- **Monitor costs**: Large campaigns can run thousands of parallel calls
+
+<Note>
+**Large campaigns** with thousands of leads can run concurrently, as AI can handle parallel calls. Watch your minute usage to avoid unexpected costs.
+</Note>
+
+---
+
+For comprehensive setup instructions, advanced features, lead management, status tracking, and troubleshooting, see the complete [Campaigns Documentation](/campaigns/index).

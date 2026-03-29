@@ -1,0 +1,230 @@
+---
+title: "AI Prompt Editor"
+icon: "sparkles"
+description: "Edit and improve your assistant's prompts using AI-powered suggestions through a conversational interface"
+---
+
+The AI Prompt Editor is an intelligent tool that allows you to edit and improve your AI assistant's prompts using natural language. Instead of manually editing text, you can chat with an AI assistant that understands your requests and suggests intelligent modifications.
+
+## Overview
+
+The AI Prompt Editor provides:
+
+- **Conversational editing** - Describe changes in plain language
+- **Smart suggestions** - AI understands context and makes relevant changes
+- **Review before apply** - Accept or reject each change individually
+- **Variable management** - Easily manage pre-call and post-call data
+- **Template library** - Start with proven prompt templates
+
+<Frame>
+  <img src="/resources/ai-assistants/ai-prompt-editor-overview.png" alt="AI Prompt Editor Interface" />
+</Frame>
+
+## Getting Started
+
+<Steps>
+  <Step title="Open your assistant">
+    Navigate to **Assistants** in the sidebar and click on the assistant you want to edit.
+  </Step>
+  <Step title="Find the AI Prompt Editor">
+    In the edit form, scroll to the **System Prompt** section and find the **AI Prompt Editor** tab.
+  </Step>
+  <Step title="Launch the editor">
+    Click the **Launch AI Prompt Editor** button. A modal window will open with the editor interface.
+  </Step>
+</Steps>
+
+<Note>
+You must save your assistant at least once before you can use the AI Prompt Editor.
+</Note>
+
+## Interface Overview
+
+The AI Prompt Editor has three main areas:
+
+### Chat Panel (Left Side)
+
+This is where you interact with the AI:
+
+- Type your requests in the input box at the bottom
+- View conversation history above
+- Use quick suggestion chips for common actions:
+  - **Make it more concise** - Shorten the prompt
+  - **Add more detail** - Expand with specifics
+  - **Improve clarity** - Make instructions clearer
+  - **Add instructions** - Add new behavioral guidelines
+
+### Editor Panel (Right Side)
+
+This shows your current prompt with two tabs:
+
+- **System Prompt** - The main instructions for your assistant
+- **Initial Message** - The greeting message when calls start
+
+Toggle between **Edit** mode (textarea) and **Preview** mode (formatted view with diff highlights).
+
+### Side Tabs
+
+- **Variables** - Manage pre-call data variables
+- **Post-Call** - Define data to collect after calls
+
+## Using the Chat
+
+### Making Requests
+
+Simply describe what you want to change:
+
+<AccordionGroup>
+  <Accordion title="Example: Make the tone friendlier">
+    **You:** "Make the tone more friendly and casual"
+
+    **AI:** The AI will suggest changes to make greetings warmer, use more conversational language, and soften formal phrases.
+  </Accordion>
+
+  <Accordion title="Example: Add information">
+    **You:** "Add information about our return policy - 30 days no questions asked"
+
+    **AI:** The AI will find the appropriate place in your prompt and add the return policy details.
+  </Accordion>
+
+  <Accordion title="Example: Handle a scenario">
+    **You:** "Add instructions for handling angry customers"
+
+    **AI:** The AI will add behavioral guidelines for de-escalation and when to transfer to a human.
+  </Accordion>
+</AccordionGroup>
+
+### Tips for Better Results
+
+- **Be specific** - "Add a 10% discount mention" is better than "add discount info"
+- **Provide context** - "When asked about pricing, mention..." gives AI better understanding
+- **One change at a time** - Break complex changes into multiple requests
+
+## Reviewing Changes
+
+When the AI suggests changes, they appear in the diff view:
+
+- **Green highlighting** - New text being added
+- **Red highlighting** - Text being removed
+- **Blue highlighting** - Text being modified
+
+### Accept or Reject Changes
+
+Each change has two buttons:
+
+- **✓ Accept** - Apply this specific change
+- **✗ Reject** - Discard this change
+
+You can also use bulk actions:
+
+- **Accept All** - Apply all pending changes
+- **Reject All** - Discard all pending changes
+
+<Warning>
+Always review changes before accepting. The AI makes intelligent suggestions, but you know your business best.
+</Warning>
+
+<Frame>
+  <img src="/resources/ai-assistants/ai-prompt-editor-diff.png" alt="Reviewing Changes with Diff View" />
+</Frame>
+
+## Variables
+
+Variables allow you to personalize calls with dynamic data.
+
+### Adding Variables
+
+1. Click the **Variables** tab
+2. Click **Add Variable**
+3. Enter a name (e.g., `customer_name`, `appointment_time`)
+4. Set a default value
+
+### Using Variables in Prompts
+
+Type variables directly in your prompt using curly braces: `{variable_name}`
+
+**Example prompt:**
+```
+Hello {customer_name}, I'm calling from {company_name} about your appointment on {appointment_date}.
+```
+
+## Post-Call Schema
+
+Define structured data you want to collect during or after calls.
+
+### Adding Post-Call Fields
+
+1. Click the **Post-Call** tab
+2. Click **Add Field**
+3. Configure:
+   - **Name** - Field identifier (e.g., `meeting_scheduled`)
+   - **Type** - `string`, `number`, or `boolean`
+   - **Description** - What this field captures
+
+### Example Fields
+
+| Name | Type | Description |
+|------|------|-------------|
+| `meeting_scheduled` | boolean | Whether a meeting was booked |
+| `interest_level` | string | Customer's interest: hot, warm, cold |
+| `callback_time` | string | Preferred callback date/time |
+| `objection_reason` | string | Main objection if not interested |
+
+<Tip>
+The AI can suggest post-call fields based on your prompt. Just ask: "What data should I collect from these calls?"
+</Tip>
+
+<Frame>
+  <img src="/resources/ai-assistants/ai-prompt-editor-postcall.png" alt="Post-Call Fields Configuration" />
+</Frame>
+
+## Templates
+
+When you first open the AI Prompt Editor, you can choose to start with a template:
+
+- **Continue with existing** - Keep your current prompt
+- **Start from scratch** - Begin with a blank prompt
+- **Start with template** - Choose from pre-built templates
+
+Templates are organized by use case:
+
+- Sales calls
+- Customer support
+- Appointment scheduling
+- Surveys and feedback
+- Lead qualification
+
+<Frame>
+  <img src="/resources/ai-assistants/ai-prompt-editor-templates.png" alt="Template Selection Screen" />
+</Frame>
+
+## Saving Your Work
+
+Click the **Save** button in the top-right to save all changes to your assistant.
+
+<Note>
+The editor auto-detects unsaved changes. If you try to close with unsaved work, you'll be prompted to save or discard.
+</Note>
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Start with Templates" icon="layer-group">
+    Templates provide proven starting points. Customize rather than starting from zero.
+  </Card>
+  <Card title="Iterate Gradually" icon="repeat">
+    Make small changes, test, and refine. Don't overhaul everything at once.
+  </Card>
+  <Card title="Review Every Change" icon="magnifying-glass">
+    The AI is helpful but not perfect. Always review suggestions before accepting.
+  </Card>
+  <Card title="Test After Editing" icon="phone">
+    Make test calls after changes to verify the assistant behaves as expected.
+  </Card>
+</CardGroup>
+
+## Related Resources
+
+- [System Prompts Guide](/ai-assistants/system-prompt) - Deep dive into prompt writing
+- [Flow Builder](/ai-assistants/flow-builder) - Visual alternative for conversation design
+- [Testing Your Assistant](/ai-assistants/testing) - How to test your changes

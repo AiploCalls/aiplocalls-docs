@@ -1,0 +1,85 @@
+---
+title: "Create API key"
+api: "POST /user/api-keys"
+description: "Generate a new API key for the authenticated user"
+---
+
+This endpoint generates a new API key for the authenticated user. Unlike the login endpoint which creates a session token, this creates a persistent API key that can be used for long-term API access.
+
+<Note>
+This endpoint requires authentication. Use your existing API key or session token to create additional API keys.
+</Note>
+
+### Request Body
+
+<ParamField body="name" type="string" required>
+  A name/label for the API key (e.g., "Production", "Development", "My App")
+</ParamField>
+
+### Response
+
+<ResponseField name="message" type="string">
+  Success message
+</ResponseField>
+
+<ResponseField name="api_key" type="object">
+  The created API key details
+  
+  <Expandable title="api_key properties">
+    <ResponseField name="name" type="string">
+      The name/label of the API key
+    </ResponseField>
+    
+    <ResponseField name="token" type="string">
+      The API key token. **Store this securely** - it will only be shown once.
+    </ResponseField>
+    
+    <ResponseField name="created_at" type="string">
+      ISO 8601 timestamp of when the API key was created
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 201 Created
+{
+  "message": "API key created successfully.",
+  "api_key": {
+    "name": "Production API Key",
+    "token": "1|abc123xyz789abcdef...",
+    "created_at": "2025-01-08T10:30:00.000000Z"
+  }
+}
+```
+
+```json 422 Validation Error
+{
+  "message": "The name field is required.",
+  "errors": {
+    "name": ["The name field is required."]
+  }
+}
+```
+
+</ResponseExample>
+
+### Example Request
+
+```bash
+curl -X POST https://call.aiployees.com/api/user/api-keys \
+  -H "Authorization: Bearer YOUR_EXISTING_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Production API Key"
+  }'
+```
+
+<Warning>
+The API key token is only returned once. Make sure to store it securely. If you lose it, you'll need to create a new one.
+</Warning>
+
+### Managing API Keys
+
+- **GET /user/api-keys** - List all API keys for the authenticated user
+- **DELETE /user/api-keys/{id}** - Delete a specific API key

@@ -1,0 +1,103 @@
+---
+title: "Search available phone numbers"
+api: "GET /user/phone-numbers/search"
+description: "Search for available phone numbers that can be purchased"
+---
+
+This endpoint allows you to search for available phone numbers from our provider. Use the results to find a number you want to purchase.
+
+### Query Parameters
+
+<ParamField query="country_code" type="string" default="US">
+  The ISO 3166-1 alpha-2 country code to search in (e.g., US, GB, AU, CA)
+</ParamField>
+
+<ParamField query="contains" type="string">
+  Filter phone numbers that contain specific digits (numeric characters only, max 10 digits)
+</ParamField>
+
+### Response
+
+<ResponseField name="data" type="array">
+  Array of available phone numbers
+  
+  <Expandable title="available number properties">
+    <ResponseField name="phone_number" type="string">
+      The phone number in E.164 format
+    </ResponseField>
+    
+    <ResponseField name="phone_number_formatted" type="string">
+      The phone number formatted for display
+    </ResponseField>
+    
+    <ResponseField name="country_code" type="string">
+      The ISO country code
+    </ResponseField>
+    
+    <ResponseField name="price" type="number">
+      Monthly rental price in USD
+    </ResponseField>
+    
+    <ResponseField name="stripe_price_id" type="string">
+      The Stripe price ID for billing
+    </ResponseField>
+    
+    <ResponseField name="address_requirements" type="string">
+      Address requirements for this number: `none`, `local`, `foreign`, or `inventory`
+    </ResponseField>
+    
+    <ResponseField name="sms_capable" type="boolean">
+      Whether the number supports SMS
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Response
+{
+  "data": [
+    {
+      "phone_number": "+14155551234",
+      "phone_number_formatted": "+1 415-555-1234",
+      "country_code": "US",
+      "price": 3.99,
+      "stripe_price_id": "price_1PkA4dBXoZOzqQuAsvGvVJTZ",
+      "address_requirements": "none",
+      "sms_capable": true
+    },
+    {
+      "phone_number": "+14155555678",
+      "phone_number_formatted": "+1 415-555-5678",
+      "country_code": "US",
+      "price": 3.99,
+      "stripe_price_id": "price_1PkA4dBXoZOzqQuAsvGvVJTZ",
+      "address_requirements": "none",
+      "sms_capable": false
+    }
+  ]
+}
+```
+
+```json 200 Empty Response
+{
+  "data": []
+}
+```
+
+</ResponseExample>
+
+### Supported Countries
+
+| Country | Code |
+|---------|------|
+| United States | US |
+| Canada | CA |
+| United Kingdom | GB |
+| Australia | AU |
+| Israel | IL |
+| Poland | PL |
+| Finland | FI |
+| Netherlands | NL |
+| Denmark | DK |
+| Italy | IT |

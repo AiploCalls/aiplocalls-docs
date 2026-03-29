@@ -1,0 +1,198 @@
+---
+title: "Leads Issues"
+icon: "user-gear"
+description: "Solve common lead management issues and import problems"
+---
+
+Quick solutions for common lead management problems and import issues.
+
+## Lead Import Issues
+
+### Import Fails Completely
+**Error:** "Import failed" or "File format not supported"
+
+**Solutions:**
+1. **Check file format:** Use CSV or Excel files only
+2. **Verify campaign selection:** Ensure a campaign is selected for import
+3. **File size limits:** Keep files under 10MB for optimal performance
+4. **Encoding issues:** Save CSV with UTF-8 encoding
+
+### No Leads Imported
+**Issue:** Import completes but no leads appear
+
+**Solutions:**
+1. **Column mapping:** Verify you mapped the phone number column during import
+2. **Data validation:** Check that phone numbers are in correct format
+3. **Empty rows:** Remove empty rows from file
+4. **Required fields:** Ensure phone number column contains valid data
+5. **File headers:** Ensure your CSV/Excel has a header row (any names work)
+
+### Partial Import Success
+**Issue:** Some leads imported, others failed
+
+**Solutions:**
+1. **Download error report:** Check failed rows for specific issues
+2. **Phone number format:** Ensure international format (+1234567890)
+3. **Duplicate detection:** Remove duplicate phone numbers
+4. **Invalid data:** Fix malformed phone numbers or missing required data
+
+### Processing Delays
+**Issue:** Import shows as processing for extended time
+
+**Explanation:**
+- Large files are processed in background
+- Processing time increases with file size
+- System queues multiple imports
+
+**Solutions:**
+1. **Wait for completion:** Check notifications for updates
+2. **Break up large files:** Split into smaller batches (500-1000 leads)
+3. **Contact support:** If processing exceeds 30 minutes
+
+## Lead Management Issues
+
+### Lead Not Appearing in Campaign
+**Issue:** Imported lead doesn't show in campaign
+
+**Check:**
+- Lead status (should be "Created" or "Scheduled")
+- Campaign filters or search settings
+- Lead marked as completed accidentally
+
+**Solutions:**
+1. **Reset lead status:** Change status to "Created" to re-queue
+2. **Verify campaign assignment:** Check lead is assigned to correct campaign
+3. **Refresh interface:** Reload campaign page
+
+### Invalid Phone Numbers
+**Issue:** Phone numbers rejected during import
+
+**Common formats:**
+- **Correct:** +1234567890 (international format)
+- **Incorrect:** (123) 456-7890, 123-456-7890, 1234567890
+
+**Solutions:**
+1. **Standardize format:** Convert all numbers to +1234567890 format
+2. **Remove formatting:** Strip spaces, parentheses, dashes
+3. **Country codes:** Add appropriate country code prefix
+4. **Validation tools:** Use phone validation before import
+
+### Duplicate Leads
+**Issue:** Same person appears multiple times
+
+**Prevention:**
+1. **Data cleanup:** Remove duplicates before import
+2. **Phone validation:** Check for format variations of same number
+3. **Name matching:** Identify potential duplicates by name + phone
+4. **Lead deduplication:** Use tools to identify similar entries
+
+### Secondary Contacts Not Working
+**Issue:** Secondary contacts not being called
+
+**Requirements:**
+- Secondary contact must have valid phone number
+- Primary contact must reach max retries first
+- Campaign must be configured for secondary contacts
+
+**Solutions:**
+1. **Verify setup:** Check secondary contact configuration
+2. **Lead status:** Ensure primary contact has been attempted
+3. **Campaign settings:** Confirm secondary contact calling is enabled
+
+## Variable and Data Issues
+
+### Variable Mapping Errors
+**Issue:** Custom variables not importing correctly
+
+**Solutions:**
+1. **Column mapping:** Ensure you correctly mapped each variable to its column during import
+2. **Auto-detection:** System auto-detects mappings based on common column names
+3. **Data types:** Ensure data matches expected variable types
+4. **Required variables:** Map all variables defined in [assistant configuration](/ai-assistants/settings/prompt-and-tools#call-variables)
+5. **Default values:** Unmapped variables will use assistant's default values
+
+### Missing Lead Information
+**Issue:** Leads missing names, emails, or custom data
+
+**Solutions:**
+1. **Column mapping:** Verify all columns are mapped correctly
+2. **Optional fields:** Confirm optional fields are included in import
+3. **Data validation:** Check source data for completeness
+4. **Re-import:** Add missing data and re-import if needed
+
+## Campaign Integration Issues
+
+### Lead Status Problems
+**Issue:** Leads stuck in wrong status
+
+**Status meanings:**
+- **Created:** Ready to be called
+- **Scheduled:** Queued for next attempt
+- **Processing:** Currently being called
+- **Completed:** Finished or goal achieved
+- **Max Retries:** Reached retry limit
+
+**Solutions:**
+1. **Manual status change:** Update status in leads table
+2. **Campaign restart:** Pause and restart campaign if needed
+3. **Retry settings:** Adjust max retries or intervals
+
+### Variable Inheritance Issues
+**Issue:** Lead variables not working in calls
+
+**Solutions:**
+1. **Assistant setup:** Verify variables defined in [assistant settings](/ai-assistants/settings/prompt-and-tools#call-variables)
+2. **Variable names:** Ensure exact match between lead data and assistant variables
+3. **Data format:** Check variable data is in expected format
+4. **Test calls:** Use manual test calls to verify variable passing
+
+## File Format Issues
+
+### CSV Problems
+**Common issues:**
+- Wrong delimiter (use comma, not semicolon)
+- Missing headers in first row
+- Quoted fields with unescaped quotes
+- Mixed encoding (use UTF-8)
+
+**Solutions:**
+1. **Standard format:** Use comma-separated values
+2. **Headers required:** First row must contain column names
+3. **Text qualification:** Use double quotes for text fields
+4. **Encoding:** Save as UTF-8 encoded CSV
+
+### Excel Problems
+**Common issues:**
+- Multiple sheets (only first sheet imported)
+- Merged cells causing data misalignment
+- Formulas instead of values
+- Hidden characters or formatting
+
+**Solutions:**
+1. **Single sheet:** Use only first worksheet
+2. **Unmerge cells:** Separate merged cells
+3. **Values only:** Convert formulas to values
+4. **Clean format:** Remove special formatting
+
+## Getting Help
+
+### Before Contacting Support
+1. **Download error report:** Review specific error messages
+2. **Check file format:** Verify CSV/Excel format compliance
+3. **Test small batch:** Try importing 5-10 leads first
+4. **Review documentation:** Check import requirements
+
+### Information to Provide
+- Error messages received
+- Sample of import file (with sensitive data removed)
+- Campaign settings and requirements
+- Expected vs actual behavior
+- Assistant variable configuration
+
+<Warning>
+**Data privacy:** Remove sensitive information from sample files before sharing with support.
+</Warning>
+
+<Note>
+For lead management best practices, see [Managing Leads](/leads/managing-leads) and [Campaign Setup](/campaigns/creating-campaigns).
+</Note>

@@ -1,0 +1,176 @@
+---
+title: "System Prompts"
+icon: "brain"
+description: "Learn how to create effective system prompts - the core intelligence of your AI assistant"
+---
+
+The system prompt is the most crucial component of your AI assistant. It defines your assistant's personality, behavior, knowledge, and capabilities. Think of it as the "brain" and "training manual" combined.
+
+## Editing Options
+
+You have three ways to create and edit your system prompt:
+
+<Frame>
+  <img src="/resources/ai-assistants/system-prompt-options.png" alt="System Prompt Editing Options" />
+</Frame>
+
+<CardGroup cols={3}>
+  <Card title="AI Prompt Editor" icon="sparkles" href="/ai-assistants/ai-prompt-editor">
+    Chat with AI to edit your prompt. Best for quick iterations and improvements.
+  </Card>
+  <Card title="Flow Builder" icon="share-nodes" href="/ai-assistants/flow-builder">
+    Visual drag-and-drop editor. Best for structured, multi-path conversations.
+  </Card>
+  <Card title="Classic Editor" icon="pencil">
+    Direct text editing. Best for full control and manual fine-tuning.
+  </Card>
+</CardGroup>
+
+## Quick Start with Templates
+
+To get started quickly:
+
+1. Go to your [assistant settings](/ai-assistants/settings/prompt-and-tools#system-prompt)
+2. Find the system prompt field
+3. Click the "Templates" button nearby
+4. Choose a template that matches your use case
+5. Customize it for your needs
+
+## Language Support
+
+Your system prompt can be written in any language, regardless of the spoken language setting:
+
+- Write the prompt in your preferred language
+- Set the spoken language separately in [assistant settings](/ai-assistants/settings/general#language-configuration)
+- The AI will follow the prompt's instructions while speaking in the selected language
+
+For example:
+
+- System prompt in English, spoken language set to Spanish
+- System prompt in German, spoken language set to French
+- System prompt in Chinese, spoken language set to English
+
+## Why They Matter
+
+Your system prompt:
+
+- Shapes how the AI thinks and responds
+- Defines conversation boundaries
+- Provides essential knowledge
+- Controls behavior and tone
+- Determines handling of edge cases
+
+## Key Components
+
+A good system prompt should include:
+
+### 1. Role & Identity
+
+```
+You are a professional sales representative for [Company]. You specialize in [Product/Service] and have extensive knowledge of our offerings.
+```
+
+### 2. Conversation Style
+
+```
+Maintain a friendly, professional tone. Use clear, concise language. Avoid technical jargon unless specifically asked.
+```
+
+### 3. Key Information
+
+```
+Our main products are:
+- Product A ($X/month): [features]
+- Product B ($Y/month): [features]
+Current promotion: 20% off first 3 months
+```
+
+### 4. Behavioral Guidelines
+
+```
+- Always verify customer information before discussing account details
+- Transfer to a human agent if the customer seems frustrated
+- Don't make promises about delivery dates
+```
+
+### 5. Response Framework
+
+```
+When asked about pricing:
+1. First understand their needs
+2. Present relevant package options
+3. Explain the value proposition
+4. Share any applicable discounts
+```
+
+## Best Practices
+
+1. **Be Specific**
+
+   - Clear instructions get better results
+   - Include examples of good responses
+   - Define what NOT to do
+
+2. **Structure Matters**
+
+   - Organize information logically
+   - Use bullet points and sections
+   - Keep related information together
+
+3. **Test and Iterate**
+   - Start with a basic prompt
+   - Test various scenarios
+   - Refine based on call recordings
+   - Add handling for edge cases
+
+## Common Mistakes
+
+- **Too Vague**: "Be helpful and professional" (Not specific enough)
+- **Too Rigid**: Scripting every possible response (Reduces natural flow)
+- **Information Overload**: Including unnecessary details
+- **Missing Guidelines**: Not specifying how to handle common situations
+
+## Example Structure
+
+```
+# Role and Purpose
+[Define who the AI is and its main goals]
+
+# Core Knowledge
+[Essential information about products/services]
+
+# Conversation Guidelines
+[How to interact with customers]
+
+# Response Patterns
+[How to handle specific situations]
+
+# Limitations and Boundaries
+[What the AI should NOT do]
+```
+
+## Testing Your Prompt
+
+1. Make test calls covering:
+
+   - Common scenarios
+   - Edge cases
+   - Difficult situations
+   - Various customer personalities
+
+2. Review and adjust:
+   - Listen to call recordings
+   - Check response accuracy
+   - Verify tone consistency
+   - Test knowledge retention
+
+## Optimization Tips
+
+- Start with Fast Engine for quick iterations
+- Use call recordings to identify gaps
+- Add examples of good/bad responses
+- Include handling for unexpected questions
+
+---
+
+**Pro Tip:** Your system prompt is a living document - regularly update it based on actual call experiences and customer interactions.

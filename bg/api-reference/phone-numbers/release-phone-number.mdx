@@ -1,0 +1,74 @@
+---
+title: "Release phone number"
+api: "DELETE /user/phone-numbers/{id}"
+description: "Release a phone number and cancel its subscription"
+---
+
+This endpoint releases a phone number from your account. For dedicated numbers with subscriptions, this cancels the subscription and the number will be released at the end of the current billing period.
+
+### Path Parameters
+
+<ParamField path="id" type="integer" required>
+  The unique identifier of the phone number to release
+</ParamField>
+
+### Response
+
+<ResponseField name="message" type="string">
+  Success message indicating the release status
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Subscription Cancelled
+{
+  "message": "Phone number released successfully. It will be removed at the end of the billing period."
+}
+```
+
+```json 200 Immediately Deleted
+{
+  "message": "Phone number deleted successfully."
+}
+```
+
+```json 400 Already Scheduled
+{
+  "error": "Phone number is already scheduled for release."
+}
+```
+
+```json 404 Not Found
+{
+  "error": "Phone number not found."
+}
+```
+
+```json 500 Error
+{
+  "error": "Failed to release phone number. Please try again or contact support."
+}
+```
+
+</ResponseExample>
+
+### Release Behavior
+
+The release behavior depends on the phone number type:
+
+| Type | Behavior |
+|------|----------|
+| **Dedicated (normal)** | Subscription is cancelled. Number remains active until the end of the billing period, then is released. |
+| **SIP** | Immediately deleted from your account. |
+| **Caller ID** | Immediately deleted from your account and removed from the telephony provider. |
+
+<Warning>
+Once a phone number is released, you may not be able to get the same number back. Make sure to update any assistants or campaigns using this number before releasing it.
+</Warning>
+
+### What Happens to Attached Resources
+
+When you release a phone number:
+- Any **inbound assistants** attached to this number will have their phone number unassigned
+- Any **campaigns** using this number will have it removed from their phone number rotation
+- **Call history** is preserved and remains accessible

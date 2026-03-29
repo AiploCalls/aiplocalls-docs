@@ -1,0 +1,65 @@
+---
+title: "GoHighLevel Issues"
+icon: "calendar-days"
+description: "Common GoHighLevel integration problems and solutions"
+---
+
+This page covers common issues when using GoHighLevel integrations with Aiplocalls.
+
+## Appointment Scheduling Issues
+
+### Missing API Key Error
+
+**Problem:** Getting error "missing api_key location_id or calendar_id for GoHighLevel"
+
+**Solution:**
+1. Go to [assistant settings](/ai-assistants/settings/prompt-and-tools#default-tools)
+2. Navigate to **Appointment Scheduling** section
+3. Click **Disconnect** to remove current GoHighLevel connection
+4. Click **Connect** again to re-authorize
+5. **Select an calendar** from the dropdown
+6. **Click Save** to apply the configuration
+7. **Verify** the connection shows as active after reconnecting
+
+### Connection Problems
+
+**OAuth Authorization Fails:**
+- **Try incognito mode** to resolve authentication conflicts
+- **Verify account selection** - ensure you selected the correct GoHighLevel account
+- **Check permissions** - confirm you have admin access to the GoHighLevel account
+
+### Calendar Not Appearing
+
+**Calendars don't show in assistant settings:**
+- **Refresh connection** by disconnecting and reconnecting
+- **Verify calendar setup** in your GoHighLevel account
+- **Check account permissions** for calendar access
+
+### Booking Failures
+
+**Appointments not being scheduled:**
+- **Email Required:** Ensure the assistant has an email defined in [assistant settings](/ai-assistants/settings/prompt-and-tools#default-tools) and the lead has an email in inbound variables or from conversation. See [Email Requirement for Appointments](/ai-assistants/gohighlevel-scheduling#email-requirement-for-appointments) for detailed setup.
+- **Test calendar availability** - verify the calendar has open slots
+- **Check time zones** - ensure correct time zone configuration in both systems
+- **Review assistant logs** - check call transcripts for booking attempts
+- **Verify calendar settings** in GoHighLevel for booking restrictions
+
+### Data Mapping Problems
+
+**Lead data not syncing correctly:**
+- **Verify field mapping** in automation platform
+- **Check required fields** in GoHighLevel
+- **Test with sample data** before live campaigns
+
+## Getting Help
+
+If these solutions don't resolve your issue:
+
+1. **Check call transcripts** to see exactly what the AI attempted
+2. **Test the integration** with a simple appointment booking
+3. **Contact support** with specific error messages and screenshots
+
+**Common Support Information Needed:**
+- Screenshot of the error message
+- Calendar configuration details
+- Assistant settings configuration

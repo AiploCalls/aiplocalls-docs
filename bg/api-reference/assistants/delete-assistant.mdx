@@ -1,0 +1,66 @@
+---
+title: "Delete assistant"
+api: "DELETE /user/assistant/{id}"
+description: "Delete a specific AI assistant"
+---
+
+This endpoint allows you to permanently delete an AI assistant that belongs to the authenticated user.
+
+### Path Parameters
+
+<ParamField path="id" type="integer" required>
+  The unique identifier of the assistant to delete
+</ParamField>
+
+### Response
+
+<ResponseField name="message" type="string">
+  Confirmation message indicating the assistant was deleted successfully
+</ResponseField>
+
+### Error Responses
+
+<ResponseField name="404 Not Found">
+  <Expandable title="Error Response">
+    <ResponseField name="message" type="string">
+      Error message when the assistant is not found or doesn't belong to the authenticated user
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="500 Internal Server Error">
+  <Expandable title="Error Response">
+    <ResponseField name="message" type="string">
+      Error message indicating assistant deletion failure
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Success Response
+{
+  "message": "Assistant deleted successfully"
+}
+```
+
+```json 404 Not Found
+{
+  "message": "Assistant not found"
+}
+```
+
+```json 500 Internal Server Error
+{
+  "message": "Assistant deletion failed"
+}
+```
+
+</ResponseExample>
+
+### Notes
+
+- Only assistants that belong to the authenticated user can be deleted
+- Once an assistant is deleted, it cannot be recovered
+- This action will permanently remove the assistant and all its configuration
+- If the assistant is currently handling active calls, those calls may be affected

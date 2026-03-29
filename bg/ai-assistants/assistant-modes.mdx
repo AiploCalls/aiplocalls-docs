@@ -1,0 +1,88 @@
+---
+title: "Assistant Modes"
+icon: "wave-pulse"
+description: "Understand the three voice generation modes available for your AI assistants and when to use each one."
+---
+
+AI assistants on Aiplocalls can speak in **three distinct modes**. Each mode determines how a caller's speech is understood and how the assistant's reply is generated:
+
+<Callout>
+Choosing the right mode can improve response time, naturalness, and overall call experience.
+</Callout>
+
+## 1. Pipeline
+
+| | |
+|---|---|
+| **Label in UI** | `Pipeline` |
+| **How it works** | Speech-to-Text → LLM → Text-to-Speech |
+| **Latency** | ~800 – 1500 ms (depends on language & model) |
+| **Best for** | Complex reasoning, dynamic prompts, multi-sentence replies |
+
+Pipeline mode first transcribes the caller's words into text, runs that text through the language model, then converts the response back to audio. It's a tried-and-true approach that offers maximum flexibility:
+
+- Supports **all voices** in the library (including custom-cloned voices).
+- Handles **long-form answers** or paragraph-style responses well.
+- Allows the LLM to **inject variables** and reference earlier context cleanly.
+
+### When to choose Pipeline
+
+1. You need rich, multi-sentence answers (e.g.
+   support queries, detailed explanations).
+2. The assistant must reason over **structured data** or complex prompts.
+3. You prefer absolute control of the spoken voice (clone or brand voice).
+
+## 2. Speech-to-Speech (Multimodal)
+
+| | |
+|---|---|
+| **Label in UI** | `Speech-to-speech` |
+| **How it works** | Direct **speech-to-speech** generation (no intermediate text) |
+| **Latency** | ~300 – 600 ms (ultra low) |
+| **Best for** | Natural back-and-forth, short & reactive replies |
+
+Speech-to-speech mode skips separate transcription and TTS. Instead, it uses a **multimodal model** that listens and speaks directly, producing more conversational flow:
+
+- **Fast turn-taking** – callers experience near-instant responses.
+- Generates **more expressive prosody** natively (intonation, fillers).
+- Currently supports a **limited voice set**, but more are added regularly.
+
+### When to choose Speech-to-Speech
+
+1. The conversation needs to feel **snappy** (sales, booking confirmations).
+2. Your replies are generally **short sentences** or quick acknowledgements.
+3. You're okay with the system-provided voice options for faster interaction.
+
+<Note>
+Speech-to-speech is evolving rapidly. If you need a custom cloned voice with low latency, try **Dualplex**.
+</Note>
+
+## 3. Dualplex (Beta)
+
+| | |
+|---|---|
+| **Label in UI** | `Dualplex` |
+| **How it works** | Multimodal STT + LLM (speech-to-speech) with ElevenLabs TTS output |
+| **Latency** | Low (varies by voice and model) |
+| **Best for** | Fast, natural replies with high-quality/brand voices (cloned) |
+
+Dualplex blends the responsiveness of speech-to-speech with the premium voices and cloning from ElevenLabs used in Pipeline. The assistant uses the multimodal model to understand the caller and plan the reply, then renders the final speech through ElevenLabs for consistent, high‑fidelity output.
+
+- **Near-instant turn-taking** similar to speech-to-speech.
+- Access to **ElevenLabs** voice library, including **custom-cloned voices**.
+- Great for **short to medium** replies with expressive prosody.
+- **Recommended default** for most use-cases today; currently in **Beta**.
+
+### When to choose Dualplex
+
+1. You want fast back-and-forth but need a branded or cloned voice.
+2. You want more expressive delivery without giving up precise voice choice.
+3. You're comfortable using a new feature that is still in Beta.
+
+## Switching modes
+
+You can pick the mode for each assistant in **Assistant → Settings → Voice Engine**. Test all three modes to see which delivers the best balance of speed and quality for your use-case. `Dualplex` is currently labeled **Beta**.
+
+---
+
+**Pro Tip:** Record two calls – one in each mode – and compare the caller's perceived latency and engagement level to decide which fits your flow. 

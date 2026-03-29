@@ -1,0 +1,375 @@
+---
+title: "Prompt & Tools"
+icon: "wrench"
+description: "Configure your assistant's knowledge base, tools, variables, and system prompt to define its capabilities and behavior."
+---
+
+Configure the objective of the assistant and the tools it can use during calls.
+
+## Knowledge Base
+
+Give information to the assistant to use as a knowledge base when responding to customers. From website contents, documents, etc.
+
+### Knowledge Base Selection
+
+<AccordionGroup>
+  <Accordion title="Choose Knowledge Base" icon="book-open">
+    Select a knowledge base store containing relevant information for the assistant to use.
+    
+    **Requirements:**
+    - Must be created in your [Knowledge Bases](/knowledgebases) section first
+    - Shows status (Active, Processing, etc.) and description
+    - Only your own knowledge bases are available
+    
+    <Tip>
+    Create knowledge bases from website content, PDFs, or custom documents to give your assistant domain-specific information. For comprehensive setup guide including content types, processing status, website scraping, and troubleshooting, see the complete [Knowledge Base Guide](/conversation-design/knowledge-bases).
+    </Tip>
+  </Accordion>
+  
+  <Accordion title="Knowledge Base Mode" icon="brain">
+    Choose how the AI will use the knowledge base.
+    
+    <CardGroup cols={2}>
+      <Card title="Function Call" icon="function">
+        **Recommended for most cases**
+        
+        Uses a function call to search for information in the knowledgebase, only when needed. More accurate and efficient.
+      </Card>
+      
+      <Card title="Prompt Injection" icon="syringe">
+        **For simple use cases**
+        
+        Performs a search after every customer speech. More accurate but can be slower without filler audios.
+      </Card>
+    </CardGroup>
+    
+    <Note>
+    **Mode availability:** Speech-to-Speech and Dualplex modes only support Function Call mode.
+    </Note>
+  </Accordion>
+</AccordionGroup>
+
+## Custom Mid-Call Tools
+
+Create and assign your own custom tools that AI can use **mid-call** with the customer.
+
+<CardGroup cols={2}>
+  <Card title="Create Custom Tools" icon="plus">
+    Build tools tailored to your specific business needs: API integrations, database queries, custom workflows, and external service calls.
+    
+    **Quick action:** Direct link to tool creation page.
+  </Card>
+  
+  <Card title="Assign to Assistant" icon="link">
+    Select which custom tools this assistant can use with multiple selection, search by name/description, and real-time assignment.
+    
+    **Scope:** Only your own tools are available.
+  </Card>
+</CardGroup>
+
+<Tip>
+Read the [Custom Tools documentation](/ai-assistants/custom-tools) for detailed guides on creating and configuring custom tools.
+</Tip>
+
+## Default Tools
+
+Choose built-in tools that AI can use **mid-call** with the customer.
+
+<AccordionGroup>
+  <Accordion title="Multi Call Transfer" icon="phone-arrow-right">
+    Route calls to multiple destination phone numbers like different people or departments according to your flow.
+
+    **Use cases:**
+    - Escalation to human agents
+    - Department routing
+    - Specialist handoffs
+
+    **Configuration options:**
+    - **Standard mode:** Use regular phone numbers (e.g., +1234567890)
+    - **Advanced mode:** Use SIP URI format for SIP providers (e.g., sip:+1234567890@sip-server)
+
+    **For SIP integrations:**
+    - Set transfer to "Advanced" mode
+    - Use SIP URI format: `sip:number@sip-server`
+    - Verify your SIP provider supports SIP REFER
+    - Test with different URI formats if transfers fail
+
+    <Note>
+    **Prompt instruction:** Include in your system prompt something like "call the transfer function when the user requests to speak with someone else" to ensure the AI uses this tool appropriately.
+    </Note>
+
+    <Tip>
+    If transfers aren't working, see our [SIP Integration troubleshooting guide](/troubleshooting/sip-integration#transfer-phone-call-not-working) for detailed solutions.
+    </Tip>
+  </Accordion>
+  
+  <Accordion title="End Call" icon="phone-slash">
+    Ends the call when the conversation is complete.
+    
+    **Use cases:**
+    - Natural conversation conclusion
+    - Objective achieved
+    - Customer satisfaction confirmed
+    
+    <Note>
+    **Prompt instruction:** If the AI doesn't call the end call function automatically, include in your system prompt "call the hang_up function to close the call" when the conversation should end.
+    </Note>
+  </Accordion>
+  
+  <Accordion title="DTMF Input" icon="hashtag">
+    Easily send keypad inputs during outbound calls, enabling smooth navigation through IVR menus and automated workflows. The AI navigates using keypad buttons when calling and responding to prompts.
+    
+    **Use cases:**
+    - Navigate phone menus
+    - Enter extension numbers
+    - Input security codes
+    - IVR system navigation
+    
+    <Note>
+    **Prompt instruction:** Include in your system prompt instructions about when to use DTMF input, such as "use the send_dtmf tool to navigate phone menus when needed to reach the right person."
+    </Note>
+    
+    For detailed information about DTMF capabilities, see [Tools & Functions](/ai-assistants/tools-and-functions#4-dtmf-input).
+  </Accordion>
+  
+  <Accordion title="Appointment Scheduling" icon="calendar">
+    Real-time booking scheduling integration with multiple calendar platforms.
+
+    **Available integrations:**
+    - **Cal.com:** Full setup guide available at [Cal.com Scheduling](/ai-assistants/cal-com-scheduling)
+    - **GoHighLevel:** Complete integration guide at [GoHighLevel Scheduling](/ai-assistants/gohighlevel-scheduling)
+    - **Calendly:** Full setup guide available at [Calendly Scheduling](/ai-assistants/calendly-scheduling)
+
+    **Use cases:**
+    - Book appointments with calendars
+    - Check real-time availability
+    - Send automatic confirmation details
+    - Sync with existing calendar systems
+
+    **Setup:**
+    1. Select your calendar provider (Cal.com, GoHighLevel, or Calendly)
+    2. Authenticate with your calendar account
+    3. Choose the event type/calendar to use for bookings
+    4. The AI will automatically check availability and book appointments
+
+    <Note>
+    Available when calendar integration is enabled in your platform settings.
+    </Note>
+  </Accordion>
+</AccordionGroup>
+
+## Call Variables
+
+Define variables that can be passed **before** making the call and used in the prompt **like {variable_name}**.
+
+### Variable Configuration
+
+<AccordionGroup>
+  <Accordion title="Variable Definition" icon="code">
+    Create call variables to pass information to your assistant before the call starts.
+    
+    **Setup process:**
+    - Define variable names and default values
+    - Pass values when creating calls/leads or importing clients
+    - Variables available immediately in prompts and during calls
+    - Use for personalization and context
+    
+    **Configuration:**
+    - **Variable name:** The identifier (e.g., `customer_name`)
+    - **Default value:** Used when not passed (e.g., "John")
+  </Accordion>
+  
+  <Accordion title="Variable Usage" icon="code">
+    How to use call variables in your assistant:
+    
+    **In system prompts:**
+    - Reference variables with `{variable_name}` syntax
+    - Personalize conversations dynamically
+    - Provide context-specific information
+    
+    **Examples:**
+    - `{customer_name}` for personalization ("Hello {customer_name}")
+    - `{email}` for calendar integrations
+    - `{account_type}` for tailored responses
+    - `{company}` for business context
+  </Accordion>
+  
+  <Accordion title="Data Sources" icon="database">
+    Ways to populate call variables:
+    
+    **Manual entry:**
+    - When creating individual calls
+    - Through campaign lead creation
+    
+    **Import methods:**
+    - CSV import with variable columns
+    - API integration with client data
+    - Direct CRM synchronization
+    
+    **Automation platform integrations:**
+    - **GoHighLevel (GHL):** Automatically pull contact data and custom fields
+    - **Google Sheets:** Import leads with variables from spreadsheet columns
+    - **Connect with 250+ popular tools** and platforms using our no-code platform
+    - **Any other platform** through webhooks for custom integrations
+    
+    **Platform integration:**
+    - Automatically populated from client profiles
+    - Connected to existing customer databases
+    - No-code automation workflows
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+Call variables are essential for personalizing AI conversations. They allow the AI to use specific customer information during calls, making interactions more relevant and effective.
+</Note>
+
+## Call Flow Configuration
+
+### Who Speaks First?
+
+Control whether your assistant or the customer initiates the conversation.
+
+<CardGroup cols={2}>
+  <Card title="AI Assistant" icon="robot">
+    **Default behavior:** Assistant starts the conversation
+    
+    The AI will immediately greet the caller and begin the conversation flow as soon as the call connects.
+    
+    **Best for:** Most outbound scenarios, sales calls, appointment reminders
+  </Card>
+  
+  <Card title="Customer" icon="user">
+    **Wait for customer:** Assistant listens first
+    
+    If you choose "Customer", the AI will wait for the customer to speak first before responding.
+    
+    **Best for:** Inbound support calls, reception scenarios, reactive assistance
+  </Card>
+</CardGroup>
+
+### Initial Message
+
+Configure the first thing your assistant says when the call begins.
+
+<AccordionGroup>
+  <Accordion title="Initial Message Text" icon="message">
+    Write the opening message your assistant will speak at the start of each call.
+    
+    **Best practices:**
+    - Keep it concise and friendly
+    - Introduce your company/purpose clearly
+    - Set expectations for the conversation
+    - Use variables for personalization (e.g., `{customer_name}`)
+    
+    **Example:** "Hi {customer_name}, this is Sarah from ABC Company. I'm calling to follow up on your recent inquiry about our services. Do you have a moment to chat?"
+  </Accordion>
+  
+  <Accordion title="Initial Audio File" icon="volume">
+    **Optional:** Upload a custom audio file instead of text-to-speech
+    
+    **Requirements:**
+    - MP3 or WAV format
+    - Clear, high-quality recording
+    - Professional voice and tone
+    - Matches your assistant's voice if using voice cloning
+    
+    **Benefits:**
+    - Perfect pronunciation and delivery
+    - Consistent brand voice
+    - Professional first impression
+    - No text-to-speech latency for opening
+    
+    <Tip>
+    This works best if the AI voice is cloned using the same voice used in the initial audio.
+    </Tip>
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+See our [Initial Message guide](/ai-assistants/initial-message) for detailed best practices and examples.
+</Note>
+
+## System Prompt
+
+Define the assistant's personality, objectives, and behavior guidelines.
+
+### Editing Tools
+
+Choose the editing experience that works best for you:
+
+<CardGroup cols={2}>
+  <Card title="AI Prompt Editor" icon="sparkles" href="/ai-assistants/ai-prompt-editor">
+    **Chat-based editing with AI assistance**
+
+    Describe changes in plain language and let AI suggest intelligent modifications. Review and accept/reject each change individually.
+
+    **Best for:** Quick iterations, improving existing prompts, text-focused editing
+  </Card>
+
+  <Card title="Flow Builder" icon="share-nodes" href="/ai-assistants/flow-builder">
+    **Visual drag-and-drop editor**
+
+    Design conversation flows by connecting nodes on a canvas. Create branching logic and multi-path decision trees visually.
+
+    **Best for:** Complex call flows, structured scripts, visual thinkers
+  </Card>
+</CardGroup>
+
+<Note>
+Both tools store the prompt in the same field - switching between them is possible but may require adjustments.
+</Note>
+
+### Prompt Configuration
+
+<CardGroup cols={2}>
+  <Card title="Custom Prompt" icon="pencil">
+    Write your own system prompt from scratch
+
+    - Full control over assistant behavior
+    - Tailored to specific use cases
+    - Markdown formatting supported
+  </Card>
+
+  <Card title="Template Library" icon="folder">
+    Start with pre-built templates
+
+    - Multiple languages available
+    - Different conversation types
+    - Proven effective prompts
+  </Card>
+</CardGroup>
+
+### Best Practices
+
+<AccordionGroup>
+  <Accordion title="Be Specific" icon="bullseye">
+    Clearly define the assistant's role, objectives, and constraints.
+    
+    **Include:**
+    - Who the assistant represents
+    - What they're trying to achieve
+    - What they should/shouldn't do
+  </Accordion>
+  
+  <Accordion title="Set Boundaries" icon="shield">
+    Define what topics and actions are off-limits.
+    
+    **Consider:**
+    - Data privacy requirements
+    - Legal compliance
+    - Brand guidelines
+  </Accordion>
+  
+  <Accordion title="Use Examples" icon="lightbulb">
+    Provide sample conversations to guide behavior.
+    
+    **Examples help with:**
+    - Tone and style
+    - Response length
+    - Handling objections
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+See our [System Prompt guide](/ai-assistants/system-prompt) for detailed best practices and examples.
+</Tip>

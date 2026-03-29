@@ -1,0 +1,445 @@
+---
+title: "List assistants"
+api: "GET /user/assistants/get"
+description: "List all assistants for the authenticated user with pagination"
+---
+
+This endpoint allows you to retrieve all AI assistants belonging to the authenticated user.
+
+### Query Parameters
+
+<ParamField query="per_page" type="integer" optional>
+  Number of assistants per page (1-100, default: 10)
+</ParamField>
+
+<ParamField query="page" type="integer" optional>
+  Page number (default: 1)
+</ParamField>
+
+### Response fields
+
+<ResponseField name="data" type="array">
+  <Expandable title="properties">
+    <ResponseField name="id" type="integer">
+      The unique identifier of the assistant
+    </ResponseField>
+
+    <ResponseField name="user_id" type="integer">
+      The ID of the user who owns this assistant
+    </ResponseField>
+
+    <ResponseField name="phone_number_id" type="integer">
+      The ID of the phone number assigned to the assistant
+    </ResponseField>
+
+    <ResponseField name="engine_id" type="integer">
+      Engine ID
+    </ResponseField>
+
+    <ResponseField name="synthesizer_id" type="integer">
+      Synthesizer ID
+    </ResponseField>
+
+    <ResponseField name="transcriber_id" type="integer">
+      Transcriber ID
+    </ResponseField>
+
+    <ResponseField name="voice_id" type="integer">
+      The ID of the voice used by the assistant
+    </ResponseField>
+
+    <ResponseField name="instance_id" type="integer">
+      The instance ID for the assistant
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      The name of the assistant
+    </ResponseField>
+
+    <ResponseField name="variables" type="object">
+      Custom variables defined for the assistant
+    </ResponseField>
+
+    <ResponseField name="post_call_evaluation" type="boolean">
+      Whether post-call evaluation is enabled
+    </ResponseField>
+
+    <ResponseField name="fillers" type="integer">
+      Whether filler audio is enabled (1 = enabled, 0 = disabled)
+    </ResponseField>
+
+    <ResponseField name="post_call_schema" type="array">
+      Schema definition for post-call data extraction
+      <Expandable title="post_call_schema properties">
+        <ResponseField name="name" type="string">
+          The name of the schema field
+        </ResponseField>
+        <ResponseField name="type" type="string">
+          The data type (string, number, bool)
+        </ResponseField>
+        <ResponseField name="description" type="string">
+          Description of what this field represents
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="tools" type="array">
+      Array of tools available to the assistant
+    </ResponseField>
+
+    <ResponseField name="is_webhook_active" type="boolean">
+      Whether webhook notifications are enabled
+    </ResponseField>
+
+    <ResponseField name="webhook_url" type="string">
+      The webhook URL for post-call notifications
+    </ResponseField>
+
+    <ResponseField name="inbound_webhook_url" type="string">
+      The webhook URL for inbound call notifications
+    </ResponseField>
+
+    <ResponseField name="language" type="string">
+      Language
+    </ResponseField>
+
+    <ResponseField name="type" type="string">
+      The type of assistant (inbound or outbound)
+    </ResponseField>
+
+    <ResponseField name="status" type="string">
+      The current status of the assistant (active or inactive)
+    </ResponseField>
+
+    <ResponseField name="max_duration" type="integer">
+      Maximum call duration in seconds
+    </ResponseField>
+
+    <ResponseField name="record" type="boolean">
+      Whether to record calls
+    </ResponseField>
+
+    <ResponseField name="initial_message" type="string">
+      The initial message the assistant will speak
+    </ResponseField>
+
+    <ResponseField name="system_prompt" type="string">
+      The system prompt that defines the assistant's behavior
+    </ResponseField>
+
+    <ResponseField name="flows_platform_id" type="integer">
+      ID for flows platform integration
+    </ResponseField>
+
+    <ResponseField name="timezone" type="string">
+      The timezone setting for the assistant
+    </ResponseField>
+
+    <ResponseField name="created_at" type="string">
+      The date and time when the assistant was created
+    </ResponseField>
+
+    <ResponseField name="updated_at" type="string">
+      The date and time when the assistant was last updated
+    </ResponseField>
+
+    <ResponseField name="max_silence_duration" type="integer">
+      Maximum silence duration in seconds before re-engagement
+    </ResponseField>
+
+    <ResponseField name="reengagement_interval" type="integer">
+      Re-engagement interval in seconds
+    </ResponseField>
+
+    <ResponseField name="deleted_at" type="string">
+      Soft deletion timestamp (null if not deleted)
+    </ResponseField>
+
+    <ResponseField name="end_call_on_voicemail" type="integer">
+      Whether to end call when voicemail is detected (1 = yes, 0 = no)
+    </ResponseField>
+
+    <ResponseField name="llm_temperature" type="string">
+      LLM temperature setting as string
+    </ResponseField>
+
+    <ResponseField name="voice_stability" type="string">
+      Voice stability setting as string
+    </ResponseField>
+
+    <ResponseField name="voice_similarity" type="string">
+      Voice similarity setting as string
+    </ResponseField>
+
+    <ResponseField name="allow_interruptions" type="boolean">
+      Whether to allow caller interruptions
+    </ResponseField>
+
+    <ResponseField name="enable_noise_cancellation" type="boolean">
+      Whether noise cancellation is enabled
+    </ResponseField>
+
+    <ResponseField name="endpoint_sensitivity" type="number">
+      Endpoint sensitivity level
+    </ResponseField>
+
+    <ResponseField name="speech_speed" type="string">
+      Speech speed multiplier as string
+    </ResponseField>
+
+    <ResponseField name="endpoint_type" type="string">
+      Voice activity detection type (vad or ai)
+    </ResponseField>
+
+    <ResponseField name="wait_for_customer" type="boolean">
+      Whether to wait for customer to speak first
+    </ResponseField>
+
+    <ResponseField name="mode" type="string">
+      The engine mode (pipeline or multimodal)
+    </ResponseField>
+
+    <ResponseField name="language_id" type="integer">
+      The ID of the language used by the assistant
+    </ResponseField>
+
+    <ResponseField name="transcriber_provider_id" type="integer">
+      ID of the transcriber provider
+    </ResponseField>
+
+    <ResponseField name="synthesizer_provider_id" type="integer">
+      ID of the synthesizer provider
+    </ResponseField>
+
+    <ResponseField name="llm_model_id" type="integer">
+      ID of the LLM model used
+    </ResponseField>
+
+    <ResponseField name="multimodal_model_id" type="integer">
+      ID of the multimodal model used
+    </ResponseField>
+
+    <ResponseField name="ambient_sound" type="string">
+      Ambient sound setting
+    </ResponseField>
+
+    <ResponseField name="uuid" type="string">
+      Unique UUID for the assistant
+    </ResponseField>
+
+    <ResponseField name="send_webhook_only_on_completed" type="boolean">
+      Whether to send webhooks only on completed calls
+    </ResponseField>
+
+    <ResponseField name="include_recording_in_webhook" type="boolean">
+      Whether to include recording URL in webhook payload
+    </ResponseField>
+
+    <ResponseField name="interrupt_sensitivity" type="number">
+      Interrupt sensitivity level
+    </ResponseField>
+
+    <ResponseField name="filler_config" type="object">
+      Configuration for filler audio responses
+      <Expandable title="filler_config properties">
+        <ResponseField name="neutral" type="array">
+          Array of neutral filler responses
+        </ResponseField>
+        <ResponseField name="negative" type="array">
+          Array of negative filler responses
+        </ResponseField>
+        <ResponseField name="positive" type="array">
+          Array of positive filler responses
+        </ResponseField>
+        <ResponseField name="question" type="array">
+          Array of question filler responses
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="knowledgebase_id" type="integer">
+      ID of the associated knowledge base
+    </ResponseField>
+
+    <ResponseField name="knowledgebase_mode" type="string">
+      Knowledge base mode setting
+    </ResponseField>
+
+    <ResponseField name="min_interrupt_words" type="integer">
+      Minimum number of words before interruption is allowed
+    </ResponseField>
+
+    <ResponseField name="ambient_sound_volume" type="string">
+      Ambient sound volume level as string
+    </ResponseField>
+
+    <ResponseField name="widget_settings" type="object">
+      Settings for web widget integration
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="current_page" type="integer">
+  The current page number
+</ResponseField>
+
+<ResponseField name="per_page" type="integer">
+  Number of items per page
+</ResponseField>
+
+<ResponseField name="total" type="integer">
+  Total number of assistants
+</ResponseField>
+
+<ResponseField name="last_page" type="integer">
+  The last page number
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Response
+{
+  "current_page": 1,
+  "data": [
+    {
+      "id": 127,
+      "user_id": 1,
+      "phone_number_id": 45,
+      "engine_id": null,
+      "synthesizer_id": null,
+      "transcriber_id": null,
+      "voice_id": 8,
+      "instance_id": 1,
+      "name": "Sales Outreach Assistant",
+      "variables": {
+        "company_name": "Your Company",
+        "product_line": "Premium Services",
+        "rep_name": "Assistant"
+      },
+      "post_call_evaluation": true,
+      "fillers": 1,
+      "post_call_schema": [
+        {
+          "name": "interest_level",
+          "type": "string",
+          "description": "Customer's level of interest (high, medium, low)"
+        },
+        {
+          "name": "budget_qualified",
+          "type": "bool",
+          "description": "Whether the prospect has adequate budget"
+        },
+        {
+          "name": "follow_up_date",
+          "type": "string",
+          "description": "Preferred date for follow-up contact"
+        }
+      ],
+      "tools": [],
+      "is_webhook_active": true,
+      "webhook_url": "https://yourcompany.com/api/webhooks/sales-calls",
+      "inbound_webhook_url": null,
+      "language": null,
+      "type": "outbound",
+      "status": "active",
+      "max_duration": 900,
+      "record": true,
+      "initial_message": "Hi, this is an assistant from Your Company. I hope I'm catching you at a good time. How are you doing today?",
+      "system_prompt": "You are a sales representative for Your Company. Be professional, friendly, and focus on qualifying leads for premium services.",
+      "flows_platform_id": null,
+      "timezone": "America/Los_Angeles",
+      "created_at": "2025-07-15T14:32:15.000000Z",
+      "updated_at": "2025-08-02T09:18:42.000000Z",
+      "max_silence_duration": 25,
+      "reengagement_interval": 45,
+      "deleted_at": null,
+      "end_call_on_voicemail": 1,
+      "llm_temperature": "0.35",
+      "voice_stability": "0.75",
+      "voice_similarity": "0.85",
+      "allow_interruptions": true,
+      "enable_noise_cancellation": true,
+      "endpoint_sensitivity": 1.8,
+      "speech_speed": "1.10",
+      "endpoint_type": "vad",
+      "wait_for_customer": true,
+      "mode": "pipeline",
+      "language_id": 1,
+      "transcriber_provider_id": null,
+      "synthesizer_provider_id": null,
+      "llm_model_id": 3,
+      "multimodal_model_id": null,
+      "ambient_sound": "office",
+      "uuid": "a7b3c942-5f1e-4d28-8c59-2e4f7a8b9c3d",
+      "send_webhook_only_on_completed": true,
+      "include_recording_in_webhook": true,
+      "interrupt_sensitivity": 1.2,
+      "filler_config": {
+        "neutral": [
+          "I see.",
+          "Understood.",
+          "Right.",
+          "Got it.",
+          "Okay."
+        ],
+        "negative": [
+          "I understand.",
+          "Hmm.",
+          "I see.",
+          "Okay."
+        ],
+        "positive": [
+          "Excellent!",
+          "That's great!",
+          "Wonderful!",
+          "Perfect!"
+        ],
+        "question": [
+          "Let me think...",
+          "Good question.",
+          "Hmm.",
+          "Right."
+        ]
+      },
+      "knowledgebase_id": 12,
+      "knowledgebase_mode": "hybrid",
+      "min_interrupt_words": 3,
+      "ambient_sound_volume": "0.30",
+      "widget_settings": {
+        "theme": "modern",
+        "color": "#2563eb",
+        "position": "bottom-right"
+      }
+    }
+  ],
+  "first_page_url": "https://call.aiployees.com/api/user/assistants/get?page=1",
+  "from": 1,
+  "last_page": 5,
+  "last_page_url": "https://call.aiployees.com/api/user/assistants/get?page=5",
+  "links": [
+    {
+      "url": null,
+      "label": "&laquo; Previous",
+      "active": false
+    },
+    {
+      "url": "https://call.aiployees.com/api/user/assistants/get?page=1",
+      "label": "1",
+      "active": true
+    },
+    {
+      "url": "https://call.aiployees.com/api/user/assistants/get?page=2",
+      "label": "2",
+      "active": false
+    }
+  ],
+  "next_page_url": "https://call.aiployees.com/api/user/assistants/get?page=2",
+  "path": "https://call.aiployees.com/api/user/assistants/get",
+  "per_page": 10,
+  "prev_page_url": null,
+  "to": 10,
+  "total": 47
+}
+```
+
+</ResponseExample>

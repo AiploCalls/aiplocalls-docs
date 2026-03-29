@@ -1,0 +1,198 @@
+---
+title: "Campaign Issues"
+icon: "wrench"
+description: "Solve common campaign issues and optimize performance"
+---
+
+Quick solutions for common campaign problems and performance optimization tips.
+
+## Campaign Won't Start
+
+### Phone Number Not Configured
+**Error:** "Your agent does not have a phone number setup"
+
+**Solution:**
+1. Go to your [Assistant Settings](/ai-assistants/settings/general#phone-number-configuration)
+2. Configure a phone number (Platform number, SIP, or Caller ID)
+3. Save assistant settings
+4. Try starting campaign again
+
+### Insufficient Balance
+**Error:** "Insufficient balance to start the campaign"
+
+**Solution:**
+1. Check your account balance in billing section
+2. Add funds to your account
+3. Return to campaign and click start
+
+### No Leads to Call
+**Error:** "No leads to call"
+
+**Solution:**
+1. Add leads manually or import from CSV
+2. Verify leads have valid phone numbers
+3. Check that leads aren't all marked as completed
+4. Ensure "Mark complete when no leads" setting matches your needs
+
+## No Calls Being Made
+
+### Outside Allowed Hours
+**Issue:** Campaign shows as running but no calls happening
+
+**Check:**
+- Current time is within allowed calling hours
+- Today is an allowed calling day
+- Assistant timezone matches expected schedule
+
+**Solution:** Adjust allowed hours or wait until next allowed time window
+
+### All Leads Called
+**Issue:** Campaign appears idle
+
+**Check:**
+- All primary leads have been attempted maximum times
+- Secondary contacts have been tried
+- Goal completion status if using goal-based retry
+
+**Solution:** Add more leads or review retry settings
+
+## Call Quality Issues
+
+### High Failure Rate
+**Symptoms:** Many calls marked as "Failed"
+
+**Common causes:**
+- Invalid phone numbers in lead list
+- Network connectivity issues
+- Carrier restrictions
+
+**Solutions:**
+1. **Clean lead data:** Remove invalid numbers
+2. **Test single calls:** Try calling individual leads manually
+3. **Check number format:** Ensure proper formatting (+1234567890)
+4. **Contact support:** For persistent technical issues
+
+### Low Answer Rate
+**Symptoms:** Most calls go to voicemail or unanswered
+
+**Optimization:**
+1. **Adjust calling hours:** Try different time windows
+2. **Review retry interval:** Space out attempts more
+3. **Check lead quality:** Verify numbers are current
+4. **Caller ID setup:** Ensure professional caller ID display
+
+## Retry Logic Problems
+
+### Too Many Retries
+**Issue:** Leads complaining about excessive calls
+
+**Solutions:**
+1. **Reduce max retries:** Lower from 5 to 2-3 attempts
+2. **Increase retry interval:** Space calls 2-4 hours apart
+3. **Disable voicemail retry:** Accept voicemail as contact
+4. **Review goal variables:** Ensure proper completion tracking
+
+### Not Enough Retries
+**Issue:** Missing potential contacts with limited attempts
+
+**Solutions:**
+1. **Increase max retries:** Up to 5 attempts
+2. **Enable voicemail retry:** Continue until human contact
+3. **Adjust retry interval:** Try different times of day
+4. **Use goal-based retry:** For high-value prospects
+
+## Goal Completion Issues
+
+### Goal Variable Not Working
+**Issue:** Retry until goal completed not functioning
+
+**Requirements:**
+1. **Post-call variables** must be configured in assistant
+2. **Boolean variable** must exist in post-call schema
+3. **Variable name** must match exactly in campaign settings
+4. **AI extraction** must be working properly
+
+**Solution:** Test assistant's post-call variable extraction with manual calls
+
+### False Goal Completion
+**Issue:** Leads marked complete incorrectly
+
+**Debugging:**
+1. **Review call transcripts** for AI extraction errors
+2. **Test variable definitions** with sample calls
+3. **Adjust AI prompt** for clearer goal criteria
+4. **Refine variable descriptions** in assistant settings
+
+## Performance Optimization
+
+### Slow Campaign Progress
+**Causes:**
+- Conservative retry intervals
+- Limited allowed calling hours
+- High failure rate reducing available leads
+
+**Solutions:**
+1. **Parallel processing:** Create multiple smaller campaigns
+2. **Optimize timing:** Use peak answer hours
+3. **Clean data:** Remove problematic numbers
+4. **Increase calling window:** Extend allowed hours
+
+### System Resource Issues
+**Symptoms:** Delayed calls, processing bottlenecks
+
+**Solutions:**
+1. **Reduce concurrent campaigns:** Limit active campaigns
+2. **Stagger campaign starts:** Don't start multiple campaigns simultaneously
+3. **Contact support:** For platform performance issues
+
+## Lead Management Issues
+
+### Duplicate Contacts
+**Issue:** Same person called multiple times from different leads
+
+**Prevention:**
+1. **Data cleanup:** Remove duplicates before import
+2. **Phone number validation:** Check for format variations
+3. **Lead deduplication:** Use tools to identify duplicates
+
+### Secondary Contact Confusion
+**Issue:** Unclear which contact was reached
+
+**Solution:**
+1. **Clear naming:** Use descriptive names for secondary contacts
+2. **Call notes:** Review transcripts to identify who answered
+3. **Lead organization:** Group related contacts properly
+
+## Common Error Messages
+
+### "Campaign is already in progress"
+**Solution:** Campaign is already running. Pause it first to make changes.
+
+### "Campaign is not running"
+**Solution:** Campaign is paused or stopped. Start it to resume calling.
+
+### "Assistant timezone not set"
+**Solution:** Configure timezone in assistant settings before creating campaign.
+
+## Getting Help
+
+### Before Contacting Support
+1. **Check error messages** for specific guidance
+2. **Review campaign settings** for obvious issues
+3. **Test with single lead** to isolate problems
+4. **Check account status** and billing
+
+### Information to Provide
+- Campaign ID and name
+- Error messages received
+- Steps taken before issue occurred
+- Expected vs actual behavior
+- Assistant and phone number configuration
+
+<Warning>
+**Campaign delays:** Allow 10-15 minutes after starting before expecting calls to begin. The system needs time to initialize and queue leads.
+</Warning>
+
+<Note>
+For additional help with campaign optimization, see [Campaign Best Practices](/campaigns/best-practices).
+</Note>

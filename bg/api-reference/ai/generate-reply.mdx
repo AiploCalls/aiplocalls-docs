@@ -1,0 +1,280 @@
+---
+title: "Generate AI Reply"
+api: "POST /user/ai/generate-reply"
+description: "Generate an AI response using an assistant, identified by an external customer identifier"
+---
+
+This endpoint generates an AI response for a given message using your configured assistant. It automatically creates or reuses conversations based on the customer identifier, making it ideal for integrating AI responses into external platforms, CRMs, or custom chat interfaces.
+
+<Info>
+**Rate Limited** — This endpoint is rate limited to 5 requests per minute per API token to prevent abuse.
+</Info>
+
+### Request Body
+
+<ParamField body="assistant_id" type="integer" required>
+  The ID of the assistant to use for generating the response. Must belong to your account.
+</ParamField>
+
+<ParamField body="customer_identifier" type="string" required>
+  A unique identifier for the customer. This is used to maintain conversation context across multiple messages. 
+  
+  Examples: phone number, email address, CRM contact ID, Facebook user ID.
+  
+  Maximum length: 255 characters.
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  The customer's message to respond to.
+</ParamField>
+
+<ParamField body="variables" type="object">
+  Optional context variables to pass to the assistant. These are merged with any existing conversation variables.
+  
+  Useful for passing customer data, session context, or other metadata.
+</ParamField>
+
+### Response Fields
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the request was successful
+</ResponseField>
+
+<ResponseField name="conversation_id" type="string">
+  The UUID of the conversation. Use this to track or reference the conversation later.
+</ResponseField>
+
+<ResponseField name="customer_identifier" type="string">
+  The customer identifier provided in the request
+</ResponseField>
+
+<ResponseField name="reply" type="string">
+  The AI-generated response to the customer's message
+</ResponseField>
+
+<ResponseField name="function_calls" type="array">
+  Array of function calls made by the assistant while processing the message. Empty array if no functions were called.
+
+  <Expandable title="Function call object properties">
+    <ResponseField name="name" type="string">
+      The name of the function that was called
+    </ResponseField>
+    <ResponseField name="arguments" type="object">
+      The arguments passed to the function
+    </ResponseField>
+    <ResponseField name="result" type="object">
+      The result returned by the function
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="ai_disabled" type="boolean">
+  Indicates if AI responses are disabled for this conversation (e.g., due to manual takeover)
+</ResponseField>
+
+### Error Responses
+
+<ResponseField name="success" type="boolean">
+  Will be `false` when an error occurs
+</ResponseField>
+
+<ResponseField name="error" type="string">
+  Error message describing what went wrong
+</ResponseField>
+
+<ResponseField name="error_code" type="string">
+  Machine-readable error code. Possible values:
+  - `ASSISTANT_NOT_FOUND` - The assistant ID is invalid or doesn't belong to your account
+  - `INSUFFICIENT_BALANCE` - Your account balance is too low to process the message
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X POST "https://call.aiployees.com/api/user/ai/generate-reply" \
+  -H "Authorization: Bearer YOUR_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "assistant_id": 123,
+    "customer_identifier": "+14155551234",
+    "message": "Hi, I would like to schedule an appointment",
+    "variables": {
+      "customer_name": "John Smith",
+      "source": "whatsapp"
+    }
+  }'
+```
+
+```javascript JavaScript
+const response = await fetch('https://call.aiployees.com/api/user/ai/generate-reply', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_API_TOKEN',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    assistant_id: 123,
+    customer_identifier: '+14155551234',
+    message: 'Hi, I would like to schedule an appointment',
+    variables: {
+      customer_name: 'John Smith',
+      source: 'whatsapp'
+    }
+  })
+});
+
+const data = await response.json();
+console.log(data.reply);
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://call.aiployees.com/api/user/ai/generate-reply',
+    headers={
+        'Authorization': 'Bearer YOUR_API_TOKEN',
+        'Content-Type': 'application/json'
+    },
+    json={
+        'assistant_id': 123,
+        'customer_identifier': '+14155551234',
+        'message': 'Hi, I would like to schedule an appointment',
+        'variables': {
+            'customer_name': 'John Smith',
+            'source': 'whatsapp'
+        }
+    }
+)
+
+data = response.json()
+print(data['reply'])
+```
+
+```php PHP
+$response = Http::withToken('YOUR_API_TOKEN')
+    ->post('https://call.aiployees.com/api/user/ai/generate-reply', [
+        'assistant_id' => 123,
+        'customer_identifier' => '+14155551234',
+        'message' => 'Hi, I would like to schedule an appointment',
+        'variables' => [
+            'customer_name' => 'John Smith',
+            'source' => 'whatsapp'
+        ]
+    ]);
+
+$reply = $response->json()['reply'];
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json 200 Success
+{
+  "success": true,
+  "conversation_id": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+  "customer_identifier": "+14155551234",
+  "reply": "Hi John! I'd be happy to help you schedule an appointment. What day and time work best for you?",
+  "function_calls": [],
+  "ai_disabled": false
+}
+```
+
+```json 200 Success (With Function Calls)
+{
+  "success": true,
+  "conversation_id": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+  "customer_identifier": "+14155551234",
+  "reply": "I've checked our calendar and we have availability tomorrow at 2 PM and Friday at 10 AM. Which works better for you?",
+  "function_calls": [
+    {
+      "name": "check_availability",
+      "arguments": {
+        "start_date": "2025-01-08",
+        "days": 7
+      },
+      "result": {
+        "slots": ["2025-01-08 14:00", "2025-01-10 10:00"]
+      }
+    }
+  ],
+  "ai_disabled": false
+}
+```
+
+```json 404 Assistant Not Found
+{
+  "success": false,
+  "error": "Assistant not found or does not belong to you",
+  "error_code": "ASSISTANT_NOT_FOUND"
+}
+```
+
+```json 402 Insufficient Balance
+{
+  "success": false,
+  "error": "Insufficient balance. Please top up your account.",
+  "error_code": "INSUFFICIENT_BALANCE"
+}
+```
+
+```json 422 Validation Error
+{
+  "message": "The assistant id field is required.",
+  "errors": {
+    "assistant_id": ["The assistant id field is required."]
+  }
+}
+```
+
+```json 429 Rate Limited
+{
+  "message": "Too Many Attempts.",
+  "retry_after": 60
+}
+```
+
+</ResponseExample>
+
+## Use Cases
+
+### Multi-Channel AI Responses
+
+Use this endpoint to add AI responses to any messaging platform:
+
+1. Receive a message from WhatsApp, Facebook, SMS, or any other channel
+2. Call this endpoint with the message and customer identifier
+3. Send the AI response back through the original channel
+
+### CRM Integration
+
+Integrate AI responses into your CRM or helpdesk:
+
+1. Use the CRM contact ID as the `customer_identifier`
+2. Pass customer data as `variables` for personalized responses
+3. The conversation persists across sessions using the same identifier
+
+### Custom Chat Interfaces
+
+Build your own chat interface powered by your Aiplocalls assistant:
+
+1. Generate a unique identifier for each user session
+2. Send messages through this endpoint
+3. Display the AI responses in your interface
+
+## Conversation Persistence
+
+Conversations are automatically persisted based on the `assistant_id` and `customer_identifier` combination:
+
+- **Same identifier**: Messages are added to the existing conversation, maintaining full context
+- **New identifier**: A new conversation is created for the customer
+- **Variables merge**: When variables are provided, they are merged with existing conversation variables
+
+## Best Practices
+
+1. **Use consistent identifiers**: Always use the same format for customer identifiers (e.g., always E.164 for phone numbers)
+2. **Pass relevant context**: Use the `variables` field to provide customer data that helps the AI personalize responses
+3. **Handle rate limits**: Implement retry logic with exponential backoff for rate-limited requests
+4. **Store conversation IDs**: Save the returned `conversation_id` for later reference or debugging
+5. **Monitor costs**: Track usage to manage costs, especially for high-volume integrations

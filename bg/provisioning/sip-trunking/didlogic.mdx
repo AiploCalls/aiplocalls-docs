@@ -1,0 +1,192 @@
+---
+title: "DIDLogic Integration"
+description: "A step by step guide to connect your DIDLogic account via SIP trunking"
+---
+
+<Steps titleSize="h2">
+  <Step title="Purchase a Phone Number">
+    Log in to your DIDLogic dashboard at [app.didlogic.com](https://app.didlogic.com) and go to the **BUY** tab. Search by country and area code, add a number to your cart, and complete checkout. Your new number will appear under the **PURCHASED** tab.
+
+    <Frame>
+      <img
+        src="/resources/did-logic/didlogic-buy-number.png"
+        alt="DIDLogic BUY tab with country search"
+      />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Your SIP Account (Outbound)">
+    Go to the **SIP** tab and click **Edit** on your SIP account.
+
+    <Frame>
+      <img
+        src="/resources/did-logic/didlogic-sip-tab.png"
+        alt="DIDLogic SIP tab showing accounts list"
+      />
+    </Frame>
+
+    <Frame>
+      <img
+        src="/resources/did-logic/didlogic-sip-edit.png"
+        alt="DIDLogic Edit SIP account"
+      />
+    </Frame>
+
+    Note the **SIP account number** (e.g., `12345`) — this is your **username** that you will use in Aiplocalls. Set a password in both the **Password** and **Confirm Password** fields — you will use this same password when importing the number to Aiplocalls.
+
+    <Frame>
+      <img
+        src="/resources/did-logic/didlogic-sip-password.png"
+        alt="DIDLogic SIP password fields"
+      />
+    </Frame>
+
+    Enable **"Restrict to authorized IPs"** and add the IP address `34.195.177.252`, then click **Add** and **Update**.
+
+    <Frame>
+      <img
+        src="/resources/did-logic/didlogic-sip-restrict-ip.png"
+        alt="DIDLogic Restrict to authorized IPs with 34.195.177.252 added"
+      />
+    </Frame>
+
+    Scroll down to find your region and copy the **SIP URI** from the regional gateway list. You will need this for the outbound settings in Aiplocalls.
+
+    <Frame>
+      <img
+        src="/resources/did-logic/didlogic-sip-region.png"
+        alt="DIDLogic regional SIP URI selection"
+      />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Inbound Routing (in DIDLogic)">
+    Go to the **PURCHASED** tab and click **Destination** next to your phone number. 
+    <Frame>
+      <img
+        src="/resources/did-logic/didlogic-purchased-tab.png"
+        alt="DIDLogic Purchased numbers list"
+      />
+    </Frame>
+
+  Delete any existing destination, then change the selector from "SIP device" to **"SIP URI"**.
+
+
+    <Frame>
+      <img
+        src="/resources/did-logic/didlogic-destination-select.png"
+        alt="DIDLogic selecting SIP URI type"
+      />
+    </Frame>
+
+    Enter the SIP URI in the following format:
+
+    ```
+    <number_without_plus>@5wed79aeavr.sip.livekit.cloud
+    ```
+
+    For example, if your number is `+15551234567`, enter:
+
+    ```
+    15551234567@5wed79aeavr.sip.livekit.cloud
+    ```
+
+    Click **Add**.
+  </Step>
+
+  <Step title="Import Number to Aiplocalls">
+    Go to your Aiplocalls dashboard → **Your Phone Numbers** → **"Integrate SIP trunk"** and fill in your details:
+
+    ```
+    Phone number: Your DIDLogic number in E.164 format (e.g., +15551234567)
+    Username: The SIP account number from Step 2 (e.g., 12345)
+    Password: The password you set in Step 2
+    ```
+
+    <Frame>
+      <img
+        src="/resources/did-logic/sip-integration-sip-type.png"
+        alt="Fill in SIP integration details"
+      />
+    </Frame>
+
+    Under **Outbound settings**, paste the regional SIP URI you copied in Step 2. Set **Number format** to **"International with + in front"** and enable **"Outbound call will come from a fixed IP address"**.
+
+    <Frame>
+      <img
+        src="/resources/did-logic/sip-integration-outbound.png"
+        alt="Outbound SIP settings"
+      />
+    </Frame>
+
+    Under **Inbound settings**, select **"IP Address"** as the authorization type. Add the IP address of your chosen DIDLogic regional gateway from the table below:
+
+    | Gateway | IP Address |
+    |---------|-----------|
+    | sip.nl.didlogic.net | 89.149.192.7 |
+    | sip.uk.didlogic.net | 23.19.63.1 |
+    | sip.se.didlogic.net | 5.150.254.205 |
+    | sip.de.didlogic.net | 157.230.96.24 |
+    | sip.fr.didlogic.net | 159.8.84.235 |
+    | sip.hk.didlogic.net | 188.42.84.76 |
+    | sip.sg.didlogic.net | 188.42.84.76 |
+    | sip.au.didlogic.net | 119.9.12.222 |
+    | sip.nz.didlogic.net | 131.203.181.17 |
+    | sip.ir.didlogic.net | 161.202.135.82 |
+    | sip.ca.didlogic.net | 138.197.143.154 |
+    | sip.lax.didlogic.net | 185.118.62.77 |
+    | sip.nyc.didlogic.net | 192.241.183.87 |
+    | sip.za.didlogic.net | 102.130.116.205 |
+    | sip.br.didlogic.net | 169.57.132.146 |
+
+    <Frame>
+      <img
+        src="/resources/did-logic/sip-integration-inbound.png"
+        alt="Inbound SIP settings"
+      />
+    </Frame>
+
+    Select the **Country** where your SIP trunk is located.
+
+    <Frame>
+      <img
+        src="/resources/did-logic/sip-integration-country.png"
+        alt="SIP country selection"
+      />
+    </Frame>
+  </Step>
+
+  <Step title="Verify Setup">
+    Make a test call to your number to verify inbound calling, then use the test call feature to verify outbound calling.
+  </Step>
+</Steps>
+
+## Security Requirements
+
+<Warning>
+  Your SIP credentials need to be secure. Your password must have at least 12 characters, include numbers, upper and lowercase letters, and special characters are recommended.
+</Warning>
+
+## Common Issues
+
+<AccordionGroup>
+  <Accordion title="Outbound calls not working?">
+    - **Verify the SIP URI** — Make sure you copied the correct regional SIP URI from Step 2. Remove any trailing spaces.
+    - **Check your username** — The username is the numeric SIP account number (e.g., `12345`), not your email address or account name.
+    - **Check your password** — Ensure the password in Aiplocalls matches exactly what you set in the DIDLogic SIP account settings.
+    - **Verify IP whitelist** — Make sure `34.195.177.252` is added to the authorized IPs in your DIDLogic SIP account.
+  </Accordion>
+
+  <Accordion title="Inbound calls not working?">
+    - **Verify the SIP URI destination** — In DIDLogic, make sure the destination is set to SIP URI (not SIP device) and the format is correct: `<number_without_plus>@5wed79aeavr.sip.livekit.cloud`
+    - **Check the IP whitelist in Aiplocalls.* — Make sure the IP address you added in the Aiplocalls inbound settings matches the regional gateway you are using. Refer to the gateway IP table in Step 4.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+<Note>
+  Need help setting up? Our support team specializes in helping customers
+  integrate their phone systems. We'll guide you through the entire process,
+  ensuring a smooth setup with your specific phone system configuration.
+</Note>

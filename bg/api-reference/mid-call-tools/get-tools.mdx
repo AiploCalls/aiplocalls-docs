@@ -1,0 +1,173 @@
+---
+title: "List mid call tools"
+api: "GET /user/tools"
+description: "Retrieve all mid call tools"
+---
+
+This endpoint allows you to retrieve all mid call tools. Mid call tools enable your AI assistants to interact with external APIs during a call.
+
+### Headers
+
+<ParamField header="Authorization" type="string" required>
+  Bearer token for authentication
+</ParamField>
+
+<ParamField header="Content-Type" type="string" required>
+  Must be `application/json`
+</ParamField>
+
+<ParamField header="Accept" type="string" required>
+  Must be `application/json`
+</ParamField>
+
+### Response fields
+
+<ResponseField name="data" type="array">
+  Array of mid call tools
+  <Expandable title="properties">
+    <ResponseField name="id" type="integer">
+      The unique identifier of the tool
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      The name of the tool (lowercase with underscores)
+    </ResponseField>
+
+    <ResponseField name="description" type="string">
+      Detailed explanation of when and how the AI should use this tool
+    </ResponseField>
+
+    <ResponseField name="endpoint" type="string">
+      The API endpoint URL that will be called
+    </ResponseField>
+
+    <ResponseField name="method" type="string">
+      HTTP method (GET, POST, PUT, PATCH, DELETE)
+    </ResponseField>
+
+    <ResponseField name="timeout" type="integer">
+      Request timeout in seconds (1-30)
+    </ResponseField>
+
+    <ResponseField name="headers" type="array">
+      HTTP headers to send with the request
+      <Expandable title="header properties">
+        <ResponseField name="name" type="string">
+          Header name
+        </ResponseField>
+        <ResponseField name="value" type="string">
+          Header value
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="schema" type="array">
+      Parameters that the AI will extract and send to the endpoint
+      <Expandable title="schema properties">
+        <ResponseField name="name" type="string">
+          Parameter name
+        </ResponseField>
+        <ResponseField name="type" type="string">
+          Parameter type (string, number, boolean)
+        </ResponseField>
+        <ResponseField name="description" type="string">
+          Description to help AI understand how to extract this parameter
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="created_at" type="string">
+      ISO 8601 timestamp when the tool was created
+    </ResponseField>
+
+    <ResponseField name="updated_at" type="string">
+      ISO 8601 timestamp when the tool was last updated
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Response
+[
+  {
+    "id": 1,
+    "name": "get_weather",
+    "description": "Use this tool to get the current weather in a specific city. Call this when the customer asks about weather conditions.",
+    "endpoint": "https://api.openweathermap.org/data/2.5/weather",
+    "method": "GET",
+    "timeout": 10,
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json"
+      },
+      {
+        "name": "Authorization",
+        "value": "Bearer sk_..."
+      }
+    ],
+    "schema": [
+      {
+        "name": "city",
+        "type": "string",
+        "description": "The city name to get weather for"
+      },
+      {
+        "name": "temperature",
+        "type": "number",
+        "description": "Current temperature value"
+      },
+      {
+        "name": "is_raining",
+        "type": "boolean",
+        "description": "Whether it is currently raining"
+      }
+    ],
+    "created_at": "2025-10-10T12:00:00.000000Z",
+    "updated_at": "2025-10-10T12:00:00.000000Z"
+  },
+  {
+    "id": 2,
+    "name": "send_notification",
+    "description": "Use this tool to send a notification to the customer. Call this when customer requests updates.",
+    "endpoint": "https://api.yourcompany.com/notifications/send",
+    "method": "POST",
+    "timeout": 15,
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json"
+      }
+    ],
+    "schema": [
+      {
+        "name": "message",
+        "type": "string",
+        "description": "The notification message to send"
+      },
+      {
+        "name": "priority_level",
+        "type": "number",
+        "description": "Priority level from 1 to 5"
+      },
+      {
+        "name": "send_sms",
+        "type": "boolean",
+        "description": "Whether to also send SMS notification"
+      }
+    ],
+    "created_at": "2025-10-09T14:30:00.000000Z",
+    "updated_at": "2025-10-10T09:15:00.000000Z"
+  }
+]
+```
+
+</ResponseExample>
+
+### Assigning Tools to Assistants
+
+To use these tools with assistants, see:
+
+- **[Create Assistant](/api-reference/assistants/create-assistant)** - Attach tools using the `tool_ids` parameter
+- **[Update Assistant](/api-reference/assistants/update-assistant)** - Manage tool assignments using the `tool_ids` parameter

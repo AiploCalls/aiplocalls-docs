@@ -1,0 +1,79 @@
+---
+title: "Enable assistant inbound webhook"
+api: "POST /user/assistants/enable-inbound-webhook"
+description: "Enable inbound webhook notifications for a specific assistant"
+---
+
+This endpoint enables inbound webhook notifications for an assistant, allowing you to receive real-time updates about inbound call completions and data.
+
+### Request Body
+
+<ParamField body="assistant_id" type="integer" required>
+  The ID of the assistant to enable webhook for
+</ParamField>
+
+<ParamField body="webhook_url" type="string" required>
+  The URL where webhook notifications will be sent
+</ParamField>
+
+### Response
+
+<ResponseField name="message" type="string">
+  Success message confirming webhook was enabled
+</ResponseField>
+
+<ResponseField name="data" type="array">
+  Empty array (reserved for future use)
+</ResponseField>
+
+### Error Responses
+
+<ResponseField name="404 Not Found">
+  <Expandable title="Error Response">
+    <ResponseField name="message" type="string">
+      Error message when the assistant is not found or doesn't belong to the authenticated user
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="422 Validation Error">
+  <Expandable title="Error Response">
+    <ResponseField name="message" type="string">
+      Error message indicating validation failure
+    </ResponseField>
+    <ResponseField name="errors" type="object">
+      Detailed validation errors for each field
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Success Response
+{
+  "message": "Webhook enabled successfully",
+  "data": []
+}
+```
+
+```json 404 Not Found
+{
+  "message": "Assistant not found"
+}
+```
+
+```json 422 Validation Error
+{
+  "message": "The given data was invalid.",
+  "errors": {
+    "assistant_id": [
+      "The assistant id field is required."
+    ],
+    "webhook_url": [
+      "The webhook url field is required."
+    ]
+  }
+}
+```
+
+</ResponseExample>

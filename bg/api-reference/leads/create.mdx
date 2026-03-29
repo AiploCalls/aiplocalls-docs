@@ -1,0 +1,195 @@
+---
+title: "Create lead"
+api: "POST /user/lead"
+description: "Create a new lead in the Aiplocalls system"
+---
+
+This endpoint allows you to create a new lead in the Aiplocalls system.
+
+### Request body
+
+<ParamField body="phone_number" type="string" required>
+  The phone number of the lead in E.164 format (e.g. +1234567890)
+</ParamField>
+
+<ParamField body="campaign_id" type="integer" required>
+  The ID of the campaign to create the lead for
+</ParamField>
+
+<ParamField body="variables" type="object">
+  Custom variables to pass to the lead. You can include **any variables that are defined on your assistant** (see [Call variables](/ai-assistants/settings/prompt-and-tools#call-variables)). The examples below are just for illustration — use your own variable names as configured in the assistant settings.
+
+  <Expandable title="Example variables (add your own)">
+    <ParamField body="customer_name" type="string">
+      e.g. the name of the customer
+    </ParamField>
+
+    <ParamField body="email" type="string">
+      e.g. the email of the customer
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField body="allow_dupplicate" type="boolean">
+  Whether to allow duplicate leads in a campaign.
+</ParamField>
+
+<ParamField body="secondary_contacts" type="array">
+  Array of secondary contact leads to create along with the main lead
+  
+  <Expandable title="secondary_contacts properties">
+    <ParamField body="phone_number" type="string" required>
+      The phone number of the secondary contact in E.164 format
+    </ParamField>
+    
+    <ParamField body="variables" type="object">
+      The variables to pass to the secondary contact
+      
+      <Expandable title="variables properties">
+        <ParamField body="customer_name" type="string" default="<string>">
+          The name of the secondary contact
+        </ParamField>
+        
+        <ParamField body="email" type="string" default="<string>">
+          The email of the secondary contact
+        </ParamField>
+      </Expandable>
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+### Response
+
+<ResponseField name="message" type="string" default="Lead created successfully">
+  The message of the response
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  The lead data object
+  
+  <Expandable title="data properties">
+    <ResponseField name="id" type="integer">
+      The unique ID of the created lead
+    </ResponseField>
+    
+    <ResponseField name="campaign_id" type="integer">
+      The ID of the campaign this lead belongs to
+    </ResponseField>
+
+    <ResponseField name="phone_number" type="string">
+      The phone number of the lead in E.164 format
+    </ResponseField>
+    
+    <ResponseField name="variables" type="object">
+      The variables associated with the lead
+      
+      <Expandable title="variables properties">
+        <ResponseField name="customer_name" type="string" default="<string>">
+          The name of the customer
+        </ResponseField>
+        
+        <ResponseField name="email" type="string" default="<string>">
+          The email of the customer
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    
+    <ResponseField name="status" type="string" default="created">
+      The status of the lead
+    </ResponseField>
+    
+    <ResponseField name="created_at" type="string">
+      The timestamp when the lead was created
+    </ResponseField>
+    
+    <ResponseField name="updated_at" type="string">
+      The timestamp when the lead was last updated
+    </ResponseField>
+
+    <ResponseField name="campaign" type="object">
+      The campaign information
+      <Expandable title="campaign properties">
+        <ResponseField name="id" type="integer">
+          The id of the campaign
+        </ResponseField>
+        <ResponseField name="name" type="string">
+          The name of the campaign
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="secondary_contacts" type="array">
+      Array of secondary contact leads associated with this lead
+      <Expandable title="secondary_contacts properties">
+        <ResponseField name="id" type="integer">
+          The id of the secondary contact lead
+        </ResponseField>
+        <ResponseField name="phone_number" type="string">
+          The phone number of the secondary contact in E.164 format
+        </ResponseField>
+        <ResponseField name="variables" type="object">
+          The variables associated with the secondary contact
+        </ResponseField>
+        <ResponseField name="status" type="string">
+          The status of the secondary contact
+        </ResponseField>
+        <ResponseField name="created_at" type="string">
+          The created at date of the secondary contact
+        </ResponseField>
+        <ResponseField name="updated_at" type="string">
+          The updated at date of the secondary contact
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Response
+{
+  "message": "Lead created successfully",
+  "data": {
+    "id": 1,
+    "campaign_id": 1,
+    "phone_number": "+1234567890",
+    "variables": {
+      "customer_name": "John Doe",
+      "email": "john.doe@example.com"
+    },
+    "status": "created",
+    "created_at": "2025-06-30 11:53:20",
+    "updated_at": "2025-06-30 11:53:20",
+    "campaign": {
+      "id": 1,
+      "name": "My new campaign"
+    },
+    "secondary_contacts": [
+      {
+        "id": 2,
+        "phone_number": "+1234567891",
+        "variables": {
+          "customer_name": "Jane Doe Secondary",
+          "email": "jane.doe.secondary@example.com"
+        },
+        "status": "created",
+        "created_at": "2025-06-30 11:53:20",
+        "updated_at": "2025-06-30 11:53:20"
+      },
+      {
+        "id": 3,
+        "phone_number": "+1234567892",
+        "variables": {
+          "customer_name": "Bob Doe Office",
+          "email": "bob.doe.office@example.com"
+        },
+        "status": "created",
+        "created_at": "2025-06-30 11:53:20",
+        "updated_at": "2025-06-30 11:53:20"
+      }
+    ]
+  }
+}
+```
+
+</ResponseExample>

@@ -1,0 +1,209 @@
+---
+title: "Create campaign"
+api: "POST /user/campaign"
+description: "Create a new outbound calling campaign"
+---
+
+This endpoint allows you to create a new outbound calling campaign with the specified configuration.
+
+### Request body
+
+<ParamField body="name" type="string" required>
+  The name of the campaign. Maximum 255 characters.
+</ParamField>
+
+<ParamField body="assistant_id" type="integer" required>
+  The ID of the assistant to use for the campaign. Must be an outbound-capable assistant.
+</ParamField>
+
+<ParamField body="timezone" type="string">
+  Timezone identifier for the campaign (e.g., `America/New_York`, `Europe/London`). Defaults to your account timezone.
+</ParamField>
+
+<ParamField body="max_calls_in_parallel" type="integer" default="3">
+  Maximum number of simultaneous calls. Minimum: 1. Maximum depends on your plan's parallel calls limit (up to 10).
+</ParamField>
+
+<ParamField body="allowed_hours_start_time" type="string" default="00:00">
+  Start of the allowed calling window in `H:i` format (e.g., `09:00`).
+</ParamField>
+
+<ParamField body="allowed_hours_end_time" type="string" default="23:59">
+  End of the allowed calling window in `H:i` format (e.g., `17:00`).
+</ParamField>
+
+<ParamField body="allowed_days" type="array" default="all 7 days">
+  Array of weekday names when calls are allowed. Valid values: `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`.
+</ParamField>
+
+<ParamField body="max_retries" type="integer" default="3">
+  Maximum number of retry attempts for failed calls. Range: 1-5.
+</ParamField>
+
+<ParamField body="retry_interval" type="integer" default="60">
+  Interval in minutes between retry attempts. Range: 10-4320 (up to 3 days).
+</ParamField>
+
+<ParamField body="retry_on_voicemail" type="boolean">
+  Whether to retry calls that reached voicemail.
+</ParamField>
+
+<ParamField body="retry_on_goal_incomplete" type="boolean">
+  Whether to retry calls where the goal was not completed.
+</ParamField>
+
+<ParamField body="goal_completion_variable" type="string">
+  Name of a boolean variable from your assistant's post-call schema to track goal completion. Maximum 255 characters.
+</ParamField>
+
+<ParamField body="mark_complete_when_no_leads" type="boolean" default="true">
+  Whether to automatically mark the campaign as complete when there are no remaining leads to call.
+</ParamField>
+
+<ParamField body="phone_number_ids" type="array">
+  Array of phone number IDs to use for the campaign. Each ID must be a distinct integer.
+</ParamField>
+
+### Response
+
+<ResponseField name="message" type="string">
+  Success message confirming the campaign was created
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  The created campaign data
+  <Expandable title="data properties">
+    <ResponseField name="id" type="integer">
+      The ID of the created campaign
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      The name of the campaign
+    </ResponseField>
+
+    <ResponseField name="status" type="string">
+      The status of the campaign (starts as `draft`)
+    </ResponseField>
+
+    <ResponseField name="max_calls_in_parallel" type="integer">
+      Maximum number of simultaneous calls
+    </ResponseField>
+
+    <ResponseField name="mark_complete_when_no_leads" type="boolean">
+      Whether to mark the campaign as complete when there are no leads
+    </ResponseField>
+
+    <ResponseField name="allowed_hours_start_time" type="string">
+      Start of the allowed calling window
+    </ResponseField>
+
+    <ResponseField name="allowed_hours_end_time" type="string">
+      End of the allowed calling window
+    </ResponseField>
+
+    <ResponseField name="allowed_days" type="array">
+      Days of the week when calls are allowed
+    </ResponseField>
+
+    <ResponseField name="max_retries" type="integer">
+      Maximum number of retry attempts
+    </ResponseField>
+
+    <ResponseField name="retry_interval" type="integer">
+      Interval in minutes between retries
+    </ResponseField>
+
+    <ResponseField name="created_at" type="string">
+      Timestamp when the campaign was created
+    </ResponseField>
+
+    <ResponseField name="updated_at" type="string">
+      Timestamp when the campaign was last updated
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+### Error Responses
+
+<ResponseField name="403 Forbidden">
+  <Expandable title="Error Response">
+    <ResponseField name="message" type="string">
+      Error message when the user has reached their plan's campaign limit
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="404 Not Found">
+  <Expandable title="Error Response">
+    <ResponseField name="message" type="string">
+      Error message when the specified assistant is not found or is not an outbound assistant
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="422 Validation Error">
+  <Expandable title="Error Response">
+    <ResponseField name="message" type="string">
+      Error message indicating validation failure
+    </ResponseField>
+    <ResponseField name="errors" type="object">
+      Detailed validation errors for each field
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 201 Created
+{
+  "message": "Campaign created successfully",
+  "data": {
+    "id": 1,
+    "name": "Product Demo Campaign",
+    "status": "draft",
+    "max_calls_in_parallel": 3,
+    "mark_complete_when_no_leads": true,
+    "allowed_hours_start_time": "09:00:00",
+    "allowed_hours_end_time": "17:00:00",
+    "allowed_days": [
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday"
+    ],
+    "max_retries": 3,
+    "retry_interval": 60,
+    "created_at": "2026-02-23T10:00:00.000000Z",
+    "updated_at": "2026-02-23T10:00:00.000000Z"
+  }
+}
+```
+
+```json 403 Forbidden
+{
+  "message": "You have reached the maximum number of campaigns allowed by your plan."
+}
+```
+
+```json 404 Not Found
+{
+  "message": "Assistant not found or not an outbound assistant."
+}
+```
+
+```json 422 Validation Error
+{
+  "message": "The given data was invalid.",
+  "errors": {
+    "name": [
+      "The name field is required."
+    ],
+    "assistant_id": [
+      "The assistant id field is required."
+    ]
+  }
+}
+```
+
+</ResponseExample>

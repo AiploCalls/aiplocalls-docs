@@ -1,0 +1,211 @@
+---
+title: "List calls"
+api: "GET /user/calls"
+description: "List all calls for the authenticated user with filtering options"
+---
+
+This endpoint allows you to list all calls belonging to the authenticated user with various filtering options.
+
+### Query Parameters
+
+<ParamField query="status" type="string" optional>
+  Filter calls by status. Possible values: `initiated`, `ringing`, `busy`, `in-progress`, `ended`, `completed`, `ended_by_customer`, `ended_by_assistant`, `no-answer`, `failed`
+</ParamField>
+
+<ParamField query="type" type="string" optional>
+  Filter calls by type. Possible values: `inbound`, `outbound`, `web`
+</ParamField>
+
+<ParamField query="phone_number" type="string" optional>
+  Filter calls by client phone number
+</ParamField>
+
+<ParamField query="assistant_id" type="integer" optional>
+  Filter calls by assistant ID
+</ParamField>
+
+<ParamField query="campaign_id" type="integer" optional>
+  Filter calls by campaign ID
+</ParamField>
+
+<ParamField query="date_from" type="string" optional>
+  Filter calls from this date (YYYY-MM-DD format)
+</ParamField>
+
+<ParamField query="date_to" type="string" optional>
+  Filter calls until this date (YYYY-MM-DD format)
+</ParamField>
+
+<ParamField query="per_page" type="integer" optional>
+  Number of calls per page (1-100, default: 15)
+</ParamField>
+
+<ParamField query="page" type="integer" optional>
+  Page number (default: 1)
+</ParamField>
+
+### Response fields
+
+<ResponseField name="data" type="array">
+  <Expandable title="properties">
+    <ResponseField name="id" type="integer">
+      The unique identifier of the call
+    </ResponseField>
+
+    <ResponseField name="assistant_name" type="string">
+      The name of the assistant that handled the call
+    </ResponseField>
+
+    <ResponseField name="campaign_name" type="string">
+      The name of the campaign this call belongs to (if applicable)
+    </ResponseField>
+
+    <ResponseField name="type" type="string">
+      The type of the call (`inbound`, `outbound`, or `web`)
+    </ResponseField>
+
+    <ResponseField name="duration" type="integer">
+      The duration of the call in seconds
+    </ResponseField>
+
+    <ResponseField name="assistant_phone_number" type="string">
+      The phone number used by the assistant
+    </ResponseField>
+
+    <ResponseField name="client_phone_number" type="string">
+      The phone number of the client
+    </ResponseField>
+
+    <ResponseField name="status" type="string">
+      The current status of the call
+    </ResponseField>
+
+    <ResponseField name="transcript" type="string">
+      The transcript of the call conversation
+    </ResponseField>
+
+    <ResponseField name="variables" type="object">
+      Variables collected during the call
+    </ResponseField>
+
+    <ResponseField name="evaluation" type="object">
+      Evaluation data for the call performance
+    </ResponseField>
+
+    <ResponseField name="webhook_response" type="object">
+      Response from any configured webhooks
+    </ResponseField>
+
+    <ResponseField name="carrier_cost" type="number">
+      The cost charged by the carrier for this call
+    </ResponseField>
+
+    <ResponseField name="total_cost" type="number">
+      The total cost of the call including all fees
+    </ResponseField>
+
+    <ResponseField name="answered_by" type="string">
+      Who answered the call (`human`, `machine`, or `unknown`)
+    </ResponseField>
+
+    <ResponseField name="recording_url" type="string">
+      URL to the call recording (if available and enabled)
+    </ResponseField>
+
+    <ResponseField name="created_at" type="string">
+      The date and time when the call was created
+    </ResponseField>
+
+    <ResponseField name="updated_at" type="string">
+      The date and time when the call was last updated
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="current_page" type="integer">
+  The current page number
+</ResponseField>
+
+<ResponseField name="per_page" type="integer">
+  Number of items per page
+</ResponseField>
+
+<ResponseField name="total" type="integer">
+  Total number of calls matching the criteria
+</ResponseField>
+
+<ResponseField name="last_page" type="integer">
+  The last page number
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Response
+{
+  "current_page": 1,
+  "data": [
+    {
+      "id": 123,
+      "assistant_name": "Sales Assistant",
+      "campaign_name": "Q4 Outreach Campaign",
+      "type": "outbound",
+      "duration": 245,
+      "assistant_phone_number": "+1234567890",
+      "client_phone_number": "+1987654321",
+      "status": "completed",
+      "transcript": "Hello, this is Sarah from Aiplocalls. How are you doing today?...",
+      "variables": {
+        "customer_name": "John Smith",
+        "interest_level": "high",
+        "follow_up_date": "2025-08-15"
+      },
+      "evaluation": {
+        "sentiment": "positive",
+        "outcome": "qualified_lead",
+        "score": 8.5
+      },
+      "webhook_response": {
+        "status": "success",
+        "data": {
+          "crm_contact_id": "abc123"
+        }
+      },
+      "carrier_cost": 0.02,
+      "total_cost": 0.025,
+      "answered_by": "human",
+      "recording_url": "https://call.aiployees.com/recordings/calls/123.mp3",
+      "created_at": "2025-08-04 14:30:00",
+      "updated_at": "2025-08-04 14:34:05"
+    }
+  ],
+  "first_page_url": "https://call.aiployees.com/api/user/calls?page=1",
+  "from": 1,
+  "last_page": 10,
+  "last_page_url": "https://call.aiployees.com/api/user/calls?page=10",
+  "links": [
+    {
+      "url": null,
+      "label": "&laquo; Previous",
+      "active": false
+    },
+    {
+      "url": "https://call.aiployees.com/api/user/calls?page=1",
+      "label": "1",
+      "active": true
+    },
+    {
+      "url": "https://call.aiployees.com/api/user/calls?page=2",
+      "label": "2",
+      "active": false
+    }
+  ],
+  "next_page_url": "https://call.aiployees.com/api/user/calls?page=2",
+  "path": "https://call.aiployees.com/api/user/calls",
+  "per_page": 15,
+  "prev_page_url": null,
+  "to": 15,
+  "total": 150
+}
+```
+
+</ResponseExample>

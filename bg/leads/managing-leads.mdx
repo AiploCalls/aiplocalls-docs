@@ -1,0 +1,187 @@
+---
+title: "Managing Leads"
+icon: "user-gear"
+description: "Create, edit, and organize leads with custom variables and secondary contacts"
+---
+
+Learn how to create, edit, and manage leads effectively for your campaigns with proper variable setup and secondary contact management.
+
+## Creating a New Lead
+
+### Basic Information
+1. **Phone Number:** Enter the primary contact number in international format
+2. **Campaign Assignment:** Select which campaign this lead belongs to
+3. **Status:** Automatically set to "Created" for new leads
+
+<Note>
+**Phone number format:** Use international format without spaces or parentheses (+1234567890) for automation imports and file uploads.
+</Note>
+
+### Variable Setup
+
+#### Assistant Default Variables
+When you select a campaign, the lead automatically inherits variables from the [assistant configuration](/ai-assistants/settings/prompt-and-tools#call-variables):
+- **Pre-filled values:** Assistant's default variables appear in the form
+- **Customization:** Modify values specific to this lead
+- **Required fields:** Some variables may be required for campaign functionality
+
+#### Custom Variables
+Add personalized information for your AI assistant to use:
+
+**Common variable types:**
+- **customer_name:** Person's name for personalized greetings
+- **company:** Business name for B2B conversations  
+- **last_interaction:** Previous conversation context
+- **preferences:** Customer preferences or requirements
+- **budget_range:** Financial information for sales calls
+
+**Variable format example:**
+```json
+{
+  "customer_name": "Sarah Johnson",
+  "company": "TechStart Solutions", 
+  "last_interaction": "Requested demo of premium features",
+  "preferred_contact_time": "Afternoon EST",
+  "industry": "Software Development"
+}
+```
+
+### Secondary Contacts
+
+Add additional phone numbers for the same lead when you have multiple ways to reach them.
+
+#### When to Use Secondary Contacts
+- **Decision makers:** Multiple people involved in the decision
+- **Backup numbers:** Mobile, office, home numbers for same person
+- **Department contacts:** Different departments in same company
+- **Time-based contacts:** Different numbers for different times
+
+#### Secondary Contact Setup
+1. **Add Secondary Contact:** Click "Add Secondary Contact" in the form
+2. **Phone Number:** Enter additional phone number
+3. **Variables:** Set specific variables for this contact (optional)
+4. **Order:** Contacts are tried in the order you add them
+
+<Tip>
+**Contact order matters:** Campaign will try contacts in sequence. Put the most likely to answer first.
+</Tip>
+
+#### Secondary Contact Variables
+Each secondary contact can have unique variables:
+- **Different person:** Use different name and role variables
+- **Same person:** Use same personal info but different contact preferences
+- **Department-specific:** Customize for specific department needs
+
+**Example - Multiple decision makers:**
+```json
+// Primary: CEO
+{
+  "contact_name": "John Smith",
+  "role": "CEO", 
+  "decision_authority": "Final approval"
+}
+
+// Secondary: CTO  
+{
+  "contact_name": "Jane Doe",
+  "role": "CTO",
+  "decision_authority": "Technical decisions"
+}
+```
+
+## Editing Existing Leads
+
+### Modifying Lead Information
+- **Phone number:** Update if contact information changes
+- **Campaign:** Move lead to different campaign if needed
+- **Status:** Manually change status for campaign control
+
+### Variable Management
+- **Update values:** Modify existing variable values
+- **Add variables:** Include new information for better AI context
+- **Remove variables:** Delete outdated or irrelevant data
+
+<Warning>
+**Campaign compatibility:** When changing campaigns, ensure variables match the new assistant's configuration.
+</Warning>
+
+### Secondary Contact Management
+- **Add contacts:** Include additional phone numbers
+- **Remove contacts:** Delete invalid or unnecessary numbers  
+- **Reorder contacts:** Change calling sequence priority
+- **Update variables:** Modify contact-specific information
+
+## Lead Status Management
+
+### Understanding Status Changes
+Lead status automatically updates based on campaign activity:
+- **Created → Processing:** When campaign starts calling
+- **Processing → Completed:** When call succeeds or goal achieved  
+- **Processing → Rescheduled:** When call needs retry
+- **Rescheduled → Max Retries:** When retry limit reached
+
+### Manual Status Control
+You can manually change lead status when needed:
+
+#### Reset for Re-calling
+**Set to "Created":** Resets lead to be called again
+- **Use case:** Lead requested callback at specific time
+- **Effect:** Lead rejoins campaign queue
+- **Considerations:** Respects campaign retry limits
+
+#### Mark as Complete
+**Set to "Completed":** Stops campaign from calling this lead
+- **Use case:** Goal achieved through other channels
+- **Effect:** Lead excluded from future campaign calls
+- **Considerations:** Cannot be automatically reset by campaign
+
+#### Other Status Changes
+- **"Scheduled":** Queue for next retry attempt
+- **"Max Retries":** Manually mark as exhausted
+- **"Rescheduled":** Reset retry timer
+
+<Tip>
+**Status strategy:** Use manual status changes sparingly. Let campaign automation handle most status updates for consistent behavior.
+</Tip>
+
+## Bulk Operations
+
+### Bulk Delete
+Select multiple leads and delete them:
+1. **Filter leads:** Use table filters to select specific leads
+2. **Select leads:** Check boxes for leads to delete
+3. **Bulk delete:** Choose delete action from bulk actions menu
+4. **Confirm:** Review changes before applying
+
+### Bulk Export
+Export filtered lead data for external processing:
+- **Apply filters:** Filter by campaign, status, date range
+- **Select columns:** Choose which data to export
+- **Include secondary:** Option to include secondary contacts
+- **Download:** CSV format for spreadsheet compatibility
+
+## Lead Organization
+
+Use table filters, sorting, and search to organize leads by campaign, status, date range, or variable content.
+
+## Campaign Integration
+
+- **Single campaign** assignment per lead
+- **Variable inheritance** from assistant configuration
+- **Automatic coordination** with campaign schedule and retry logic
+
+## Best Practices
+
+### Key Points
+- **Phone format:** International format without spaces (+1234567890)
+- **Variables:** Use consistent naming and relevant information
+- **Secondary contacts:** Order by priority, avoid duplicates
+- **Privacy:** Follow data protection requirements
+
+<Note>
+For troubleshooting common lead issues, see [Leads Troubleshooting](/troubleshooting/leads).
+</Note>
+
+<Note>
+For information about importing leads in bulk, see [Importing Leads](/leads/importing-leads).
+</Note>

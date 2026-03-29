@@ -1,0 +1,62 @@
+---
+title: "Get transcriber providers"
+api: "GET /user/assistants/transcriber-providers"
+description: "Retrieve available STT (speech-to-text) transcriber providers"
+---
+
+This endpoint returns a list of available transcriber providers that can be used when creating or updating assistants. Use the returned `id` as `transcriber_provider_id` when configuring an assistant.
+
+### Query Parameters
+
+<ParamField query="language_id" type="integer">
+  Filter providers by language support. Only returns providers that support the given language. Use the [Get Languages](/api-reference/assistants/get-languages) endpoint to get available language IDs.
+</ParamField>
+
+### Response fields
+
+<ResponseField name="data" type="array">
+  <Expandable title="properties">
+    <ResponseField name="id" type="integer">
+      The unique identifier of the provider. Use this as `transcriber_provider_id` when creating or updating assistants.
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      The display name of the provider (e.g., "Deepgram", "Azure", "Gladia")
+    </ResponseField>
+
+    <ResponseField name="code" type="string">
+      The internal code of the provider
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Response
+[
+  {
+    "id": 1,
+    "name": "Deepgram",
+    "code": "deepgram"
+  },
+  {
+    "id": 2,
+    "name": "Azure",
+    "code": "azure"
+  },
+  {
+    "id": 3,
+    "name": "Gladia",
+    "code": "gladia"
+  }
+]
+```
+
+</ResponseExample>
+
+### Notes
+
+- If no `language_id` filter is provided, all providers are returned
+- Not all providers support all languages — use the `language_id` filter to get compatible providers
+- Transcriber providers are only relevant for `pipeline` mode (multimodal and dualplex modes handle STT internally)
+- If you don't set `transcriber_provider_id` when creating an assistant, the language's default provider is used

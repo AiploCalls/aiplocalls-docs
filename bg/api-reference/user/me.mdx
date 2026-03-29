@@ -1,0 +1,41 @@
+---
+title: "Get current user"
+api: "GET /user/me"
+description: "Get the authenticated user's profile information"
+---
+
+This endpoint returns the profile information for the currently authenticated user, including their account balance.
+
+### Response
+
+<ResponseField name="name" type="string">
+  The user's full name
+</ResponseField>
+
+<ResponseField name="email" type="string">
+  The user's email address
+</ResponseField>
+
+<ResponseField name="total_balance" type="number">
+  The user's current account balance in USD
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Response
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "total_balance": 125.50
+}
+```
+
+</ResponseExample>
+
+### Use Cases
+
+This endpoint is useful for:
+
+- **Verifying authentication** - Confirm the API key is valid and belongs to the expected user
+- **Checking account balance** - Monitor available credits before making API calls
+- **Displaying user info** - Show the current user in your application's UI

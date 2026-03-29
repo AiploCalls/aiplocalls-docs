@@ -1,0 +1,68 @@
+---
+title: "Delete document"
+api: "DELETE /user/knowledgebases/{knowledgebaseId}/documents/{documentId}"
+description: "Delete a document from a knowledgebase"
+---
+
+This endpoint permanently deletes a document from a knowledgebase. The document's vector embeddings are also removed from the vector database.
+
+### Path Parameters
+
+<ParamField path="knowledgebaseId" type="integer" required>
+  The unique identifier of the knowledgebase
+</ParamField>
+
+<ParamField path="documentId" type="integer" required>
+  The unique identifier of the document to delete
+</ParamField>
+
+### Response
+
+<ResponseField name="message" type="string">
+  Success message
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Response
+{
+  "message": "Document deleted successfully."
+}
+```
+
+```json 404 Knowledgebase Not Found
+{
+  "error": "Knowledgebase not found."
+}
+```
+
+```json 404 Document Not Found
+{
+  "error": "Document not found."
+}
+```
+
+```json 500 Error
+{
+  "error": "Failed to delete document. Please try again."
+}
+```
+
+</ResponseExample>
+
+### What Gets Deleted
+
+When you delete a document:
+
+- **Document record** is removed from the database
+- **Vector embeddings** are deleted from the vector database
+- **Processed content** is removed from external document stores
+- **Parent knowledgebase status** is updated automatically
+
+<Warning>
+This action is irreversible. The document and all its processed content will be permanently deleted.
+</Warning>
+
+<Note>
+If this was the last document in the knowledgebase, the knowledgebase status will change to `empty`.
+</Note>

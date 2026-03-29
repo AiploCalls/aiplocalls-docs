@@ -1,0 +1,77 @@
+---
+title: "Get available phone numbers"
+api: "GET /user/assistants/phone-numbers"
+description: "Retrieve all available phone numbers for assistant assignment"
+---
+
+This endpoint returns a list of phone numbers owned by the authenticated user that can be assigned to assistants, with optional filtering by assistant type.
+
+### Query Parameters
+
+<ParamField query="type" type="string" optional>
+  Filter phone numbers by assistant type. Options: `inbound`, `outbound`
+</ParamField>
+
+### Response fields
+
+<ResponseField name="data" type="array">
+  <Expandable title="properties">
+    <ResponseField name="id" type="integer">
+      The unique identifier of the phone number
+    </ResponseField>
+
+    <ResponseField name="phone_number" type="string">
+      The phone number in E.164 format
+    </ResponseField>
+
+    <ResponseField name="country_code" type="string">
+      The country code for the phone number
+    </ResponseField>
+
+    <ResponseField name="type_label" type="string">
+      The human-readable type label for the phone number
+    </ResponseField>
+
+    <ResponseField name="is_available" type="boolean">
+      Whether the phone number is available for assignment (not currently assigned to an inbound assistant)
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Response
+[
+  {
+    "id": 45,
+    "phone_number": "+1234567890",
+    "country_code": "US",
+    "type_label": "Normal",
+    "is_available": true
+  },
+  {
+    "id": 46,
+    "phone_number": "+1234567891",
+    "country_code": "US",
+    "type_label": "SIP",
+    "is_available": false
+  },
+  {
+    "id": 47,
+    "phone_number": "+441234567890",
+    "country_code": "GB",
+    "type_label": "Caller ID",
+    "is_available": true
+  }
+]
+```
+
+</ResponseExample>
+
+### Notes
+
+- Only phone numbers owned by the authenticated user are returned
+- When `type=inbound` is specified, caller ID numbers and already assigned numbers are filtered out
+- The `is_available` field indicates if the number can be assigned to a new inbound assistant
+- Phone numbers are returned in the values collection format (indexed array)
+- Use the `id` field when assigning phone numbers to assistants

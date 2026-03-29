@@ -1,0 +1,42 @@
+---
+title: "Authentication"
+icon: "key"
+description: "Learn how to authenticate your API requests"
+---
+
+The Aiplocalls API uses API keys to authenticate requests. You need to include your API key in the header of each request you make to the API.
+
+## Obtaining an API Key
+
+To obtain an API key:
+
+1. Log in to your Aiplocalls account at [https://call.aiployees.com](https://call.aiployees.com)
+2. Navigate to the "API Keys" page
+3. Click on the "Create new API Key" button
+4. Copy your new API key and store it securely
+
+<Warning>
+  Keep your API key confidential and secure. Do not share it publicly or commit
+  it to version control systems.
+</Warning>
+
+## Using the API Key
+
+Include your API key in the `Authorization` header of each request:
+
+```
+Authorization: Bearer YOUR_API_KEY
+```
+
+Replace `YOUR_API_KEY` with your actual API key.
+
+## Example Request
+
+Here's an example of how to include the API key in a cURL request:
+
+```bash
+curl -X GET "https://call.aiployees.com/api/user/campaigns" \
+     -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+Replace `YOUR_API_KEY` with your actual API key when making requests.

@@ -1,0 +1,27 @@
+---
+title: "General Setup Issues"
+icon: "wrench"
+description: "Troubleshoot common setup problems including AI response issues, OTP verification, and credential errors"
+---
+
+Some common pitfalls when first configuring Aiplocalls:
+
+## 1. AI Not Responding or Call Dropping
+
+- **Check the System Prompt**: Possibly missing instructions.
+- **Voice Activity Detection**: If set too low or high, it may cause awkward silences or interruptions.
+- **Connection**: If your internet or SIP trunk is unstable, calls might drop.
+
+## 2. Not Receiving OTP (for Caller ID Verification)
+
+- **Carrier Blocks**: Some operators filter out short codes or unknown international SMS.
+- **Try Alternate Method**: Ask support if you can verify by a quick voice call or another phone line.
+
+## 3. Credential Errors
+
+- **SIP**: Wrong username/password? Double-check with your PBX provider.
+- **API/Webhooks**: Ensure you copied the correct token or endpoint URL.
+
+---
+
+**Tip:** Look at call logs for error codes if a call fails. Usually, it'll show a reason like "Number not found" or "Network unreachable."

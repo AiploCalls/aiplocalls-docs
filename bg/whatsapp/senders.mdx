@@ -1,0 +1,290 @@
+---
+title: "WhatsApp Senders"
+icon: "phone"
+description: "Create and manage WhatsApp Business senders for AI-powered messaging"
+---
+
+A WhatsApp Sender is a phone number registered with WhatsApp Business API that can send and receive messages. Each sender is connected to an AI assistant for automated responses.
+
+## What is a WhatsApp Sender?
+
+A WhatsApp Sender is:
+
+- A dedicated phone number connected to WhatsApp Business
+- Connected to an AI assistant for automated responses
+- Capable of sending template messages and free-form replies
+
+## Number Type Options
+
+When creating a WhatsApp sender, you can choose between two types of phone numbers:
+
+<CardGroup cols={2}>
+  <Card title="Platform Numbers" icon="building">
+    Use phone numbers purchased through our platform. We handle verification automatically using AI-assisted voice verification.
+
+    **Best for:** Businesses wanting a dedicated business line with automated setup
+  </Card>
+  <Card title="External Numbers" icon="mobile">
+    Use your own mobile number. You verify ownership by receiving an SMS or voice call with a verification code.
+
+    **Best for:** Businesses wanting to use an existing number they already own
+  </Card>
+</CardGroup>
+
+## Creating a WhatsApp Sender
+
+Creating a WhatsApp sender starts with choosing your number type, then following the appropriate setup flow.
+
+### Step 1: Choose Your Number Type
+
+Navigate to **WhatsApp Senders** → **Create Sender** and select your preferred number type:
+
+- **Platform Number** — Use a number purchased from our platform (automated AI verification)
+- **External Number** — Use your own mobile number (SMS/voice code verification)
+
+---
+
+## Platform Number Setup
+
+If you selected **Platform Number**, follow these steps:
+
+### Step 2: Pre-Verify Your Phone Number
+
+Before connecting to WhatsApp, your phone number must be verified with Meta.
+
+<Warning>
+**Call Interception Warning** — During verification, ALL inbound calls to the selected phone number will be intercepted by our verification system for up to 5 minutes.
+
+This means:
+- Your normal AI assistant will NOT answer calls during this time
+- All calls will go to a silent verification listener
+- Regular customers calling this number will experience disrupted service
+
+**DO NOT run this on a production phone number that is actively receiving customer calls!**
+</Warning>
+
+1. Select an available phone number (only "normal" type numbers not already used for WhatsApp are shown)
+2. Enter a **Display Name** for your business (this will be shown to customers)
+3. Optionally add business profile information (about, description, address, category)
+4. Click **Start Verification**
+
+The system will automatically verify your number with Meta using AI-assisted voice verification. This typically takes 1-2 minutes.
+
+### Step 3: Select Your Verified Number
+
+Once verification completes:
+
+1. You'll see your verified number in the "Verified Numbers Ready" section
+2. Select the number you want to connect
+3. Click **Continue to WhatsApp Connection**
+
+### Step 4: Connect to WhatsApp Business
+
+This step connects your verified number to WhatsApp through Meta's Embedded Signup flow.
+
+<Warning>
+**CRITICAL: Create a NEW Account** — During the Facebook signup flow, you MUST create a brand new WhatsApp Business Account. Do NOT select an existing WhatsApp Business Account — this will cause the integration to fail.
+</Warning>
+
+<Frame>
+  <img src="/resources/whatsapp/step-add-number.png" alt="Click Add New Number in Meta signup" />
+</Frame>
+
+**Step A: Click "Add new number"**
+
+When the Meta popup appears, look for the "Add new number" option. Do NOT enter a phone number manually.
+
+<Frame>
+  <img src="/resources/whatsapp/step-select-number.png" alt="Select your pre-verified number" />
+</Frame>
+
+**Step B: Select your pre-verified number**
+
+From the dropdown, select the phone number you just verified. It will appear in the list because Meta already knows about it from the verification step.
+
+After selecting your number, complete the remaining steps in Facebook's flow (business verification, permissions, etc.) and you'll be redirected back automatically.
+
+---
+
+## External Number Setup
+
+If you selected **External Number**, follow these steps to connect your own mobile number.
+
+### Requirements Before You Begin
+
+<Info>
+Make sure you have the following ready:
+
+- **Phone accessible** — You must have your phone nearby to receive a verification code
+- **SMS or calls enabled** — Your number must be able to receive SMS messages or voice calls
+- **Not already on WhatsApp** — This number must not be registered with WhatsApp or WhatsApp Business app
+- **Facebook account** — You'll need a Facebook account to complete the setup
+</Info>
+
+### Step 2: Enter Your Phone Number
+
+1. Enter your phone number in international format (e.g., +1 555 123 4567)
+2. Enter a **Display Name** for your business
+3. Click **Continue**
+
+<Tip>
+**Phone Number Format** — Enter your number starting with + and your country code:
+- US: +1 555 123 4567
+- UK: +44 7911 123456
+- Germany: +49 151 12345678
+</Tip>
+
+### Step 3: Connect to WhatsApp Business
+
+Click **Login with Facebook** to open Meta's Embedded Signup flow. Follow these steps:
+
+<Steps>
+  <Step title="Login with Facebook">
+    A popup will open. Make sure popups are allowed for this site.
+  </Step>
+  <Step title="Create a WhatsApp Business Account">
+    Follow the prompts to create a **new** WhatsApp Business Account. Don't select an existing one.
+  </Step>
+  <Step title="Enter Your Phone Number">
+    When prompted, enter the same phone number you provided in Step 2.
+  </Step>
+  <Step title="Verify with SMS or Voice Call">
+    You'll receive a 6-digit code via SMS or voice call. Enter it to verify your number.
+    <Tip>If you don't receive an SMS within 60 seconds, choose the voice call option.</Tip>
+  </Step>
+  <Step title="Complete the Setup">
+    Grant the required permissions and close the popup when finished. You'll be redirected automatically.
+  </Step>
+</Steps>
+
+### Troubleshooting External Numbers
+
+<AccordionGroup>
+  <Accordion title="Popup blocked?">
+    Allow popups for this site in your browser settings, then try again.
+  </Accordion>
+  <Accordion title="Not receiving verification code?">
+    Wait 60 seconds, then try the voice call option. Make sure your phone has signal.
+  </Accordion>
+  <Accordion title="Number already registered?">
+    If this number is already on WhatsApp, you'll need to delete that WhatsApp account first before you can use it with WhatsApp Business API.
+  </Accordion>
+  <Accordion title="Facebook login issues?">
+    Make sure you're logged into the correct Facebook account, or try a different browser.
+  </Accordion>
+</AccordionGroup>
+
+## Sender Status
+
+Your sender can have different statuses during operation:
+
+| Status | Description |
+|--------|-------------|
+| <span style={{color: '#22c55e'}}>**Online**</span> | Fully operational. You can send and receive messages. |
+| <span style={{color: '#3b82f6'}}>**Connecting**</span> | Being initialized. Usually takes a few seconds. |
+| <span style={{color: '#f59e0b'}}>**Pending**</span> | Awaiting verification or approval. |
+| <span style={{color: '#6b7280'}}>**Offline**</span> | Manually disabled. Messages cannot be sent or received. |
+| <span style={{color: '#ef4444'}}>**Suspended**</span> | Suspended by Meta due to policy violations. |
+| <span style={{color: '#ef4444'}}>**Failed**</span> | Setup failed. Check error message for details. |
+
+## Sender Configuration
+
+### Connect an AI Assistant
+
+Once your sender is online, connect an AI assistant to handle incoming messages automatically:
+
+1. Edit your WhatsApp sender
+2. Select an assistant from the dropdown
+3. Enable **AI Enabled** toggle
+4. Save changes
+
+All incoming messages will now be routed to your AI assistant for responses.
+
+### Business Profile
+
+Customize how your business appears to customers:
+
+- **Display Name** — Your business name shown in WhatsApp
+- **About** — Short description (max 139 characters)
+- **Description** — Detailed description of your business
+- **Address** — Business address
+- **Business Category** — Industry category (Automotive, Medical, Retail, etc.)
+- **Logo** — Business logo image
+- **Banner** — Banner image for your profile
+- **Websites** — Links to your websites
+- **Contact Information** — Additional email and phone contacts
+
+## Quality Rating & Messaging Limits
+
+Meta tracks your messaging quality and adjusts your limits accordingly.
+
+### Understanding Quality Rating
+
+Your quality rating is based on:
+- Block rates (customers blocking your number)
+- Spam reports
+- Response rates
+- Customer feedback
+
+### Messaging Limits
+
+New senders start with limited capacity that increases with good quality:
+
+| Tier | Daily Limit | How to Reach |
+|------|-------------|--------------|
+| Tier 1 | ~250 messages | New sender |
+| Tier 2 | 1,000 messages | Maintain quality for 7 days |
+| Tier 3 | 10,000 messages | Consistent high quality |
+| Tier 4 | 100,000+ messages | Enterprise-level quality |
+
+<Tip>
+**Build Quality First** — Focus on quality conversations before scaling up. Send relevant, requested content to maintain a high quality rating.
+</Tip>
+
+## Best Practices
+
+### 1. Choose the Right Number
+
+Select a phone number from a country that matches your target audience. Customers are more likely to engage with local or familiar area codes.
+
+### 2. Set Up Your Display Name Carefully
+
+Your display name appears in customer chats. Use your business name or a clear identifier that customers will recognize and trust.
+
+### 3. Connect an AI Assistant
+
+Link an AI assistant to handle incoming messages automatically. This ensures customers get instant responses 24/7.
+
+### 4. Create Templates Early
+
+Message templates require Meta approval which can take up to 24 hours. Create and submit your templates before you need them.
+
+### 5. Start with Quality Conversations
+
+New senders have messaging limits that increase over time. Focus on quality conversations to build your sender reputation before scaling up.
+
+## Troubleshooting
+
+### Verification Failed
+
+If verification fails, Meta may have temporarily blocked requests. Wait a few minutes before retrying, or try a different phone number.
+
+### Sender Stuck in Pending
+
+If your sender stays in "Pending" status for more than a few minutes:
+1. Check if you completed the Meta signup flow
+2. Ensure you selected the correct pre-verified number
+3. Contact support if the issue persists
+
+### Sender Suspended
+
+If Meta suspends your sender:
+1. Review the suspension reason in your sender details
+2. Address any policy violations
+3. Contact Meta support for appeals
+
+## Next Steps
+
+- Learn about [message templates](/whatsapp/templates) and the approval process
+- Set up [automation triggers](/whatsapp/automation) for WhatsApp conversations
+- Review [AI assistant configuration](/ai-assistants/what-is-ai-assistant) for optimal responses

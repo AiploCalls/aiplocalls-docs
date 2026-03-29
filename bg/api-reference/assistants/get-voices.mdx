@@ -1,0 +1,102 @@
+---
+title: "Get available voices"
+api: "GET /user/assistants/voices"
+description: "Retrieve all available voices for assistant configuration"
+---
+
+This endpoint returns a list of all available voices that can be used when creating or updating assistants, with optional filtering by assistant mode and language.
+
+### Query Parameters
+
+<ParamField query="mode" type="string">
+  Filter voices by assistant mode. Options: `pipeline`, `multimodal`, `dualplex`
+</ParamField>
+
+<ParamField query="language_id" type="integer">
+  Filter voices by language ID. Use the [Get Languages](/api-reference/assistants/get-languages) endpoint to get available language IDs.
+</ParamField>
+
+### Response fields
+
+<ResponseField name="data" type="array">
+  <Expandable title="properties">
+    <ResponseField name="id" type="integer">
+      The unique identifier of the voice
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      The display name of the voice
+    </ResponseField>
+
+    <ResponseField name="language_id" type="integer">
+      The language ID this voice is associated with
+    </ResponseField>
+
+    <ResponseField name="gender" type="string">
+      The gender of the voice (male/female)
+    </ResponseField>
+
+    <ResponseField name="preview_url" type="string">
+      URL to an audio sample of the voice. Can be used to let users preview voices before selecting one.
+    </ResponseField>
+
+    <ResponseField name="accent" type="string">
+      The accent of the voice (e.g., "American", "British"). May be `null`.
+    </ResponseField>
+
+    <ResponseField name="age" type="string">
+      The age category of the voice (e.g., "Young", "Middle aged"). May be `null`.
+    </ResponseField>
+
+    <ResponseField name="synthesizer_provider_id" type="integer">
+      The TTS provider ID this voice belongs to. Use the [Get Synthesizer Providers](/api-reference/assistants/get-synthesizer-providers) endpoint to resolve provider names. May be `null`.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Response
+[
+  {
+    "id": 1,
+    "name": "Alloy",
+    "language_id": 1,
+    "gender": "female",
+    "preview_url": "https://cdn.openai.com/API/voice-previews/alloy.flac",
+    "accent": null,
+    "age": "Middle aged",
+    "synthesizer_provider_id": null
+  },
+  {
+    "id": 10,
+    "name": "Zephyr",
+    "language_id": 1,
+    "gender": "female",
+    "preview_url": "https://gstatic.com/aistudio/voices/samples/Zephyr.wav",
+    "accent": null,
+    "age": "Middle aged",
+    "synthesizer_provider_id": 1
+  },
+  {
+    "id": 11,
+    "name": "Puck",
+    "language_id": 1,
+    "gender": "male",
+    "preview_url": "https://gstatic.com/aistudio/voices/samples/Puck.wav",
+    "accent": null,
+    "age": "Middle aged",
+    "synthesizer_provider_id": 1
+  }
+]
+```
+
+</ResponseExample>
+
+### Notes
+
+- Use the `id` field as `voice_id` when creating or updating assistants
+- Filter by `mode` to get only voices compatible with your intended assistant type
+- Filter by `language_id` to get voices for a specific language
+- If no filters are provided, all available voices are returned
+- Only voices that are public or belong to the authenticated user are returned

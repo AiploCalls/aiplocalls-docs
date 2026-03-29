@@ -1,0 +1,253 @@
+---
+title: "Send Template Message"
+api: "POST /user/whatsapp/send"
+description: "Send a WhatsApp message using an approved template"
+---
+
+This endpoint sends a WhatsApp message using a pre-approved template. Template messages are required when initiating a conversation with a user for the first time or when messaging outside the 24-hour messaging window.
+
+<Note>
+  This endpoint is rate-limited to **5 requests per second** per user.
+</Note>
+
+### Request Body
+
+<ParamField body="sender_id" type="integer" required>
+  The ID of the WhatsApp sender to send from (obtained from the [Get Senders](/api-reference/whatsapp/get-senders) endpoint)
+</ParamField>
+
+<ParamField body="template_id" type="integer" required>
+  The ID of the message template to use (obtained from the [Get Templates](/api-reference/whatsapp/get-templates) endpoint)
+</ParamField>
+
+<ParamField body="recipient_phone" type="string" required>
+  The recipient's phone number in international format (e.g., `+1234567890`)
+</ParamField>
+
+<ParamField body="recipient_name" type="string">
+  The recipient's name, max 255 characters (used for conversation tracking and CRM purposes)
+</ParamField>
+
+<ParamField body="variables" type="object">
+  Key-value pairs for template variables. Keys should match the variable names from the template. If the template has variables `{{1}}`, `{{2}}`, etc., provide them as `{"1": "value1", "2": "value2"}` or using the named keys from the template's `variables` array.
+
+  <Expandable title="Example variables">
+    <ParamField body="1" type="string">
+      Value for the first template variable
+    </ParamField>
+
+    <ParamField body="2" type="string">
+      Value for the second template variable
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+### Response Fields
+
+<ResponseField name="success" type="boolean">
+  Whether the message was sent successfully
+</ResponseField>
+
+<ResponseField name="conversation_id" type="integer">
+  The ID of the conversation (new or existing) associated with this message
+</ResponseField>
+
+<ResponseField name="message_id" type="integer">
+  The ID of the conversation message record
+</ResponseField>
+
+<ResponseField name="whatsapp_message_id" type="integer">
+  The ID of the WhatsApp message record
+</ResponseField>
+
+<ResponseField name="message_sid" type="string">
+  The Twilio message SID for tracking delivery
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  The initial message delivery status (e.g., `queued`, `sent`)
+</ResponseField>
+
+### Error Responses
+
+<ResponseField name="402 Insufficient Balance">
+  <Expandable title="Error Response">
+    <ResponseField name="success" type="boolean">`false`</ResponseField>
+    <ResponseField name="error" type="string">`Insufficient balance. Please top up your account.`</ResponseField>
+    <ResponseField name="error_code" type="string">`INSUFFICIENT_BALANCE`</ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="404 Not Found">
+  <Expandable title="Error Response">
+    <ResponseField name="success" type="boolean">`false`</ResponseField>
+    <ResponseField name="error" type="string">`Sender not found or does not belong to you` or `Template not found or does not belong to this sender`</ResponseField>
+    <ResponseField name="error_code" type="string">`SENDER_NOT_FOUND` or `TEMPLATE_NOT_FOUND`</ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="422 Unprocessable Entity">
+  <Expandable title="Error Response">
+    <ResponseField name="success" type="boolean">`false`</ResponseField>
+    <ResponseField name="error" type="string">Detailed error message</ResponseField>
+    <ResponseField name="error_code" type="string">
+      One of: `SENDER_OFFLINE`, `TEMPLATE_NOT_APPROVED`, `TEMPLATE_NOT_SYNCED`, `TEMPLATE_MISMATCH`, `NO_ASSISTANT_CONFIGURED`, `INVALID_PHONE`, `MESSAGING_LIMIT_UNAVAILABLE`, `VOICE_CALL_LIMIT_NOT_MET`, `TWILIO_ERROR_{code}`, `UNKNOWN_ERROR`
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X POST "https://call.aiployees.com/api/user/whatsapp/send" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "sender_id": 12,
+    "template_id": 45,
+    "recipient_phone": "+1234567890",
+    "recipient_name": "John Doe",
+    "variables": {
+      "1": "John",
+      "2": "January 15, 2026",
+      "3": "2:00 PM"
+    }
+  }'
+```
+
+```bash Template without variables
+curl -X POST "https://call.aiployees.com/api/user/whatsapp/send" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "sender_id": 12,
+    "template_id": 46,
+    "recipient_phone": "+1234567890"
+  }'
+```
+
+```javascript JavaScript
+const response = await fetch(
+  'https://call.aiployees.com/api/user/whatsapp/send',
+  {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer YOUR_API_KEY',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      sender_id: 12,
+      template_id: 45,
+      recipient_phone: '+1234567890',
+      recipient_name: 'John Doe',
+      variables: {
+        '1': 'John',
+        '2': 'January 15, 2026',
+        '3': '2:00 PM'
+      }
+    })
+  }
+);
+
+const data = await response.json();
+console.log(data);
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://call.aiployees.com/api/user/whatsapp/send',
+    headers={
+        'Authorization': 'Bearer YOUR_API_KEY',
+        'Content-Type': 'application/json'
+    },
+    json={
+        'sender_id': 12,
+        'template_id': 45,
+        'recipient_phone': '+1234567890',
+        'recipient_name': 'John Doe',
+        'variables': {
+            '1': 'John',
+            '2': 'January 15, 2026',
+            '3': '2:00 PM'
+        }
+    }
+)
+
+print(response.json())
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json 200 Success
+{
+  "success": true,
+  "conversation_id": 1234,
+  "message_id": 567,
+  "whatsapp_message_id": 890,
+  "message_sid": "SMxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "status": "queued"
+}
+```
+
+```json 402 Insufficient Balance
+{
+  "success": false,
+  "error": "Insufficient balance. Please top up your account.",
+  "error_code": "INSUFFICIENT_BALANCE"
+}
+```
+
+```json 404 Sender Not Found
+{
+  "success": false,
+  "error": "Sender not found or does not belong to you",
+  "error_code": "SENDER_NOT_FOUND"
+}
+```
+
+```json 404 Template Not Found
+{
+  "success": false,
+  "error": "Template not found or does not belong to this sender",
+  "error_code": "TEMPLATE_NOT_FOUND"
+}
+```
+
+```json 422 Template Not Approved
+{
+  "success": false,
+  "error": "Template is not approved. Current status: pending",
+  "error_code": "TEMPLATE_NOT_APPROVED"
+}
+```
+
+```json 422 Invalid Phone
+{
+  "success": false,
+  "error": "Invalid phone number format. Use E.164 format (e.g., +14155551234).",
+  "error_code": "INVALID_PHONE"
+}
+```
+
+```json 422 Sender Offline
+{
+  "success": false,
+  "error": "Sender is not online. Current status: Offline",
+  "error_code": "SENDER_OFFLINE"
+}
+```
+
+</ResponseExample>
+
+### Notes
+
+- Template messages must use **approved** templates. Templates with `pending` or `rejected` status will fail.
+- The sender must be `online`. Offline senders cannot send messages.
+- Message costs are automatically deducted from your account balance (credits for tenant users, minutes for direct users).
+- After sending a template message, a 24-hour messaging window opens. During this window, you can send [freeform messages](/api-reference/whatsapp/send-freeform) without needing a template.
+- If a conversation already exists with the recipient, the message is added to the existing conversation.
+- Rate limit: 5 requests per second per user.

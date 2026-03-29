@@ -1,0 +1,51 @@
+---
+title: "Delete knowledgebase"
+api: "DELETE /user/knowledgebases/{id}"
+description: "Delete a knowledgebase and all its documents"
+---
+
+This endpoint permanently deletes a knowledgebase and all its associated documents. This action cannot be undone.
+
+### Path Parameters
+
+<ParamField path="id" type="integer" required>
+  The unique identifier of the knowledgebase to delete
+</ParamField>
+
+### Response
+
+<ResponseField name="message" type="string">
+  Success message
+</ResponseField>
+
+<ResponseExample>
+
+```json 200 Response
+{
+  "message": "Knowledgebase deleted successfully."
+}
+```
+
+```json 404 Not Found
+{
+  "error": "Knowledgebase not found."
+}
+```
+
+</ResponseExample>
+
+### What Gets Deleted
+
+When you delete a knowledgebase:
+
+- **All documents** in the knowledgebase are permanently deleted
+- **Vector embeddings** are removed from the vector database
+- **Document store data** is cleaned up from external services
+
+### What Happens to Attached Assistants
+
+Any assistants that were using this knowledgebase will have their knowledgebase reference removed. They will continue to function but without the knowledgebase context.
+
+<Warning>
+This action is irreversible. All documents and their processed content will be permanently deleted. Make sure you want to delete this knowledgebase before proceeding.
+</Warning>

@@ -1,0 +1,29 @@
+name: Fix BG frontmatter
+on:
+  workflow_dispatch:
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fix double frontmatter delimiters
+        run: |
+          count=0
+          for f in bg/**/*.mdx; do
+            first_two=$(head -2 "$f" | tr '\n' '|')
+            if echo "$first_two" | grep -q '^---|---'; then
+              tail -n +2 "$f" > /tmp/fix.tmp && mv /tmp/fix.tmp "$f"
+              count=$((count + 1))
+              echo "Fixed: $f"
+            fi
+          done
+          echo "Total fixed: $count"
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add bg/
+          git diff --cached --quiet && echo "No changes" || (git commit -m "Fix broken frontmatter in bg/ translated files" && git push)
